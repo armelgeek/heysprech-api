@@ -5,7 +5,7 @@ from transformers import MarianMTModel, MarianTokenizer
 app = FastAPI()
 
 # Charger le modèle localement
-model_path = "./opus-mt-en-fr"
+model_path = "./opus-mt-de-fr"
 tokenizer = MarianTokenizer.from_pretrained(model_path)
 model = MarianMTModel.from_pretrained(model_path)
 
