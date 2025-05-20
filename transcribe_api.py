@@ -49,7 +49,8 @@ def transcrire_fichier(chemin_audio, repertoire_sortie):
         "--output_format", FORMAT_SORTIE,
         "--output_dir", repertoire_sortie,
         "--compute_type", "float32",
-        "--align_model", "WAV2VEC2_ASR_LARGE_LV60K_960H"
+        "--align_model", "WAV2VEC2_ASR_LARGE_LV60K_960H",
+        "--align_extend", 2
     ]
 
     try:
