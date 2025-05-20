@@ -14,3 +14,7 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload
 sudo systemctl start translate_api
 sudo systemctl enable translate_api
+
+Download model
+
+python huggingface_split_downloader.py https://huggingface.co/Helsinki-NLP/opus-mt-de-fr ./
