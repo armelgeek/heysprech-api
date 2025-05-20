@@ -6,7 +6,7 @@ import argparse
 
 MODELE = "base"
 LANGUE = "de"
-FORMAT_SORTIE = "txt"
+FORMAT_SORTIE = "srt"
 
 EXTENSIONS_AUDIO = (
     ".opus", ".mp3", ".wav", ".m4a", ".ogg",
@@ -44,6 +44,7 @@ def transcrire_fichier(chemin_audio, repertoire_sortie):
         "-m",
         "whisper",
         chemin_audio,
+        "--fp16", "False",
         "--model", MODELE,
         "--language", LANGUE,
         "--output_format", FORMAT_SORTIE,
@@ -51,7 +52,9 @@ def transcrire_fichier(chemin_audio, repertoire_sortie):
         "--no_speech_threshold", "0.3",
         "--word_timestamps", "True",
         "--append_punctuations", "True",
-        "--highlight_words", "True"
+        "--highlight_words", "True",
+        "--append_punctuations", "True",
+        "--max_words_per_line", "1"
     ]
 
     try:
