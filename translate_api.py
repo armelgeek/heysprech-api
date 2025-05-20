@@ -8,6 +8,15 @@ import sys
 import subprocess
 import os
 
+MODELE = "base"
+LANGUE = "de"
+FORMAT_SORTIE = "json"
+
+EXTENSIONS_AUDIO = (
+    ".opus", ".mp3", ".wav", ".m4a", ".ogg",
+    ".flac", ".aac", ".aiff", ".wma"
+)
+
 app = FastAPI()
 
 model_path = "./opus-mt-de-fr"
