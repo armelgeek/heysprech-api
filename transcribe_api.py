@@ -51,7 +51,7 @@ def transcrire_fichier(chemin_audio, repertoire_sortie):
         "--segment_resolution", "chunk",
         "--max_line_count", "1",
         "--align_model", "WAV2VEC2_ASR_LARGE_LV60K_960H",
-        "--compute_type", "int8" 
+        "--compute_type", "float32" 
         "--print_progress", "True",
         "--max_line_width", "-50"
     ]
