@@ -49,7 +49,9 @@ def transcrire_fichier(chemin_audio, repertoire_sortie):
         "--output_format", FORMAT_SORTIE,
         "--output_dir", repertoire_sortie,
         "--no_speech_threshold", "0.3",
-        "--word_timestamps", "True"
+        "--word_timestamps", "True",
+        "--append_punctuations", "True",
+        "--highlight_words", "True"
     ]
 
     try:
