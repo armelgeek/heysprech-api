@@ -39,7 +39,7 @@ def transcrire_fichier(chemin_audio, repertoire_sortie):
         print(f"Le fichier '{nom_fichier_sortie}' existe déjà et n'est pas vide. Passage au suivant.")
         return True
 
-       commande = [
+    commande = [
         sys.executable,
         "-m",
         "whisperx",
