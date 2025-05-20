@@ -44,7 +44,6 @@ def transcrire_fichier(chemin_audio, repertoire_sortie):
         "-m",
         "whisperx",
         chemin_audio,
-        "--fp16", "False",
         "--model", MODELE,
         "--language", LANGUE,
         "--output_format", FORMAT_SORTIE,
