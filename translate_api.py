@@ -1,10 +1,12 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, UploadFile, File
 from pydantic import BaseModel
 from transformers import MarianMTModel, MarianTokenizer
-from fastapi import UploadFile, File
 import shutil
 import uuid
 import json
+import sys
+import subprocess
+import os
 
 app = FastAPI()
 
@@ -22,7 +24,6 @@ def translate(req: TranslationRequest):
     translated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return {"translation": translated_text}
 
-
 @app.post("/transcribe")
 async def transcribe(file: UploadFile = File(...)):
     tmp_filename = f"/tmp/{uuid.uuid4()}_{file.filename}"
@@ -30,7 +31,6 @@ async def transcribe(file: UploadFile = File(...)):
     with open(tmp_filename, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    # Lancer Whisper avec subprocess
     try:
         cmd = [
             sys.executable,
@@ -56,6 +56,7 @@ async def transcribe(file: UploadFile = File(...)):
 
     except Exception as e:
         return {"error": str(e)}
+
     finally:
         try:
             os.remove(tmp_filename)
