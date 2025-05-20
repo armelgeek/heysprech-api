@@ -6,7 +6,7 @@ import argparse
 
 MODELE = "base"
 LANGUE = "de"
-FORMAT_SORTIE = "srt"
+FORMAT_SORTIE = "txt"
 
 EXTENSIONS_AUDIO = (
     ".opus", ".mp3", ".wav", ".m4a", ".ogg",
