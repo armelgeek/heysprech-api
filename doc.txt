@@ -1,0 +1,16 @@
+uvicorn translate_api:app --host 127.0.0.1 --port 8000
+[Unit]
+Description=Uvicorn instance for translate_api
+After=network.target
+
+[Service]
+User=ton_user
+Group=www-data
+WorkingDirectory=/var/www/sprech     
+ExecStart=/usr/bin/env uvicorn translate_api:app --host 127.0.0.1 --port 8000
+
+[Install]
+WantedBy=multi-user.target
+sudo systemctl daemon-reload
+sudo systemctl start translate_api
+sudo systemctl enable translate_api
