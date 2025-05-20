@@ -48,7 +48,6 @@ def transcrire_fichier(chemin_audio, repertoire_sortie):
         "--language", LANGUE,
         "--output_format", FORMAT_SORTIE,
         "--output_dir", repertoire_sortie,
-        "--diarize", "False",
         "--align_model", "WAV2VEC2_ASR_LARGE_LV60K_960H"
     ]
 
