@@ -6,7 +6,7 @@ import argparse
 
 MODELE = "base"
 LANGUE = "de"
-FORMAT_SORTIE = "srt"
+FORMAT_SORTIE = "json"
 
 EXTENSIONS_AUDIO = (
     ".opus", ".mp3", ".wav", ".m4a", ".ogg",
@@ -48,9 +48,12 @@ def transcrire_fichier(chemin_audio, repertoire_sortie):
         "--language", LANGUE,
         "--output_format", FORMAT_SORTIE,
         "--output_dir", repertoire_sortie,
-        "--compute_type", "float32",
         "--segment_resolution", "chunk",
-        "--align_model", "WAV2VEC2_ASR_LARGE_LV60K_960H"
+        "--max_line_count", "1",
+        "--align_model", "WAV2VEC2_ASR_LARGE_LV60K_960H",
+        "--compute_type", "int8" 
+        "--print_progress", "True",
+        "--max_line_width": "-50"
     ]
 
     try:
