@@ -158,13 +158,12 @@ def generate_example_sentences(word, word_type, models):
     try:
         # Initialisation du modèle T5 pour l'allemand si pas déjà fait
         if 'text_generator' not in models:
-            from transformers import AutoModelForCausalLM, AutoTokenizer
+            from transformers import GPT2LMHeadModel, GPT2Tokenizer
             print("Chargement du modèle de génération de texte allemand...")
-            model_name = "ml6team/gpt2-german"
-            tokenizer_t5 = AutoTokenizer.from_pretrained(model_name, padding_side='left')
-            model_t5 = AutoModelForCausalLM.from_pretrained(model_name)
-            tokenizer_t5.pad_token = tokenizer_t5.eos_token
-            models['text_generator'] = (tokenizer_t5, model_t5)
+            tokenizer_gpt2 = GPT2Tokenizer.from_pretrained("./german-gpt2")
+            model_gpt2 = GPT2LMHeadModel.from_pretrained("./german-gpt2")
+            tokenizer_gpt2.pad_token = tokenizer_gpt2.eos_token
+            models['text_generator'] = (tokenizer_gpt2, model_gpt2)
         
         tokenizer_t5, model_t5 = models['text_generator']
         
@@ -195,7 +194,7 @@ def generate_example_sentences(word, word_type, models):
         # Génération et traduction des phrases
         for prompt in prompts:
             # Génération de la phrase en allemand
-            inputs = tokenizer_t5(prompt, return_tensors="pt", padding=True)
+            inputs = tokenizer_t5(prompt, return_tensors="pt", padding=True, truncation=True)
             outputs = model_t5.generate(
                 inputs.input_ids,
                 max_length=50,
