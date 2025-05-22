@@ -41,8 +41,7 @@ def setup_database():
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_de ON dictionary(de)")
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_en ON dictionary(en)")
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_fr ON dictionary(fr)")
-    huggingface_hub.errors.HFValidationError: Repo id must use alphanumeric chars or '-', '_', '.', '--' and '..' are forbidden, '-' and '.' cannot start or end the name, max length is 96: './opus-mt-de-en'.
-
+    
     conn.commit()
     return conn
 
