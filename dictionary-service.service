@@ -1,0 +1,15 @@
+[Unit]
+Description=German Dictionary Processing Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/sprech
+Environment=PYTHONPATH=/var/www/sprech
+ExecStart=/root/anaconda3/bin/python /var/www/sprech/translate_dictionary.py
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target
