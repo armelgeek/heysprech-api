@@ -167,10 +167,6 @@ def main():
                 print(f"Français     : {fr_translation}")
                 
                 
-                # Insertion dans la base de données
-                # Conversion des exemples en JSON pour le stockage
-                examples_json = json.dumps(examples, ensure_ascii=False)
-                
                 cursor.execute("""
                     INSERT INTO dictionary (de, en, fr, wordType)
                     VALUES (?, ?, ?, ?)
