@@ -175,19 +175,22 @@ def generate_example_sentences(word, word_type, models):
             prompts = [
                 f"Ich {word} gern.",
                 f"Er {word} jetzt.",
-                f"Wir {word} hier."
+                f"Wir {word} hier.",
+                f"Sie {word} morgen."
             ]
         elif word_type and word_type.lower().startswith('adj'):
             prompts = [
                 f"Es ist {word}.",
                 f"Sehr {word}!",
-                f"Das ist {word}."
+                f"Das ist {word}.",
+                f"Der Tag ist {word}."
             ]
         else:  # Noms par défaut
             prompts = [
                 f"Das {word}!",
                 f"Ein {word}, bitte.",
-                f"Ich brauche das {word}."
+                f"Ich brauche das {word}.",
+                f"Wo ist das {word}?"
             ]
     
         # Configuration des modèles de traduction
