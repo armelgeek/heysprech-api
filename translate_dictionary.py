@@ -120,7 +120,10 @@ def parse_dictionary_line(line):
     }
 
 
-
+def count_lines(filename):
+    """Compte le nombre de lignes dans le fichier"""
+    with open(filename, 'r', encoding='utf-8') as f:
+        return sum(1 for _ in f)
 def main():
     # Initialisation de la base de données
     conn = setup_database()
