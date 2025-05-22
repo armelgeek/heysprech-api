@@ -158,10 +158,11 @@ def generate_example_sentences(word, word_type, models):
     try:
         # Initialisation du modèle T5 pour l'allemand si pas déjà fait
         if 'text_generator' not in models:
-            from transformers import GPT2LMHeadModel, GPT2Tokenizer
+            from transformers import GPT2LMHeadModel, AutoTokenizer
             print("Chargement du modèle de génération de texte allemand...")
-            tokenizer_gpt2 = GPT2Tokenizer.from_pretrained("./german-gpt2")
-            model_gpt2 = GPT2LMHeadModel.from_pretrained("./german-gpt2")
+            model_name = "benjamin/gpt2-wechsel-german"
+            tokenizer_gpt2 = AutoTokenizer.from_pretrained(model_name, padding_side='left')
+            model_gpt2 = GPT2LMHeadModel.from_pretrained(model_name)
             tokenizer_gpt2.pad_token = tokenizer_gpt2.eos_token
             models['text_generator'] = (tokenizer_gpt2, model_gpt2)
         
