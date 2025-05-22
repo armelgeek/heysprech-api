@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation mot par mot dans les phrases</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .display-container {
+      text-align: center;
+      font-size: 3rem;
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 80%;
+      max-width: 800px;
+    }
+
+    .phrase-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .word {
+      opacity: 0.3;
+      color: #aaa;
+      transition: all 0.3s;
+    }
+
+    .active-word {
+      color: #0f0;
+      opacity: 1;
+      animation: pulse 0.5s ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.9);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .controls {
+      margin-top: 30px;
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .time-display {
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="display-container">
+    <div id="phraseContainer" class="phrase-container"></div>
+  </div>
+
+  <div class="controls">
+    <button id="playBtn">Lecture</button>
+    <button id="resetBtn">Réinitialiser</button>
+  </div>
+
+  <div id="timeDisplay" class="time-display">Temps: 0.00s</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const lyricsData = {
+        "segments": [
+          {
+            "start": 42.927,
+            "end": 43.869,
+            "text": " Nein.",
+            "words": [
+              {
+                "word": "Nein.",
+                "start": 42.927,
+                "end": 43.869,
+                "score": 0.759
+              }
+            ]
+          },
+          {
+            "start": 44.029,
+            "end": 44.59,
+            "text": "Entschuldigung.",
+            "words": [
+              {
+                "word": "Entschuldigung.",
+                "start": 44.029,
+                "end": 44.59,
+                "score": 0.605
+              }
+            ]
+          },
+          {
+            "start": 50.783,
+            "end": 51.405,
+            "text": "Entschuldigung.",
+            "words": [
+              {
+                "word": "Entschuldigung.",
+                "start": 50.783,
+                "end": 51.405,
+                "score": 0.404
+              }
+            ]
+          },
+          {
+            "start": 53.749,
+            "end": 54.07,
+            "text": "Bitte.",
+            "words": [
+              {
+                "word": "Bitte.",
+                "start": 53.749,
+                "end": 54.07,
+                "score": 0.723
+              }
+            ]
+          },
+          {
+            "start": 55.533,
+            "end": 56.014,
+            "text": "Danke.",
+            "words": [
+              {
+                "word": "Danke.",
+                "start": 55.533,
+                "end": 56.014,
+                "score": 0.823
+              }
+            ]
+          },
+          {
+            "start": 58.8,
+            "end": 60.944,
+            "text": "Wie heißt du?",
+            "words": [
+              {
+                "word": "Wie",
+                "start": 58.8,
+                "end": 58.86,
+                "score": 0.032
+              },
+              {
+                "word": "heißt",
+                "start": 58.88,
+                "end": 59.121,
+                "score": 0.522
+              },
+              {
+                "word": "du?",
+                "start": 59.141,
+                "end": 60.944,
+                "score": 0.601
+              }
+            ]
+          },
+          {
+            "start": 60.964,
+            "end": 62.387,
+            "text": "Ich heiße Katja und du?",
+            "words": [
+              {
+                "word": "Ich",
+                "start": 60.964,
+                "end": 61.025,
+                "score": 0.001
+              },
+              {
+                "word": "heiße",
+                "start": 61.045,
+                "end": 61.245,
+                "score": 0.502
+              },
+              {
+                "word": "Katja",
+                "start": 61.285,
+                "end": 61.746,
+                "score": 0.865
+              },
+              {
+                "word": "und",
+                "start": 62.047,
+                "end": 62.147,
+                "score": 0.657
+              },
+              {
+                "word": "du?",
+                "start": 62.167,
+                "end": 62.387,
+                "score": 0.877
+              }
+            ]
+          },
+          {
+            "start": 62.828,
+            "end": 63.67,
+            "text": "Ich heiß Alexander.",
+            "words": [
+              {
+                "word": "Ich",
+                "start": 62.828,
+                "end": 62.888,
+                "score": 0.004
+              },
+              {
+                "word": "heiß",
+                "start": 62.908,
+                "end": 63.009,
+                "score": 0.482
+              },
+              {
+                "word": "Alexander.",
+                "start": 63.049,
+                "end": 63.67,
+                "score": 0.956
+              }
+            ]
+          }
+        ],
+       
+      }
+
+      // Préparer les données pour un accès facile
+      let allWords = [];
+      let currentSegment = null;
+      const phraseContainer = document.getElementById('phraseContainer');
+      const playBtn = document.getElementById('playBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const timeDisplay = document.getElementById('timeDisplay');
+
+      // Fonction pour créer l'affichage initial
+      function createPhraseDisplay() {
+        phraseContainer.innerHTML = '';
+
+        // Identifier le segment actif en premier
+        const firstSegment = lyricsData.segments[0];
+        currentSegment = firstSegment;
+
+        // Créer des éléments pour chaque mot du segment
+        firstSegment.words.forEach((wordData, index) => {
+          const wordElement = document.createElement('span');
+          wordElement.textContent = wordData.word;
+          wordElement.className = 'word';
+          wordElement.dataset.start = wordData.start;
+          wordElement.dataset.end = wordData.end;
+          wordElement.dataset.index = index;
+
+          phraseContainer.appendChild(wordElement);
+        });
+      }
+
+      // Créer l'affichage initial
+      createPhraseDisplay();
+
+      let isPlaying = false;
+      let startTime = 0;
+      let animationFrameId = null;
+
+      // Fonction pour mettre à jour l'affichage d'un segment donné
+      function updateSegmentDisplay(segment) {
+        phraseContainer.innerHTML = '';
+
+        // Créer des éléments pour chaque mot du segment
+        segment.words.forEach((wordData, index) => {
+          const wordElement = document.createElement('span');
+          wordElement.textContent = wordData.word;
+          wordElement.className = 'word';
+          wordElement.dataset.start = wordData.start;
+          wordElement.dataset.end = wordData.end;
+          wordElement.dataset.index = index;
+
+          phraseContainer.appendChild(wordElement);
+        });
+
+        currentSegment = segment;
+      }
+
+      // Fonction pour mettre à jour l'affichage en fonction du temps
+      function updateDisplay(currentTime) {
+        const adjustedTime = currentTime + lyricsData.segments[0].start;
+
+        // Trouver le segment actif en fonction du temps
+        let activeSegment = null;
+
+        for (let i = 0; i < lyricsData.segments.length; i++) {
+          const segment = lyricsData.segments[i];
+
+          if (adjustedTime >= segment.start && adjustedTime <= segment.end) {
+            activeSegment = segment;
+            break;
+          }
+        }
+
+        // Si on a changé de segment, mettre à jour l'affichage
+        if (activeSegment && activeSegment !== currentSegment) {
+          updateSegmentDisplay(activeSegment);
+        }
+
+        // Si on a un segment actif, trouver le mot actif
+        if (activeSegment) {
+          const wordElements = phraseContainer.querySelectorAll('.word');
+
+          // Réinitialiser tous les mots
+          wordElements.forEach(element => {
+            element.className = 'word';
+          });
+
+          // Trouver et mettre en évidence le mot actif
+          for (let i = 0; i < activeSegment.words.length; i++) {
+            const wordData = activeSegment.words[i];
+
+            if (adjustedTime >= wordData.start && adjustedTime <= wordData.end) {
+              wordElements[i].className = 'word active-word';
+              break;
+            }
+          }
+        } else {
+          // Aucun segment actif, vider l'affichage
+          phraseContainer.innerHTML = '';
+        }
+
+        // Afficher le temps actuel
+        timeDisplay.textContent = `Temps: ${adjustedTime.toFixed(2)}s`;
+
+        // Vérifier si l'animation est terminée
+        const lastSegment = lyricsData.segments[lyricsData.segments.length - 1];
+        if (adjustedTime > lastSegment.end) {
+          stopAnimation();
+        }
+      }
+
+      // Démarrer l'animation
+      function startAnimation() {
+        if (isPlaying) return;
+
+        isPlaying = true;
+        playBtn.textContent = 'Pause';
+        startTime = performance.now() / 1000 - (startTime > 0 ? startTime : 0);
+
+        function animate() {
+          const currentTime = performance.now() / 1000 - startTime;
+          updateDisplay(currentTime);
+
+          if (isPlaying) {
+            animationFrameId = requestAnimationFrame(animate);
+          }
+        }
+
+        animate();
+      }
+
+      // Arrêter l'animation
+      function stopAnimation() {
+        if (!isPlaying) return;
+
+        isPlaying = false;
+        playBtn.textContent = 'Lecture';
+        startTime = performance.now() / 1000 - startTime;
+
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+        }
+      }
+
+      // Réinitialiser l'animation
+      function resetAnimation() {
+        stopAnimation();
+        startTime = 0;
+
+        // Revenir au premier segment
+        updateSegmentDisplay(lyricsData.segments[0]);
+
+        // Réinitialiser tous les mots
+        const wordElements = phraseContainer.querySelectorAll('.word');
+        wordElements.forEach(element => {
+          element.className = 'word';
+        });
+
+        timeDisplay.textContent = `Temps: 0.00s`;
+      }
+
+      // Gérer les événements des boutons
+      playBtn.addEventListener('click', () => {
+        if (isPlaying) {
+          stopAnimation();
+        } else {
+          startAnimation();
+        }
+      });
+
+      resetBtn.addEventListener('click', resetAnimation);
+    });
+  </script>
+</body>
+
+</html>

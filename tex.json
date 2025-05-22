@@ -1,0 +1,1998 @@
+{
+    "segments": [
+        {
+            "start": 42.927,
+            "end": 43.869,
+            "text": " Nein.",
+            "words": [
+                {
+                    "word": "Nein.",
+                    "start": 42.927,
+                    "end": 43.869,
+                    "score": 0.759
+                }
+            ]
+        },
+        {
+            "start": 44.029,
+            "end": 44.59,
+            "text": "Entschuldigung.",
+            "words": [
+                {
+                    "word": "Entschuldigung.",
+                    "start": 44.029,
+                    "end": 44.59,
+                    "score": 0.605
+                }
+            ]
+        },
+        {
+            "start": 50.783,
+            "end": 51.405,
+            "text": "Entschuldigung.",
+            "words": [
+                {
+                    "word": "Entschuldigung.",
+                    "start": 50.783,
+                    "end": 51.405,
+                    "score": 0.404
+                }
+            ]
+        },
+        {
+            "start": 53.749,
+            "end": 54.07,
+            "text": "Bitte.",
+            "words": [
+                {
+                    "word": "Bitte.",
+                    "start": 53.749,
+                    "end": 54.07,
+                    "score": 0.723
+                }
+            ]
+        },
+        {
+            "start": 55.533,
+            "end": 56.014,
+            "text": "Danke.",
+            "words": [
+                {
+                    "word": "Danke.",
+                    "start": 55.533,
+                    "end": 56.014,
+                    "score": 0.823
+                }
+            ]
+        },
+        {
+            "start": 58.8,
+            "end": 60.944,
+            "text": "Wie heißt du?",
+            "words": [
+                {
+                    "word": "Wie",
+                    "start": 58.8,
+                    "end": 58.86,
+                    "score": 0.032
+                },
+                {
+                    "word": "heißt",
+                    "start": 58.88,
+                    "end": 59.121,
+                    "score": 0.522
+                },
+                {
+                    "word": "du?",
+                    "start": 59.141,
+                    "end": 60.944,
+                    "score": 0.601
+                }
+            ]
+        },
+        {
+            "start": 60.964,
+            "end": 62.387,
+            "text": "Ich heiße Katja und du?",
+            "words": [
+                {
+                    "word": "Ich",
+                    "start": 60.964,
+                    "end": 61.025,
+                    "score": 0.001
+                },
+                {
+                    "word": "heiße",
+                    "start": 61.045,
+                    "end": 61.245,
+                    "score": 0.502
+                },
+                {
+                    "word": "Katja",
+                    "start": 61.285,
+                    "end": 61.746,
+                    "score": 0.865
+                },
+                {
+                    "word": "und",
+                    "start": 62.047,
+                    "end": 62.147,
+                    "score": 0.657
+                },
+                {
+                    "word": "du?",
+                    "start": 62.167,
+                    "end": 62.387,
+                    "score": 0.877
+                }
+            ]
+        },
+        {
+            "start": 62.828,
+            "end": 63.67,
+            "text": "Ich heiß Alexander.",
+            "words": [
+                {
+                    "word": "Ich",
+                    "start": 62.828,
+                    "end": 62.888,
+                    "score": 0.004
+                },
+                {
+                    "word": "heiß",
+                    "start": 62.908,
+                    "end": 63.009,
+                    "score": 0.482
+                },
+                {
+                    "word": "Alexander.",
+                    "start": 63.049,
+                    "end": 63.67,
+                    "score": 0.956
+                }
+            ]
+        },
+        {
+            "start": 74.838,
+            "end": 75.519,
+            "text": " Was suchst du?",
+            "words": [
+                {
+                    "word": "Was",
+                    "start": 74.838,
+                    "end": 75.098,
+                    "score": 0.779
+                },
+                {
+                    "word": "suchst",
+                    "start": 75.118,
+                    "end": 75.439,
+                    "score": 0.498
+                },
+                {
+                    "word": "du?",
+                    "start": 75.459,
+                    "end": 75.519,
+                    "score": 0.65
+                }
+            ]
+        },
+        {
+            "start": 75.759,
+            "end": 76.78,
+            "text": "Ich suche eine Wohnung in Berlin.",
+            "words": [
+                {
+                    "word": "Ich",
+                    "start": 75.759,
+                    "end": 75.819,
+                    "score": 0.092
+                },
+                {
+                    "word": "suche",
+                    "start": 75.859,
+                    "end": 75.979,
+                    "score": 0.1
+                },
+                {
+                    "word": "eine",
+                    "start": 75.999,
+                    "end": 76.1,
+                    "score": 0.765
+                },
+                {
+                    "word": "Wohnung",
+                    "start": 76.22,
+                    "end": 76.4,
+                    "score": 0.5
+                },
+                {
+                    "word": "in",
+                    "start": 76.42,
+                    "end": 76.48,
+                    "score": 0.886
+                },
+                {
+                    "word": "Berlin.",
+                    "start": 76.52,
+                    "end": 76.78,
+                    "score": 0.861
+                }
+            ]
+        },
+        {
+            "start": 77.301,
+            "end": 77.982,
+            "text": "Ich komme aus München.",
+            "words": [
+                {
+                    "word": "Ich",
+                    "start": 77.301,
+                    "end": 77.361,
+                    "score": 0.146
+                },
+                {
+                    "word": "komme",
+                    "start": 77.381,
+                    "end": 77.501,
+                    "score": 0.352
+                },
+                {
+                    "word": "aus",
+                    "start": 77.521,
+                    "end": 77.641,
+                    "score": 0.645
+                },
+                {
+                    "word": "München.",
+                    "start": 77.681,
+                    "end": 77.982,
+                    "score": 0.632
+                }
+            ]
+        },
+        {
+            "start": 78.643,
+            "end": 79.183,
+            "text": "Woher kommst du?",
+            "words": [
+                {
+                    "word": "Woher",
+                    "start": 78.643,
+                    "end": 78.763,
+                    "score": 0.615
+                },
+                {
+                    "word": "kommst",
+                    "start": 78.823,
+                    "end": 78.963,
+                    "score": 0.62
+                },
+                {
+                    "word": "du?",
+                    "start": 79.003,
+                    "end": 79.183,
+                    "score": 0.856
+                }
+            ]
+        },
+        {
+            "start": 80.184,
+            "end": 81.166,
+            "text": "Ich komme aus Berlin.",
+            "words": [
+                {
+                    "word": "Ich",
+                    "start": 80.184,
+                    "end": 80.245,
+                    "score": 0.179
+                },
+                {
+                    "word": "komme",
+                    "start": 80.285,
+                    "end": 80.525,
+                    "score": 0.491
+                },
+                {
+                    "word": "aus",
+                    "start": 80.545,
+                    "end": 80.705,
+                    "score": 0.699
+                },
+                {
+                    "word": "Berlin.",
+                    "start": 80.725,
+                    "end": 81.166,
+                    "score": 0.943
+                }
+            ]
+        },
+        {
+            "start": 81.746,
+            "end": 82.427,
+            "text": "Ich wohne hier.",
+            "words": [
+                {
+                    "word": "Ich",
+                    "start": 81.746,
+                    "end": 81.887,
+                    "score": 0.396
+                },
+                {
+                    "word": "wohne",
+                    "start": 81.907,
+                    "end": 82.227,
+                    "score": 0.746
+                },
+                {
+                    "word": "hier.",
+                    "start": 82.267,
+                    "end": 82.427,
+                    "score": 0.57
+                }
+            ]
+        },
+        {
+            "start": 84.45,
+            "end": 85.571,
+            "text": "Und was machst du in Berlin?",
+            "words": [
+                {
+                    "word": "Und",
+                    "start": 84.45,
+                    "end": 84.51,
+                    "score": 0.647
+                },
+                {
+                    "word": "was",
+                    "start": 84.55,
+                    "end": 84.73,
+                    "score": 0.757
+                },
+                {
+                    "word": "machst",
+                    "start": 84.75,
+                    "end": 85.01,
+                    "score": 0.413
+                },
+                {
+                    "word": "du",
+                    "start": 85.03,
+                    "end": 85.13,
+                    "score": 0.667
+                },
+                {
+                    "word": "in",
+                    "start": 85.15,
+                    "end": 85.231,
+                    "score": 0.778
+                },
+                {
+                    "word": "Berlin?",
+                    "start": 85.251,
+                    "end": 85.571,
+                    "score": 0.852
+                }
+            ]
+        },
+        {
+            "start": 86.092,
+            "end": 87.033,
+            "text": "Ich studiere Medizin.",
+            "words": [
+                {
+                    "word": "Ich",
+                    "start": 86.092,
+                    "end": 86.152,
+                    "score": 0.086
+                },
+                {
+                    "word": "studiere",
+                    "start": 86.172,
+                    "end": 86.552,
+                    "score": 0.49
+                },
+                {
+                    "word": "Medizin.",
+                    "start": 86.572,
+                    "end": 87.033,
+                    "score": 0.552
+                }
+            ]
+        },
+        {
+            "start": 88.114,
+            "end": 88.595,
+            "text": "Was machst du?",
+            "words": [
+                {
+                    "word": "Was",
+                    "start": 88.114,
+                    "end": 88.234,
+                    "score": 0.817
+                },
+                {
+                    "word": "machst",
+                    "start": 88.254,
+                    "end": 88.454,
+                    "score": 0.551
+                },
+                {
+                    "word": "du?",
+                    "start": 88.474,
+                    "end": 88.595,
+                    "score": 0.43
+                }
+            ]
+        },
+        {
+            "start": 89.376,
+            "end": 92.299,
+            "text": "Was bist du von Beruf?",
+            "words": [
+                {
+                    "word": "Was",
+                    "start": 89.376,
+                    "end": 89.496,
+                    "score": 0.793
+                },
+                {
+                    "word": "bist",
+                    "start": 89.916,
+                    "end": 90.076,
+                    "score": 0.757
+                },
+                {
+                    "word": "du",
+                    "start": 90.096,
+                    "end": 90.137,
+                    "score": 0.373
+                },
+                {
+                    "word": "von",
+                    "start": 90.177,
+                    "end": 90.317,
+                    "score": 0.774
+                },
+                {
+                    "word": "Beruf?",
+                    "start": 90.337,
+                    "end": 92.299,
+                    "score": 0.674
+                }
+            ]
+        },
+        {
+            "start": 92.319,
+            "end": 93.44,
+            "text": "Ich studiere Kunst.",
+            "words": [
+                {
+                    "word": "Ich",
+                    "start": 92.319,
+                    "end": 92.399,
+                    "score": 0.147
+                },
+                {
+                    "word": "studiere",
+                    "start": 92.419,
+                    "end": 92.9,
+                    "score": 0.684
+                },
+                {
+                    "word": "Kunst.",
+                    "start": 92.92,
+                    "end": 93.44,
+                    "score": 0.887
+                }
+            ]
+        },
+        {
+            "start": 94.302,
+            "end": 95.944,
+            "text": "Ich möchte mal Künstlerin werden.",
+            "words": [
+                {
+                    "word": "Ich",
+                    "start": 94.302,
+                    "end": 94.442,
+                    "score": 0.408
+                },
+                {
+                    "word": "möchte",
+                    "start": 94.462,
+                    "end": 94.722,
+                    "score": 0.553
+                },
+                {
+                    "word": "mal",
+                    "start": 94.742,
+                    "end": 94.902,
+                    "score": 0.618
+                },
+                {
+                    "word": "Künstlerin",
+                    "start": 94.922,
+                    "end": 95.503,
+                    "score": 0.753
+                },
+                {
+                    "word": "werden.",
+                    "start": 95.563,
+                    "end": 95.944,
+                    "score": 0.899
+                }
+            ]
+        },
+        {
+            "start": 97.586,
+            "end": 98.266,
+            "text": "Wie alt bist du?",
+            "words": [
+                {
+                    "word": "Wie",
+                    "start": 97.586,
+                    "end": 97.646,
+                    "score": 0.283
+                },
+                {
+                    "word": "alt",
+                    "start": 97.726,
+                    "end": 97.806,
+                    "score": 0.171
+                },
+                {
+                    "word": "bist",
+                    "start": 97.826,
+                    "end": 98.086,
+                    "score": 0.681
+                },
+                {
+                    "word": "du?",
+                    "start": 98.106,
+                    "end": 98.266,
+                    "score": 0.669
+                }
+            ]
+        },
+        {
+            "start": 99.708,
+            "end": 101.35,
+            "text": "Ich bin 27 Jahre alt und du?",
+            "words": [
+                {
+                    "word": "Ich",
+                    "start": 99.708,
+                    "end": 99.788,
+                    "score": 0.372
+                },
+                {
+                    "word": "bin",
+                    "start": 99.828,
+                    "end": 99.988,
+                    "score": 0.704
+                },
+                {
+                    "word": "27",
+                    "start": 100.008,
+                    "end": 100.169,
+                    "score": 0.467
+                },
+                {
+                    "word": "Jahre",
+                    "start": 100.189,
+                    "end": 100.329,
+                    "score": 0.267
+                },
+                {
+                    "word": "alt",
+                    "start": 100.409,
+                    "end": 100.91,
+                    "score": 0.652
+                },
+                {
+                    "word": "und",
+                    "start": 101.07,
+                    "end": 101.19,
+                    "score": 0.726
+                },
+                {
+                    "word": "du?",
+                    "start": 101.27,
+                    "end": 101.35,
+                    "score": 0.603
+                }
+            ]
+        },
+        {
+            "start": 102.031,
+            "end": 102.972,
+            "text": "Was glaubst du?",
+            "words": [
+                {
+                    "word": "Was",
+                    "start": 102.031,
+                    "end": 102.191,
+                    "score": 0.681
+                },
+                {
+                    "word": "glaubst",
+                    "start": 102.211,
+                    "end": 102.792,
+                    "score": 0.708
+                },
+                {
+                    "word": "du?",
+                    "start": 102.912,
+                    "end": 102.972,
+                    "score": 0.333
+                }
+            ]
+        },
+        {
+            "start": 103.205,
+            "end": 105.929,
+            "text": " Um, vielleicht 25?",
+            "words": [
+                {
+                    "word": "Um,",
+                    "start": 103.205,
+                    "end": 103.786,
+                    "score": 0.714
+                },
+                {
+                    "word": "vielleicht",
+                    "start": 104.387,
+                    "end": 105.027,
+                    "score": 0.48
+                },
+                {
+                    "word": "25?",
+                    "start": 105.047,
+                    "end": 105.929,
+                    "score": 0.663
+                }
+            ]
+        },
+        {
+            "start": 105.949,
+            "end": 107.751,
+            "text": "Ich bin 26.",
+            "words": [
+                {
+                    "word": "Ich",
+                    "start": 105.949,
+                    "end": 106.029,
+                    "score": 0.349
+                },
+                {
+                    "word": "bin",
+                    "start": 107.13,
+                    "end": 107.33,
+                    "score": 0.612
+                },
+                {
+                    "word": "26.",
+                    "start": 107.431,
+                    "end": 107.751,
+                    "score": 0.797
+                }
+            ]
+        },
+        {
+            "start": 107.911,
+            "end": 113.999,
+            "text": "Hast du vielleicht ein paar Tipps für die Wohnungssuche?",
+            "words": [
+                {
+                    "word": "Hast",
+                    "start": 107.911,
+                    "end": 108.272,
+                    "score": 0.794
+                },
+                {
+                    "word": "du",
+                    "start": 111.276,
+                    "end": 111.316,
+                    "score": 0.462
+                },
+                {
+                    "word": "vielleicht",
+                    "start": 111.396,
+                    "end": 111.596,
+                    "score": 0.242
+                },
+                {
+                    "word": "ein",
+                    "start": 111.636,
+                    "end": 111.716,
+                    "score": 0.484
+                },
+                {
+                    "word": "paar",
+                    "start": 111.736,
+                    "end": 111.857,
+                    "score": 0.552
+                },
+                {
+                    "word": "Tipps",
+                    "start": 111.877,
+                    "end": 112.097,
+                    "score": 0.715
+                },
+                {
+                    "word": "für",
+                    "start": 112.638,
+                    "end": 112.758,
+                    "score": 0.473
+                },
+                {
+                    "word": "die",
+                    "start": 112.778,
+                    "end": 112.838,
+                    "score": 0.269
+                },
+                {
+                    "word": "Wohnungssuche?",
+                    "start": 112.858,
+                    "end": 113.999,
+                    "score": 0.556
+                }
+            ]
+        },
+        {
+            "start": 114.019,
+            "end": 115.942,
+            "text": "Ja, aber es ist schon spät.",
+            "words": [
+                {
+                    "word": "Ja,",
+                    "start": 114.019,
+                    "end": 114.14,
+                    "score": 0.663
+                },
+                {
+                    "word": "aber",
+                    "start": 114.16,
+                    "end": 114.34,
+                    "score": 0.806
+                },
+                {
+                    "word": "es",
+                    "start": 115.161,
+                    "end": 115.241,
+                    "score": 0.626
+                },
+                {
+                    "word": "ist",
+                    "start": 115.301,
+                    "end": 115.361,
+                    "score": 0.223
+                },
+                {
+                    "word": "schon",
+                    "start": 115.381,
+                    "end": 115.541,
+                    "score": 0.397
+                },
+                {
+                    "word": "spät.",
+                    "start": 115.561,
+                    "end": 115.942,
+                    "score": 0.679
+                }
+            ]
+        },
+        {
+            "start": 116.122,
+            "end": 117.083,
+            "text": "Ich gehe jetzt einkaufen.",
+            "words": [
+                {
+                    "word": "Ich",
+                    "start": 116.122,
+                    "end": 116.182,
+                    "score": 0.032
+                },
+                {
+                    "word": "gehe",
+                    "start": 116.202,
+                    "end": 116.343,
+                    "score": 0.354
+                },
+                {
+                    "word": "jetzt",
+                    "start": 116.363,
+                    "end": 116.503,
+                    "score": 0.344
+                },
+                {
+                    "word": "einkaufen.",
+                    "start": 116.603,
+                    "end": 117.083,
+                    "score": 0.568
+                }
+            ]
+        },
+        {
+            "start": 118.025,
+            "end": 121.67,
+            "text": "Aber hast du morgen um 15 Uhr Zeit?",
+            "words": [
+                {
+                    "word": "Aber",
+                    "start": 118.025,
+                    "end": 118.345,
+                    "score": 0.858
+                },
+                {
+                    "word": "hast",
+                    "start": 119.367,
+                    "end": 119.627,
+                    "score": 0.766
+                },
+                {
+                    "word": "du",
+                    "start": 119.647,
+                    "end": 119.747,
+                    "score": 0.448
+                },
+                {
+                    "word": "morgen",
+                    "start": 119.767,
+                    "end": 120.148,
+                    "score": 0.735
+                },
+                {
+                    "word": "um",
+                    "start": 120.368,
+                    "end": 120.608,
+                    "score": 0.835
+                },
+                {
+                    "word": "15",
+                    "start": 120.628,
+                    "end": 120.788,
+                    "score": 0.65
+                },
+                {
+                    "word": "Uhr",
+                    "start": 120.889,
+                    "end": 121.109,
+                    "score": 0.176
+                },
+                {
+                    "word": "Zeit?",
+                    "start": 121.129,
+                    "end": 121.67,
+                    "score": 0.538
+                }
+            ]
+        },
+        {
+            "start": 121.69,
+            "end": 122.31,
+            "text": "Ja, klar.",
+            "words": [
+                {
+                    "word": "Ja,",
+                    "start": 121.69,
+                    "end": 121.95,
+                    "score": 0.643
+                },
+                {
+                    "word": "klar.",
+                    "start": 121.97,
+                    "end": 122.31,
+                    "score": 0.811
+                }
+            ]
+        },
+        {
+            "start": 123.973,
+            "end": 125.074,
+            "text": "Gehen wir einen Kaffee trinken?",
+            "words": [
+                {
+                    "word": "Gehen",
+                    "start": 123.973,
+                    "end": 124.173,
+                    "score": 0.231
+                },
+                {
+                    "word": "wir",
+                    "start": 124.193,
+                    "end": 124.253,
+                    "score": 0.313
+                },
+                {
+                    "word": "einen",
+                    "start": 124.273,
+                    "end": 124.373,
+                    "score": 0.365
+                },
+                {
+                    "word": "Kaffee",
+                    "start": 124.393,
+                    "end": 124.714,
+                    "score": 0.519
+                },
+                {
+                    "word": "trinken?",
+                    "start": 124.734,
+                    "end": 125.074,
+                    "score": 0.632
+                }
+            ]
+        },
+        {
+            "start": 125.895,
+            "end": 126.636,
+            "text": "Ja, sehr gerne.",
+            "words": [
+                {
+                    "word": "Ja,",
+                    "start": 125.895,
+                    "end": 126.156,
+                    "score": 0.797
+                },
+                {
+                    "word": "sehr",
+                    "start": 126.196,
+                    "end": 126.336,
+                    "score": 0.262
+                },
+                {
+                    "word": "gerne.",
+                    "start": 126.356,
+                    "end": 126.636,
+                    "score": 0.647
+                }
+            ]
+        },
+        {
+            "start": 128.058,
+            "end": 131.302,
+            "text": "Wie ist deine Telefonnummer?",
+            "words": [
+                {
+                    "word": "Wie",
+                    "start": 128.058,
+                    "end": 128.118,
+                    "score": 0.154
+                },
+                {
+                    "word": "ist",
+                    "start": 128.138,
+                    "end": 128.198,
+                    "score": 0.294
+                },
+                {
+                    "word": "deine",
+                    "start": 128.218,
+                    "end": 128.338,
+                    "score": 0.129
+                },
+                {
+                    "word": "Telefonnummer?",
+                    "start": 128.359,
+                    "end": 131.302,
+                    "score": 0.551
+                }
+            ]
+        },
+        {
+            "start": 131.322,
+            "end": 131.743,
+            "text": "0.153?",
+            "words": [
+                {
+                    "word": "0.153?",
+                    "start": 131.322,
+                    "end": 131.743,
+                    "score": 0.955
+                }
+            ]
+        },
+        {
+            "start": 132.618,
+            "end": 135.481,
+            "text": " 4-8-2, 2-3-7, 0-9-1.",
+            "words": [
+                {
+                    "word": "4-8-2,",
+                    "start": 132.618,
+                    "end": 133.379,
+                    "score": 0.892
+                },
+                {
+                    "word": "2-3-7,",
+                    "start": 133.479,
+                    "end": 133.859,
+                    "score": 0.813
+                },
+                {
+                    "word": "0-9-1.",
+                    "start": 133.879,
+                    "end": 135.481,
+                    "score": 0.445
+                }
+            ]
+        },
+        {
+            "start": 135.501,
+            "end": 141.808,
+            "text": "Okay, 0-1-7-3, 4-8-2, 2-3-7, 0-9-1.",
+            "words": [
+                {
+                    "word": "Okay,",
+                    "start": 135.501,
+                    "end": 135.681,
+                    "score": 0.503
+                },
+                {
+                    "word": "0-1-7-3,",
+                    "start": 135.721,
+                    "end": 138.144,
+                    "score": 0.843
+                },
+                {
+                    "word": "4-8-2,",
+                    "start": 138.164,
+                    "end": 139.986,
+                    "score": 0.818
+                },
+                {
+                    "word": "2-3-7,",
+                    "start": 140.046,
+                    "end": 140.446,
+                    "score": 0.899
+                },
+                {
+                    "word": "0-9-1.",
+                    "start": 140.466,
+                    "end": 141.808,
+                    "score": 0.851
+                }
+            ]
+        },
+        {
+            "start": 142.228,
+            "end": 142.408,
+            "text": "Ja.",
+            "words": [
+                {
+                    "word": "Ja.",
+                    "start": 142.228,
+                    "end": 142.408,
+                    "score": 0.521
+                }
+            ]
+        },
+        {
+            "start": 144.21,
+            "end": 148.174,
+            "text": "Vielen Dank.",
+            "words": [
+                {
+                    "word": "Vielen",
+                    "start": 144.21,
+                    "end": 146.092,
+                    "score": 0.626
+                },
+                {
+                    "word": "Dank.",
+                    "start": 147.874,
+                    "end": 148.174,
+                    "score": 0.935
+                }
+            ]
+        },
+        {
+            "start": 151.718,
+            "end": 152.259,
+            "text": "Bis morgen.",
+            "words": [
+                {
+                    "word": "Bis",
+                    "start": 151.718,
+                    "end": 151.898,
+                    "score": 0.76
+                },
+                {
+                    "word": "morgen.",
+                    "start": 151.918,
+                    "end": 152.259,
+                    "score": 0.708
+                }
+            ]
+        },
+        {
+            "start": 155.742,
+            "end": 155.862,
+            "text": "Danke.",
+            "words": [
+                {
+                    "word": "Danke.",
+                    "start": 155.742,
+                    "end": 155.862,
+                    "score": 0.0
+                }
+            ]
+        },
+        {
+            "start": 155.882,
+            "end": 156.583,
+            "text": "Bis morgen.",
+            "words": [
+                {
+                    "word": "Bis",
+                    "start": 155.882,
+                    "end": 156.123,
+                    "score": 0.89
+                },
+                {
+                    "word": "morgen.",
+                    "start": 156.143,
+                    "end": 156.583,
+                    "score": 0.67
+                }
+            ]
+        }
+    ],
+    "word_segments": [
+        {
+            "word": "Nein.",
+            "start": 42.927,
+            "end": 43.869,
+            "score": 0.759
+        },
+        {
+            "word": "Entschuldigung.",
+            "start": 44.029,
+            "end": 44.59,
+            "score": 0.605
+        },
+        {
+            "word": "Entschuldigung.",
+            "start": 50.783,
+            "end": 51.405,
+            "score": 0.404
+        },
+        {
+            "word": "Bitte.",
+            "start": 53.749,
+            "end": 54.07,
+            "score": 0.723
+        },
+        {
+            "word": "Danke.",
+            "start": 55.533,
+            "end": 56.014,
+            "score": 0.823
+        },
+        {
+            "word": "Wie",
+            "start": 58.8,
+            "end": 58.86,
+            "score": 0.032
+        },
+        {
+            "word": "heißt",
+            "start": 58.88,
+            "end": 59.121,
+            "score": 0.522
+        },
+        {
+            "word": "du?",
+            "start": 59.141,
+            "end": 60.944,
+            "score": 0.601
+        },
+        {
+            "word": "Ich",
+            "start": 60.964,
+            "end": 61.025,
+            "score": 0.001
+        },
+        {
+            "word": "heiße",
+            "start": 61.045,
+            "end": 61.245,
+            "score": 0.502
+        },
+        {
+            "word": "Katja",
+            "start": 61.285,
+            "end": 61.746,
+            "score": 0.865
+        },
+        {
+            "word": "und",
+            "start": 62.047,
+            "end": 62.147,
+            "score": 0.657
+        },
+        {
+            "word": "du?",
+            "start": 62.167,
+            "end": 62.387,
+            "score": 0.877
+        },
+        {
+            "word": "Ich",
+            "start": 62.828,
+            "end": 62.888,
+            "score": 0.004
+        },
+        {
+            "word": "heiß",
+            "start": 62.908,
+            "end": 63.009,
+            "score": 0.482
+        },
+        {
+            "word": "Alexander.",
+            "start": 63.049,
+            "end": 63.67,
+            "score": 0.956
+        },
+        {
+            "word": "Was",
+            "start": 74.838,
+            "end": 75.098,
+            "score": 0.779
+        },
+        {
+            "word": "suchst",
+            "start": 75.118,
+            "end": 75.439,
+            "score": 0.498
+        },
+        {
+            "word": "du?",
+            "start": 75.459,
+            "end": 75.519,
+            "score": 0.65
+        },
+        {
+            "word": "Ich",
+            "start": 75.759,
+            "end": 75.819,
+            "score": 0.092
+        },
+        {
+            "word": "suche",
+            "start": 75.859,
+            "end": 75.979,
+            "score": 0.1
+        },
+        {
+            "word": "eine",
+            "start": 75.999,
+            "end": 76.1,
+            "score": 0.765
+        },
+        {
+            "word": "Wohnung",
+            "start": 76.22,
+            "end": 76.4,
+            "score": 0.5
+        },
+        {
+            "word": "in",
+            "start": 76.42,
+            "end": 76.48,
+            "score": 0.886
+        },
+        {
+            "word": "Berlin.",
+            "start": 76.52,
+            "end": 76.78,
+            "score": 0.861
+        },
+        {
+            "word": "Ich",
+            "start": 77.301,
+            "end": 77.361,
+            "score": 0.146
+        },
+        {
+            "word": "komme",
+            "start": 77.381,
+            "end": 77.501,
+            "score": 0.352
+        },
+        {
+            "word": "aus",
+            "start": 77.521,
+            "end": 77.641,
+            "score": 0.645
+        },
+        {
+            "word": "München.",
+            "start": 77.681,
+            "end": 77.982,
+            "score": 0.632
+        },
+        {
+            "word": "Woher",
+            "start": 78.643,
+            "end": 78.763,
+            "score": 0.615
+        },
+        {
+            "word": "kommst",
+            "start": 78.823,
+            "end": 78.963,
+            "score": 0.62
+        },
+        {
+            "word": "du?",
+            "start": 79.003,
+            "end": 79.183,
+            "score": 0.856
+        },
+        {
+            "word": "Ich",
+            "start": 80.184,
+            "end": 80.245,
+            "score": 0.179
+        },
+        {
+            "word": "komme",
+            "start": 80.285,
+            "end": 80.525,
+            "score": 0.491
+        },
+        {
+            "word": "aus",
+            "start": 80.545,
+            "end": 80.705,
+            "score": 0.699
+        },
+        {
+            "word": "Berlin.",
+            "start": 80.725,
+            "end": 81.166,
+            "score": 0.943
+        },
+        {
+            "word": "Ich",
+            "start": 81.746,
+            "end": 81.887,
+            "score": 0.396
+        },
+        {
+            "word": "wohne",
+            "start": 81.907,
+            "end": 82.227,
+            "score": 0.746
+        },
+        {
+            "word": "hier.",
+            "start": 82.267,
+            "end": 82.427,
+            "score": 0.57
+        },
+        {
+            "word": "Und",
+            "start": 84.45,
+            "end": 84.51,
+            "score": 0.647
+        },
+        {
+            "word": "was",
+            "start": 84.55,
+            "end": 84.73,
+            "score": 0.757
+        },
+        {
+            "word": "machst",
+            "start": 84.75,
+            "end": 85.01,
+            "score": 0.413
+        },
+        {
+            "word": "du",
+            "start": 85.03,
+            "end": 85.13,
+            "score": 0.667
+        },
+        {
+            "word": "in",
+            "start": 85.15,
+            "end": 85.231,
+            "score": 0.778
+        },
+        {
+            "word": "Berlin?",
+            "start": 85.251,
+            "end": 85.571,
+            "score": 0.852
+        },
+        {
+            "word": "Ich",
+            "start": 86.092,
+            "end": 86.152,
+            "score": 0.086
+        },
+        {
+            "word": "studiere",
+            "start": 86.172,
+            "end": 86.552,
+            "score": 0.49
+        },
+        {
+            "word": "Medizin.",
+            "start": 86.572,
+            "end": 87.033,
+            "score": 0.552
+        },
+        {
+            "word": "Was",
+            "start": 88.114,
+            "end": 88.234,
+            "score": 0.817
+        },
+        {
+            "word": "machst",
+            "start": 88.254,
+            "end": 88.454,
+            "score": 0.551
+        },
+        {
+            "word": "du?",
+            "start": 88.474,
+            "end": 88.595,
+            "score": 0.43
+        },
+        {
+            "word": "Was",
+            "start": 89.376,
+            "end": 89.496,
+            "score": 0.793
+        },
+        {
+            "word": "bist",
+            "start": 89.916,
+            "end": 90.076,
+            "score": 0.757
+        },
+        {
+            "word": "du",
+            "start": 90.096,
+            "end": 90.137,
+            "score": 0.373
+        },
+        {
+            "word": "von",
+            "start": 90.177,
+            "end": 90.317,
+            "score": 0.774
+        },
+        {
+            "word": "Beruf?",
+            "start": 90.337,
+            "end": 92.299,
+            "score": 0.674
+        },
+        {
+            "word": "Ich",
+            "start": 92.319,
+            "end": 92.399,
+            "score": 0.147
+        },
+        {
+            "word": "studiere",
+            "start": 92.419,
+            "end": 92.9,
+            "score": 0.684
+        },
+        {
+            "word": "Kunst.",
+            "start": 92.92,
+            "end": 93.44,
+            "score": 0.887
+        },
+        {
+            "word": "Ich",
+            "start": 94.302,
+            "end": 94.442,
+            "score": 0.408
+        },
+        {
+            "word": "möchte",
+            "start": 94.462,
+            "end": 94.722,
+            "score": 0.553
+        },
+        {
+            "word": "mal",
+            "start": 94.742,
+            "end": 94.902,
+            "score": 0.618
+        },
+        {
+            "word": "Künstlerin",
+            "start": 94.922,
+            "end": 95.503,
+            "score": 0.753
+        },
+        {
+            "word": "werden.",
+            "start": 95.563,
+            "end": 95.944,
+            "score": 0.899
+        },
+        {
+            "word": "Wie",
+            "start": 97.586,
+            "end": 97.646,
+            "score": 0.283
+        },
+        {
+            "word": "alt",
+            "start": 97.726,
+            "end": 97.806,
+            "score": 0.171
+        },
+        {
+            "word": "bist",
+            "start": 97.826,
+            "end": 98.086,
+            "score": 0.681
+        },
+        {
+            "word": "du?",
+            "start": 98.106,
+            "end": 98.266,
+            "score": 0.669
+        },
+        {
+            "word": "Ich",
+            "start": 99.708,
+            "end": 99.788,
+            "score": 0.372
+        },
+        {
+            "word": "bin",
+            "start": 99.828,
+            "end": 99.988,
+            "score": 0.704
+        },
+        {
+            "word": "27",
+            "start": 100.008,
+            "end": 100.169,
+            "score": 0.467
+        },
+        {
+            "word": "Jahre",
+            "start": 100.189,
+            "end": 100.329,
+            "score": 0.267
+        },
+        {
+            "word": "alt",
+            "start": 100.409,
+            "end": 100.91,
+            "score": 0.652
+        },
+        {
+            "word": "und",
+            "start": 101.07,
+            "end": 101.19,
+            "score": 0.726
+        },
+        {
+            "word": "du?",
+            "start": 101.27,
+            "end": 101.35,
+            "score": 0.603
+        },
+        {
+            "word": "Was",
+            "start": 102.031,
+            "end": 102.191,
+            "score": 0.681
+        },
+        {
+            "word": "glaubst",
+            "start": 102.211,
+            "end": 102.792,
+            "score": 0.708
+        },
+        {
+            "word": "du?",
+            "start": 102.912,
+            "end": 102.972,
+            "score": 0.333
+        },
+        {
+            "word": "Um,",
+            "start": 103.205,
+            "end": 103.786,
+            "score": 0.714
+        },
+        {
+            "word": "vielleicht",
+            "start": 104.387,
+            "end": 105.027,
+            "score": 0.48
+        },
+        {
+            "word": "25?",
+            "start": 105.047,
+            "end": 105.929,
+            "score": 0.663
+        },
+        {
+            "word": "Ich",
+            "start": 105.949,
+            "end": 106.029,
+            "score": 0.349
+        },
+        {
+            "word": "bin",
+            "start": 107.13,
+            "end": 107.33,
+            "score": 0.612
+        },
+        {
+            "word": "26.",
+            "start": 107.431,
+            "end": 107.751,
+            "score": 0.797
+        },
+        {
+            "word": "Hast",
+            "start": 107.911,
+            "end": 108.272,
+            "score": 0.794
+        },
+        {
+            "word": "du",
+            "start": 111.276,
+            "end": 111.316,
+            "score": 0.462
+        },
+        {
+            "word": "vielleicht",
+            "start": 111.396,
+            "end": 111.596,
+            "score": 0.242
+        },
+        {
+            "word": "ein",
+            "start": 111.636,
+            "end": 111.716,
+            "score": 0.484
+        },
+        {
+            "word": "paar",
+            "start": 111.736,
+            "end": 111.857,
+            "score": 0.552
+        },
+        {
+            "word": "Tipps",
+            "start": 111.877,
+            "end": 112.097,
+            "score": 0.715
+        },
+        {
+            "word": "für",
+            "start": 112.638,
+            "end": 112.758,
+            "score": 0.473
+        },
+        {
+            "word": "die",
+            "start": 112.778,
+            "end": 112.838,
+            "score": 0.269
+        },
+        {
+            "word": "Wohnungssuche?",
+            "start": 112.858,
+            "end": 113.999,
+            "score": 0.556
+        },
+        {
+            "word": "Ja,",
+            "start": 114.019,
+            "end": 114.14,
+            "score": 0.663
+        },
+        {
+            "word": "aber",
+            "start": 114.16,
+            "end": 114.34,
+            "score": 0.806
+        },
+        {
+            "word": "es",
+            "start": 115.161,
+            "end": 115.241,
+            "score": 0.626
+        },
+        {
+            "word": "ist",
+            "start": 115.301,
+            "end": 115.361,
+            "score": 0.223
+        },
+        {
+            "word": "schon",
+            "start": 115.381,
+            "end": 115.541,
+            "score": 0.397
+        },
+        {
+            "word": "spät.",
+            "start": 115.561,
+            "end": 115.942,
+            "score": 0.679
+        },
+        {
+            "word": "Ich",
+            "start": 116.122,
+            "end": 116.182,
+            "score": 0.032
+        },
+        {
+            "word": "gehe",
+            "start": 116.202,
+            "end": 116.343,
+            "score": 0.354
+        },
+        {
+            "word": "jetzt",
+            "start": 116.363,
+            "end": 116.503,
+            "score": 0.344
+        },
+        {
+            "word": "einkaufen.",
+            "start": 116.603,
+            "end": 117.083,
+            "score": 0.568
+        },
+        {
+            "word": "Aber",
+            "start": 118.025,
+            "end": 118.345,
+            "score": 0.858
+        },
+        {
+            "word": "hast",
+            "start": 119.367,
+            "end": 119.627,
+            "score": 0.766
+        },
+        {
+            "word": "du",
+            "start": 119.647,
+            "end": 119.747,
+            "score": 0.448
+        },
+        {
+            "word": "morgen",
+            "start": 119.767,
+            "end": 120.148,
+            "score": 0.735
+        },
+        {
+            "word": "um",
+            "start": 120.368,
+            "end": 120.608,
+            "score": 0.835
+        },
+        {
+            "word": "15",
+            "start": 120.628,
+            "end": 120.788,
+            "score": 0.65
+        },
+        {
+            "word": "Uhr",
+            "start": 120.889,
+            "end": 121.109,
+            "score": 0.176
+        },
+        {
+            "word": "Zeit?",
+            "start": 121.129,
+            "end": 121.67,
+            "score": 0.538
+        },
+        {
+            "word": "Ja,",
+            "start": 121.69,
+            "end": 121.95,
+            "score": 0.643
+        },
+        {
+            "word": "klar.",
+            "start": 121.97,
+            "end": 122.31,
+            "score": 0.811
+        },
+        {
+            "word": "Gehen",
+            "start": 123.973,
+            "end": 124.173,
+            "score": 0.231
+        },
+        {
+            "word": "wir",
+            "start": 124.193,
+            "end": 124.253,
+            "score": 0.313
+        },
+        {
+            "word": "einen",
+            "start": 124.273,
+            "end": 124.373,
+            "score": 0.365
+        },
+        {
+            "word": "Kaffee",
+            "start": 124.393,
+            "end": 124.714,
+            "score": 0.519
+        },
+        {
+            "word": "trinken?",
+            "start": 124.734,
+            "end": 125.074,
+            "score": 0.632
+        },
+        {
+            "word": "Ja,",
+            "start": 125.895,
+            "end": 126.156,
+            "score": 0.797
+        },
+        {
+            "word": "sehr",
+            "start": 126.196,
+            "end": 126.336,
+            "score": 0.262
+        },
+        {
+            "word": "gerne.",
+            "start": 126.356,
+            "end": 126.636,
+            "score": 0.647
+        },
+        {
+            "word": "Wie",
+            "start": 128.058,
+            "end": 128.118,
+            "score": 0.154
+        },
+        {
+            "word": "ist",
+            "start": 128.138,
+            "end": 128.198,
+            "score": 0.294
+        },
+        {
+            "word": "deine",
+            "start": 128.218,
+            "end": 128.338,
+            "score": 0.129
+        },
+        {
+            "word": "Telefonnummer?",
+            "start": 128.359,
+            "end": 131.302,
+            "score": 0.551
+        },
+        {
+            "word": "0.153?",
+            "start": 131.322,
+            "end": 131.743,
+            "score": 0.955
+        },
+        {
+            "word": "4-8-2,",
+            "start": 132.618,
+            "end": 133.379,
+            "score": 0.892
+        },
+        {
+            "word": "2-3-7,",
+            "start": 133.479,
+            "end": 133.859,
+            "score": 0.813
+        },
+        {
+            "word": "0-9-1.",
+            "start": 133.879,
+            "end": 135.481,
+            "score": 0.445
+        },
+        {
+            "word": "Okay,",
+            "start": 135.501,
+            "end": 135.681,
+            "score": 0.503
+        },
+        {
+            "word": "0-1-7-3,",
+            "start": 135.721,
+            "end": 138.144,
+            "score": 0.843
+        },
+        {
+            "word": "4-8-2,",
+            "start": 138.164,
+            "end": 139.986,
+            "score": 0.818
+        },
+        {
+            "word": "2-3-7,",
+            "start": 140.046,
+            "end": 140.446,
+            "score": 0.899
+        },
+        {
+            "word": "0-9-1.",
+            "start": 140.466,
+            "end": 141.808,
+            "score": 0.851
+        },
+        {
+            "word": "Ja.",
+            "start": 142.228,
+            "end": 142.408,
+            "score": 0.521
+        },
+        {
+            "word": "Vielen",
+            "start": 144.21,
+            "end": 146.092,
+            "score": 0.626
+        },
+        {
+            "word": "Dank.",
+            "start": 147.874,
+            "end": 148.174,
+            "score": 0.935
+        },
+        {
+            "word": "Bis",
+            "start": 151.718,
+            "end": 151.898,
+            "score": 0.76
+        },
+        {
+            "word": "morgen.",
+            "start": 151.918,
+            "end": 152.259,
+            "score": 0.708
+        },
+        {
+            "word": "Danke.",
+            "start": 155.742,
+            "end": 155.862,
+            "score": 0.0
+        },
+        {
+            "word": "Bis",
+            "start": 155.882,
+            "end": 156.123,
+            "score": 0.89
+        },
+        {
+            "word": "morgen.",
+            "start": 156.143,
+            "end": 156.583,
+            "score": 0.67
+        }
+    ],
+    "language": "de"
+}
