@@ -2,13 +2,9 @@
 import sqlite3
 import csv
 import re
-import json
 from transformers import MarianMTModel, MarianTokenizer
 import os
 from tqdm import tqdm
-import requests
-from bs4 import BeautifulSoup
-from wiktionaryparser import WiktionaryParser
 import time
 
 # Configuration
@@ -27,7 +23,6 @@ def setup_database():
         CREATE TABLE IF NOT EXISTS dictionary (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             de TEXT NOT NULL,
-            en TEXT NOT NULL,
             fr TEXT NOT NULL,
             wordType TEXT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -36,7 +31,6 @@ def setup_database():
     
     # Création des index pour optimiser les recherches
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_de ON dictionary(de)")
-    cursor.execute("CREATE INDEX IF NOT EXISTS idx_en ON dictionary(en)")
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_fr ON dictionary(fr)")
     
     conn.commit()
@@ -119,7 +113,89 @@ def parse_dictionary_line(line):
         'wordType': word_type
     }
 
-
+def count_lines(filename):
+    """Compte le nombre de lignes dans le fichier"""
+    with open(filename, 'r', encoding='utf-8') as f:
+        return sum(1 for _ in f)
+    """Génère et traduit trois phrases d'exemple pour un mot donné utilisant un modèle T5"""
+    examples = []
+    
+    try:
+        # Initialisation du modèle T5 pour l'allemand si pas déjà fait
+        if 'text_generator' not in models:
+            from transformers import GPT2LMHeadModel, AutoTokenizer
+            print("Chargement du modèle de génération de texte allemand...")
+            model_name = "benjamin/gpt2-wechsel-german"
+            print(f"Chargement du modèle {model_name}...")
+            tokenizer_gpt2 = AutoTokenizer.from_pretrained(model_name, padding_side='left')
+            model_gpt2 = GPT2LMHeadModel.from_pretrained(model_name)
+            tokenizer_gpt2.pad_token = tokenizer_gpt2.eos_token
+            tokenizer_gpt2.padding_side = 'left'
+            models['text_generator'] = (tokenizer_gpt2, model_gpt2)
+        
+        tokenizer_t5, model_t5 = models['text_generator']
+        
+        # Prompts selon le type de mot
+        if word_type and word_type.lower().startswith('v'):
+            prompts = [
+                f"Verwende das Verb '{word}' in einem Satz: ",
+                f"Schreibe einen Satz mit dem Verb '{word}' in der Vergangenheit: ",
+                f"Beschreibe mit dem Verb '{word}' eine zukünftige Aktion: "
+            ]
+        elif word_type and word_type.lower().startswith('adj'):
+            prompts = [
+                f"Beschreibe etwas mit dem Adjektiv '{word}': ",
+                f"Verwende '{word}' um eine Person zu beschreiben: ",
+                f"Beschreibe eine Situation mit dem Wort '{word}': "
+            ]
+        else:  # Noms par défaut
+            prompts = [
+                f"Beschreibe das '{word}': ",
+                f"Schreibe einen Satz über ein '{word}': ",
+                f"Verwende '{word}' in einem interessanten Kontext: "
+            ]
+    
+        # Configuration des modèles de traduction
+        tokenizer_de_en, model_de_en = models['de_en']
+        tokenizer_en_fr, model_en_fr = models['en_fr']
+        
+        # Génération et traduction des phrases
+        for prompt in prompts:
+            # Génération de la phrase en allemand
+            inputs = tokenizer_t5(prompt, return_tensors="pt", padding=True, truncation=True)
+            outputs = model_t5.generate(
+                inputs.input_ids,
+                max_length=50,
+                num_beams=5,
+                no_repeat_ngram_size=2,
+                top_k=50,
+                top_p=0.95,
+                temperature=0.7,
+                do_sample=True
+            )
+            german_sentence = tokenizer_t5.decode(outputs[0], skip_special_tokens=True)
+            
+            # Traduction en anglais
+            inputs_de = tokenizer_de_en(german_sentence, return_tensors="pt", padding=True)
+            outputs_de = model_de_en.generate(**inputs_de)
+            english = tokenizer_de_en.decode(outputs_de[0], skip_special_tokens=True)
+            
+            # Traduction en français
+            inputs_en = tokenizer_en_fr(english, return_tensors="pt", padding=True)
+            outputs_en = model_en_fr.generate(**inputs_en)
+            french = tokenizer_en_fr.decode(outputs_en[0], skip_special_tokens=True)
+            
+            examples.append({
+                'de': german_sentence,
+                'en': english,
+                'fr': french
+            })
+        
+        return examples
+        
+    except Exception as e:
+        print(f"Erreur lors de la génération de phrases: {str(e)}")
+        return []  # Retourner une liste vide en cas d'erreur
 
 def main():
     # Initialisation de la base de données
@@ -152,28 +228,22 @@ def main():
             
             try:
                 # Traduction en français
-                fr_translation = translate_text(result['en'], models)
+                fr_translation = translate_text(result['de'], models, source_lang='de')
                 
-                # Récupération des définitions et génération des exemples
+                # Affichage des informations
                 print(f"\n{'='*50}")
-                print(f"Données récupérées pour le mot : {result['de']}")
+                print(f"Traduction du mot : {result['de']}")
                 print(f"{'='*50}")
                 print(f"Allemand     : {result['de']}")
                 print(f"Type de mot  : {result['wordType']}")
-                print(f"Anglais      : {result['en']}")
                 print(f"Français     : {fr_translation}")
-                
-                
-                # Insertion dans la base de données
-                # Conversion des exemples en JSON pour le stockage
-                examples_json = json.dumps(examples, ensure_ascii=False)
+                print(f"{'='*50}\n")
                 
                 cursor.execute("""
-                    INSERT INTO dictionary (de, en, fr, wordType)
-                    VALUES (?, ?, ?, ?)
+                    INSERT INTO dictionary (de, fr, wordType)
+                    VALUES (?, ?, ?)
                 """, (
                     result['de'],
-                    result['en'],
                     fr_translation,
                     result['wordType']
                 ))
@@ -199,12 +269,11 @@ def main():
     
     # Quelques exemples de traductions
     print("\nExemples de traductions:")
-    cursor.execute("SELECT de, en, fr, wordType FROM dictionary LIMIT 5")
+    cursor.execute("SELECT de, fr, wordType FROM dictionary LIMIT 5")
     for row in cursor.fetchall():
         print(f"DE: {row[0]}")
-        print(f"EN: {row[1]}")
-        print(f"FR: {row[2]}")
-        print(f"Type: {row[3]}")
+        print(f"FR: {row[1]}")
+        print(f"Type: {row[2]}")
         print("-" * 40)
     
     # Fermeture de la connexion
