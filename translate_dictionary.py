@@ -212,12 +212,12 @@ def generate_example_sentences(word, word_type, models):
             inputs_de = tokenizer_de_en(german_sentence, return_tensors="pt", padding=True)
             outputs_de = model_de_en.generate(**inputs_de)
             english = tokenizer_de_en.decode(outputs_de[0], skip_special_tokens=True)
-        
-        # Traduction en français
-        inputs_en = tokenizer_en_fr(english, return_tensors="pt", padding=True)
-        outputs_en = model_en_fr.generate(**inputs_en)
-        french = tokenizer_en_fr.decode(outputs_en[0], skip_special_tokens=True)
-        
+            
+            # Traduction en français
+            inputs_en = tokenizer_en_fr(english, return_tensors="pt", padding=True)
+            outputs_en = model_en_fr.generate(**inputs_en)
+            french = tokenizer_en_fr.decode(outputs_en[0], skip_special_tokens=True)
+            
             examples.append({
                 'de': german_sentence,
                 'en': english,
