@@ -69,7 +69,7 @@ def parse_dictionary_line(line):
     de_word = de_array.split("|")[0]  # Prendre la première forme
     
     # Extraction du type de mot
-    curly_regex = r'{\K[^}]*(?=})'
+    curly_regex = r'{([^}]*)}'  # Capture le contenu entre accolades
     type_matches = re.findall(curly_regex, de_word)
     word_type = type_matches[0] if type_matches else None
     
