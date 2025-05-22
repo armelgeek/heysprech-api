@@ -41,19 +41,20 @@ def setup_database():
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_de ON dictionary(de)")
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_en ON dictionary(en)")
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_fr ON dictionary(fr)")
-    
+    huggingface_hub.errors.HFValidationError: Repo id must use alphanumeric chars or '-', '_', '.', '--' and '..' are forbidden, '-' and '.' cannot start or end the name, max length is 96: './opus-mt-de-en'.
+
     conn.commit()
     return conn
 
 def load_translation_models():
     """Chargement des modèles de traduction"""
     print("Chargement du modèle de traduction DE-EN...")
-    tokenizer_de_en = MarianTokenizer.from_pretrained(MODEL_PATH_DE_EN)
-    model_de_en = MarianMTModel.from_pretrained(MODEL_PATH_DE_EN)
+    tokenizer_de_en = MarianTokenizer.from_pretrained("Helsinki-NLP/opus-mt-de-en")
+    model_de_en = MarianMTModel.from_pretrained("Helsinki-NLP/opus-mt-de-en")
     
     print("Chargement du modèle de traduction EN-FR...")
-    tokenizer_en_fr = MarianTokenizer.from_pretrained(MODEL_PATH_EN_FR)
-    model_en_fr = MarianMTModel.from_pretrained(MODEL_PATH_EN_FR)
+    tokenizer_en_fr = MarianTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-fr")
+    model_en_fr = MarianMTModel.from_pretrained("Helsinki-NLP/opus-mt-en-fr")
     
     return {
         'de_en': (tokenizer_de_en, model_de_en),
@@ -161,9 +162,11 @@ def generate_example_sentences(word, word_type, models):
             from transformers import GPT2LMHeadModel, AutoTokenizer
             print("Chargement du modèle de génération de texte allemand...")
             model_name = "benjamin/gpt2-wechsel-german"
+            print(f"Chargement du modèle {model_name}...")
             tokenizer_gpt2 = AutoTokenizer.from_pretrained(model_name, padding_side='left')
             model_gpt2 = GPT2LMHeadModel.from_pretrained(model_name)
             tokenizer_gpt2.pad_token = tokenizer_gpt2.eos_token
+            tokenizer_gpt2.padding_side = 'left'
             models['text_generator'] = (tokenizer_gpt2, model_gpt2)
         
         tokenizer_t5, model_t5 = models['text_generator']
