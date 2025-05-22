@@ -152,7 +152,7 @@ def get_dictcc_definition(word):
     return None
 
 def generate_example_sentences(word, word_type, models):
-    """Génère et traduit trois phrases d'exemple pour un mot donné utilisant un modèle T5"""
+    """Génère et traduit trois phrases d'exemple très simples pour l'apprentissage de la langue"""
     examples = []
     
     try:
@@ -170,24 +170,24 @@ def generate_example_sentences(word, word_type, models):
         
         tokenizer_t5, model_t5 = models['text_generator']
         
-        # Prompts selon le type de mot
+        # Prompts selon le type de mot avec des phrases très simples
         if word_type and word_type.lower().startswith('v'):
             prompts = [
-                f"Verwende das Verb '{word}' in einem Satz: ",
-                f"Schreibe einen Satz mit dem Verb '{word}' in der Vergangenheit: ",
-                f"Beschreibe mit dem Verb '{word}' eine zukünftige Aktion: "
+                f"Ich {word} gern.",
+                f"Er {word} jetzt.",
+                f"Wir {word} hier."
             ]
         elif word_type and word_type.lower().startswith('adj'):
             prompts = [
-                f"Beschreibe etwas mit dem Adjektiv '{word}': ",
-                f"Verwende '{word}' um eine Person zu beschreiben: ",
-                f"Beschreibe eine Situation mit dem Wort '{word}': "
+                f"Es ist {word}.",
+                f"Sehr {word}!",
+                f"Das ist {word}."
             ]
         else:  # Noms par défaut
             prompts = [
-                f"Beschreibe das '{word}': ",
-                f"Schreibe einen Satz über ein '{word}': ",
-                f"Verwende '{word}' in einem interessanten Kontext: "
+                f"Das {word}!",
+                f"Ein {word}, bitte.",
+                f"Ich brauche das {word}."
             ]
     
         # Configuration des modèles de traduction
