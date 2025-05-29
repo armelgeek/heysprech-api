@@ -114,30 +114,74 @@
       ],
       "exercises": {
         "fill_blank": {
-          "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich bin ein Mensch, der sich selbst liebt.",
-            "answer": "gehen",
-            "examples": [
-              "gehen"
-            ]
-          }
+          "de": [
+            {
+              "de": "Schreiben Sie 3 natürliche Sätze mit dem Wort '___':",
+              "fr": "Écrivez 3 phrases naturelles avec le mot 'aller':",
+              "answer": "gehen"
+            }
+          ]
         },
         "multiple_choice": {
           "de": {
-            "question": "Was bedeutet 'gehen'?",
+            "question": "Frage: Welche der folgenden Aussagen beschreibt die Bedeutung/Verwendung von 'gehen' am besten?",
             "choices": [
-              "gehen bin",
-              "gehen"
+              "[Erste mögliche Antwort]",
+              "[Zweite mögliche Antwort]",
+              "[Dritte mögliche Antwort]",
+              "[Vierte mögliche Antwort]"
             ],
-            "answer": "0"
+            "answer": ","
+          },
+          "fr": {
+            "question": "A) [Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,",
+            "choices": [
+              "[Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,"
+            ],
+            "answer": ","
           }
         },
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'gehen': gehen",
-              "gehen",
-              "3 einfache verwandte Wörter zu 'gehen': gehen"
+              "",
+              "1. Ein Synonym",
+              "2. Ein verwandtes Verb",
+              "3. Ein verwandtes Adjektiv",
+              "4. Ein Gegenteil (wenn möglich)",
+              "5. Ein übergeordneter Begriff",
+              "6. Ein spezifischerer Begriff (wenn möglich) wird verwendet, um ein anderes Adjektiv zu beschreiben",
+              "7. Ein Adjektiv wird verwendet, um ein anderes Adjektiv zu beschreiben, z. B. ein Wort",
+              "8. Ein"
+            ],
+            "categories": [
+              "Synonym",
+              "Verb",
+              "Adjektiv",
+              "Antonym",
+              "Oberbegriff",
+              "Unterbegriff"
+            ]
+          },
+          "fr": {
+            "words": [
+              "C'est ça.",
+              "1. Un synonyme",
+              "2. Un verbe voisin",
+              "3. Un adjectif proche",
+              "4. Un contraire (si possible)",
+              "5. Un terme générique",
+              "6. Un terme plus spécifique (si possible) est utilisé pour décrire un autre adjectif.",
+              "7. Un adjectif est utilisé pour décrire un autre adjectif, par exemple un mot",
+              "8. Un"
+            ],
+            "categories": [
+              "Synonyme",
+              "Verbe",
+              "Adjectif",
+              "Antonyme",
+              "Terme générique",
+              "Terme spécifique"
             ]
           }
         }
@@ -184,30 +228,84 @@
       ],
       "exercises": {
         "fill_blank": {
-          "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Heute ist der Tag, an dem ich geboren.",
-            "answer": "heute",
-            "examples": [
-              "heute"
-            ]
-          }
+          "de": [
+            {
+              "de": "Schreiben Sie 3 natürliche Sätze mit dem Wort '___':",
+              "fr": "Écrivez 3 phrases naturelles avec le mot 'aujourd'hui':",
+              "answer": "heute"
+            },
+            {
+              "de": "Jeder Satz sollte einen klaren Kontext haben. Es ist wichtig, dass Sie die Sätze mit dem Wort '___' beginnen.",
+              "fr": "Chaque phrase doit avoir un contexte clair. Il est important que vous commenciez par le mot 'aujourd'hui'.",
+              "answer": "heute"
+            },
+            {
+              "de": "1. Ein einfacher Satz für Fortgeschrittene. Es ist wichtig, dass Sie die Sätze mit dem Wort '___' beginnen.",
+              "fr": "1. Une phrase simple pour les avancés. Il est important que vous commenciez les phrases par le mot 'aujourd'hui'.",
+              "answer": "heute"
+            }
+          ]
         },
         "multiple_choice": {
           "de": {
-            "question": "Was bedeutet 'heute'?",
+            "question": "Frage: Welche der folgenden Aussagen beschreibt die Bedeutung/Verwendung von 'heute' am besten?",
             "choices": [
-              "heute bin",
-              "heute"
+              "[Erste mögliche Antwort]",
+              "[Zweite mögliche Antwort]",
+              "[Dritte mögliche Antwort]",
+              "[Vierte mögliche Antwort]"
             ],
-            "answer": "0"
+            "answer": ","
+          },
+          "fr": {
+            "question": "A) [Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,",
+            "choices": [
+              "[Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,"
+            ],
+            "answer": ","
           }
         },
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'heute': morgen",
-              "morgen",
-              "3 einfache verwandte Wörter zu 'heute': morgen"
+              "",
+              "1. Ein Synonym",
+              "2. Ein verwandtes Verb",
+              "3. Ein verwandtes Adjektiv",
+              "4. Ein Gegenteil (wenn möglich)",
+              "5. Ein übergeordneter Begriff",
+              "6. Ein spezifischerer Begriff (wenn möglich) wird verwendet, um ein anderes Adjektiv zu beschreiben",
+              "7. Ein Adjektiv wird verwendet, um ein anderes Adjektiv zu beschreiben, z. B. ein Wort",
+              "8. Ein"
+            ],
+            "categories": [
+              "Synonym",
+              "Verb",
+              "Adjektiv",
+              "Antonym",
+              "Oberbegriff",
+              "Unterbegriff"
+            ]
+          },
+          "fr": {
+            "words": [
+              "C'est ça.",
+              "1. Un synonyme",
+              "2. Un verbe voisin",
+              "3. Un adjectif proche",
+              "4. Un contraire (si possible)",
+              "5. Un terme générique",
+              "6. Un terme plus spécifique (si possible) est utilisé pour décrire un autre adjectif.",
+              "7. Un adjectif est utilisé pour décrire un autre adjectif, par exemple un mot",
+              "8. Un"
+            ],
+            "categories": [
+              "Synonyme",
+              "Verbe",
+              "Adjectif",
+              "Antonyme",
+              "Terme générique",
+              "Terme spécifique"
             ]
           }
         }
@@ -254,30 +352,74 @@
       ],
       "exercises": {
         "fill_blank": {
-          "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist das? Was ist das? Was ist.",
-            "answer": "ins",
-            "examples": [
-              "ins"
-            ]
-          }
+          "de": [
+            {
+              "de": "Schreiben Sie 3 natürliche Sätze mit dem Wort '___':",
+              "fr": "Écrivez 3 phrases naturelles avec le mot 'ins':",
+              "answer": "ins"
+            }
+          ]
         },
         "multiple_choice": {
           "de": {
-            "question": "Was bedeutet 'ins'?",
+            "question": "Frage: Welche der folgenden Aussagen beschreibt die Bedeutung/Verwendung von 'ins' am besten?",
             "choices": [
-              "ins bin",
-              "ins"
+              "[Erste mögliche Antwort]",
+              "[Zweite mögliche Antwort]",
+              "[Dritte mögliche Antwort]",
+              "[Vierte mögliche Antwort]"
             ],
-            "answer": "0"
+            "answer": ","
+          },
+          "fr": {
+            "question": "A) [Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,",
+            "choices": [
+              "[Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,"
+            ],
+            "answer": ","
           }
         },
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'ins': in",
-              "in",
-              "3 einfache verwandte Wörter zu 'ins': in"
+              "",
+              "1. Ein Synonym",
+              "2. Ein verwandtes Verb",
+              "3. Ein verwandtes Adjektiv",
+              "4. Ein Gegenteil (wenn möglich)",
+              "5. Ein übergeordneter Begriff",
+              "6. Ein spezifischerer Begriff (wenn möglich) wird verwendet, um ein anderes Adjektiv zu beschreiben",
+              "7. Ein Adjektiv wird verwendet, um ein anderes Adjektiv zu beschreiben, z. B. ein Wort",
+              "8. Ein"
+            ],
+            "categories": [
+              "Synonym",
+              "Verb",
+              "Adjektiv",
+              "Antonym",
+              "Oberbegriff",
+              "Unterbegriff"
+            ]
+          },
+          "fr": {
+            "words": [
+              "C'est ça.",
+              "1. Un synonyme",
+              "2. Un verbe voisin",
+              "3. Un adjectif proche",
+              "4. Un contraire (si possible)",
+              "5. Un terme générique",
+              "6. Un terme plus spécifique (si possible) est utilisé pour décrire un autre adjectif.",
+              "7. Un adjectif est utilisé pour décrire un autre adjectif, par exemple un mot",
+              "8. Un"
+            ],
+            "categories": [
+              "Synonyme",
+              "Verbe",
+              "Adjectif",
+              "Antonyme",
+              "Terme générique",
+              "Terme spécifique"
             ]
           }
         }
@@ -324,30 +466,82 @@
       ],
       "exercises": {
         "fill_blank": {
-          "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist Kino? Was ist Kino? Was ist.",
-            "answer": "kino",
-            "examples": [
-              "kino"
-            ]
-          }
+          "de": [
+            {
+              "de": "Schreiben Sie 3 natürliche Sätze mit dem Wort '___':",
+              "fr": "Écrivez 3 phrases naturelles avec le mot 'kino':",
+              "answer": "kino"
+            },
+            {
+              "de": "Jeder Satz sollte einen klaren Kontext haben. Wenn Sie einen Satz mit dem Wort '___' beginnen, sollten Sie folgende Sätze mit dem Wort '___' beginnen:",
+              "fr": "Chaque phrase doit avoir un contexte clair. Si vous commencez une phrase par le mot 'kino', vous devriez commencer par le mot 'kino':",
+              "answer": "kino"
+            },
+            {
+              "de": "Wenn Sie einen Satz mit dem Wort '___' beginnen, sollten Sie folgende Sätze mit dem Wort '___' beginnen:",
+              "fr": "Si vous commencez une phrase par le mot 'kino', vous devriez commencer par le mot 'kino':",
+              "answer": "kino"
+            }
+          ]
         },
         "multiple_choice": {
           "de": {
-            "question": "Was bedeutet 'kino'?",
+            "question": "Frage: Welche der folgenden Aussagen beschreibt die Bedeutung/Verwendung von 'kino' am besten?",
             "choices": [
-              "kino bin",
-              "kino"
+              "[Erste mögliche Antwort]",
+              "[Zweite mögliche Antwort]",
+              "[Dritte mögliche Antwort]",
+              "[Vierte mögliche Antwort]"
             ],
-            "answer": "0"
+            "answer": ","
+          },
+          "fr": {
+            "question": "Créez un test à choix multiples pour le mot 'kino': Question: Lequel des messages suivants décrit le mieux la signification/l'utilisation du 'kino'? A) [Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Correct Réponse: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,",
+            "choices": [],
+            "answer": ","
           }
         },
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'kino': Kino",
-              "Kino",
-              "3 einfache verwandte Wörter zu 'kino': Kino"
+              "",
+              "1. Ein Synonym",
+              "2. Ein verwandtes Verb",
+              "3. Ein verwandtes Adjektiv",
+              "4. Ein Gegenteil (wenn möglich)",
+              "5. Ein übergeordneter Begriff",
+              "6. Ein spezifischerer Begriff (wenn möglich) wird verwendet, um ein anderes Adjektiv zu beschreiben",
+              "7. Ein Adjektiv wird verwendet, um ein anderes Adjektiv zu beschreiben, z. B. ein Wort",
+              "8. Ein"
+            ],
+            "categories": [
+              "Synonym",
+              "Verb",
+              "Adjektiv",
+              "Antonym",
+              "Oberbegriff",
+              "Unterbegriff"
+            ]
+          },
+          "fr": {
+            "words": [
+              "C'est ça.",
+              "1. Un synonyme",
+              "2. Un verbe voisin",
+              "3. Un adjectif proche",
+              "4. Un contraire (si possible)",
+              "5. Un terme générique",
+              "6. Un terme plus spécifique (si possible) est utilisé pour décrire un autre adjectif.",
+              "7. Un adjectif est utilisé pour décrire un autre adjectif, par exemple un mot",
+              "8. Un"
+            ],
+            "categories": [
+              "Synonyme",
+              "Verbe",
+              "Adjectif",
+              "Antonyme",
+              "Terme générique",
+              "Terme spécifique"
             ]
           }
         }
@@ -394,30 +588,84 @@
       ],
       "exercises": {
         "fill_blank": {
-          "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich bin ein Mann, ich bin eine Frau.",
-            "answer": "sie",
-            "examples": [
-              "sie"
-            ]
-          }
+          "de": [
+            {
+              "de": "Schreiben Sie 3 natürliche Sätze mit dem Wort '___':",
+              "fr": "Écrivez 3 phrases naturelles avec le mot 'ils':",
+              "answer": "sie"
+            },
+            {
+              "de": "1. Ein Satz mit dem Wort '___': Ein einfacher Satz für Anfänger",
+              "fr": "1. Une phrase avec le mot 'ils': Une phrase simple pour les débutants",
+              "answer": "sie"
+            },
+            {
+              "de": "2. Ein Satz mit dem Wort '___': Ein einfacher Satz für Anfänger. Es ist wichtig, dass die Sätze klar und verständlich sind.",
+              "fr": "2. Une phrase avec le mot 'ils': Une phrase simple pour les débutants. Il est important que les phrases soient claires et compréhensibles.",
+              "answer": "sie"
+            }
+          ]
         },
         "multiple_choice": {
           "de": {
-            "question": "Was bedeutet 'sie'?",
+            "question": "Frage: Welche der folgenden Aussagen beschreibt die Bedeutung/Verwendung von 'sie' am besten?",
             "choices": [
-              "sie bin",
-              "sie"
+              "[Erste mögliche Antwort]",
+              "[Zweite mögliche Antwort]",
+              "[Dritte mögliche Antwort]",
+              "[Vierte mögliche Antwort]"
             ],
-            "answer": "0"
+            "answer": ","
+          },
+          "fr": {
+            "question": "A) [Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,",
+            "choices": [
+              "[Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,"
+            ],
+            "answer": ","
           }
         },
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'sie': sie",
-              "sie",
-              "3 einfache verwandte Wörter zu 'sie': sie"
+              "",
+              "1. Ein Synonym",
+              "2. Ein verwandtes Verb",
+              "3. Ein verwandtes Adjektiv",
+              "4. Ein Gegenteil (wenn möglich)",
+              "5. Ein übergeordneter Begriff",
+              "6. Ein spezifischerer Begriff (wenn möglich) wird verwendet, um ein anderes Adjektiv zu beschreiben",
+              "7. Ein Adjektiv wird verwendet, um ein anderes Adjektiv zu beschreiben, z. B. 'sie'",
+              "8."
+            ],
+            "categories": [
+              "Synonym",
+              "Verb",
+              "Adjektiv",
+              "Antonym",
+              "Oberbegriff",
+              "Unterbegriff"
+            ]
+          },
+          "fr": {
+            "words": [
+              "C'est ça.",
+              "1. Un synonyme",
+              "2. Un verbe voisin",
+              "3. Un adjectif proche",
+              "4. Un contraire (si possible)",
+              "5. Un terme générique",
+              "6. Un terme plus spécifique (si possible) est utilisé pour décrire un autre adjectif.",
+              "7. Un adjectif est utilisé pour décrire un autre adjectif, par exemple 'ils'",
+              "8."
+            ],
+            "categories": [
+              "Synonyme",
+              "Verbe",
+              "Adjectif",
+              "Antonyme",
+              "Terme générique",
+              "Terme spécifique"
             ]
           }
         }
