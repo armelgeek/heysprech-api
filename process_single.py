@@ -156,38 +156,78 @@ def load_models():
         'gpt': (tokenizer_gpt, model_gpt)
     }
 
+def remove_repetitions(text):
+    """Supprime les répétitions de phrases et de mots consécutifs"""
+    # Nettoie d'abord les répétitions au niveau des phrases
+    sentences = text.split('.')
+    clean_sentences = []
+    for sent in sentences:
+        if sent.strip() and sent.strip() not in clean_sentences:
+            clean_sentences.append(sent.strip())
+    
+    # Nettoie les répétitions de mots consécutifs dans chaque phrase
+    final_sentences = []
+    for sent in clean_sentences:
+        words = sent.split()
+        clean_words = [words[i] for i in range(len(words)) 
+                      if i == 0 or words[i] != words[i-1]]
+        final_sentences.append(' '.join(clean_words))
+    
+    return '. '.join(final_sentences).strip()
+
 def generate_example_sentences(word, models):
-    """Génère une phrase d'exemple simple pour un mot"""
+    """Génère deux phrases d'exemple simples pour un mot"""
     tokenizer_gpt, model_gpt = models['gpt']
     tokenizer_de_fr, model_de_fr = models['de_fr']
+    examples = []
     
-    # Un seul prompt simple
-    prompt = f"Ich {word}"
+    # Prompts pour quatre phrases différentes
+    prompts = [
+        f"Ich {word} ein Mann",      # Premier exemple avec complément
+        f"Ich {word}",               # Deuxième exemple minimaliste
+        f"Er {word} gestern",        # Troisième exemple avec temps
+        f"Sie {word} heute gern"     # Quatrième exemple avec adverbe
+    ]
     
-    try:
-        # Génération de la phrase en allemand
-        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-        outputs = model_gpt.generate(
-            inputs.input_ids,
-            max_length=20,  # Longueur réduite pour une phrase simple
-            num_beams=3,
-            temperature=0.7,
-            do_sample=True
-        )
-        german = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
-        
-        # Traduction directe DE -> FR
-        inputs = tokenizer_de_fr(german, return_tensors="pt", padding=True)
-        outputs = model_de_fr.generate(**inputs)
-        french = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
-        
-        return [{
-            'de': german,
-            'fr': french
-        }]  # Retourne une liste avec un seul exemple
-    except Exception as e:
-        print(f"Erreur lors de la génération d'exemple: {e}")
-        return []
+    for prompt in prompts:
+        try:
+            # Génération en allemand
+            inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+            outputs = model_gpt.generate(
+                inputs.input_ids,
+                max_length=10,  # Très court pour des phrases simples
+                num_beams=3,
+                temperature=0.3,
+                do_sample=False  # Pas d'échantillonnage pour plus de cohérence
+            )
+            german = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
+            if not german.endswith('.'):
+                german += '.'
+            
+            # Traduction en français
+            inputs = tokenizer_de_fr(german, return_tensors="pt", padding=True)
+            outputs = model_de_fr.generate(**inputs)
+            french = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+            if not french.endswith('.'):
+                french += '.'
+            
+            examples.append({
+                'de': german,
+                'fr': french
+            })
+            
+        except Exception as e:
+            print(f"Erreur lors de la génération d'exemple: {e}")
+            continue
+    
+    # Assurer qu'on a toujours 2 exemples
+    while len(examples) < 2:
+        examples.append({
+            'de': f"Ich {word}.",
+            'fr': "Je suis."
+        })
+    
+    return examples
 
 def process_vocabulary(text, models):
     """Traite un mot du vocabulaire avec analyse lexicographique complète"""
@@ -322,12 +362,12 @@ def create_lexical_entry(word, models):
     translations = get_translations(word, models)
     examples = generate_example_sentences(word, models)
     
-    # Structure simplifiée de l'entrée
+    # Structure de l'entrée avec tous les exemples
     entry = {
         'word': word,
         'level': get_word_level(word),
         'translations': translations,
-        'examples': examples[:2],  # Limité à 2 exemples
+        'examples': examples,  # Prend tous les exemples générés
         'exercises': generate_exercises(word, models)
     }
     
@@ -370,97 +410,52 @@ def generate_exercises(word, models, difficulty='intermediate'):
     exercises = {}
     
     clean_word_input = clean_word(word)
-    translation = get_translations(clean_word_input, models)
-    word_fr = translation.get('principal', clean_word_input)
     
-    # Exercice à trous (fill_blank)
     try:
-        # Générer 3 phrases simples en allemand
-        prompt = f"3 kurze Beispielsätze mit '{clean_word_input}':"
-        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-        outputs = model_gpt.generate(
-            inputs.input_ids,
-            max_length=100,
-            num_beams=3,
-            temperature=0.7,
-            num_return_sequences=3
-        )
-        german_sentences = [tokenizer_gpt.decode(output, skip_special_tokens=True).strip() for output in outputs]
-        
-        # Traduire chaque phrase
-        french_sentences = []
-        for sent in german_sentences:
-            inputs = tokenizer_de_fr(sent, return_tensors="pt", padding=True)
-            outputs = model_de_fr.generate(**inputs)
-            french_sentences.append(tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True))
-        
+        # Exercice à trous - phrase très simple
         exercises['fill_blank'] = {
             'de': {
-                'text': german_sentences[0].replace(clean_word_input, '___'),
+                'text': f"'___ bin'",
                 'answer': clean_word_input,
-                'examples': german_sentences
-            },
-            'fr': {
-                'text': french_sentences[0].replace(word_fr, '___'),
-                'answer': word_fr,
-                'examples': french_sentences
+                'examples': [clean_word_input]
             }
         }
         
-        # Choix multiples
-        prompt = f"4 Bedeutungen für '{clean_word_input}', erste ist korrekt:"
-        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-        outputs = model_gpt.generate(
-            inputs.input_ids,
-            max_length=100,
-            num_beams=4,
-            temperature=0.7
-        )
-        choices_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).split('\n')
-        
-        # Traduire les choix
-        choices_fr = []
-        for choice in choices_de:
-            if choice.strip():
-                inputs = tokenizer_de_fr(choice, return_tensors="pt", padding=True)
-                outputs = model_de_fr.generate(**inputs)
-                choices_fr.append(tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True))
-        
+        # Choix multiples - options simples
         exercises['multiple_choice'] = {
             'de': {
                 'question': f"Was bedeutet '{clean_word_input}'?",
-                'choices': choices_de[:4],  # Limiter à 4 choix
-                'answer': 'A'  # Le premier choix est toujours correct
-            },
-            'fr': {
-                'question': f"Que signifie '{clean_word_input}'?",
-                'choices': choices_fr[:4],  # Limiter à 4 choix
-                'answer': 'A'
+                'choices': [
+                    f"{clean_word_input} bin",
+                    clean_word_input
+                ],
+                'answer': "0"
             }
         }
         
-        # Association de mots
-        prompt = f"3 verwandte Wörter zu '{clean_word_input}':"
+        # Association de mots - 3 mots simples et uniques
+        prompt = f"3 einfache verwandte Wörter zu '{clean_word_input}':"
         inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
         outputs = model_gpt.generate(
             inputs.input_ids,
-            max_length=50,
+            max_length=30,
             num_beams=3,
-            temperature=0.7
+            temperature=0.5,
+            do_sample=False
         )
-        related_words_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).split(',')
-        related_words_de = [w.strip() for w in related_words_de if w.strip()][:3]
         
-        # Traduire les mots associés
-        related_words_fr = []
-        for word in related_words_de:
-            inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
-            outputs = model_de_fr.generate(**inputs)
-            related_words_fr.append(tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True))
+        words_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+        words = [w.strip() for w in words_text.split(',') if w.strip()][:3]
+        words = list(dict.fromkeys(words))  # Supprimer les doublons
+        
+        if len(words) < 3:  # S'assurer d'avoir 3 mots
+            while len(words) < 3:
+                words.append(words[0] if words else clean_word_input)
         
         exercises['word_association'] = {
-            'de': {'words': related_words_de},
-            'fr': {'words': related_words_fr}
+            'de': {
+                'words': words
+            }
         }
         
     except Exception as e:
