@@ -202,7 +202,7 @@ def analyze_word_class(word, models):
         inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
         outputs = model_gpt.generate(
             inputs.input_ids,
-            max_length=50,  # Réduit pour une réponse concise
+            max_length=50,  # Réduits pour une réponse concise
             num_beams=3,
             temperature=0.3,  # Température basse pour plus de précision
             do_sample=False  # Pas d'échantillonnage pour plus de précision
@@ -369,37 +369,102 @@ def generate_exercises(word, models, difficulty='intermediate'):
     exercises = {}
     
     clean_word_input = clean_word(word)
+    translation = get_translations(clean_word_input, models)
+    word_fr = translation.get('principal', clean_word_input)
     
-    for exercise_type, prompt_dict in EXERCISE_PROMPTS.items():
-        try:
-            prompt = prompt_dict[difficulty]
-            full_prompt = prompt.format(word=clean_word_input)
-            
-            # Génération en allemand
-            inputs = tokenizer_gpt(full_prompt, return_tensors="pt", padding=True)
-            outputs = model_gpt.generate(
-                inputs.input_ids,
-                max_length=50,  # Réduits pour des réponses très concises
-                num_beams=3,
-                temperature=0.7,
-                top_k=50,
-                do_sample=True
-            )
-            exercise_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
-            
-            # Traduction en français
-            inputs = tokenizer_de_fr(exercise_de, return_tensors="pt", padding=True)
+    # Exercice à trous (fill_blank)
+    try:
+        # Générer 3 phrases simples en allemand
+        prompt = f"3 kurze Beispielsätze mit '{clean_word_input}':"
+        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+        outputs = model_gpt.generate(
+            inputs.input_ids,
+            max_length=100,
+            num_beams=3,
+            temperature=0.7,
+            num_return_sequences=3
+        )
+        german_sentences = [tokenizer_gpt.decode(output, skip_special_tokens=True).strip() for output in outputs]
+        
+        # Traduire chaque phrase
+        french_sentences = []
+        for sent in german_sentences:
+            inputs = tokenizer_de_fr(sent, return_tensors="pt", padding=True)
             outputs = model_de_fr.generate(**inputs)
-            exercise_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
-            
-            # Formatage simplifié
-            exercises[exercise_type] = {
-                'de': format_exercise(exercise_type, exercise_de, clean_word_input),
-                'fr': format_exercise(exercise_type, exercise_fr, get_translations(clean_word_input, models).get('principal', clean_word_input))
+            french_sentences.append(tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True))
+        
+        exercises['fill_blank'] = {
+            'de': {
+                'text': german_sentences[0].replace(clean_word_input, '___'),
+                'answer': clean_word_input,
+                'examples': german_sentences
+            },
+            'fr': {
+                'text': french_sentences[0].replace(word_fr, '___'),
+                'answer': word_fr,
+                'examples': french_sentences
             }
-        except Exception as e:
-            print(f"Erreur: {e}")
-            exercises[exercise_type] = None
+        }
+        
+        # Choix multiples
+        prompt = f"4 Bedeutungen für '{clean_word_input}', erste ist korrekt:"
+        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+        outputs = model_gpt.generate(
+            inputs.input_ids,
+            max_length=100,
+            num_beams=4,
+            temperature=0.7
+        )
+        choices_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).split('\n')
+        
+        # Traduire les choix
+        choices_fr = []
+        for choice in choices_de:
+            if choice.strip():
+                inputs = tokenizer_de_fr(choice, return_tensors="pt", padding=True)
+                outputs = model_de_fr.generate(**inputs)
+                choices_fr.append(tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True))
+        
+        exercises['multiple_choice'] = {
+            'de': {
+                'question': f"Was bedeutet '{clean_word_input}'?",
+                'choices': choices_de[:4],  # Limiter à 4 choix
+                'answer': 'A'  # Le premier choix est toujours correct
+            },
+            'fr': {
+                'question': f"Que signifie '{clean_word_input}'?",
+                'choices': choices_fr[:4],  # Limiter à 4 choix
+                'answer': 'A'
+            }
+        }
+        
+        # Association de mots
+        prompt = f"3 verwandte Wörter zu '{clean_word_input}':"
+        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+        outputs = model_gpt.generate(
+            inputs.input_ids,
+            max_length=50,
+            num_beams=3,
+            temperature=0.7
+        )
+        related_words_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).split(',')
+        related_words_de = [w.strip() for w in related_words_de if w.strip()][:3]
+        
+        # Traduire les mots associés
+        related_words_fr = []
+        for word in related_words_de:
+            inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
+            outputs = model_de_fr.generate(**inputs)
+            related_words_fr.append(tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True))
+        
+        exercises['word_association'] = {
+            'de': {'words': related_words_de},
+            'fr': {'words': related_words_fr}
+        }
+        
+    except Exception as e:
+        print(f"Erreur lors de la génération des exercices: {e}")
+        return None
     
     return exercises
 
@@ -605,6 +670,3 @@ def extract_stress_position(text):
             return 'last'
         return position
     return None
-
-if __name__ == "__main__":
-    main()
