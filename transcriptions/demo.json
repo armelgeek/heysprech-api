@@ -81,8 +81,8 @@
         "fr": "aller"
       },
       "definition": {
-        "de": "es sich um eine Handlung handelt, die durch das Verb 'geht' ausgedrückt werden kann.\nDas Verb 'laufen' ist ein Verb, das sich aus dem Verb \"laufen",
-        "fr": "il s'agit d'une action qui peut être exprimée par le verbe \"passe.\" Le verbe 'marche' est un verbe qui s'échappe du verbe"
+        "de": "kann man auch 'gehen', wenn man 'nicht gehen' tut. Das heißt, man kann auch gehen, wenn man nicht gehen will.\nWenn man gehen will, dann muss man gehen. Wenn man gehen",
+        "fr": "Si vous ne voulez pas partir, vous devez y aller. Si vous voulez partir, si vous voulez y aller, vous pouvez partir."
       },
       "example": {
         "de": "Das Wort 'gehen' ist sehr nützlich.",
@@ -90,69 +90,52 @@
       },
       "exercises": [
         {
-          "type": "multiple_choice",
+          "type": "definition_match",
           "question": {
-            "de": "Welches Wort bedeutet 'aller'?",
-            "fr": "Quel mot signifie 'aller' ?"
+            "de": "Welches Wort wird hier definiert: \"kann man auch 'gehen', wenn man 'nicht gehen' tut. Das heißt, man kann auch gehen, wenn man nicht gehen will\"?",
+            "fr": "Quel mot correspond à cette définition : \"Si vous ne voulez pas partir, vous devez y aller. Si vous voulez partir, si vous voulez y aller, vous pouvez partir\" ?"
           },
-          "choices": [
-            "stuhl",
-            "milch",
-            "haus",
-            "gehen"
-          ],
-          "correct_answer": "gehen",
-          "correct_index": 3,
+          "definition": {
+            "de": "kann man auch 'gehen', wenn man 'nicht gehen' tut. Das heißt, man kann auch gehen, wenn man nicht gehen will",
+            "fr": "Si vous ne voulez pas partir, vous devez y aller. Si vous voulez partir, si vous voulez y aller, vous pouvez partir"
+          },
+          "answer": "gehen",
           "level": "intermediate"
         },
         {
-          "type": "fill_blank",
-          "examples": [
-            {
-              "question": {
-                "de": "Die Kinder ___ durch den Garten.",
-                "fr": "Complétez la phrase avec le mot 'aller' (Le mot manquant est au milieu)"
-              },
-              "solution": {
-                "de": "Die Kinder gehen durch den Garten.",
-                "fr": "Les enfants marchent à travers le jardin."
-              },
-              "context": "Le mot manquant est au milieu"
-            },
-            {
-              "question": {
-                "de": "Sie muss zur Arbeit ___.",
-                "fr": "Complétez la phrase avec le mot 'aller' (Le mot manquant est à la fin)"
-              },
-              "solution": {
-                "de": "Sie muss zur Arbeit gehen.",
-                "fr": "Elle doit aller au travail."
-              },
-              "context": "Le mot manquant est à la fin"
-            }
-          ],
-          "answer": "gehen",
-          "level": "intermediate",
-          "translation": "aller"
+          "type": "translation",
+          "question": {
+            "de": "Übersetzen Sie: gehen",
+            "fr": "Traduisez: gehen"
+          },
+          "answer": "aller",
+          "source_word": "gehen",
+          "direction": "de_to_fr",
+          "level": "intermediate"
         },
         {
-          "type": "gender_article",
+          "type": "sentence_building",
           "question": {
-            "de": "Welcher Artikel gehört zu 'gehen'?",
-            "fr": "Quel article va avec 'gehen' ?"
+            "de": "Bilden Sie einen Satz mit diesen Wörtern: sehr, gehen, gut, der, ist, schön, ein, das",
+            "fr": "Formez une phrase avec ces mots: sehr, gehen, gut, der, ist, schön, ein, das"
           },
-          "choices": [
+          "word_pool": [
+            "sehr",
+            "gehen",
+            "gut",
             "der",
-            "die",
+            "ist",
+            "schön",
+            "ein",
             "das"
           ],
-          "answer": "das",
-          "word": "gehen",
+          "target_sentence": "Das ist ein gehen.",
+          "answer": "gehen",
           "level": "intermediate"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:21:09.459955"
+      "processed_at": "2025-05-29T11:25:39.787170"
     },
     {
       "word": "heute",
@@ -162,8 +145,8 @@
         "fr": "Aujourd'hui"
       },
       "definition": {
-        "de": "sich aus dem Griechischen und dem Lateinischen zusammensetzt.\nDer Begriff Zeit bezeichnet die Zeit, die vergeht, bevor sie vergangen ist. Zeit ist ein Begriff aus der griechischen Mythologie.\nDie Zeit ist die Zeit",
-        "fr": "Le terme temps désigne le temps qui passe avant qu'il ne passe. Le temps est un terme de la mythologie grecque."
+        "de": "die Tatsache, dass die meisten Menschen, die heute in den USA leben, in den Vereinigten Staaten geboren wurden, und die meisten von ihnen, die in den Staaten leben, sind Amerikaner.\nDie USA sind ein Land,",
+        "fr": "le fait que la plupart des gens qui vivent aujourd'hui aux États-Unis sont nés aux Etats-Unis, et la plupart d'entre eux qui vivent dans les États-unis sont des Américains."
       },
       "example": {
         "de": "Das Wort 'heute' ist sehr nützlich.",
@@ -173,62 +156,50 @@
         {
           "type": "translation",
           "question": {
-            "de": "Übersetzen Sie: Aujourd'hui",
-            "fr": "Traduisez: Aujourd'hui"
+            "de": "Übersetzen Sie: heute",
+            "fr": "Traduisez: heute"
           },
-          "answer": "heute",
-          "source_word": "Aujourd'hui",
-          "direction": "fr_to_de",
+          "answer": "Aujourd'hui",
+          "source_word": "heute",
+          "direction": "de_to_fr",
           "level": "intermediate"
         },
         {
-          "type": "fill_blank",
-          "examples": [
-            {
-              "question": {
-                "de": "Sie hat ___ gekauft.",
-                "fr": "Complétez la phrase avec le mot 'Aujourd'hui' (Le mot manquant est au milieu)"
-              },
-              "solution": {
-                "de": "Sie hat heute gekauft.",
-                "fr": "Elle a acheté Aujourd'hui."
-              },
-              "context": "Le mot manquant est au milieu"
-            },
-            {
-              "question": {
-                "de": "Ich verstehe das ___.",
-                "fr": "Complétez la phrase avec le mot 'Aujourd'hui' (Le mot manquant est à la fin)"
-              },
-              "solution": {
-                "de": "Ich verstehe das heute.",
-                "fr": "Je comprends le Aujourd'hui."
-              },
-              "context": "Le mot manquant est à la fin"
-            }
-          ],
+          "type": "definition_match",
+          "question": {
+            "de": "Welches Wort wird hier definiert: \"die Tatsache, dass die meisten Menschen, die heute in den USA leben, in den Vereinigten Staaten geboren wurden, und die meisten von ihnen, die in den Staaten leben, sind Amerikaner. Die USA sind ein Land,\"?",
+            "fr": "Identifiez le mot décrit par : \"le fait que la plupart des gens qui vivent aujourd'hui aux États-Unis sont nés aux Etats-Unis, et la plupart d'entre eux qui vivent dans les États-unis sont des Américains\" ?"
+          },
+          "definition": {
+            "de": "die Tatsache, dass die meisten Menschen, die heute in den USA leben, in den Vereinigten Staaten geboren wurden, und die meisten von ihnen, die in den Staaten leben, sind Amerikaner. Die USA sind ein Land,",
+            "fr": "le fait que la plupart des gens qui vivent aujourd'hui aux États-Unis sont nés aux Etats-Unis, et la plupart d'entre eux qui vivent dans les États-unis sont des Américains"
+          },
           "answer": "heute",
-          "level": "intermediate",
-          "translation": "Aujourd'hui"
+          "level": "intermediate"
         },
         {
-          "type": "gender_article",
+          "type": "sentence_building",
           "question": {
-            "de": "Welcher Artikel gehört zu 'heute'?",
-            "fr": "Quel article va avec 'heute' ?"
+            "de": "Bilden Sie einen Satz mit diesen Wörtern: heute, das, ist, sehr, der, gut, schön, ein",
+            "fr": "Formez une phrase avec ces mots: heute, das, ist, sehr, der, gut, schön, ein"
           },
-          "choices": [
+          "word_pool": [
+            "heute",
+            "das",
+            "ist",
+            "sehr",
             "der",
-            "die",
-            "das"
+            "gut",
+            "schön",
+            "ein"
           ],
-          "answer": "der",
-          "word": "heute",
+          "target_sentence": "Das ist ein heute.",
+          "answer": "heute",
           "level": "intermediate"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:21:15.505573"
+      "processed_at": "2025-05-29T11:25:45.841954"
     },
     {
       "word": "ins",
@@ -238,8 +209,8 @@
         "fr": "dans la"
       },
       "definition": {
-        "de": "einem jungen Mann und einem alten Mann, der sich in einer Beziehung befindet.\nDie Geschichte spielt in einem kleinen Dorf in den USA. Der junge Mann und seine Frau leben zusammen in einem Haus. Eines Tages wird der junge Mann",
-        "fr": "L'histoire se déroule dans un petit village aux États-Unis. Le jeune homme et sa femme vivent ensemble dans une maison."
+        "de": "einem Mann und einem anderen Mann.\nDer Film erzählt die Geschichte eines jungen Mannes, der mit seiner Frau und seinen drei Kindern in einem kleinen Dorf in der Nähe von London lebt.\nIn einem Dorf in England, das von",
+        "fr": "Le film raconte l'histoire d'un jeune homme qui vit avec sa femme et ses trois enfants dans un petit village près de Londres."
       },
       "example": {
         "de": "Das Wort 'ins' ist sehr nützlich.",
@@ -247,15 +218,23 @@
       },
       "exercises": [
         {
-          "type": "translation",
-          "question": {
-            "de": "Übersetzen Sie: dans la",
-            "fr": "Traduisez: dans la"
-          },
+          "type": "fill_blank",
+          "examples": [
+            {
+              "question": {
+                "de": "Das Buch liegt ___ dem Tisch.",
+                "fr": "Complétez la phrase avec le mot 'dans la' (Le mot manquant est au milieu)"
+              },
+              "solution": {
+                "de": "Das Buch liegt ins dem Tisch.",
+                "fr": "Le livre est dans la la table."
+              },
+              "context": "Le mot manquant est au milieu"
+            }
+          ],
           "answer": "ins",
-          "source_word": "dans la",
-          "direction": "fr_to_de",
-          "level": "beginner"
+          "level": "beginner",
+          "translation": "dans la"
         },
         {
           "type": "multiple_choice",
@@ -264,31 +243,31 @@
             "fr": "Quel mot signifie 'dans la' ?"
           },
           "choices": [
+            "buch",
             "auto",
-            "ins",
-            "brot",
-            "buch"
+            "haus",
+            "ins"
           ],
           "correct_answer": "ins",
-          "correct_index": 1,
+          "correct_index": 3,
           "level": "beginner"
         },
         {
           "type": "definition_match",
           "question": {
-            "de": "Welches Wort wird hier definiert: \"einem jungen Mann und einem alten Mann, der sich in einer Beziehung befindet. Die Geschichte spielt in einem kleinen Dorf in den USA\"?",
-            "fr": "Quel mot correspond à cette définition : \"L'histoire se déroule dans un petit village aux États-Unis. Le jeune homme et sa femme vivent ensemble dans une maison\" ?"
+            "de": "Finden Sie das Wort zu dieser Beschreibung: \"einem Mann und einem anderen Mann. Der Film erzählt die Geschichte eines jungen Mannes, der mit seiner Frau und seinen drei Kindern in einem kleinen Dorf in der Nähe von London lebt\"",
+            "fr": "Quel mot correspond à cette définition : \"Le film raconte l'histoire d'un jeune homme qui vit avec sa femme et ses trois enfants dans un petit village près de Londres\" ?"
           },
           "definition": {
-            "de": "einem jungen Mann und einem alten Mann, der sich in einer Beziehung befindet. Die Geschichte spielt in einem kleinen Dorf in den USA",
-            "fr": "L'histoire se déroule dans un petit village aux États-Unis. Le jeune homme et sa femme vivent ensemble dans une maison"
+            "de": "einem Mann und einem anderen Mann. Der Film erzählt die Geschichte eines jungen Mannes, der mit seiner Frau und seinen drei Kindern in einem kleinen Dorf in der Nähe von London lebt",
+            "fr": "Le film raconte l'histoire d'un jeune homme qui vit avec sa femme et ses trois enfants dans un petit village près de Londres"
           },
           "answer": "ins",
           "level": "beginner"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:21:21.415681"
+      "processed_at": "2025-05-29T11:25:51.807068"
     },
     {
       "word": "kino",
@@ -298,8 +277,8 @@
         "fr": "cinéma"
       },
       "definition": {
-        "de": "in den letzten Jahren immer mehr an Bedeutung gewonnen hat. Es ist nicht nur eine Frage des Geschmacks, sondern auch des Könnens und der Fähigkeit, sich auf andere Menschen einzulassen und mit ihnen ins Gespräch zu kommen.",
-        "fr": "Il ne s'agit pas seulement d'une question de goût, mais aussi de savoir-faire et de capacité à communiquer avec d'autres personnes."
+        "de": "man sich nicht entgehen lassen sollte.\nDer Film ist sehr gut gemacht, die Story ist spannend und die Charaktere sind sehr gut ausgearbeitet.\nDie Charaktere sind gut ausgearbeitet, die Geschichte ist gut erzählt und die Protagonisten sind",
+        "fr": "Le film est très bien fait, l'histoire est passionnante et les personnages sont très bien préparés."
       },
       "example": {
         "de": "Das Wort 'kino' ist sehr nützlich.",
@@ -307,14 +286,25 @@
       },
       "exercises": [
         {
+          "type": "translation",
+          "question": {
+            "de": "Übersetzen Sie: kino",
+            "fr": "Traduisez: kino"
+          },
+          "answer": "cinéma",
+          "source_word": "kino",
+          "direction": "de_to_fr",
+          "level": "beginner"
+        },
+        {
           "type": "definition_match",
           "question": {
-            "de": "Finden Sie das Wort zu dieser Beschreibung: \"in den letzten Jahren immer mehr an Bedeutung gewonnen hat. Es ist nicht nur eine Frage des Geschmacks, sondern auch des Könnens und der Fähigkeit, sich auf andere Menschen einzulassen und mit ihnen ins Gespräch zu kommen\"",
-            "fr": "Quel mot correspond à cette définition : \"Il ne s'agit pas seulement d'une question de goût, mais aussi de savoir-faire et de capacité à communiquer avec d'autres personnes\" ?"
+            "de": "Welches Wort wird hier definiert: \"man sich nicht entgehen lassen sollte. Der Film ist sehr gut gemacht, die Story ist spannend und die Charaktere sind sehr gut ausgearbeitet\"?",
+            "fr": "Quel mot correspond à cette définition : \"Le film est très bien fait, l'histoire est passionnante et les personnages sont très bien préparés\" ?"
           },
           "definition": {
-            "de": "in den letzten Jahren immer mehr an Bedeutung gewonnen hat. Es ist nicht nur eine Frage des Geschmacks, sondern auch des Könnens und der Fähigkeit, sich auf andere Menschen einzulassen und mit ihnen ins Gespräch zu kommen",
-            "fr": "Il ne s'agit pas seulement d'une question de goût, mais aussi de savoir-faire et de capacité à communiquer avec d'autres personnes"
+            "de": "man sich nicht entgehen lassen sollte. Der Film ist sehr gut gemacht, die Story ist spannend und die Charaktere sind sehr gut ausgearbeitet",
+            "fr": "Le film est très bien fait, l'histoire est passionnante et les personnages sont très bien préparés"
           },
           "answer": "kino",
           "level": "beginner"
@@ -330,29 +320,13 @@
             "die",
             "das"
           ],
-          "answer": "die",
+          "answer": "das",
           "word": "kino",
-          "level": "beginner"
-        },
-        {
-          "type": "multiple_choice",
-          "question": {
-            "de": "Welches Wort bedeutet 'cinéma'?",
-            "fr": "Quel mot signifie 'cinéma' ?"
-          },
-          "choices": [
-            "auto",
-            "brot",
-            "kino",
-            "haus"
-          ],
-          "correct_answer": "kino",
-          "correct_index": 2,
           "level": "beginner"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:21:27.306010"
+      "processed_at": "2025-05-29T11:25:58.092367"
     },
     {
       "word": "sie",
@@ -362,8 +336,8 @@
         "fr": "et"
       },
       "definition": {
-        "de": "Menschen, die an einer psychischen Erkrankung leiden. Die Krankheit ist eine psychische Erkrankung, bei der es sich um eine psychische Störung handelt.\nPsychische Störungen sind psychische Störungen, bei denen der Betroffene nicht willens oder in der Lage ist",
-        "fr": "Les troubles mentaux sont des troubles psychologiques dont la personne n'est pas disposée ou en mesure d'être atteinte."
+        "de": "in der Bibel oft verwendet wird. Es ist ein Zeichen der Liebe, des Friedens und der Hoffnung.\nEs ist ein Symbol der Hoffnung, der Hoffnung und des Friedens. Es steht für die Hoffnung auf das Kommen des",
+        "fr": "c'est un signe d'amour, de paix et d'espérance. C'est le symbole de l'espérance, l'espoir et la paix."
       },
       "example": {
         "de": "Das Wort 'sie' ist sehr nützlich.",
@@ -371,49 +345,48 @@
       },
       "exercises": [
         {
+          "type": "gender_article",
+          "question": {
+            "de": "Welcher Artikel gehört zu 'sie'?",
+            "fr": "Quel article va avec 'sie' ?"
+          },
+          "choices": [
+            "der",
+            "die",
+            "das"
+          ],
+          "answer": "die",
+          "word": "sie",
+          "level": "beginner"
+        },
+        {
           "type": "definition_match",
           "question": {
-            "de": "Welches Wort wird hier definiert: \"Menschen, die an einer psychischen Erkrankung leiden. Die Krankheit ist eine psychische Erkrankung, bei der es sich um eine psychische Störung handelt\"?",
-            "fr": "Quel mot correspond à cette définition : \"Les troubles mentaux sont des troubles psychologiques dont la personne n'est pas disposée ou en mesure d'être atteinte\" ?"
+            "de": "Zu welchem Wort gehört diese Definition: \"in der Bibel oft verwendet wird. Es ist ein Zeichen der Liebe, des Friedens und der Hoffnung\"?",
+            "fr": "Trouvez le mot défini par : \"c'est un signe d'amour, de paix et d'espérance. C'est le symbole de l'espérance, l'espoir et la paix\" ?"
           },
           "definition": {
-            "de": "Menschen, die an einer psychischen Erkrankung leiden. Die Krankheit ist eine psychische Erkrankung, bei der es sich um eine psychische Störung handelt",
-            "fr": "Les troubles mentaux sont des troubles psychologiques dont la personne n'est pas disposée ou en mesure d'être atteinte"
+            "de": "in der Bibel oft verwendet wird. Es ist ein Zeichen der Liebe, des Friedens und der Hoffnung",
+            "fr": "c'est un signe d'amour, de paix et d'espérance. C'est le symbole de l'espérance, l'espoir et la paix"
           },
           "answer": "sie",
           "level": "beginner"
         },
         {
-          "type": "multiple_choice",
-          "question": {
-            "de": "Welches Wort bedeutet 'et'?",
-            "fr": "Quel mot signifie 'et' ?"
-          },
-          "choices": [
-            "sie",
-            "tisch",
-            "buch",
-            "wasser"
-          ],
-          "correct_answer": "sie",
-          "correct_index": 0,
-          "level": "beginner"
-        },
-        {
           "type": "sentence_building",
           "question": {
-            "de": "Bilden Sie einen Satz mit diesen Wörtern: sie, das, schön, der, ist, gut, ein, sehr",
-            "fr": "Formez une phrase avec ces mots: sie, das, schön, der, ist, gut, ein, sehr"
+            "de": "Bilden Sie einen Satz mit diesen Wörtern: sehr, ein, schön, das, der, ist, gut, sie",
+            "fr": "Formez une phrase avec ces mots: sehr, ein, schön, das, der, ist, gut, sie"
           },
           "word_pool": [
-            "sie",
-            "das",
+            "sehr",
+            "ein",
             "schön",
+            "das",
             "der",
             "ist",
             "gut",
-            "ein",
-            "sehr"
+            "sie"
           ],
           "target_sentence": "Das ist ein sie.",
           "answer": "sie",
@@ -421,19 +394,19 @@
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:21:32.436406"
+      "processed_at": "2025-05-29T11:26:05.239935"
     }
   ],
   "vocabulary_stats": {
     "total_words": 5,
     "total_exercises": 15,
     "exercise_types": {
-      "multiple_choice": 4,
-      "fill_blank": 2,
-      "gender_article": 3,
-      "translation": 2,
-      "definition_match": 3,
-      "sentence_building": 1
+      "definition_match": 5,
+      "translation": 3,
+      "sentence_building": 3,
+      "fill_blank": 1,
+      "multiple_choice": 1,
+      "gender_article": 2
     },
     "levels": {
       "beginner": 3,
