@@ -2,76 +2,83 @@
   "segments": [
     {
       "start": 0.031,
-      "end": 0.811,
-      "text": " Dessier.",
+      "end": 0.644,
+      "text": " Das.",
       "words": [
         {
-          "word": "Dessier.",
+          "word": "Das.",
           "start": 0.031,
-          "end": 0.811,
-          "score": 0.536
+          "end": 0.644,
+          "score": 0.904
         }
       ],
-      "translation": "Dessier."
+      "translation": "Ça."
     }
   ],
   "word_segments": [
     {
-      "word": "Dessier.",
+      "word": "Das.",
       "start": 0.031,
-      "end": 0.811,
-      "score": 0.536
+      "end": 0.644,
+      "score": 0.904
     }
   ],
   "language": "de",
   "vocabulary": [
     {
-      "word": "dessier.",
+      "word": "das.",
       "level": {
-        "level": "intermediate",
-        "score": 3,
-        "explanation": "Mot de difficulté moyenne"
+        "level": "beginner",
+        "score": 1,
+        "explanation": "Mot simple, approprié pour les débutants"
       },
       "translations": {
-        "principal": "Dessier.",
-        "variantes": [
-          "dessier."
-        ]
+        "de": {
+          "principal": "das.",
+          "variantes": [],
+          "synonymes": []
+        },
+        "fr": {
+          "principal": "",
+          "variantes": [],
+          "synonymes": []
+        },
+        "principal": "das."
       },
       "examples": [
         {
-          "de": "Ich bin dessier., weil ich in den letzten Jahren immer mal wieder mit dem Gedanken gespielt habe, dass ich mal ein paar Fotos machen könnte.",
-          "fr": "Je suis dessien, parce que j'ai joué ces dernières années avec l'idée que je pourrais prendre quelques photos."
+          "de": "Ich das. gern würde ich mal wissen, wie es dir geht. Ich.",
+          "fr": "J'aimerais savoir comment tu vas."
         },
         {
-          "de": "Heute dessier. wir haben es geschafft, dass wir in den letzten Wochen ein paar Fotos gemacht haben, die wir euch nicht vorenthalten wollen.",
-          "fr": "Aujourd'hui, nous avons réussi à prendre des photos que nous ne voulons pas vous cacher."
+          "de": "Das das. ist gut so, denn es ist nicht so einfach, wie.",
+          "fr": "C'est bien, parce que ce n'est pas aussi simple que ça."
         },
         {
-          "de": "Er hat dessier., dass es sich um ein Produkt handelt, das von einem Hersteller stammt, der auf den Markt gekommen ist.\nEs ist.",
-          "fr": "Il a dessié qu'il s'agit d'un produit provenant d'un fabricant qui est venu sur le marché."
+          "de": "Wir haben das.\nIch bin ein Mann, ich bin eine Frau.",
+          "fr": "Je suis un homme, une femme."
         },
         {
-          "de": "Sie werden dessier., wenn Sie sich für die Verwendung von Cookies entscheiden. Wenn Sie fortfahren, diese Seite zu verwenden, nehmen wir an,.",
-          "fr": "Si vous continuez à utiliser ce site, nous supposons que vous choisissez d'utiliser des cookies."
+          "de": "Er das. heute.de/news/der-bundestag-.",
+          "fr": "Il l'a fait aujourd'hui.de/news/le Bundestag."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "'___ bin'",
-            "answer": "dessier",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist ___? Was ist ___? Was ist.",
+            "answer": "das",
             "examples": [
-              "dessier"
+              "das"
             ]
           }
         },
         "multiple_choice": {
           "de": {
-            "question": "Was bedeutet 'dessier'?",
+            "question": "Was bedeutet 'das'?",
             "choices": [
-              "dessier bin",
-              "dessier"
+              "das bin",
+              "das"
             ],
             "answer": "0"
           }
@@ -79,9 +86,9 @@
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'dessier': dessi",
-              "dessi",
-              "3 einfache verwandte Wörter zu 'dessier': dessi"
+              "3 einfache verwandte Wörter zu 'das': das",
+              "das",
+              "3 einfache verwandte Wörter zu 'das': das"
             ]
           }
         }
