@@ -113,76 +113,110 @@
         }
       ],
       "exercises": {
-        "fill_blank": {
-          "de": [
-            {
-              "de": "Schreiben Sie 3 natürliche Sätze mit dem Wort '___':",
-              "fr": "Écrivez 3 phrases naturelles avec le mot 'aller':",
-              "answer": "gehen"
+        "fill_blank": [
+          {
+            "de": {
+              "text": "Heute habe ich __ ____ gekauft. Heute habe ich __ ____ gekauft. Heute habe ich __ ____ gekauft. Heute habe ich __ ____",
+              "answer": "gehen",
+              "complete_sentence": "Heute habe ich __ gehen gekauft. Heute habe ich __ gehen gekauft. Heute habe ich __ gehen gekauft. Heute habe ich __ gehen"
+            },
+            "fr": {
+              "text": "Aujourd'hui, j'ai acheté __ aller. Aujourd'hui j'ai acheté __ aller. Aujourd'hui, j'ai acheté __ aller. Aujourd'hui, j'ai acheté __",
+              "translation": "Aujourd'hui, j'ai acheté __ aller. Aujourd'hui j'ai acheté __ aller. Aujourd'hui, j'ai acheté __ aller. Aujourd'hui, j'ai acheté __",
+              "instruction": "Complétez avec le mot allemand pour 'gehen'"
             }
-          ]
-        },
+          },
+          {
+            "de": {
+              "text": "Wenn Sie den __ ____ in den Wald ____, werden Sie feststellen, dass der Wald sehr schön ist. Es gibt viele Bäume und Sträucher,",
+              "answer": "gehen",
+              "complete_sentence": "Wenn Sie den __ gehen in den Wald gehen, werden Sie feststellen, dass der Wald sehr schön ist. Es gibt viele Bäume und Sträucher,"
+            },
+            "fr": {
+              "text": "Si vous allez dans la forêt __, vous remarquerez que la forêt est très belle. Il y a beaucoup d'arbres et d'arbustes,",
+              "translation": "Si vous allez dans la forêt __, vous remarquerez que la forêt est très belle. Il y a beaucoup d'arbres et d'arbustes,",
+              "instruction": "Complétez avec le mot allemand pour 'gehen'"
+            }
+          },
+          {
+            "de": {
+              "text": "Wenn ja, wie? Wenn nein, wie? Wenn nein, wie? Wenn nein, wie? Wenn nein, wie? Wenn nein, wie?",
+              "answer": "gehen",
+              "complete_sentence": "Wenn ja, wie? Wenn nein, wie? Wenn nein, wie? Wenn nein, wie? Wenn nein, wie? Wenn nein, wie?"
+            },
+            "fr": {
+              "text": "Si oui, comment? Si non, comment? Si non, comment? Si non, comment? Si non, comment? Si non, comment? Si non, comment?",
+              "translation": "Si oui, comment? Si non, comment? Si non, comment? Si non, comment? Si non, comment? Si non, comment? Si non, comment?",
+              "instruction": "Complétez avec le mot allemand pour 'gehen'"
+            }
+          }
+        ],
         "multiple_choice": {
           "de": {
-            "question": "Frage: Welche der folgenden Aussagen beschreibt die Bedeutung/Verwendung von 'gehen' am besten?",
+            "question": "Was bedeutet das Wort 'gehen' auf Französisch?",
             "choices": [
-              "[Erste mögliche Antwort]",
-              "[Zweite mögliche Antwort]",
-              "[Dritte mögliche Antwort]",
-              "[Vierte mögliche Antwort]"
+              "A) voiture",
+              "B) aller",
+              "C) livre",
+              "D) maison"
             ],
-            "answer": ","
+            "answer": "B",
+            "explanation": "'gehen' bedeutet 'aller' auf Französisch."
           },
           "fr": {
-            "question": "A) [Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,",
+            "question": "Que signifie le mot allemand 'gehen' ?",
             "choices": [
-              "[Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,"
+              "A) voiture",
+              "B) aller",
+              "C) livre",
+              "D) maison"
             ],
-            "answer": ","
+            "answer": "B",
+            "explanation": "'gehen' signifie 'aller' en français."
           }
         },
         "word_association": {
           "de": {
-            "words": [
-              "",
-              "1. Ein Synonym",
-              "2. Ein verwandtes Verb",
-              "3. Ein verwandtes Adjektiv",
-              "4. Ein Gegenteil (wenn möglich)",
-              "5. Ein übergeordneter Begriff",
-              "6. Ein spezifischerer Begriff (wenn möglich) wird verwendet, um ein anderes Adjektiv zu beschreiben",
-              "7. Ein Adjektiv wird verwendet, um ein anderes Adjektiv zu beschreiben, z. B. ein Wort",
-              "8. Ein"
+            "target_word": "gehen",
+            "associated_words": [
+              "„Ich",
+              "Wenn",
+              "„Ich",
+              "„Der"
             ],
             "categories": [
               "Synonym",
-              "Verb",
-              "Adjektiv",
-              "Antonym",
-              "Oberbegriff",
-              "Unterbegriff"
+              "Gegenteil",
+              "Verwandt",
+              "Bereich"
             ]
           },
           "fr": {
-            "words": [
-              "C'est ça.",
-              "1. Un synonyme",
-              "2. Un verbe voisin",
-              "3. Un adjectif proche",
-              "4. Un contraire (si possible)",
-              "5. Un terme générique",
-              "6. Un terme plus spécifique (si possible) est utilisé pour décrire un autre adjectif.",
-              "7. Un adjectif est utilisé pour décrire un autre adjectif, par exemple un mot",
-              "8. Un"
+            "target_word": "aller",
+            "associated_words": [
+              "\"J'ai dit: \"Mais je ne suis pas",
+              "Si",
+              "\"J'ai dit: \"Mais je ne suis pas",
+              "Le Conseil a adopté le règlement (CE) n°"
             ],
             "categories": [
               "Synonyme",
-              "Verbe",
-              "Adjectif",
-              "Antonyme",
-              "Terme générique",
-              "Terme spécifique"
+              "Contraire",
+              "Lié",
+              "Domaine"
             ]
+          }
+        },
+        "sentence_building": {
+          "de": {
+            "instruction": "Bilden Sie einen Satz mit dem Wort 'gehen'",
+            "example": "Beispiel: Ich verwende gehen jeden Tag.",
+            "level": "intermediate"
+          },
+          "fr": {
+            "instruction": "Construisez une phrase avec le mot allemand 'gehen'",
+            "example": "Exemple: J'utilise gehen tous les jours.",
+            "level": "intermediate"
           }
         }
       }
@@ -227,86 +261,110 @@
         }
       ],
       "exercises": {
-        "fill_blank": {
-          "de": [
-            {
-              "de": "Schreiben Sie 3 natürliche Sätze mit dem Wort '___':",
-              "fr": "Écrivez 3 phrases naturelles avec le mot 'aujourd'hui':",
-              "answer": "heute"
+        "fill_blank": [
+          {
+            "de": {
+              "text": "Heute habe ich __ ____ gekauft. Heute habe ich __ ____ gekauft. Heute habe ich __ ____ gekauft. Heute habe ich __ ____",
+              "answer": "heute",
+              "complete_sentence": "Heute habe ich __ heute gekauft. Heute habe ich __ heute gekauft. Heute habe ich __ heute gekauft. Heute habe ich __ heute"
             },
-            {
-              "de": "Jeder Satz sollte einen klaren Kontext haben. Es ist wichtig, dass Sie die Sätze mit dem Wort '___' beginnen.",
-              "fr": "Chaque phrase doit avoir un contexte clair. Il est important que vous commenciez par le mot 'aujourd'hui'.",
-              "answer": "heute"
-            },
-            {
-              "de": "1. Ein einfacher Satz für Fortgeschrittene. Es ist wichtig, dass Sie die Sätze mit dem Wort '___' beginnen.",
-              "fr": "1. Une phrase simple pour les avancés. Il est important que vous commenciez les phrases par le mot 'aujourd'hui'.",
-              "answer": "heute"
+            "fr": {
+              "text": "Aujourd'hui, j'ai acheté __ aujourd'hui. Aujourd'hui, j'ai acheté __ aujourd'hui. Aujourd'hui, j'ai acheté __ aujourd'hui.",
+              "translation": "Aujourd'hui, j'ai acheté __ aujourd'hui. Aujourd'hui, j'ai acheté __ aujourd'hui. Aujourd'hui, j'ai acheté __ aujourd'hui.",
+              "instruction": "Complétez avec le mot allemand pour 'heute'"
             }
-          ]
-        },
+          },
+          {
+            "de": {
+              "text": "Es ist ein Tag, an dem Sie sich entspannen und die Seele baumeln lassen können. Es ist ein Tag, an dem Sie sich einfach nur entspannen und",
+              "answer": "heute",
+              "complete_sentence": "Es ist ein Tag, an dem Sie sich entspannen und die Seele baumeln lassen können. Es ist ein Tag, an dem Sie sich einfach nur entspannen und"
+            },
+            "fr": {
+              "text": "C'est un jour où vous pouvez vous détendre et laisser l'âme se détendre. C'est un jour où vous pouvez simplement vous détendre et vous détendre.",
+              "translation": "C'est un jour où vous pouvez vous détendre et laisser l'âme se détendre. C'est un jour où vous pouvez simplement vous détendre et vous détendre.",
+              "instruction": "Complétez avec le mot allemand pour 'heute'"
+            }
+          },
+          {
+            "de": {
+              "text": "Ich habe ____ den __ ____ gegeben. Ich habe ____ den __ ____ gegeben. Ich habe ____ den __ ____ gegeben. Ich habe",
+              "answer": "heute",
+              "complete_sentence": "Ich habe heute den __ heute gegeben. Ich habe heute den __ heute gegeben. Ich habe heute den __ heute gegeben. Ich habe"
+            },
+            "fr": {
+              "text": "J'ai donné aujourd'hui le ____ aujourd'hui. J'ai donné aujourd'hui le ____ aujourd'hui. J'ai donné aujourd'hui le ____ aujourd'hui.",
+              "translation": "J'ai donné aujourd'hui le ____ aujourd'hui. J'ai donné aujourd'hui le ____ aujourd'hui. J'ai donné aujourd'hui le ____ aujourd'hui.",
+              "instruction": "Complétez avec le mot allemand pour 'heute'"
+            }
+          }
+        ],
         "multiple_choice": {
           "de": {
-            "question": "Frage: Welche der folgenden Aussagen beschreibt die Bedeutung/Verwendung von 'heute' am besten?",
+            "question": "Was bedeutet das Wort 'heute' auf Französisch?",
             "choices": [
-              "[Erste mögliche Antwort]",
-              "[Zweite mögliche Antwort]",
-              "[Dritte mögliche Antwort]",
-              "[Vierte mögliche Antwort]"
+              "A) voiture",
+              "B) Aujourd'hui",
+              "C) livre",
+              "D) maison"
             ],
-            "answer": ","
+            "answer": "B",
+            "explanation": "'heute' bedeutet 'Aujourd'hui' auf Französisch."
           },
           "fr": {
-            "question": "A) [Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,",
+            "question": "Que signifie le mot allemand 'heute' ?",
             "choices": [
-              "[Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,"
+              "A) voiture",
+              "B) Aujourd'hui",
+              "C) livre",
+              "D) maison"
             ],
-            "answer": ","
+            "answer": "B",
+            "explanation": "'heute' signifie 'Aujourd'hui' en français."
           }
         },
         "word_association": {
           "de": {
-            "words": [
-              "",
-              "1. Ein Synonym",
-              "2. Ein verwandtes Verb",
-              "3. Ein verwandtes Adjektiv",
-              "4. Ein Gegenteil (wenn möglich)",
-              "5. Ein übergeordneter Begriff",
-              "6. Ein spezifischerer Begriff (wenn möglich) wird verwendet, um ein anderes Adjektiv zu beschreiben",
-              "7. Ein Adjektiv wird verwendet, um ein anderes Adjektiv zu beschreiben, z. B. ein Wort",
-              "8. Ein"
+            "target_word": "heute",
+            "associated_words": [
+              "„Wir",
+              "Der",
+              "„Der",
+              "die"
             ],
             "categories": [
               "Synonym",
-              "Verb",
-              "Adjektiv",
-              "Antonym",
-              "Oberbegriff",
-              "Unterbegriff"
+              "Gegenteil",
+              "Verwandt",
+              "Bereich"
             ]
           },
           "fr": {
-            "words": [
-              "C'est ça.",
-              "1. Un synonyme",
-              "2. Un verbe voisin",
-              "3. Un adjectif proche",
-              "4. Un contraire (si possible)",
-              "5. Un terme générique",
-              "6. Un terme plus spécifique (si possible) est utilisé pour décrire un autre adjectif.",
-              "7. Un adjectif est utilisé pour décrire un autre adjectif, par exemple un mot",
-              "8. Un"
+            "target_word": "Aujourd'hui",
+            "associated_words": [
+              "\"Nous",
+              "Le",
+              "Le Conseil a adopté le règlement (CE) n°",
+              "qui:"
             ],
             "categories": [
               "Synonyme",
-              "Verbe",
-              "Adjectif",
-              "Antonyme",
-              "Terme générique",
-              "Terme spécifique"
+              "Contraire",
+              "Lié",
+              "Domaine"
             ]
+          }
+        },
+        "sentence_building": {
+          "de": {
+            "instruction": "Bilden Sie einen Satz mit dem Wort 'heute'",
+            "example": "Beispiel: Ich verwende heute jeden Tag.",
+            "level": "intermediate"
+          },
+          "fr": {
+            "instruction": "Construisez une phrase avec le mot allemand 'heute'",
+            "example": "Exemple: J'utilise heute tous les jours.",
+            "level": "intermediate"
           }
         }
       }
@@ -351,76 +409,110 @@
         }
       ],
       "exercises": {
-        "fill_blank": {
-          "de": [
-            {
-              "de": "Schreiben Sie 3 natürliche Sätze mit dem Wort '___':",
-              "fr": "Écrivez 3 phrases naturelles avec le mot 'ins':",
-              "answer": "ins"
+        "fill_blank": [
+          {
+            "de": {
+              "text": "Heute habe ich __ ____ gekauft. Heute habe ich __ ____ gekauft. Heute habe ich __ ____ gekauft. Heute habe ich __ ____",
+              "answer": "ins",
+              "complete_sentence": "Heute habe ich __ ins gekauft. Heute habe ich __ ins gekauft. Heute habe ich __ ins gekauft. Heute habe ich __ ins"
+            },
+            "fr": {
+              "text": "Aujourd'hui, j'ai acheté __. Aujourd'hui, j'ai acheté __. Aujourd'hui, j'ai acheté __. Aujourd'hui, j'ai acheté __ __ __ __",
+              "translation": "Aujourd'hui, j'ai acheté __. Aujourd'hui, j'ai acheté __. Aujourd'hui, j'ai acheté __. Aujourd'hui, j'ai acheté __ __ __ __",
+              "instruction": "Complétez avec le mot allemand pour 'ins'"
             }
-          ]
-        },
+          },
+          {
+            "de": {
+              "text": "Der __ ____ ist sehr schön, weil es so schön ist, weil es so schön ist, weil es so schön ist, weil es so",
+              "answer": "ins",
+              "complete_sentence": "Der __ ins ist sehr schön, weil es so schön ist, weil es so schön ist, weil es so schön ist, weil es so"
+            },
+            "fr": {
+              "text": "Le __in est très beau parce qu'il est si beau parce qu'il est si beau parce qu'il est si beau",
+              "translation": "Le __in est très beau parce qu'il est si beau parce qu'il est si beau parce qu'il est si beau",
+              "instruction": "Complétez avec le mot allemand pour 'ins'"
+            }
+          },
+          {
+            "de": {
+              "text": "Ich bin ein Mann, Ich suche eine Frau, mit der ich eine schöne Zeit verbringen kann. Ich bin ein Mann, Ich suche eine Frau,",
+              "answer": "ins",
+              "complete_sentence": "Ich bin ein Mann, Ich suche eine Frau, mit der ich eine schöne Zeit verbringen kann. Ich bin ein Mann, Ich suche eine Frau,"
+            },
+            "fr": {
+              "text": "Je suis un homme, Je cherche une femme avec qui je peux passer un bon moment. Je suis un homme, Je cherche une femme,",
+              "translation": "Je suis un homme, Je cherche une femme avec qui je peux passer un bon moment. Je suis un homme, Je cherche une femme,",
+              "instruction": "Complétez avec le mot allemand pour 'ins'"
+            }
+          }
+        ],
         "multiple_choice": {
           "de": {
-            "question": "Frage: Welche der folgenden Aussagen beschreibt die Bedeutung/Verwendung von 'ins' am besten?",
+            "question": "Was bedeutet das Wort 'ins' auf Französisch?",
             "choices": [
-              "[Erste mögliche Antwort]",
-              "[Zweite mögliche Antwort]",
-              "[Dritte mögliche Antwort]",
-              "[Vierte mögliche Antwort]"
+              "A) dans la",
+              "B) maison",
+              "C) livre",
+              "D) voiture"
             ],
-            "answer": ","
+            "answer": "A",
+            "explanation": "'ins' bedeutet 'dans la' auf Französisch."
           },
           "fr": {
-            "question": "A) [Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,",
+            "question": "Que signifie le mot allemand 'ins' ?",
             "choices": [
-              "[Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,"
+              "A) dans la",
+              "B) maison",
+              "C) livre",
+              "D) voiture"
             ],
-            "answer": ","
+            "answer": "A",
+            "explanation": "'ins' signifie 'dans la' en français."
           }
         },
         "word_association": {
           "de": {
-            "words": [
-              "",
-              "1. Ein Synonym",
-              "2. Ein verwandtes Verb",
-              "3. Ein verwandtes Adjektiv",
-              "4. Ein Gegenteil (wenn möglich)",
-              "5. Ein übergeordneter Begriff",
-              "6. Ein spezifischerer Begriff (wenn möglich) wird verwendet, um ein anderes Adjektiv zu beschreiben",
-              "7. Ein Adjektiv wird verwendet, um ein anderes Adjektiv zu beschreiben, z. B. ein Wort",
-              "8. Ein"
+            "target_word": "ins",
+            "associated_words": [
+              "„Ich",
+              "„Ich",
+              "„Ich",
+              "„Weisheit“"
             ],
             "categories": [
               "Synonym",
-              "Verb",
-              "Adjektiv",
-              "Antonym",
-              "Oberbegriff",
-              "Unterbegriff"
+              "Gegenteil",
+              "Verwandt",
+              "Bereich"
             ]
           },
           "fr": {
-            "words": [
-              "C'est ça.",
-              "1. Un synonyme",
-              "2. Un verbe voisin",
-              "3. Un adjectif proche",
-              "4. Un contraire (si possible)",
-              "5. Un terme générique",
-              "6. Un terme plus spécifique (si possible) est utilisé pour décrire un autre adjectif.",
-              "7. Un adjectif est utilisé pour décrire un autre adjectif, par exemple un mot",
-              "8. Un"
+            "target_word": "dans la",
+            "associated_words": [
+              "\"J'ai dit: \"Mais je ne suis pas",
+              "\"J'ai dit: \"Mais je ne suis pas",
+              "\"J'ai dit: \"Mais je ne suis pas",
+              "Sagesse"
             ],
             "categories": [
               "Synonyme",
-              "Verbe",
-              "Adjectif",
-              "Antonyme",
-              "Terme générique",
-              "Terme spécifique"
+              "Contraire",
+              "Lié",
+              "Domaine"
             ]
+          }
+        },
+        "sentence_building": {
+          "de": {
+            "instruction": "Bilden Sie einen Satz mit dem Wort 'ins'",
+            "example": "Beispiel: Ich verwende ins jeden Tag.",
+            "level": "intermediate"
+          },
+          "fr": {
+            "instruction": "Construisez une phrase avec le mot allemand 'ins'",
+            "example": "Exemple: J'utilise ins tous les jours.",
+            "level": "intermediate"
           }
         }
       }
@@ -465,84 +557,110 @@
         }
       ],
       "exercises": {
-        "fill_blank": {
-          "de": [
-            {
-              "de": "Schreiben Sie 3 natürliche Sätze mit dem Wort '___':",
-              "fr": "Écrivez 3 phrases naturelles avec le mot 'kino':",
-              "answer": "kino"
+        "fill_blank": [
+          {
+            "de": {
+              "text": "Heute habe ich __ ____ gekauft. Heute habe ich __ ____ gekauft. Heute habe ich __ ____ gekauft. Heute habe ich __ ____",
+              "answer": "kino",
+              "complete_sentence": "Heute habe ich __ kino gekauft. Heute habe ich __ kino gekauft. Heute habe ich __ kino gekauft. Heute habe ich __ kino"
             },
-            {
-              "de": "Jeder Satz sollte einen klaren Kontext haben. Wenn Sie einen Satz mit dem Wort '___' beginnen, sollten Sie folgende Sätze mit dem Wort '___' beginnen:",
-              "fr": "Chaque phrase doit avoir un contexte clair. Si vous commencez une phrase par le mot 'kino', vous devriez commencer par le mot 'kino':",
-              "answer": "kino"
-            },
-            {
-              "de": "Wenn Sie einen Satz mit dem Wort '___' beginnen, sollten Sie folgende Sätze mit dem Wort '___' beginnen:",
-              "fr": "Si vous commencez une phrase par le mot 'kino', vous devriez commencer par le mot 'kino':",
-              "answer": "kino"
+            "fr": {
+              "text": "Aujourd'hui j'ai acheté __ cinéma. Aujourd'hui j'ai acheté __ cinéma. Aujourd'hui j'ai acheté __ cinéma. Aujourd'hui j'ai acheté __ cinéma",
+              "translation": "Aujourd'hui j'ai acheté __ cinéma. Aujourd'hui j'ai acheté __ cinéma. Aujourd'hui j'ai acheté __ cinéma. Aujourd'hui j'ai acheté __ cinéma",
+              "instruction": "Complétez avec le mot allemand pour 'kino'"
             }
-          ]
-        },
+          },
+          {
+            "de": {
+              "text": "Es ist sehr schön. Es ist sehr schön. Es ist sehr schön. Es ist sehr schön. Es ist sehr schön. Es ist sehr schön.",
+              "answer": "kino",
+              "complete_sentence": "Es ist sehr schön. Es ist sehr schön. Es ist sehr schön. Es ist sehr schön. Es ist sehr schön. Es ist sehr schön."
+            },
+            "fr": {
+              "text": "C'est très beau. C'est très beau. C'est très beau. C'est très beau. C'est très beau.",
+              "translation": "C'est très beau. C'est très beau. C'est très beau. C'est très beau. C'est très beau.",
+              "instruction": "Complétez avec le mot allemand pour 'kino'"
+            }
+          },
+          {
+            "de": {
+              "text": "Ich bin ein Mann, Ich suche eine Frau, mit der ich Spaß haben kann. Ich bin ein Mann, Ich suche eine Frau, mit der ich",
+              "answer": "kino",
+              "complete_sentence": "Ich bin ein Mann, Ich suche eine Frau, mit der ich Spaß haben kann. Ich bin ein Mann, Ich suche eine Frau, mit der ich"
+            },
+            "fr": {
+              "text": "Je suis un homme, Je cherche une femme avec qui je peux m'amuser. Je suis un homme, Je cherche une femme avec qui je peux m'amuser",
+              "translation": "Je suis un homme, Je cherche une femme avec qui je peux m'amuser. Je suis un homme, Je cherche une femme avec qui je peux m'amuser",
+              "instruction": "Complétez avec le mot allemand pour 'kino'"
+            }
+          }
+        ],
         "multiple_choice": {
           "de": {
-            "question": "Frage: Welche der folgenden Aussagen beschreibt die Bedeutung/Verwendung von 'kino' am besten?",
+            "question": "Was bedeutet das Wort 'kino' auf Französisch?",
             "choices": [
-              "[Erste mögliche Antwort]",
-              "[Zweite mögliche Antwort]",
-              "[Dritte mögliche Antwort]",
-              "[Vierte mögliche Antwort]"
+              "A) cinéma",
+              "B) maison",
+              "C) livre",
+              "D) voiture"
             ],
-            "answer": ","
+            "answer": "A",
+            "explanation": "'kino' bedeutet 'cinéma' auf Französisch."
           },
           "fr": {
-            "question": "Créez un test à choix multiples pour le mot 'kino': Question: Lequel des messages suivants décrit le mieux la signification/l'utilisation du 'kino'? A) [Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Correct Réponse: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,",
-            "choices": [],
-            "answer": ","
+            "question": "Que signifie le mot allemand 'kino' ?",
+            "choices": [
+              "A) cinéma",
+              "B) maison",
+              "C) livre",
+              "D) voiture"
+            ],
+            "answer": "A",
+            "explanation": "'kino' signifie 'cinéma' en français."
           }
         },
         "word_association": {
           "de": {
-            "words": [
-              "",
-              "1. Ein Synonym",
-              "2. Ein verwandtes Verb",
-              "3. Ein verwandtes Adjektiv",
-              "4. Ein Gegenteil (wenn möglich)",
-              "5. Ein übergeordneter Begriff",
-              "6. Ein spezifischerer Begriff (wenn möglich) wird verwendet, um ein anderes Adjektiv zu beschreiben",
-              "7. Ein Adjektiv wird verwendet, um ein anderes Adjektiv zu beschreiben, z. B. ein Wort",
-              "8. Ein"
+            "target_word": "kino",
+            "associated_words": [
+              "\"Der",
+              "Es",
+              "\"In",
+              "\"Kino"
             ],
             "categories": [
               "Synonym",
-              "Verb",
-              "Adjektiv",
-              "Antonym",
-              "Oberbegriff",
-              "Unterbegriff"
+              "Gegenteil",
+              "Verwandt",
+              "Bereich"
             ]
           },
           "fr": {
-            "words": [
-              "C'est ça.",
-              "1. Un synonyme",
-              "2. Un verbe voisin",
-              "3. Un adjectif proche",
-              "4. Un contraire (si possible)",
-              "5. Un terme générique",
-              "6. Un terme plus spécifique (si possible) est utilisé pour décrire un autre adjectif.",
-              "7. Un adjectif est utilisé pour décrire un autre adjectif, par exemple un mot",
-              "8. Un"
+            "target_word": "cinéma",
+            "associated_words": [
+              "\"Le",
+              "Il",
+              "\"Dans",
+              "\"Cinéma"
             ],
             "categories": [
               "Synonyme",
-              "Verbe",
-              "Adjectif",
-              "Antonyme",
-              "Terme générique",
-              "Terme spécifique"
+              "Contraire",
+              "Lié",
+              "Domaine"
             ]
+          }
+        },
+        "sentence_building": {
+          "de": {
+            "instruction": "Bilden Sie einen Satz mit dem Wort 'kino'",
+            "example": "Beispiel: Ich verwende kino jeden Tag.",
+            "level": "intermediate"
+          },
+          "fr": {
+            "instruction": "Construisez une phrase avec le mot allemand 'kino'",
+            "example": "Exemple: J'utilise kino tous les jours.",
+            "level": "intermediate"
           }
         }
       }
@@ -587,86 +705,110 @@
         }
       ],
       "exercises": {
-        "fill_blank": {
-          "de": [
-            {
-              "de": "Schreiben Sie 3 natürliche Sätze mit dem Wort '___':",
-              "fr": "Écrivez 3 phrases naturelles avec le mot 'ils':",
-              "answer": "sie"
+        "fill_blank": [
+          {
+            "de": {
+              "text": "Heute habe ich __ ____ gekauft. Heute habe ich __ ____ gekauft. Heute habe ich __ ____ gekauft. Heute habe ich __ ____",
+              "answer": "sie",
+              "complete_sentence": "Heute habe ich __ sie gekauft. Heute habe ich __ sie gekauft. Heute habe ich __ sie gekauft. Heute habe ich __ sie"
             },
-            {
-              "de": "1. Ein Satz mit dem Wort '___': Ein einfacher Satz für Anfänger",
-              "fr": "1. Une phrase avec le mot 'ils': Une phrase simple pour les débutants",
-              "answer": "sie"
-            },
-            {
-              "de": "2. Ein Satz mit dem Wort '___': Ein einfacher Satz für Anfänger. Es ist wichtig, dass die Sätze klar und verständlich sind.",
-              "fr": "2. Une phrase avec le mot 'ils': Une phrase simple pour les débutants. Il est important que les phrases soient claires et compréhensibles.",
-              "answer": "sie"
+            "fr": {
+              "text": "Aujourd'hui, je les ai achetés. Aujourd'hui, je les ai achetés. Aujourd'hui, je les ai achetés. Aujourd'hui, je les ai achetés.",
+              "translation": "Aujourd'hui, je les ai achetés. Aujourd'hui, je les ai achetés. Aujourd'hui, je les ai achetés. Aujourd'hui, je les ai achetés.",
+              "instruction": "Complétez avec le mot allemand pour 'sie'"
             }
-          ]
-        },
+          },
+          {
+            "de": {
+              "text": "Sie ist sehr schön. Sie ist sehr schön. Sie ist sehr schön. Sie ist sehr schön. Sie ist sehr schön. Sie ist sehr schön.",
+              "answer": "sie",
+              "complete_sentence": "Sie ist sehr schön. Sie ist sehr schön. Sie ist sehr schön. Sie ist sehr schön. Sie ist sehr schön. Sie ist sehr schön."
+            },
+            "fr": {
+              "text": "Elle est très belle, très belle, très belle, très belle, très belle.",
+              "translation": "Elle est très belle, très belle, très belle, très belle, très belle.",
+              "instruction": "Complétez avec le mot allemand pour 'sie'"
+            }
+          },
+          {
+            "de": {
+              "text": "Wenn ja, warum? Wenn nein, warum? Wenn nein, warum? Wenn nein, warum? Wenn nein, warum? Wenn nein, warum?",
+              "answer": "sie",
+              "complete_sentence": "Wenn ja, warum? Wenn nein, warum? Wenn nein, warum? Wenn nein, warum? Wenn nein, warum? Wenn nein, warum?"
+            },
+            "fr": {
+              "text": "Si oui, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi?",
+              "translation": "Si oui, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi?",
+              "instruction": "Complétez avec le mot allemand pour 'sie'"
+            }
+          }
+        ],
         "multiple_choice": {
           "de": {
-            "question": "Frage: Welche der folgenden Aussagen beschreibt die Bedeutung/Verwendung von 'sie' am besten?",
+            "question": "Was bedeutet das Wort 'sie' auf Französisch?",
             "choices": [
-              "[Erste mögliche Antwort]",
-              "[Zweite mögliche Antwort]",
-              "[Dritte mögliche Antwort]",
-              "[Vierte mögliche Antwort]"
+              "A) voiture",
+              "B) livre",
+              "C) et",
+              "D) maison"
             ],
-            "answer": ","
+            "answer": "C",
+            "explanation": "'sie' bedeutet 'et' auf Französisch."
           },
           "fr": {
-            "question": "A) [Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,",
+            "question": "Que signifie le mot allemand 'sie' ?",
             "choices": [
-              "[Première réponse possible] B) [Deuxième réponse possible] C) [Troisième réponse possible] D) [Quatrième réponse possible] Réponse correcte: [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,B,C ou D] [A,"
+              "A) voiture",
+              "B) livre",
+              "C) et",
+              "D) maison"
             ],
-            "answer": ","
+            "answer": "C",
+            "explanation": "'sie' signifie 'et' en français."
           }
         },
         "word_association": {
           "de": {
-            "words": [
-              "",
-              "1. Ein Synonym",
-              "2. Ein verwandtes Verb",
-              "3. Ein verwandtes Adjektiv",
-              "4. Ein Gegenteil (wenn möglich)",
-              "5. Ein übergeordneter Begriff",
-              "6. Ein spezifischerer Begriff (wenn möglich) wird verwendet, um ein anderes Adjektiv zu beschreiben",
-              "7. Ein Adjektiv wird verwendet, um ein anderes Adjektiv zu beschreiben, z. B. 'sie'",
-              "8."
+            "target_word": "sie",
+            "associated_words": [
+              "„Ich",
+              "Sie",
+              "„Ich",
+              "die"
             ],
             "categories": [
               "Synonym",
-              "Verb",
-              "Adjektiv",
-              "Antonym",
-              "Oberbegriff",
-              "Unterbegriff"
+              "Gegenteil",
+              "Verwandt",
+              "Bereich"
             ]
           },
           "fr": {
-            "words": [
-              "C'est ça.",
-              "1. Un synonyme",
-              "2. Un verbe voisin",
-              "3. Un adjectif proche",
-              "4. Un contraire (si possible)",
-              "5. Un terme générique",
-              "6. Un terme plus spécifique (si possible) est utilisé pour décrire un autre adjectif.",
-              "7. Un adjectif est utilisé pour décrire un autre adjectif, par exemple 'ils'",
-              "8."
+            "target_word": "et",
+            "associated_words": [
+              "\"J'ai dit: \"Mais je ne suis pas",
+              "Elle",
+              "\"J'ai dit: \"Mais je ne suis pas",
+              "qui:"
             ],
             "categories": [
               "Synonyme",
-              "Verbe",
-              "Adjectif",
-              "Antonyme",
-              "Terme générique",
-              "Terme spécifique"
+              "Contraire",
+              "Lié",
+              "Domaine"
             ]
+          }
+        },
+        "sentence_building": {
+          "de": {
+            "instruction": "Bilden Sie einen Satz mit dem Wort 'sie'",
+            "example": "Beispiel: Ich verwende sie jeden Tag.",
+            "level": "intermediate"
+          },
+          "fr": {
+            "instruction": "Construisez une phrase avec le mot allemand 'sie'",
+            "example": "Exemple: J'utilise sie tous les jours.",
+            "level": "intermediate"
           }
         }
       }
