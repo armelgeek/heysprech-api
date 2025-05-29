@@ -352,15 +352,41 @@ class VocabularyProcessor:
             if valid_examples:
                 example = max(valid_examples, key=lambda x: x[1])[0]
             else:
-                # Fallback plus naturel selon le type de mot
+                # Fallback avec des phrases plus naturelles et contextuelles
                 fallbacks = {
-                    'verbs': f"Ich {word} jeden Tag.",
-                    'nouns': f"Das {word} ist sehr interessant.",
-                    'time_words': f"{word} gehen wir spazieren.",
-                    'prepositions': f"Das Buch liegt {word} dem Tisch.",
-                    'pronouns': f"{word} geht zur Schule.",
-                    'general': f"Das Wort '{word}' ist sehr wichtig."
+                    'verbs': [
+                        f"Ich {word} gerne mit meinen Freunden.",
+                        f"Wir {word} zusammen in der Küche.",
+                        f"Er {word} jeden Morgen zur Arbeit."
+                    ],
+                    'nouns': [
+                        f"Der {word} steht in der Ecke.",
+                        f"Mein {word} ist ganz neu.",
+                        f"Ich brauche einen {word} für die Arbeit."
+                    ],
+                    'time_words': [
+                        f"{word} haben wir ein wichtiges Treffen.",
+                        f"{word} ist das Wetter besonders schön.",
+                        f"Wir treffen uns {word} im Café."
+                    ],
+                    'prepositions': [
+                        f"Die Katze sitzt {word} dem Sofa.",
+                        f"Der Schlüssel liegt {word} der Schublade.",
+                        f"Das Bild hängt {word} der Wand."
+                    ],
+                    'pronouns': [
+                        f"{word} arbeitet im Büro.",
+                        f"{word} kommt aus Berlin.",
+                        f"{word} spricht sehr gut Deutsch."
+                    ],
+                    'general': [
+                        f"Mein Freund kennt das Wort {word}.",
+                        f"In Deutschland benutzt man oft {word}.",
+                        f"Ich lerne {word} in meinem Deutschkurs."
+                    ]
                 }
+                # Choisir aléatoirement une phrase de fallback
+                example = random.choice(fallbacks.get(word_type, fallbacks['general']))
                 example = fallbacks.get(word_type, fallbacks['general'])
             
             # Traduire l'exemple en français
