@@ -181,13 +181,29 @@ def generate_example_sentences(word, models):
     tokenizer_de_fr, model_de_fr = models['de_fr']
     examples = []
     
-    # Prompts pour quatre phrases courtes et simples
-    prompts = [
-        f"Ich {word} gern",           # Premier exemple simple
-        f"Das {word} ist gut",        # Deuxième exemple descriptif
-        f"Wir haben {word}",          # Troisième exemple possessif
-        f"Er {word} heute"            # Quatrième exemple temporel
-    ]
+    # Prompts pour quatre phrases courtes et simples adaptées au mot
+    word_type = analyze_word_class(word, models)
+    if 'Verb' in word_type.get('de', ''):
+        prompts = [
+            f"{word} Sie in die Stadt?",        # Question
+            f"Ich möchte {word}",               # Souhait
+            f"Wir {word} zusammen",             # Action commune
+            f"Er {word} nach Hause"             # Direction
+        ]
+    elif 'Substantiv' in word_type.get('de', ''):
+        prompts = [
+            f"Das {word} ist schön",            # Description
+            f"Ich habe ein {word}",             # Possession
+            f"Mit dem {word} können wir",       # Utilisation
+            f"Viele {word} sind hier"           # Quantité
+        ]
+    else:
+        prompts = [
+            f"Ich bin {word}",                  # État
+            f"Es ist {word} wichtig",           # Importance
+            f"Sie macht das {word}",            # Action
+            f"Alles ist {word} hier"            # Description
+        ]
     
     for prompt in prompts:
         try:
@@ -234,12 +250,44 @@ def generate_example_sentences(word, models):
             print(f"Erreur lors de la génération d'exemple: {e}")
             continue
     
-    # Assurer qu'on a toujours 2 exemples
+    # Assurer qu'on a toujours au moins 2 exemples pertinents
     while len(examples) < 2:
-        examples.append({
-            'de': f"Ich {word}.",
-            'fr': "Je suis."
-        })
+        # Obtenir le type de mot pour générer un exemple adapté
+        word_type = word_type if 'word_type' in locals() else analyze_word_class(word, models)
+        word_info = word_type.get('de', '').lower()
+        
+        if 'verb' in word_info:
+            verb_examples = [
+                {'de': f"Man kann {word}.", 'fr': f"On peut {word}."},
+                {'de': f"Ich muss heute {word}.", 'fr': f"Je dois {word} aujourd'hui."},
+                {'de': f"Willst du {word}?", 'fr': f"Veux-tu {word} ?"},
+                {'de': f"Sie {word} gerne.", 'fr': f"Elle aime {word}."}
+            ]
+            examples.append(verb_examples[len(examples) % len(verb_examples)])
+        elif 'substantiv' in word_info or 'nomen' in word_info:
+            noun_examples = [
+                {'de': f"Das {word} ist interessant.", 'fr': f"Le/La {word} est intéressant(e)."},
+                {'de': f"Wo ist das {word}?", 'fr': f"Où est le/la {word} ?"},
+                {'de': f"Ich brauche ein {word}.", 'fr': f"J'ai besoin d'un(e) {word}."},
+                {'de': f"Das ist mein {word}.", 'fr': f"C'est mon/ma {word}."}
+            ]
+            examples.append(noun_examples[len(examples) % len(noun_examples)])
+        elif 'adjektiv' in word_info:
+            adj_examples = [
+                {'de': f"Es ist sehr {word}.", 'fr': f"C'est très {word}."},
+                {'de': f"Das Wetter ist {word}.", 'fr': f"Le temps est {word}."},
+                {'de': f"Sie fühlt sich {word}.", 'fr': f"Elle se sent {word}."},
+                {'de': f"Alles wird {word}.", 'fr': f"Tout devient {word}."}
+            ]
+            examples.append(adj_examples[len(examples) % len(adj_examples)])
+        else:
+            generic_examples = [
+                {'de': f"Hier ist es {word}.", 'fr': f"Ici c'est {word}."},
+                {'de': f"Das macht man {word}.", 'fr': f"On fait ça {word}."},
+                {'de': f"Es geht um {word}.", 'fr': f"Il s'agit de {word}."},
+                {'de': f"Wir sind {word}.", 'fr': f"Nous sommes {word}."}
+            ]
+            examples.append(generic_examples[len(examples) % len(generic_examples)])
     
     return examples
 
@@ -500,29 +548,44 @@ def generate_exercises(word, models, difficulty='intermediate'):
                 'answer': clean_word_input,
                 'examples': [clean_word_input]
             }
-        }
+        }            # Choix multiples avec des options pertinentes
+        word_type = analyze_word_class(clean_word_input, models)
+        translations = get_translations(clean_word_input, models)
         
-        # Choix multiples - options simples
+        # Générer 4 choix réalistes
+        choices = [
+            translations['fr']['principal'],  # La bonne réponse
+            translations['fr'].get('variantes', [])[0] if translations['fr'].get('variantes') else None,
+            translations['fr'].get('synonymes', [])[0] if translations['fr'].get('synonymes') else None
+        ]
+        # Filtrer les None et s'assurer d'avoir au moins 2 choix
+        choices = [c for c in choices if c]
+        while len(choices) < 2:
+            choices.append(translations['fr']['principal'])
+            
         exercises['multiple_choice'] = {
             'de': {
                 'question': f"Was bedeutet '{clean_word_input}'?",
-                'choices': [
-                    f"{clean_word_input} bin",
-                    clean_word_input
-                ],
-                'answer': "0"
+                'choices': choices,
+                'answer': "0"  # La bonne réponse est toujours la première
             }
-        }
-        
-        # Association de mots - 3 mots simples et uniques
-        prompt = f"3 einfache verwandte Wörter zu '{clean_word_input}':"
+        }            # Association de mots contextuelle
+        word_class = analyze_word_class(clean_word_input, models)
+        if 'Verb' in word_class.get('de', ''):
+            prompt = f"Geben Sie 3 verwandte Verben zu '{clean_word_input}' (im Infinitiv):"
+        elif 'Substantiv' in word_class.get('de', ''):
+            prompt = f"Geben Sie 3 verwandte Substantive zu '{clean_word_input}' (im Nominativ):"
+        else:
+            prompt = f"Geben Sie 3 verwandte Wörter zur gleichen Wortart wie '{clean_word_input}':"
+            
         inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
         outputs = model_gpt.generate(
             inputs.input_ids,
             max_length=30,
-            num_beams=3,
-            temperature=0.5,
-            do_sample=False
+            num_beams=5,
+            temperature=0.7,
+            no_repeat_ngram_size=2,
+            do_sample=True
         )
         
         words_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
