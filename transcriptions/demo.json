@@ -149,25 +149,42 @@
         "fr": "une"
       },
       "example": {
-        "de": "Ich habe einen eine.",
-        "fr": "J'en ai un."
+        "de": "Das ist ein eine.",
+        "fr": "C'est un."
       },
       "exercise": {
-        "type": "multiple_choice",
-        "question": {
-          "de": "Welches Wort bedeutet 'une'?",
-          "fr": "Choisissez la traduction correcte pour 'une'"
+        "type": "multiple_choice_pair",
+        "de_to_fr": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches französische Wort bedeutet 'eine'?",
+            "fr": "Quelle est la traduction française de 'eine'?"
+          },
+          "options": [
+            "eineer",
+            "eine",
+            "eineeux",
+            "eineeur"
+          ],
+          "answer": "eine"
         },
-        "options": [
-          "hier",
-          "eine",
-          "noch",
-          "ein"
-        ],
-        "answer": "eine",
+        "fr_to_de": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches deutsche Wort bedeutet 'une'?",
+            "fr": "Quel est le mot allemand pour 'une'?"
+          },
+          "options": [
+            "uneer",
+            "unee",
+            "une",
+            "uneen"
+          ],
+          "answer": "une"
+        },
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T16:45:34.544965"
+      "processed_at": "2025-05-29T16:58:38.918987"
     },
     {
       "word": "etwas",
@@ -177,25 +194,42 @@
         "fr": "quelque chose"
       },
       "example": {
-        "de": "Der etwas ist schön.",
-        "fr": "C'est beau."
+        "de": "Das ist ein etwas.",
+        "fr": "C'est quelque chose."
       },
       "exercise": {
-        "type": "multiple_choice",
-        "question": {
-          "de": "Welches Wort bedeutet 'quelque chose'?",
-          "fr": "Choisissez la traduction correcte pour 'quelque chose'"
+        "type": "multiple_choice_pair",
+        "de_to_fr": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches französische Wort bedeutet 'etwas'?",
+            "fr": "Quelle est la traduction française de 'etwas'?"
+          },
+          "options": [
+            "etwas",
+            "etwaseux",
+            "etwaser",
+            "etwaseur"
+          ],
+          "answer": "etwas"
         },
-        "options": [
-          "noch",
-          "hier",
-          "etwas",
-          "ein"
-        ],
-        "answer": "etwas",
+        "fr_to_de": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches deutsche Wort bedeutet 'quelque chose'?",
+            "fr": "Quel est le mot allemand pour 'quelque chose'?"
+          },
+          "options": [
+            "quelque choseer",
+            "quelque chosee",
+            "quelque choseen",
+            "quelque chose"
+          ],
+          "answer": "quelque chose"
+        },
         "level": "intermediate"
       },
-      "processed_at": "2025-05-29T16:45:37.236427"
+      "processed_at": "2025-05-29T16:58:43.151984"
     },
     {
       "word": "euch",
@@ -205,25 +239,42 @@
         "fr": "à vous"
       },
       "example": {
-        "de": "Wir brauchen euch.",
-        "fr": "On a besoin de vous."
+        "de": "Ich habe einen euch.",
+        "fr": "J'en ai un pour vous."
       },
       "exercise": {
-        "type": "multiple_choice",
-        "question": {
-          "de": "Welches Wort bedeutet 'à vous'?",
-          "fr": "Choisissez la traduction correcte pour 'à vous'"
+        "type": "multiple_choice_pair",
+        "de_to_fr": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches französische Wort bedeutet 'euch'?",
+            "fr": "Quelle est la traduction française de 'euch'?"
+          },
+          "options": [
+            "eucher",
+            "eucheur",
+            "euch",
+            "eucheux"
+          ],
+          "answer": "euch"
         },
-        "options": [
-          "noch",
-          "ein",
-          "euch",
-          "hier"
-        ],
-        "answer": "euch",
+        "fr_to_de": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches deutsche Wort bedeutet 'à vous'?",
+            "fr": "Quel est le mot allemand pour 'à vous'?"
+          },
+          "options": [
+            "à vouse",
+            "à vouser",
+            "à vous",
+            "à vousen"
+          ],
+          "answer": "à vous"
+        },
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T16:45:39.734375"
+      "processed_at": "2025-05-29T16:58:47.210424"
     },
     {
       "word": "gehen",
@@ -233,25 +284,42 @@
         "fr": "aller"
       },
       "example": {
-        "de": "Wir brauchen gehen.",
-        "fr": "Il faut qu'on parte."
+        "de": "Der gehen ist schön.",
+        "fr": "C'est beau de partir."
       },
       "exercise": {
-        "type": "multiple_choice",
-        "question": {
-          "de": "Welches Wort bedeutet 'aller'?",
-          "fr": "Choisissez la traduction correcte pour 'aller'"
+        "type": "multiple_choice_pair",
+        "de_to_fr": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches französische Wort bedeutet 'gehen'?",
+            "fr": "Quelle est la traduction française de 'gehen'?"
+          },
+          "options": [
+            "gehen",
+            "geheneux",
+            "gehener",
+            "geheneur"
+          ],
+          "answer": "gehen"
         },
-        "options": [
-          "gehen",
-          "ein",
-          "hier",
-          "noch"
-        ],
-        "answer": "gehen",
+        "fr_to_de": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches deutsche Wort bedeutet 'aller'?",
+            "fr": "Quel est le mot allemand pour 'aller'?"
+          },
+          "options": [
+            "alleren",
+            "allere",
+            "allerer",
+            "aller"
+          ],
+          "answer": "aller"
+        },
         "level": "intermediate"
       },
-      "processed_at": "2025-05-29T16:45:42.693944"
+      "processed_at": "2025-05-29T16:58:51.563399"
     },
     {
       "word": "ich",
@@ -261,25 +329,42 @@
         "fr": "isé"
       },
       "example": {
-        "de": "Das ist ein ich.",
-        "fr": "C'est un moi."
+        "de": "Der ich ist schön.",
+        "fr": "Celui que je suis belle."
       },
       "exercise": {
-        "type": "multiple_choice",
-        "question": {
-          "de": "Welches Wort bedeutet 'isé'?",
-          "fr": "Choisissez la traduction correcte pour 'isé'"
+        "type": "multiple_choice_pair",
+        "de_to_fr": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches französische Wort bedeutet 'ich'?",
+            "fr": "Quelle est la traduction française de 'ich'?"
+          },
+          "options": [
+            "icheux",
+            "icheur",
+            "icher",
+            "ich"
+          ],
+          "answer": "ich"
         },
-        "options": [
-          "ein",
-          "noch",
-          "ich",
-          "hier"
-        ],
-        "answer": "ich",
+        "fr_to_de": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches deutsche Wort bedeutet 'isé'?",
+            "fr": "Quel est le mot allemand pour 'isé'?"
+          },
+          "options": [
+            "isé",
+            "iséer",
+            "iséen",
+            "isée"
+          ],
+          "answer": "isé"
+        },
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T16:45:45.222249"
+      "processed_at": "2025-05-29T16:58:55.574418"
     },
     {
       "word": "kann",
@@ -289,25 +374,42 @@
         "fr": "peut"
       },
       "example": {
-        "de": "Das ist ein kann.",
-        "fr": "C'est possible."
+        "de": "Ich habe einen kann.",
+        "fr": "J'en ai un."
       },
       "exercise": {
-        "type": "multiple_choice",
-        "question": {
-          "de": "Welches Wort bedeutet 'peut'?",
-          "fr": "Choisissez la traduction correcte pour 'peut'"
+        "type": "multiple_choice_pair",
+        "de_to_fr": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches französische Wort bedeutet 'kann'?",
+            "fr": "Quelle est la traduction française de 'kann'?"
+          },
+          "options": [
+            "kanneur",
+            "kanner",
+            "kann",
+            "kanneux"
+          ],
+          "answer": "kann"
         },
-        "options": [
-          "kann",
-          "hier",
-          "noch",
-          "ein"
-        ],
-        "answer": "kann",
+        "fr_to_de": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches deutsche Wort bedeutet 'peut'?",
+            "fr": "Quel est le mot allemand pour 'peut'?"
+          },
+          "options": [
+            "peuter",
+            "peuten",
+            "peut",
+            "peute"
+          ],
+          "answer": "peut"
+        },
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T16:45:47.695228"
+      "processed_at": "2025-05-29T16:58:59.550403"
     },
     {
       "word": "kleinigkeit",
@@ -317,25 +419,42 @@
         "fr": "Petiteur"
       },
       "example": {
-        "de": "Das ist ein kleinigkeit.",
-        "fr": "C'est une petite chose."
+        "de": "Ich habe einen kleinigkeit.",
+        "fr": "J'ai un petit truc."
       },
       "exercise": {
-        "type": "multiple_choice",
-        "question": {
-          "de": "Welches Wort bedeutet 'Petiteur'?",
-          "fr": "Choisissez la traduction correcte pour 'Petiteur'"
+        "type": "multiple_choice_pair",
+        "de_to_fr": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches französische Wort bedeutet 'kleinigkeit'?",
+            "fr": "Quelle est la traduction française de 'kleinigkeit'?"
+          },
+          "options": [
+            "kleinigkeit",
+            "kleinigkeiteur",
+            "kleinigkeiteux",
+            "kleinigkeiter"
+          ],
+          "answer": "kleinigkeit"
         },
-        "options": [
-          "ein",
-          "hier",
-          "kleinigkeit",
-          "noch"
-        ],
-        "answer": "kleinigkeit",
+        "fr_to_de": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches deutsche Wort bedeutet 'Petiteur'?",
+            "fr": "Quel est le mot allemand pour 'Petiteur'?"
+          },
+          "options": [
+            "Petiteure",
+            "Petiteurer",
+            "Petiteuren",
+            "Petiteur"
+          ],
+          "answer": "Petiteur"
+        },
         "level": "advanced"
       },
-      "processed_at": "2025-05-29T16:45:50.399342"
+      "processed_at": "2025-05-29T16:59:03.792747"
     },
     {
       "word": "mich",
@@ -345,25 +464,42 @@
         "fr": "moi"
       },
       "example": {
-        "de": "Wir brauchen mich.",
-        "fr": "On a besoin de moi."
+        "de": "Das ist ein mich.",
+        "fr": "C'est moi."
       },
       "exercise": {
-        "type": "multiple_choice",
-        "question": {
-          "de": "Welches Wort bedeutet 'moi'?",
-          "fr": "Choisissez la traduction correcte pour 'moi'"
+        "type": "multiple_choice_pair",
+        "de_to_fr": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches französische Wort bedeutet 'mich'?",
+            "fr": "Quelle est la traduction française de 'mich'?"
+          },
+          "options": [
+            "micheur",
+            "mich",
+            "micher",
+            "micheux"
+          ],
+          "answer": "mich"
         },
-        "options": [
-          "mich",
-          "hier",
-          "ein",
-          "noch"
-        ],
-        "answer": "mich",
+        "fr_to_de": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches deutsche Wort bedeutet 'moi'?",
+            "fr": "Quel est le mot allemand pour 'moi'?"
+          },
+          "options": [
+            "moien",
+            "moie",
+            "moi",
+            "moier"
+          ],
+          "answer": "moi"
+        },
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T16:45:52.931279"
+      "processed_at": "2025-05-29T16:59:07.861385"
     },
     {
       "word": "unterscheidet",
@@ -377,21 +513,38 @@
         "fr": "C'est beau, celui-là."
       },
       "exercise": {
-        "type": "multiple_choice",
-        "question": {
-          "de": "Welches Wort bedeutet 'différent'?",
-          "fr": "Choisissez la traduction correcte pour 'différent'"
+        "type": "multiple_choice_pair",
+        "de_to_fr": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches französische Wort bedeutet 'unterscheidet'?",
+            "fr": "Quelle est la traduction française de 'unterscheidet'?"
+          },
+          "options": [
+            "unterscheideteux",
+            "unterscheideteur",
+            "unterscheidet",
+            "unterscheideter"
+          ],
+          "answer": "unterscheidet"
         },
-        "options": [
-          "noch",
-          "ein",
-          "unterscheidet",
-          "hier"
-        ],
-        "answer": "unterscheidet",
+        "fr_to_de": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches deutsche Wort bedeutet 'différent'?",
+            "fr": "Quel est le mot allemand pour 'différent'?"
+          },
+          "options": [
+            "différenten",
+            "différent",
+            "différente",
+            "différenter"
+          ],
+          "answer": "différent"
+        },
         "level": "advanced"
       },
-      "processed_at": "2025-05-29T16:45:55.676503"
+      "processed_at": "2025-05-29T16:59:11.963369"
     },
     {
       "word": "von",
@@ -405,21 +558,38 @@
         "fr": "J'en ai un."
       },
       "exercise": {
-        "type": "multiple_choice",
-        "question": {
-          "de": "Welches Wort bedeutet 'de'?",
-          "fr": "Choisissez la traduction correcte pour 'de'"
+        "type": "multiple_choice_pair",
+        "de_to_fr": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches französische Wort bedeutet 'von'?",
+            "fr": "Quelle est la traduction française de 'von'?"
+          },
+          "options": [
+            "voner",
+            "voneux",
+            "von",
+            "voneur"
+          ],
+          "answer": "von"
         },
-        "options": [
-          "ein",
-          "hier",
-          "von",
-          "noch"
-        ],
-        "answer": "von",
+        "fr_to_de": {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches deutsche Wort bedeutet 'de'?",
+            "fr": "Quel est le mot allemand pour 'de'?"
+          },
+          "options": [
+            "deer",
+            "de",
+            "deen",
+            "dee"
+          ],
+          "answer": "de"
+        },
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T16:45:58.276872"
+      "processed_at": "2025-05-29T16:59:15.834502"
     }
   ],
   "vocabulary_stats": {
