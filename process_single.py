@@ -186,9 +186,6 @@ class VocabularyProcessor:
         
         try:
             wrong_options = []
-        
-        try:
-            wrong_options = []
             
             # Générer des mots aléatoires pour chaque prompt
             for prompt in prompts:
