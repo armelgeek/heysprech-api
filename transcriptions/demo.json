@@ -92,25 +92,30 @@
           "variantes": [],
           "synonymes": [],
           "definition": ""
-        },
-        "principal": "aller"
+        }
       },
       "examples": [
         {
-          "full_sentence": "Hier ist gehen Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist gehen\n      case : contenance/collection/component\n          Confirmation : Contenancé ce qui peu de l'écriture,",
-          "completion": "Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist gehen\n      case : contenance/collection/component\n          Confirmation : Contenancé ce qui peu de l'écriture,",
-          "context": "présentation/localisation",
-          "word_focus": "gehen"
+          "de": "Ich gehen gern in die Schule, aber ich habe Angst, dass ich mich.",
+          "fr": "J'aime aller à l'école, mais j'ai peur d'être moi-même."
         },
         {
-          "de": "Hier ist gehen 000J schl Mit\"\u000ben$aU>�c.$�U\u0003#.",
-          "fr": "C'est là que vont les milliers d'années de travail avec $aU> c.$u#."
+          "de": "Das gehen ist gut, aber es ist nicht so einfach, wie es scheint.",
+          "fr": "Ça marche bien, mais ce n'est pas aussi simple qu'il semble."
+        },
+        {
+          "de": "Wir haben gehen, um zu sehen, was wir tun können, und wir.",
+          "fr": "On va voir ce qu'on peut faire, et nous."
+        },
+        {
+          "de": "Er gehen heute in die Schule, und ich habe keine Ahnung, was ich.",
+          "fr": "Il va à l'école aujourd'hui, et je n'ai aucune idée de ce que j'ai."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich möchte, dass Sie mit mir sprechen.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich bin ein Mensch, der sich selbst liebt.",
             "answer": "gehen",
             "examples": [
               "gehen"
@@ -121,7 +126,7 @@
           "de": {
             "question": "Was bedeutet 'gehen'?",
             "choices": [
-              "gehen",
+              "gehen bin",
               "gehen"
             ],
             "answer": "0"
@@ -130,9 +135,9 @@
         "word_association": {
           "de": {
             "words": [
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'gehen': geht gehen",
-              "gehen und gehen - mit Präfix/Suffix-Les",
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'gehen': geht gehen"
+              "3 einfache verwandte Wörter zu 'gehen': gehen",
+              "gehen",
+              "3 einfache verwandte Wörter zu 'gehen': gehen"
             ]
           }
         }
@@ -157,25 +162,30 @@
           "variantes": [],
           "synonymes": [],
           "definition": ""
-        },
-        "principal": "Aujourd'hui"
+        }
       },
       "examples": [
         {
-          "full_sentence": "Hier ist heute Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist heute\n      case : Construction/Constructions/Phrases/Questions/Categoriques/Savoir-vivre/présentation/product",
-          "completion": "Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist heute\n      case : Construction/Constructions/Phrases/Questions/Categoriques/Savoir-vivre/présentation/product",
-          "context": "présentation/localisation",
-          "word_focus": "heute"
+          "de": "Ich heute gern ein paar Worte verlieren, denn ich bin ein großer Fan von.",
+          "fr": "J'aime perdre quelques mots aujourd'hui, parce que je suis un grand fan de."
         },
         {
-          "de": "Hier ist heute 000J Mit Welt$reis\",�n$�H).Tn$ stellteU#.",
-          "fr": "Voici aujourd'hui 000J Avec le riz du monde,\" n$ H).Tn$ a misU#."
+          "de": "Das heute ist gut gelaufen. Ich bin sehr zufrieden mit dem Ergebnis. Die.",
+          "fr": "Aujourd'hui, ça s'est bien passé, je suis très satisfait du résultat."
+        },
+        {
+          "de": "Wir haben heute den ersten Teil unserer neuen Serie über das Thema „Bauen.",
+          "fr": "Aujourd'hui, nous avons la première partie de notre nouvelle série sur la construction."
+        },
+        {
+          "de": "Er heute heute noch, dass es sich dabei um eine der ältesten und ältesten.",
+          "fr": "Aujourd'hui encore, il s'agit d'une des plus anciennes et les plus anciennes."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Heute ist der Tag, an dem Sie sich.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Heute ist der Tag, an dem ich geboren.",
             "answer": "heute",
             "examples": [
               "heute"
@@ -186,7 +196,7 @@
           "de": {
             "question": "Was bedeutet 'heute'?",
             "choices": [
-              "heute",
+              "heute bin",
               "heute"
             ],
             "answer": "0"
@@ -195,9 +205,9 @@
         "word_association": {
           "de": {
             "words": [
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'heute': (Synonyme",
-              "Definition",
-              "Beispiele)\nDer Begriff \"heute\" stammt aus"
+              "3 einfache verwandte Wörter zu 'heute': morgen",
+              "morgen",
+              "3 einfache verwandte Wörter zu 'heute': morgen"
             ]
           }
         }
@@ -222,25 +232,30 @@
           "variantes": [],
           "synonymes": [],
           "definition": ""
-        },
-        "principal": "dans la"
+        }
       },
       "examples": [
         {
-          "full_sentence": "Hier ist ins Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist ins\n      Database : Context : http://www.pinterest.de/p/Pinterest_Pinnwand_Platte_platte.jpg\n          Picture : Pic",
-          "completion": "Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist ins\n      Database : Context : http://www.pinterest.de/p/Pinterest_Pinnwand_Platte_platte.jpg\n          Picture : Pic",
-          "context": "présentation/localisation",
-          "word_focus": "ins"
+          "de": "Ich ins gern, aber ich habe keine Lust, mich mit einem Mann zu.",
+          "fr": "J'aimerais bien, mais je n'ai pas envie de sortir avec un homme."
         },
         {
-          "de": "Hier ist ins 000Jär, wel\"�$a\fe Sch�$�fach#.",
-          "fr": "Ici, c'est le millier d'années de cours."
+          "de": "Das ins ist gut so, denn es ist nicht nur eine Frage der Zeit.",
+          "fr": "C'est une bonne chose, car ce n'est pas seulement une question de temps."
+        },
+        {
+          "de": "Wir haben ins Leben gerufen, weil es uns wichtig ist, dass die Menschen.",
+          "fr": "Nous avons créé parce qu'il est important pour nous que les gens."
+        },
+        {
+          "de": "Er ins heute.de-Forum.\nIch habe mich mal wieder mit.",
+          "fr": "Il va au forum aujourd'hui. Je suis de retour avec lui."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist der Unterschied zwischen '___' und '.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist das? Was ist das? Was ist.",
             "answer": "ins",
             "examples": [
               "ins"
@@ -251,7 +266,7 @@
           "de": {
             "question": "Was bedeutet 'ins'?",
             "choices": [
-              "ins",
+              "ins bin",
               "ins"
             ],
             "answer": "0"
@@ -260,9 +275,9 @@
         "word_association": {
           "de": {
             "words": [
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'ins': ein",
-              "zwei",
-              "drei"
+              "3 einfache verwandte Wörter zu 'ins': in",
+              "in",
+              "3 einfache verwandte Wörter zu 'ins': in"
             ]
           }
         }
@@ -287,19 +302,24 @@
           "variantes": [],
           "synonymes": [],
           "definition": ""
-        },
-        "principal": "Cinéma."
+        }
       },
       "examples": [
         {
-          "full_sentence": "Hier ist kino. Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist kino.\n      case : construction/component/constructions/collection\n          context : nécessaire de la recherche de l’école",
-          "completion": "Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist kino.\n      case : construction/component/constructions/collection\n          context : nécessaire de la recherche de l’école",
-          "context": "présentation/localisation",
-          "word_focus": "kino."
+          "de": "Ich kino. gern auch mal ein paar Filme, die ich gerne sehen möchte.",
+          "fr": "J'adore les films que j'aimerais voir."
         },
         {
-          "de": "Hier ist kino. 000J Schmutz#»,\"m bo�0ington% Schmutz9 auchB� Min#.",
-          "fr": "Ici c'est kino. 000J sale # ',\"m bo 0ington% sale9 aussiB Min#."
+          "de": "Das kino. ist gut, aber es ist nicht das kino, das ich.",
+          "fr": "Le cinéma. C'est bien, mais ce n'est pas le cinéma que je fais."
+        },
+        {
+          "de": "Wir haben kino.de im Rahmen einer Kooperation mit der Filmakademie Baden-.",
+          "fr": "Nous avons kino.de dans le cadre d'une coopération avec l'Académie de cinéma de Baden-."
+        },
+        {
+          "de": "Er kino. heute, 18:00 Uhr, im Theater am Potsdamer Platz.",
+          "fr": "Il est au cinéma, aujourd'hui, 18 h, au théâtre de la Potsdamer Platz."
         }
       ],
       "exercises": {
@@ -316,7 +336,7 @@
           "de": {
             "question": "Was bedeutet 'kino'?",
             "choices": [
-              "kino",
+              "kino bin",
               "kino"
             ],
             "answer": "0"
@@ -325,9 +345,9 @@
         "word_association": {
           "de": {
             "words": [
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'kino': a",
-              "b",
-              "c"
+              "3 einfache verwandte Wörter zu 'kino': Kino",
+              "Kino",
+              "3 einfache verwandte Wörter zu 'kino': Kino"
             ]
           }
         }
@@ -352,25 +372,30 @@
           "variantes": [],
           "synonymes": [],
           "definition": ""
-        },
-        "principal": "et"
+        }
       },
       "examples": [
         {
-          "full_sentence": "Hier ist sie Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist sie\n      Cursor :  cursors.google.com/dlpage/gaoptout?hl=de (https://www.kom.pl/de/analytics/terms-and-",
-          "completion": "Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist sie\n      Cursor :  cursors.google.com/dlpage/gaoptout?hl=de (https://www.kom.pl/de/analytics/terms-and-",
-          "context": "présentation/localisation",
-          "word_focus": "sie"
+          "de": "Ich sie gern wieder sehen, wenn ich mal wieder Zeit habe. Ich bin.",
+          "fr": "J'aimerais la revoir quand j'aurai le temps."
         },
         {
-          "de": "Hier ist sie 000Jär\"3eineB fr�oggen#.",
-          "fr": "Ici, elle est en milliers d'années."
+          "de": "Das sie ist gut, aber ich bin mir nicht sicher, ob sie wirklich.",
+          "fr": "Elle est bonne, mais je ne suis pas sûr qu'elle soit réelle."
+        },
+        {
+          "de": "Wir haben sie in den letzten Jahren immer wieder besucht und sind begeistert von den.",
+          "fr": "Nous lui avons rendu visite ces dernières années et nous en sommes ravis."
+        },
+        {
+          "de": "Er sie heute nicht mehr, weil sie sich nicht an die Regeln gehalten hat.",
+          "fr": "Il ne l'a pas fait aujourd'hui parce qu'elle n'a pas respecté les règles."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich bin ein Mensch, der gerne lacht und.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich bin ein Mann, ich bin eine Frau.",
             "answer": "sie",
             "examples": [
               "sie"
@@ -381,7 +406,7 @@
           "de": {
             "question": "Was bedeutet 'sie'?",
             "choices": [
-              "sie",
+              "sie bin",
               "sie"
             ],
             "answer": "0"
@@ -390,9 +415,9 @@
         "word_association": {
           "de": {
             "words": [
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'sie': Sie können die Wörter entweder durch Kombinieren von 0 bis 9 voneinander trennen.",
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'sie': Sie können die Wörter entweder durch Kombinieren von 0 bis 9 voneinander trennen.",
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'sie': Sie können die Wörter entweder durch Kombinieren von 0 bis 9 voneinander trennen."
+              "3 einfache verwandte Wörter zu 'sie': sie",
+              "sie",
+              "3 einfache verwandte Wörter zu 'sie': sie"
             ]
           }
         }
