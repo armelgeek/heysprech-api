@@ -261,7 +261,7 @@ def analyze_word_class(word, models):
             temperature=0.3
         )
         analysis_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
-        reformulated_fr = reformat_french_text(analysis_fr, models)
+        reformulated_fr = reformat_french_text(analysis_fr, models, context='definition')
         
         return {
             'de': analysis,
@@ -339,7 +339,7 @@ def get_translations(word, models):
             do_sample=False
         )
         translated = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
-        translations['fr']['principal'] = reformat_french_text(translated, models)
+        translations['fr']['principal'] = reformat_french_text(translated, models, context='definition')
         
         # Variantes de traduction (5+)
         outputs = model_de_fr.generate(
@@ -476,17 +476,16 @@ def generate_exercises(word, models, difficulty='intermediate'):
     clean_word_input = clean_word(word)
     
     try:
-        # 1. Exercice à trous - génération de 3 phrases contextuelles
-        prompt = f"""Schreiben Sie 3 natürliche Sätze mit dem Wort '{clean_word_input}':
-1. Ein einfacher Satz für Anfänger
-2. Ein Satz mittlerer Schwierigkeit
-3. Ein komplexer Satz für Fortgeschrittene
-Jeder Satz sollte einen klaren Kontext haben."""
+        # 1. Exercice à trous - génération de phrases contextuelles
+        prompt = f"""Schreiben Sie drei verschiedene Sätze mit dem Wort '{clean_word_input}':
+1. Ein sehr einfacher Satz für Anfänger (mit Alltagsvokabular).
+2. Ein Satz mittlerer Schwierigkeit mit einer wichtigen Redewendung.
+3. Ein anspruchsvoller Satz mit komplexerer Grammatik."""
 
         inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
         outputs = model_gpt.generate(
             inputs.input_ids,
-            max_length=200,
+            max_length=150,
             num_beams=5,
             temperature=0.7,
             do_sample=True
@@ -494,116 +493,123 @@ Jeder Satz sollte einen klaren Kontext haben."""
         sentences_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).split('\n')
         sentences_de = [s.strip() for s in sentences_de if s.strip() and clean_word_input in s.lower()]
 
-        # Traduire les phrases en français
-        sentences_fr = []
-        for sent in sentences_de:
-            inputs = tokenizer_de_fr(sent, return_tensors="pt", padding=True)
+        fill_blank_exercises = []
+        for i, sent_de in enumerate(sentences_de[:3]):
+            # Traduction en français
+            inputs = tokenizer_de_fr(sent_de, return_tensors="pt", padding=True)
             outputs = model_de_fr.generate(**inputs)
             translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
-            sentences_fr.append(translation)
+            
+            # Reformulation en français naturel
+            translation = reformat_french_text(translation, models, context='example')
+            
+            fill_blank_exercises.append({
+                'de': sent_de.replace(clean_word_input, '___'),
+                'fr': translation,
+                'answer': clean_word_input,
+                'difficulty': ['beginner', 'intermediate', 'advanced'][i] if i < 3 else 'advanced'
+            })
 
-        fill_blank_exercises = []
-        for de, fr in zip(sentences_de, sentences_fr):
-            if clean_word_input in de.lower():
-                fill_blank_exercises.append({
-                    'de': de.replace(clean_word_input, '___'),
-                    'fr': fr,
-                    'answer': clean_word_input
-                })
+        exercises['fill_blank'] = {'de': fill_blank_exercises}
 
-        exercises['fill_blank'] = {
-            'de': fill_blank_exercises[:3]  # Limiter à 3 exercices
-        }
-
-        # 2. Choix multiples - générer des définitions et utilisations
-        prompt = f"""Erstellen Sie einen Multiple-Choice-Test für das Wort '{clean_word_input}':
-Frage: Welche der folgenden Aussagen beschreibt die Bedeutung/Verwendung von '{clean_word_input}' am besten?
-A) [Erste mögliche Antwort]
-B) [Zweite mögliche Antwort]
-C) [Dritte mögliche Antwort]
-D) [Vierte mögliche Antwort]
-Korrekte Antwort: [A,B,C oder D]"""
+        # 2. Choix multiples avec contexte réel
+        prompt = f"""Erstellen Sie eine Multiple-Choice-Frage für das Wort '{clean_word_input}':
+Frage: Wie wird das Wort '{clean_word_input}' korrekt verwendet?
+A) [Korrekte Verwendung mit typischem Kontext]
+B) [Ähnliche, aber leicht falsche Verwendung]
+C) [Häufiger Fehler bei der Verwendung]
+D) [Komplett falsche Verwendung]
+Richtige Antwort: A"""
 
         inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
         outputs = model_gpt.generate(
             inputs.input_ids,
             max_length=200,
             num_beams=5,
-            temperature=0.7
+            temperature=0.6
         )
-        qcm_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+        qcm_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
         
-        # Traduire le QCM en français
-        inputs = tokenizer_de_fr(qcm_text, return_tensors="pt", padding=True)
+        # Traduction et reformulation du QCM
+        inputs = tokenizer_de_fr(qcm_de, return_tensors="pt", padding=True)
         outputs = model_de_fr.generate(**inputs)
         qcm_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
 
-        # Extraire la question, les choix et la réponse
-        lines = qcm_text.split('\n')
-        question = next((l for l in lines if 'Welche' in l), '')
-        choices = [l[3:].strip() for l in lines if l.startswith(('A)', 'B)', 'C)', 'D)'))]
-        correct_answer = next((l[-1] for l in lines if 'Korrekte Antwort:' in l), 'A')
+        # Extrait la question et les choix
+        de_lines = qcm_de.split('\n')
+        fr_lines = qcm_fr.split('\n')
+
+        question_de = next((l for l in de_lines if '?' in l), '')
+        question_fr = reformat_french_text(next((l for l in fr_lines if '?' in l), ''), 
+                                         models, context='exercise_question')
+
+        choices_de = [l[3:].strip() for l in de_lines if l.startswith(('A)', 'B)', 'C)', 'D)'))]
+        choices_fr = [reformat_french_text(l[3:].strip(), models, context='exercise_choice') 
+                     for l in fr_lines if l.startswith(('A)', 'B)', 'C)', 'D)'))]
 
         exercises['multiple_choice'] = {
             'de': {
-                'question': question,
-                'choices': choices,
-                'answer': correct_answer
+                'question': question_de,
+                'choices': choices_de,
+                'answer': 'A'
             },
             'fr': {
-                'question': qcm_fr.split('\n')[0],
-                'choices': [l[3:].strip() for l in qcm_fr.split('\n') if l.startswith(('A)', 'B)', 'C)', 'D)'))],
-                'answer': correct_answer
+                'question': question_fr,
+                'choices': choices_fr,
+                'answer': 'A'
             }
         }
 
-        # 3. Association de mots - générer des mots reliés sémantiquement
-        prompt = f"""Geben Sie 6 Wörter an, die mit '{clean_word_input}' in Verbindung stehen:
-1. Ein Synonym
-2. Ein verwandtes Verb
-3. Ein verwandtes Adjektiv
-4. Ein Gegenteil (wenn möglich)
-5. Ein übergeordneter Begriff
+        # 3. Association de mots avec contexte
+        prompt = f"""Geben Sie 6 wichtige verwandte Wörter zu '{clean_word_input}' an:
+1. Ein gebräuchliches Synonym
+2. Ein häufig verwendetes Verb in diesem Kontext
+3. Ein passendes Adjektiv
+4. Ein klarer Gegenbegriff
+5. Die übergeordnete Kategorie
 6. Ein spezifischerer Begriff"""
 
         inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
         outputs = model_gpt.generate(
             inputs.input_ids,
-            max_length=100,
+            max_length=150,
             num_beams=5,
             temperature=0.6
         )
-        related_words_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).split('\n')
         
-        # Traduction des mots associés
+        related_words_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).split('\n')
+        related_words_de = [w.split('.')[-1].strip() if '.' in w else w.strip() 
+                          for w in related_words_de if w.strip()]
+
+        # Traduction et reformulation des mots associés
         related_words_fr = []
         for word_de in related_words_de:
-            if ':' in word_de:
-                word_de = word_de.split(':')[1].strip()
             inputs = tokenizer_de_fr(word_de, return_tensors="pt", padding=True)
             outputs = model_de_fr.generate(**inputs)
             translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
-            related_words_fr.append(translation)
+            reformulated = reformat_french_text(translation, models, context='definition')
+            related_words_fr.append(reformulated)
+
+        categories_de = ['Synonym', 'Verb', 'Adjektiv', 'Antonym', 
+                        'Oberbegriff', 'Unterbegriff']
+        categories_fr = ['Synonyme', 'Verbe associé', 'Adjectif', 'Antonyme', 
+                        'Catégorie', 'Terme spécifique']
 
         exercises['word_association'] = {
             'de': {
-                'words': [w.split(':')[1].strip() if ':' in w else w.strip() 
-                         for w in related_words_de if w.strip()],
-                'categories': ['Synonym', 'Verb', 'Adjektiv', 'Antonym', 
-                             'Oberbegriff', 'Unterbegriff']
+                'words': related_words_de,
+                'categories': categories_de
             },
             'fr': {
                 'words': related_words_fr,
-                'categories': ['Synonyme', 'Verbe', 'Adjectif', 'Antonyme', 
-                             'Terme générique', 'Terme spécifique']
+                'categories': categories_fr
             }
         }
         
+        return exercises
     except Exception as e:
         print(f"Erreur lors de la génération des exercices: {e}")
         return None
-    
-    return exercises
 
 def get_word_level(word):
     """Détermine le niveau de difficulté d'un mot allemand
@@ -808,12 +814,13 @@ def extract_stress_position(text):
         return position
     return None
 
-def reformat_french_text(text, models):
-    """Reformule un texte français pour le rendre plus naturel
+def reformat_french_text(text, models, context=None):
+    """Reformule un texte français pour le rendre plus naturel et pédagogique
     
     Args:
         text: Le texte français à reformuler
         models: Les modèles de traduction
+        context: Le contexte d'utilisation (exercice, définition, exemple, etc.)
         
     Returns:
         str: Le texte reformulé
@@ -821,34 +828,55 @@ def reformat_french_text(text, models):
     tokenizer_gpt, model_gpt = models['gpt']
     
     try:
-        # Prompt pour reformulation
-        prompt = f"Reformulez cette phrase en français naturel et élégant: '{text}'"
+        # Adapter le prompt selon le contexte
+        if context == 'exercise_question':
+            prompt = f"""Réécrivez cette consigne d'exercice en français clair et pédagogique, 
+en gardant l'aspect didactique : '{text}'"""
+        elif context == 'exercise_choice':
+            prompt = f"""Reformulez cette option de réponse en français naturel 
+et pertinent pour un exercice de langue : '{text}'"""
+        elif context == 'definition':
+            prompt = f"""Donnez une définition claire et précise en français pour : '{text}'
+La définition doit être concise mais complète."""
+        elif context == 'example':
+            prompt = f"""Reformulez cet exemple en une phrase naturelle en français : '{text}'
+La phrase doit être grammaticalement correcte et avoir du sens."""
+        else:
+            prompt = f"""Reformulez ce texte en français naturel et élégant : '{text}'
+Assurez-vous que la formulation soit claire et correcte grammaticalement."""
+
         inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
         outputs = model_gpt.generate(
             inputs.input_ids,
-            max_length=len(text) + 50,  # Un peu plus long que l'original
+            max_length=len(text) + 100,  # Plus de marge pour une bonne reformulation
             num_beams=5,
-            temperature=0.3,  # Température basse pour rester fidèle
-            do_sample=False
+            temperature=0.4,  # Un peu plus de créativité tout en restant fidèle
+            top_p=0.9,
+            do_sample=True,  # Permettre un peu de variation
+            no_repeat_ngram_size=3  # Éviter les répétitions
         )
         reformulated = model_gpt.decode(outputs[0], skip_special_tokens=True)
         
-        # Nettoyage du texte reformulé
+        # Nettoyage et amélioration du texte reformulé
         reformulated = reformulated.strip()
-        if reformulated.startswith('"') and reformulated.endswith('"'):
-            reformulated = reformulated[1:-1]
         
-        return reformulated if reformulated else text
+        # Retirer les guillemets si présents
+        if reformulated.startswith('"') and reformulated.endswith('"'):
+            reformulated = reformulated[1:-1].strip()
+            
+        # Assurer que la phrase se termine par un point si c'est une phrase complète
+        if any(reformulated[0].isupper() for c in reformulated) and not reformulated.endswith(('.', '?', '!')):
+            reformulated += '.'
+            
+        # Vérifier que le texte n'est pas vide ou trop court
+        if len(reformulated) < 3:
+            return text
+            
+        # Vérifier que le texte reformulé garde le sens original
+        if len(reformulated.split()) < len(text.split()) / 2:
+            return text  # La reformulation est trop courte, garder l'original
+            
+        return reformulated
     except Exception as e:
         print(f"Erreur lors de la reformulation: {e}")
         return text
-
-if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        print("\nOpération interrompue par l'utilisateur")
-        sys.exit(1)
-    except Exception as e:
-        print(f"Une erreur est survenue: {e}", file=sys.stderr)
-        sys.exit(1)
