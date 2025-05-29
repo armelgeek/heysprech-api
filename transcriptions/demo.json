@@ -81,8 +81,8 @@
         "fr": "aller"
       },
       "definition": {
-        "de": "kann man auch 'gehen', wenn man 'nicht gehen' tut. Das heißt, man kann auch gehen, wenn man nicht gehen will.\nWenn man gehen will, dann muss man gehen. Wenn man gehen",
-        "fr": "Si vous ne voulez pas partir, vous devez y aller. Si vous voulez partir, si vous voulez y aller, vous pouvez partir."
+        "de": "das Verb 'kommen' im Sinne von 'kommen, kommen, kommen' bedeutet.\nDas Verb 'ziehen, ziehen, ziehen lassen' bedeutet, dass man sich mit dem",
+        "fr": "le verbe \" venir \" dans le sens de \" venir, venir, arriver .\" Le verbe ' déplacer, tirer, tirer ' signifie que l'on peut s'engager avec le"
       },
       "example": {
         "de": "Das Wort 'gehen' ist sehr nützlich.",
@@ -90,52 +90,73 @@
       },
       "exercises": [
         {
-          "type": "definition_match",
-          "question": {
-            "de": "Welches Wort wird hier definiert: \"kann man auch 'gehen', wenn man 'nicht gehen' tut. Das heißt, man kann auch gehen, wenn man nicht gehen will\"?",
-            "fr": "Quel mot correspond à cette définition : \"Si vous ne voulez pas partir, vous devez y aller. Si vous voulez partir, si vous voulez y aller, vous pouvez partir\" ?"
-          },
-          "definition": {
-            "de": "kann man auch 'gehen', wenn man 'nicht gehen' tut. Das heißt, man kann auch gehen, wenn man nicht gehen will",
-            "fr": "Si vous ne voulez pas partir, vous devez y aller. Si vous voulez partir, si vous voulez y aller, vous pouvez partir"
-          },
-          "answer": "gehen",
-          "level": "intermediate"
-        },
-        {
-          "type": "translation",
-          "question": {
-            "de": "Übersetzen Sie: gehen",
-            "fr": "Traduisez: gehen"
-          },
-          "answer": "aller",
-          "source_word": "gehen",
-          "direction": "de_to_fr",
-          "level": "intermediate"
-        },
-        {
           "type": "sentence_building",
           "question": {
-            "de": "Bilden Sie einen Satz mit diesen Wörtern: sehr, gehen, gut, der, ist, schön, ein, das",
-            "fr": "Formez une phrase avec ces mots: sehr, gehen, gut, der, ist, schön, ein, das"
+            "de": "Bilden Sie einen Satz mit diesen Wörtern: schön, gut, ein, ist, das, gehen, sehr, der",
+            "fr": "Formez une phrase avec ces mots: schön, gut, ein, ist, das, gehen, sehr, der"
           },
           "word_pool": [
-            "sehr",
-            "gehen",
-            "gut",
-            "der",
-            "ist",
             "schön",
+            "gut",
             "ein",
-            "das"
+            "ist",
+            "das",
+            "gehen",
+            "sehr",
+            "der"
           ],
           "target_sentence": "Das ist ein gehen.",
           "answer": "gehen",
           "level": "intermediate"
+        },
+        {
+          "type": "gender_article",
+          "question": {
+            "de": "Welcher Artikel gehört zu 'gehen'?",
+            "fr": "Quel article va avec 'gehen' ?"
+          },
+          "choices": [
+            "der",
+            "die",
+            "das"
+          ],
+          "answer": "das",
+          "word": "gehen",
+          "level": "intermediate"
+        },
+        {
+          "type": "fill_blank",
+          "examples": [
+            {
+              "question": {
+                "de": "Die Kinder ___ durch den Garten.",
+                "fr": "Complétez la phrase avec le mot 'aller' (Le mot manquant est au milieu)"
+              },
+              "solution": {
+                "de": "Die Kinder gehen durch den Garten.",
+                "fr": "Les enfants marchent à travers le jardin."
+              },
+              "context": "Le mot manquant est au milieu"
+            },
+            {
+              "question": {
+                "de": "Wir wollen zum Park ___.",
+                "fr": "Complétez la phrase avec le mot 'aller' (Le mot manquant est à la fin)"
+              },
+              "solution": {
+                "de": "Wir wollen zum Park gehen.",
+                "fr": "Nous voulons aller au parc."
+              },
+              "context": "Le mot manquant est à la fin"
+            }
+          ],
+          "answer": "gehen",
+          "level": "intermediate",
+          "translation": "aller"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:25:39.787170"
+      "processed_at": "2025-05-29T11:32:01.804097"
     },
     {
       "word": "heute",
@@ -145,8 +166,8 @@
         "fr": "Aujourd'hui"
       },
       "definition": {
-        "de": "die Tatsache, dass die meisten Menschen, die heute in den USA leben, in den Vereinigten Staaten geboren wurden, und die meisten von ihnen, die in den Staaten leben, sind Amerikaner.\nDie USA sind ein Land,",
-        "fr": "le fait que la plupart des gens qui vivent aujourd'hui aux États-Unis sont nés aux Etats-Unis, et la plupart d'entre eux qui vivent dans les États-unis sont des Américains."
+        "de": "sich aus dem lateinischen Wort für Zeit und dem griechischen Wort für „Zeit“ zusammensetzt.\nZeit ist die Zeit, in der wir uns befinden. In dieser Zeit ist alles möglich. Alles ist möglich, alles ist",
+        "fr": "se compose du mot latin pour le temps et du mot grec pour le moment. Le temps est le temps où nous nous trouvons. Tout est possible en ce temps-là. Tout peut être fait, tout est possible."
       },
       "example": {
         "de": "Das Wort 'heute' ist sehr nützlich.",
@@ -154,52 +175,52 @@
       },
       "exercises": [
         {
-          "type": "translation",
-          "question": {
-            "de": "Übersetzen Sie: heute",
-            "fr": "Traduisez: heute"
-          },
-          "answer": "Aujourd'hui",
-          "source_word": "heute",
-          "direction": "de_to_fr",
-          "level": "intermediate"
-        },
-        {
           "type": "definition_match",
           "question": {
-            "de": "Welches Wort wird hier definiert: \"die Tatsache, dass die meisten Menschen, die heute in den USA leben, in den Vereinigten Staaten geboren wurden, und die meisten von ihnen, die in den Staaten leben, sind Amerikaner. Die USA sind ein Land,\"?",
-            "fr": "Identifiez le mot décrit par : \"le fait que la plupart des gens qui vivent aujourd'hui aux États-Unis sont nés aux Etats-Unis, et la plupart d'entre eux qui vivent dans les États-unis sont des Américains\" ?"
+            "de": "Welches Wort wird hier definiert: \"sich aus dem lateinischen Wort für Zeit und dem griechischen Wort für „Zeit“ zusammensetzt. Zeit ist die Zeit, in der wir uns befinden\"?",
+            "fr": "Trouvez le mot défini par : \"se compose du mot latin pour le temps et du mot grec pour le moment. Le temps est le temps où nous nous trouvons\" ?"
           },
           "definition": {
-            "de": "die Tatsache, dass die meisten Menschen, die heute in den USA leben, in den Vereinigten Staaten geboren wurden, und die meisten von ihnen, die in den Staaten leben, sind Amerikaner. Die USA sind ein Land,",
-            "fr": "le fait que la plupart des gens qui vivent aujourd'hui aux États-Unis sont nés aux Etats-Unis, et la plupart d'entre eux qui vivent dans les États-unis sont des Américains"
+            "de": "sich aus dem lateinischen Wort für Zeit und dem griechischen Wort für „Zeit“ zusammensetzt. Zeit ist die Zeit, in der wir uns befinden",
+            "fr": "se compose du mot latin pour le temps et du mot grec pour le moment. Le temps est le temps où nous nous trouvons"
           },
           "answer": "heute",
           "level": "intermediate"
         },
         {
-          "type": "sentence_building",
+          "type": "multiple_choice",
           "question": {
-            "de": "Bilden Sie einen Satz mit diesen Wörtern: heute, das, ist, sehr, der, gut, schön, ein",
-            "fr": "Formez une phrase avec ces mots: heute, das, ist, sehr, der, gut, schön, ein"
+            "de": "Welches Wort bedeutet 'Aujourd'hui'?",
+            "fr": "Quel mot signifie 'Aujourd'hui' ?"
           },
-          "word_pool": [
+          "choices": [
+            "wasser",
             "heute",
-            "das",
-            "ist",
-            "sehr",
-            "der",
-            "gut",
-            "schön",
-            "ein"
+            "buch",
+            "milch"
           ],
-          "target_sentence": "Das ist ein heute.",
-          "answer": "heute",
+          "correct_answer": "heute",
+          "correct_index": 1,
+          "level": "intermediate"
+        },
+        {
+          "type": "gender_article",
+          "question": {
+            "de": "Welcher Artikel gehört zu 'heute'?",
+            "fr": "Quel article va avec 'heute' ?"
+          },
+          "choices": [
+            "der",
+            "die",
+            "das"
+          ],
+          "answer": "der",
+          "word": "heute",
           "level": "intermediate"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:25:45.841954"
+      "processed_at": "2025-05-29T11:32:09.146202"
     },
     {
       "word": "ins",
@@ -209,8 +230,8 @@
         "fr": "dans la"
       },
       "definition": {
-        "de": "einem Mann und einem anderen Mann.\nDer Film erzählt die Geschichte eines jungen Mannes, der mit seiner Frau und seinen drei Kindern in einem kleinen Dorf in der Nähe von London lebt.\nIn einem Dorf in England, das von",
-        "fr": "Le film raconte l'histoire d'un jeune homme qui vit avec sa femme et ses trois enfants dans un petit village près de Londres."
+        "de": "es um die Frage geht, ob ein Mensch ein Mensch oder ein Tier ist.\nDas Präpositionswort wird benutzt, um auszudrücken, dass jemand ein Mensch ist, der ein Tier oder eine Pflanze ist.",
+        "fr": "Il s'agit de savoir si l'homme est un être humain ou un animal. Le mot de préposition est utilisé pour dire que quelqu'un est un homme qui est un animal ou une plante."
       },
       "example": {
         "de": "Das Wort 'ins' ist sehr nützlich.",
@@ -237,37 +258,43 @@
           "translation": "dans la"
         },
         {
-          "type": "multiple_choice",
+          "type": "sentence_building",
           "question": {
-            "de": "Welches Wort bedeutet 'dans la'?",
-            "fr": "Quel mot signifie 'dans la' ?"
+            "de": "Bilden Sie einen Satz mit diesen Wörtern: schön, ins, gut, ist, sehr, der, das, ein",
+            "fr": "Formez une phrase avec ces mots: schön, ins, gut, ist, sehr, der, das, ein"
           },
-          "choices": [
-            "buch",
-            "auto",
-            "haus",
-            "ins"
+          "word_pool": [
+            "schön",
+            "ins",
+            "gut",
+            "ist",
+            "sehr",
+            "der",
+            "das",
+            "ein"
           ],
-          "correct_answer": "ins",
-          "correct_index": 3,
+          "target_sentence": "Das ist ein ins.",
+          "answer": "ins",
           "level": "beginner"
         },
         {
-          "type": "definition_match",
+          "type": "gender_article",
           "question": {
-            "de": "Finden Sie das Wort zu dieser Beschreibung: \"einem Mann und einem anderen Mann. Der Film erzählt die Geschichte eines jungen Mannes, der mit seiner Frau und seinen drei Kindern in einem kleinen Dorf in der Nähe von London lebt\"",
-            "fr": "Quel mot correspond à cette définition : \"Le film raconte l'histoire d'un jeune homme qui vit avec sa femme et ses trois enfants dans un petit village près de Londres\" ?"
+            "de": "Welcher Artikel gehört zu 'ins'?",
+            "fr": "Quel article va avec 'ins' ?"
           },
-          "definition": {
-            "de": "einem Mann und einem anderen Mann. Der Film erzählt die Geschichte eines jungen Mannes, der mit seiner Frau und seinen drei Kindern in einem kleinen Dorf in der Nähe von London lebt",
-            "fr": "Le film raconte l'histoire d'un jeune homme qui vit avec sa femme et ses trois enfants dans un petit village près de Londres"
-          },
-          "answer": "ins",
+          "choices": [
+            "der",
+            "die",
+            "das"
+          ],
+          "answer": "der",
+          "word": "ins",
           "level": "beginner"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:25:51.807068"
+      "processed_at": "2025-05-29T11:32:15.164865"
     },
     {
       "word": "kino",
@@ -277,8 +304,8 @@
         "fr": "cinéma"
       },
       "definition": {
-        "de": "man sich nicht entgehen lassen sollte.\nDer Film ist sehr gut gemacht, die Story ist spannend und die Charaktere sind sehr gut ausgearbeitet.\nDie Charaktere sind gut ausgearbeitet, die Geschichte ist gut erzählt und die Protagonisten sind",
-        "fr": "Le film est très bien fait, l'histoire est passionnante et les personnages sont très bien préparés."
+        "de": "den Vorgang, bei dem ein Film oder ein Audio- oder Videobeitrag auf einem Datenträger gespeichert wird, um ihn anschließend auf einem anderen Datenträger wieder zu öffnen.\nDer Begriff Kino stammt aus dem Englischen und bedeutet so viel wie",
+        "fr": "le processus par lequel un film ou une contribution audio ou vidéo est stocké sur un disque pour ensuite l'ouvrir sur un autre disque. Le terme cinéma vient de l'anglais et signifie autant que"
       },
       "example": {
         "de": "Das Wort 'kino' ist sehr nützlich.",
@@ -286,47 +313,57 @@
       },
       "exercises": [
         {
-          "type": "translation",
+          "type": "sentence_building",
           "question": {
-            "de": "Übersetzen Sie: kino",
-            "fr": "Traduisez: kino"
+            "de": "Bilden Sie einen Satz mit diesen Wörtern: gut, ein, das, ist, sehr, der, schön, kino",
+            "fr": "Formez une phrase avec ces mots: gut, ein, das, ist, sehr, der, schön, kino"
           },
-          "answer": "cinéma",
-          "source_word": "kino",
-          "direction": "de_to_fr",
+          "word_pool": [
+            "gut",
+            "ein",
+            "das",
+            "ist",
+            "sehr",
+            "der",
+            "schön",
+            "kino"
+          ],
+          "target_sentence": "Das ist ein kino.",
+          "answer": "kino",
+          "level": "beginner"
+        },
+        {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches Wort bedeutet 'cinéma'?",
+            "fr": "Quel mot signifie 'cinéma' ?"
+          },
+          "choices": [
+            "auto",
+            "tisch",
+            "haus",
+            "kino"
+          ],
+          "correct_answer": "kino",
+          "correct_index": 3,
           "level": "beginner"
         },
         {
           "type": "definition_match",
           "question": {
-            "de": "Welches Wort wird hier definiert: \"man sich nicht entgehen lassen sollte. Der Film ist sehr gut gemacht, die Story ist spannend und die Charaktere sind sehr gut ausgearbeitet\"?",
-            "fr": "Quel mot correspond à cette définition : \"Le film est très bien fait, l'histoire est passionnante et les personnages sont très bien préparés\" ?"
+            "de": "Welches Wort wird hier definiert: \"den Vorgang, bei dem ein Film oder ein Audio- oder Videobeitrag auf einem Datenträger gespeichert wird, um ihn anschließend auf einem anderen Datenträger wieder zu öffnen. Der Begriff Kino stammt aus dem Englischen und bedeutet so viel wie\"?",
+            "fr": "Trouvez le mot défini par : \"le processus par lequel un film ou une contribution audio ou vidéo est stocké sur un disque pour ensuite l'ouvrir sur un autre disque. Le terme cinéma vient de l'anglais et signifie autant que\" ?"
           },
           "definition": {
-            "de": "man sich nicht entgehen lassen sollte. Der Film ist sehr gut gemacht, die Story ist spannend und die Charaktere sind sehr gut ausgearbeitet",
-            "fr": "Le film est très bien fait, l'histoire est passionnante et les personnages sont très bien préparés"
+            "de": "den Vorgang, bei dem ein Film oder ein Audio- oder Videobeitrag auf einem Datenträger gespeichert wird, um ihn anschließend auf einem anderen Datenträger wieder zu öffnen. Der Begriff Kino stammt aus dem Englischen und bedeutet so viel wie",
+            "fr": "le processus par lequel un film ou une contribution audio ou vidéo est stocké sur un disque pour ensuite l'ouvrir sur un autre disque. Le terme cinéma vient de l'anglais et signifie autant que"
           },
           "answer": "kino",
-          "level": "beginner"
-        },
-        {
-          "type": "gender_article",
-          "question": {
-            "de": "Welcher Artikel gehört zu 'kino'?",
-            "fr": "Quel article va avec 'kino' ?"
-          },
-          "choices": [
-            "der",
-            "die",
-            "das"
-          ],
-          "answer": "das",
-          "word": "kino",
           "level": "beginner"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:25:58.092367"
+      "processed_at": "2025-05-29T11:32:21.263798"
     },
     {
       "word": "sie",
@@ -336,14 +373,33 @@
         "fr": "et"
       },
       "definition": {
-        "de": "in der Bibel oft verwendet wird. Es ist ein Zeichen der Liebe, des Friedens und der Hoffnung.\nEs ist ein Symbol der Hoffnung, der Hoffnung und des Friedens. Es steht für die Hoffnung auf das Kommen des",
-        "fr": "c'est un signe d'amour, de paix et d'espérance. C'est le symbole de l'espérance, l'espoir et la paix."
+        "de": "eine Person oder eine Gruppe von Personen, die sich in einer bestimmten Situation befinden.\nDer Begriff ist ein Sammelbegriff für die Gesamtheit aller Menschen, die in einer Situation sind, in der sie sich befinden. Der Begriff wird auch",
+        "fr": "Une personne ou un groupe de personnes se trouvant dans une situation particulière. Le terme est un terme générique pour l'ensemble des personnes qui se trouvent dans une condition dans laquelle elles se trouvent."
       },
       "example": {
         "de": "Das Wort 'sie' ist sehr nützlich.",
         "fr": "Le mot 'sie' est très utile."
       },
       "exercises": [
+        {
+          "type": "fill_blank",
+          "examples": [
+            {
+              "question": {
+                "de": "Das Buch liegt ___ dem Tisch.",
+                "fr": "Complétez la phrase avec le mot 'et' (Le mot manquant est au milieu)"
+              },
+              "solution": {
+                "de": "Das Buch liegt sie dem Tisch.",
+                "fr": "Le livre est et la table."
+              },
+              "context": "Le mot manquant est au milieu"
+            }
+          ],
+          "answer": "sie",
+          "level": "beginner",
+          "translation": "et"
+        },
         {
           "type": "gender_article",
           "question": {
@@ -355,37 +411,24 @@
             "die",
             "das"
           ],
-          "answer": "die",
+          "answer": "das",
           "word": "sie",
-          "level": "beginner"
-        },
-        {
-          "type": "definition_match",
-          "question": {
-            "de": "Zu welchem Wort gehört diese Definition: \"in der Bibel oft verwendet wird. Es ist ein Zeichen der Liebe, des Friedens und der Hoffnung\"?",
-            "fr": "Trouvez le mot défini par : \"c'est un signe d'amour, de paix et d'espérance. C'est le symbole de l'espérance, l'espoir et la paix\" ?"
-          },
-          "definition": {
-            "de": "in der Bibel oft verwendet wird. Es ist ein Zeichen der Liebe, des Friedens und der Hoffnung",
-            "fr": "c'est un signe d'amour, de paix et d'espérance. C'est le symbole de l'espérance, l'espoir et la paix"
-          },
-          "answer": "sie",
           "level": "beginner"
         },
         {
           "type": "sentence_building",
           "question": {
-            "de": "Bilden Sie einen Satz mit diesen Wörtern: sehr, ein, schön, das, der, ist, gut, sie",
-            "fr": "Formez une phrase avec ces mots: sehr, ein, schön, das, der, ist, gut, sie"
+            "de": "Bilden Sie einen Satz mit diesen Wörtern: ein, das, schön, sehr, gut, ist, der, sie",
+            "fr": "Formez une phrase avec ces mots: ein, das, schön, sehr, gut, ist, der, sie"
           },
           "word_pool": [
-            "sehr",
             "ein",
-            "schön",
             "das",
-            "der",
-            "ist",
+            "schön",
+            "sehr",
             "gut",
+            "ist",
+            "der",
             "sie"
           ],
           "target_sentence": "Das ist ein sie.",
@@ -394,19 +437,18 @@
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:26:05.239935"
+      "processed_at": "2025-05-29T11:32:27.561024"
     }
   ],
   "vocabulary_stats": {
     "total_words": 5,
     "total_exercises": 15,
     "exercise_types": {
-      "definition_match": 5,
-      "translation": 3,
-      "sentence_building": 3,
-      "fill_blank": 1,
-      "multiple_choice": 1,
-      "gender_article": 2
+      "sentence_building": 4,
+      "gender_article": 4,
+      "fill_blank": 3,
+      "definition_match": 2,
+      "multiple_choice": 2
     },
     "levels": {
       "beginner": 3,
