@@ -209,26 +209,120 @@ class VocabularyProcessor:
             }
     
     def create_fill_blank_exercise(self, word: str, translation: str) -> Dict:
-        """Crée un exercice à trous"""
-        templates = [
-            f"Ich brauche einen ____.",
-            f"Der ____ ist sehr wichtig.",
-            f"Haben Sie einen ____?",
-            f"Wo ist mein ____?",
-            f"Das ist mein ____."
-        ]
+        """Crée un exercice à trous avec plusieurs phrases d'exemple
+
+        Le mot manquant peut être placé au début, au milieu ou à la fin de la phrase
+        selon le template choisi. Chaque exercice contient plusieurs phrases d'exemple.
+        """
+        # Templates plus naturels et adaptés au contexte
+        templates = {
+            'verbs': {
+                'middle': [
+                    "Die Kinder ____ im Garten.",
+                    "Wir ____ gerne zusammen.",
+                    "Sie ____ jeden Tag zur Arbeit."
+                ],
+                'end': [
+                    "Die Musik können wir nicht ____.",
+                    "Ich möchte maintenant ____.",
+                    "Er will nach Hause ____."
+                ]
+            },
+            'nouns': {
+                'middle': [
+                    "Der ____ steht im Wohnzimmer.",
+                    "Eine ____ liegt auf dem Tisch.",
+                    "Das ____ ist sehr intéressant."
+                ],
+                'end': [
+                    "Ich suche meinen ____.",
+                    "Wir brauchen einen ____.",
+                    "Sie kauft heute une ____."
+                ]
+            },
+            'adjectives': {
+                'middle': [
+                    "Das ____ Haus gefällt mir.",
+                    "Der ____ Tag war anstrengend.",
+                    "Eine ____ Katze schläft dort."
+                ],
+                'end': [
+                    "Das Wetter est aujourd'hui ____.",
+                    "Die Suppe schmeckt très ____.",
+                    "Der Film war vraiment ____."
+                ]
+            },
+            'prepositions': {
+                'middle': [
+                    "Das Buch liegt ____ dem Tisch.",
+                    "Wir gehen ____ den Park.",
+                    "Die Katze springt ____ das Sofa."
+                ]
+            },
+            'general': {
+                'middle': [
+                    "Ich habe ____ vergessen.",
+                    "Sie hat ____ gekauft.",
+                    "Wir können ____ sehen."
+                ],
+                'end': [
+                    "Das gefällt mir sehr ____.",
+                    "Ich verstehe das ____.",
+                    "Hier kommt der ____."
+                ]
+            }
+        }
+
+        # Détermine la catégorie du mot (simplifié)
+        if word.endswith('en'):
+            word_type = 'verbs'
+        elif word.startswith(('der', 'die', 'das', 'ein', 'eine')):
+            word_type = 'nouns'
+        elif len(word) <= 4:  # Hypothèse simple pour les prépositions
+            word_type = 'prepositions'
+        else:
+            word_type = 'general'
+
+        # Sélectionne les templates appropriés
+        word_templates = templates.get(word_type, templates['general'])
         
-        german_sentence = random.choice(templates)
-        french_instruction = f"Complétez avec le mot allemand pour '{translation}'"
+        # Crée les exemples
+        selected_examples = []
         
+        # Au moins un exemple de chaque position disponible
+        for position in word_templates.keys():
+            if position in ['middle', 'end']:  # On évite les positions 'start' car moins naturelles
+                template = random.choice(word_templates[position])
+                selected_examples.append({
+                    'sentence': template.replace('____', '___'),  # Uniformise les blancs
+                    'hint': f"Le mot manquant est {position=='middle' and 'au milieu' or 'à la fin'}"
+                })
+        
+        # Ajoute un exemple supplémentaire au hasard si nécessaire
+        if len(selected_examples) < 3:
+            position = random.choice(['middle', 'end'])
+            if position in word_templates:
+                template = random.choice(word_templates[position])
+                selected_examples.append({
+                    'sentence': template.replace('____', '___'),
+                    'hint': f"Le mot manquant est {position=='middle' and 'au milieu' or 'à la fin'}"
+                })
+
         return {
             'type': 'fill_blank',
-            'question': {
-                'de': german_sentence,
-                'fr': french_instruction
-            },
+            'examples': [
+                {
+                    'question': {
+                        'de': example['sentence'],
+                        'fr': f"Complétez la phrase avec le mot '{translation}' ({example['hint']})"
+                    },
+                    'context': example['hint']
+                }
+                for example in selected_examples
+            ],
             'answer': word,
-            'level': self.determine_word_level(word)
+            'level': self.determine_word_level(word),
+            'translation': translation
         }
     
     def create_multiple_choice_exercise(self, word: str, translation: str) -> Dict:
