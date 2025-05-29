@@ -138,17 +138,54 @@ class VocabularyProcessor:
             }
     
     def create_simple_exercise(self, word: str, translation: str) -> Dict:
-        """Crée un exercice à choix multiples (QCM)"""
-        french_instruction = f"Choisissez la traduction correcte pour '{translation}'"
+        """Crée deux exercices à choix multiples (QCM) dans les deux sens de traduction"""
+        exercises = []
         
+        # 1. Exercice DE -> FR
+        de_fr_exercise = self._create_exercise_variant(
+            word=word,
+            translation=translation,
+            prompt_lang="fr",
+            prompts=[
+                "Un mot français aléatoire :",
+                "Voici un autre mot français :",
+                "Encore un mot français :"
+            ],
+            question_de=f"Welches französische Wort bedeutet '{word}'?",
+            question_fr=f"Quelle est la traduction française de '{word}'?",
+            fallback_suffixes=['er', 'eur', 'eux', 'able', 'ible', 'iste']
+        )
+        
+        # 2. Exercice FR -> DE
+        fr_de_exercise = self._create_exercise_variant(
+            word=translation,
+            translation=word,
+            prompt_lang="de",
+            prompts=[
+                "Ein zufälliges deutsches Wort:",
+                "Hier ist ein anderes deutsches Wort:",
+                "Noch ein deutsches Wort:"
+            ],
+            question_de=f"Welches deutsche Wort bedeutet '{translation}'?",
+            question_fr=f"Quel est le mot allemand pour '{translation}'?",
+            fallback_suffixes=['en', 'er', 'e', 'ung', 'heit', 'keit']
+        )
+        
+        return {
+            'type': 'multiple_choice_pair',
+            'de_to_fr': de_fr_exercise,
+            'fr_to_de': fr_de_exercise,
+            'level': self.determine_word_level(word)
+        }
+        
+    def _create_exercise_variant(self, word: str, translation: str, prompt_lang: str,
+                               prompts: List[str], question_de: str, question_fr: str,
+                               fallback_suffixes: List[str]) -> Dict:
+        """Crée un exercice QCM dans un sens de traduction spécifique"""
         tokenizer_gpt, model_gpt = self.models['gpt']
         
-        # Prompt pour générer des mots aléatoires en allemand
-        prompts = [
-            "Ein zufälliges deutsches Wort:",
-            "Hier ist ein anderes deutsches Wort:",
-            "Noch ein deutsches Wort:"
-        ]
+        try:
+            wrong_options = []
         
         try:
             wrong_options = []
@@ -167,17 +204,17 @@ class VocabularyProcessor:
                     top_p=0.95
                 )
                 
-                # Extraire le mot généré
+                # Traduire le mot généré vers le français
                 generated_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
-                # Chercher un mot valide dans le texte généré
-                words = re.findall(r'\b[a-zäöüß]{3,}\b', generated_text.lower())
+                # Chercher un mot valide
+                words = re.findall(r'\b\w+\b', generated_text.lower())
                 
                 if words:
-                    # Prendre le premier mot valide trouvé
-                    random_word = words[0]
-                    # Vérifier que le mot est différent du mot original et unique
-                    if random_word != word and random_word not in wrong_options:
-                        wrong_options.append(random_word)
+                    # Prendre le premier mot valide et le traduire
+                    french_word = words[0]
+                    # Vérifier que le mot est différent de la traduction et unique
+                    if french_word != translation and french_word not in wrong_options:
+                        wrong_options.append(french_word)
             
             # Si nous n'avons pas assez de mots valides, générer d'autres mots
             attempts = 0
@@ -203,52 +240,55 @@ class VocabularyProcessor:
             
             # Si on n'a toujours pas assez d'options, utiliser des fallbacks
             while len(wrong_options) < 3:
-                # Générer des mots similaires mais différents
-                suffixes = ['en', 'er', 'e', 'ung', 'heit', 'keit']
+                # Générer des mots similaires en français
+                suffixes = ['er', 'eur', 'eux', 'able', 'ible', 'iste']
                 for suffix in suffixes:
-                    fallback = word + suffix
-                    if fallback not in wrong_options and fallback != word:
+                    fallback = translation + suffix
+                    if fallback not in wrong_options:
                         wrong_options.append(fallback)
                         if len(wrong_options) >= 3:
                             break
             
             wrong_options = wrong_options[:3]
             
-            options = [word] + wrong_options
+            options = [translation] + wrong_options
             random.shuffle(options)
             
             return {
                 'type': 'multiple_choice',
                 'question': {
-                    'de': f"Welches Wort bedeutet '{translation}'?",
-                    'fr': french_instruction
+                    'de': german_instruction,
+                    'fr': f"Choisissez la traduction en français pour '{word}'"
                 },
                 'options': options,
-                'answer': word,
+                'answer': translation,
                 'level': self.determine_word_level(word)
             }
             
         except Exception as e:
             print(f"Erreur lors de la génération des options pour '{word}': {e}")
-            fallback_suffixes = ['ung', 'heit', 'keit', 'chen', 'lein', 'ig']
+            # Fallback sur des options simples
             wrong_options = []
             for suffix in fallback_suffixes:
                 fallback = word + suffix
-                if len(wrong_options) < 3:
+                if fallback not in wrong_options and fallback != word:
                     wrong_options.append(fallback)
+                if len(wrong_options) >= 3:
+                    break
             
+            # S'assurer qu'on a exactement 3 options incorrectes
+            wrong_options = wrong_options[:3]
             options = [word] + wrong_options
             random.shuffle(options)
             
             return {
                 'type': 'multiple_choice',
                 'question': {
-                    'de': f"Welches Wort bedeutet '{translation}'?",
-                    'fr': french_instruction
+                    'de': question_de,
+                    'fr': question_fr
                 },
                 'options': options,
-                'answer': word,
-                'level': self.determine_word_level(word)
+                'answer': word
             }
     
     def determine_word_level(self, word: str) -> str:
