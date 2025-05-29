@@ -1,77 +1,91 @@
 #!/usr/bin/env python3
 import os
 import sys
-import subprocess
-import signal
-import time
-from config import *
+import json
+from transformers import MarianMTModel, MarianTokenizer
 
-def start_process(script_name, args=None):
-    """Démarre un script Python comme un processus"""
-    cmd = [sys.executable, script_name]
-    if args:
-        cmd.extend(args)
-    return subprocess.Popen(cmd)
+MODEL_PATH = "./opus-mt-de-fr"
+
+EXTENSION_TRANSCRIPTION = ".json"
+
+def trouver_fichiers_transcription(repertoire):
+    fichiers = []
+    for nom_fichier in os.listdir(repertoire):
+        chemin = os.path.join(repertoire, nom_fichier)
+        if os.path.isfile(chemin) and nom_fichier.lower().endswith(EXTENSION_TRANSCRIPTION):
+            fichiers.append(chemin)
+    return fichiers
+
+def charger_modele_traduction():
+    print("Chargement du modèle de traduction MarianMT...")
+    tokenizer = MarianTokenizer.from_pretrained(MODEL_PATH)
+    model = MarianMTModel.from_pretrained(MODEL_PATH)
+    return tokenizer, model
+
+def traduire_texte(tokenizer, model, texte):
+    inputs = tokenizer(texte, return_tensors="pt", padding=True)
+    outputs = model.generate(**inputs)
+    traduction = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    return traduction
+
+def traduire_fichier_json(tokenizer, model, chemin_fichier):
+    print(f"Traitement traduction du fichier: {chemin_fichier}")
+    with open(chemin_fichier, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    # Whisper stocke les segments dans data["segments"] (liste de dict avec "text")
+    if "segments" not in data:
+        print(f"Aucun segment trouvé dans {chemin_fichier}. Rien à traduire.", file=sys.stderr)
+        return False
+
+    segments = data["segments"]
+    for segment in segments:
+        texte_original = segment.get("text", "").strip()
+        if texte_original:
+            traduction = traduire_texte(tokenizer, model, texte_original)
+            segment["translation_fr"] = traduction
+        else:
+            segment["translation_fr"] = ""
+
+    # Enregistrer un nouveau fichier avec suffixe _traduit.json
+    chemin_sortie = chemin_fichier.replace(EXTENSION_TRANSCRIPTION, f"_traduit{EXTENSION_TRANSCRIPTION}")
+    with open(chemin_sortie, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+    print(f"Fichier traduit sauvegardé sous: {chemin_sortie}")
+    return True
 
 def main():
     if len(sys.argv) != 2:
-        print(f"Usage: {sys.argv[0]} <audio_file_or_directory>")
+        print(f"Usage: {sys.argv[0]} <repertoire_contenant_fichiers_json>", file=sys.stderr)
         sys.exit(1)
 
-    input_path = sys.argv[1]
-    if not os.path.exists(input_path):
-        print(f"Le chemin {input_path} n'existe pas.")
+    repertoire = sys.argv[1]
+    if not os.path.isdir(repertoire):
+        print(f"Erreur: '{repertoire}' n'est pas un répertoire valide.", file=sys.stderr)
         sys.exit(1)
 
-    # Créer les répertoires nécessaires
-    os.makedirs("output", exist_ok=True)
+    fichiers_json = trouver_fichiers_transcription(repertoire)
+    if not fichiers_json:
+        print(f"Aucun fichier {EXTENSION_TRANSCRIPTION} trouvé dans '{repertoire}'.", file=sys.stderr)
+        sys.exit(1)
 
-    # Démarrer les workers
-    processes = []
-    
-    # Démarrer le worker de transcription
-    print("Démarrage du worker de transcription...")
-    transcription_worker = start_process("transcribe_api.py")
-    processes.append(transcription_worker)
+    tokenizer, model = charger_modele_traduction()
 
-    # Démarrer le worker de traduction
-    print("Démarrage du worker de traduction...")
-    translation_worker = start_process("traduction_lignes.py")
-    processes.append(translation_worker)
+    succes = 0
+    erreurs = 0
+    for fichier in fichiers_json:
+        if traduire_fichier_json(tokenizer, model, fichier):
+            succes += 1
+        else:
+            erreurs += 1
 
-    # Attendre que les workers soient prêts
-    time.sleep(2)
+    print(f"\nTraduction terminée: {succes} réussies, {erreurs} erreurs.")
 
-    # Ajouter les fichiers à la queue
-    print("Ajout des fichiers à la queue...")
-    process_audio = start_process("process_audio.py", [input_path])
-    processes.append(process_audio)
-
-    def signal_handler(signum, frame):
-        print("\nArrêt des processus...")
-        for p in processes:
-            p.terminate()
+    if erreurs > 0:
+        sys.exit(1)
+    else:
         sys.exit(0)
-
-    # Capturer Ctrl+C pour arrêter proprement
-    signal.signal(signal.SIGINT, signal_handler)
-
-    try:
-        # Attendre que le processus d'ajout de fichiers se termine
-        process_audio.wait()
-        
-        print("\nTous les fichiers ont été ajoutés à la queue.")
-        print("Les workers continuent de traiter les fichiers...")
-        print("Appuyez sur Ctrl+C pour arrêter le pipeline")
-        
-        # Maintenir les workers en vie
-        while True:
-            time.sleep(1)
-            
-    except KeyboardInterrupt:
-        print("\nArrêt des processus...")
-        for p in processes:
-            p.terminate()
 
 if __name__ == "__main__":
     main()
