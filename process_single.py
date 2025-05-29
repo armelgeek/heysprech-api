@@ -21,23 +21,49 @@ GERMAN_GPT_MODEL = "benjamin/gpt2-wechsel-german"
 
 # Prompts pour l'analyse lexicographique
 LEXICAL_PROMPTS = {
-    'etymology': "Die Etymologie des Wortes '{word}' ist:",
-    'definition': "Definition und Verwendung des Wortes '{word}':",
-    'expressions': "Häufige Redewendungen mit '{word}':",
-    'collocations': "Typische Wortverbindungen mit '{word}':",
-    'synonyms': "Synonyme für '{word}':",
-    'antonyms': "Antonyme für '{word}':",
-    'register': "Sprachregister und Verwendungskontext von '{word}':"
+    'etymology': "Die Etymologie des Wortes '{word}' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen):",
+    'definition': "Gib eine sehr detaillierte Definition des Wortes '{word}' mit den folgenden Aspekten:\n1. Hauptbedeutung mit präziser Erklärung\n2. Alle Nebenbedeutungen und Nuancen\n3. Spezielle Verwendungen und Kontexte\n4. Fachsprachliche Bedeutungen und Terminologie\n5. Konkrete Beispiele für jeden Aspekt\n6. Grammatikalische Besonderheiten\n7. Kulturelle oder regionale Besonderheiten",
+    'detailed_usage': "Beschreibe sehr detailliert und mit vielen Beispielen, wie das Wort '{word}' verwendet wird in:\n1. Alltäglicher Sprache und Umgangssprache\n2. Formeller Sprache und gehobener Sprache\n3. Fachsprache und spezifischen Bereichen\n4. Regionalen Varianten und Dialekten\n5. Literarischer Sprache\n6. Modernde Medien und Jugendsprache",
+    'expressions': "Liste ALLE Redewendungen, Sprichwörter und feste Ausdrücke mit '{word}' auf. Für jeden Ausdruck gib an:\n1. Wörtliche Bedeutung\n2. Übertragene Bedeutung\n3. Verwendungskontext\n4. Stilebene\n5. Regionale Besonderheiten\n6. Beispiele in Sätzen",
+    'collocations': "Liste ALLE üblichen Wortverbindungen mit '{word}' auf, gruppiert nach:\n1. Verb + {word}\n2. {word} + Substantiv\n3. Adjektiv + {word}\n4. Präposition + {word}\n5. Typische Satzstrukturen\nFür jede Kombination gib mehrere Beispiele und Kontextinformationen.",
+    'synonyms': "Liste ALLE möglichen Synonyme für '{word}' auf, sehr detailliert geordnet nach:\n1. Exakte Synonyme (gleiche Bedeutung und Verwendung)\n2. Kontextabhängige Synonyme (mit Erklärung der Nuancen)\n3. Stilistische Varianten (formell, umgangssprachlich, etc.)\n4. Regionale Varianten und Dialektausdrücke\n5. Fachsprachliche Alternativen\nFüge für JEDES Synonym eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.",
+    'antonyms': "Liste alle möglichen Gegenwörter zu '{word}' auf, geordnet nach:\n1. Direkte Antonyme\n2. Kontextabhängige Gegensätze\n3. Graduelle Abstufungen\nFür jedes Antonym erkläre die genaue Art des Gegensatzes und gib Verwendungsbeispiele.",
+    'register': "Beschreibe sehr detailliert das Sprachregister und die Verwendungskontexte von '{word}', einschließlich:\n1. Stilebene (formell, neutral, umgangssprachlich, etc.)\n2. Soziale Kontexte\n3. Situative Angemessenheit\n4. Historische Entwicklung des Gebrauchs\n5. Aktuelle Trends in der Verwendung\n6. Regionale und soziale Variation",
+    'semantic_field': "Beschreibe das semantische Feld und verwandte Begriffe zu '{word}' mit:\n1. Übergeordnete Begriffe (Hyperonyme)\n2. Untergeordnete Begriffe (Hyponyme)\n3. Verwandte Konzepte\n4. Typische Assoziationen\n5. Kulturelle Konnotationen\n6. Semantische Beziehungen zu anderen Wortfeldern"
 }
 
 # Prompts pour les exercices d'apprentissage
 EXERCISE_PROMPTS = {
-    'fill_blank': "Generiere einen Lückentextsatz mit dem Wort '{word}':",
-    'multiple_choice': "Erstelle Multiple-Choice-Fragen zum Wort '{word}':",
-    'word_association': "Erstelle ein Wortassoziationsspiel mit '{word}':",
-    'scramble': "Erstelle einen Satz mit '{word}' zum Unscrambling:",
-    'context_quiz': "Erstelle Kontextfragen für das Wort '{word}':",
-    'usage_quiz': "Erstelle Verwendungsbeispiele mit '{word}' zum Üben:"
+    'fill_blank': {
+        'beginner': "Generiere einen einfachen Lückentextsatz mit dem Wort '{word}':",
+        'intermediate': "Generiere einen mittelschweren Lückentextsatz mit dem Wort '{word}':",
+        'advanced': "Generiere einen komplexen Lückentextsatz mit dem Wort '{word}':"
+    },
+    'multiple_choice': {
+        'beginner': "Erstelle einfache Multiple-Choice-Fragen zum Wort '{word}' mit Grundbedeutungen:",
+        'intermediate': "Erstelle Multiple-Choice-Fragen zum Wort '{word}' mit verschiedenen Kontexten:",
+        'advanced': "Erstelle anspruchsvolle Multiple-Choice-Fragen zum Wort '{word}' mit Nuancen und idiomatischen Verwendungen:"
+    },
+    'word_association': {
+        'beginner': "Erstelle ein einfaches Wortassoziationsspiel mit '{word}' (max. 4 Wörter):",
+        'intermediate': "Erstelle ein Wortassoziationsspiel mit '{word}' und thematischen Gruppen:",
+        'advanced': "Erstelle ein komplexes Wortassoziationsnetz mit '{word}' und semantischen Beziehungen:"
+    },
+    'scramble': {
+        'beginner': "Erstelle einen einfachen Satz mit '{word}' (max. 5 Wörter) zum Unscrambling:",
+        'intermediate': "Erstelle einen Satz mittlerer Länge mit '{word}' zum Unscrambling:",
+        'advanced': "Erstelle einen komplexen Satz mit '{word}' und Nebensätzen zum Unscrambling:"
+    },
+    'context_quiz': {
+        'beginner': "Erstelle einfache Kontextfragen für Anfänger zum Wort '{word}':",
+        'intermediate': "Erstelle Kontextfragen mittleren Niveaus zum Wort '{word}':",
+        'advanced': "Erstelle anspruchsvolle Kontextfragen mit kulturellen Bezügen zum Wort '{word}':"
+    },
+    'usage_quiz': {
+        'beginner': "Erstelle grundlegende Verwendungsbeispiele mit '{word}':",
+        'intermediate': "Erstelle Verwendungsbeispiele mit '{word}' in verschiedenen Zeitformen:",
+        'advanced': "Erstelle Verwendungsbeispiele mit '{word}' in idiomatischen Wendungen:"
+    }
 }
 
 AUDIO_EXTENSIONS = (
@@ -252,32 +278,188 @@ def get_lexical_info(word, prompt_key, models):
         return None
 
 def get_translations(word, models):
-    """Obtient la traduction en français"""
-    translations = {}
+    """Obtient plusieurs variantes de traduction en français avec différents niveaux de style
     
-    # Français uniquement
+    Args:
+        word: Le mot à traduire
+        models: Les modèles de traduction et génération
+        
+    Returns:
+        dict: Traductions structurées par style et contexte
+    """
     tokenizer_de_fr, model_de_fr = models['de_fr']
-    inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
-    outputs = model_de_fr.generate(**inputs)
-    translations['fr'] = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+    translations = {
+        'principal': '',  # Traduction principale/neutre
+        'styles': {       # Variations stylistiques
+            'formel': [],
+            'courant': [],
+            'familier': []
+        },
+        'contextes': {},  # Traductions selon le contexte
+        'alternatives': [] # Autres variantes possibles
+    }
+    
+    # Configurations pour différents styles de traduction
+    generation_params = [
+        # (température, top_k, top_p) - plus la température est haute, plus les résultats sont créatifs
+        (0.3, 50, 0.95),  # Style neutre/standard
+        (0.7, 50, 0.95),  # Style varié
+        (0.9, 50, 0.95)   # Style très créatif
+    ]
+    
+    # Génération de la traduction principale (style neutre)
+    try:
+        inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
+        outputs = model_de_fr.generate(
+            inputs.input_ids,
+            max_length=50,
+            num_beams=5,
+            temperature=0.3,  # Température basse pour une traduction fidèle
+            do_sample=False   # Pas d'échantillonnage pour la traduction principale
+        )
+        translations['principal'] = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+    except Exception as e:
+        print(f"Erreur lors de la traduction principale: {e}")
+        translations['principal'] = word
+    
+    # Génération des variations stylistiques
+    contexts = [
+        ("in formellen Texten", 'formel'),
+        ("in der Alltagssprache", 'courant'),
+        ("in der Umgangssprache", 'familier')
+    ]
+    
+    for context, style in contexts:
+        prompt = f"Das Wort '{word}' {context}:"
+        try:
+            inputs = tokenizer_de_fr(prompt, return_tensors="pt", padding=True)
+            
+            # Utiliser différents paramètres selon le style
+            if style == 'formel':
+                temp, k, p = 0.3, 50, 0.95  # Plus conservateur
+            elif style == 'familier':
+                temp, k, p = 0.9, 50, 0.95  # Plus créatif
+            else:
+                temp, k, p = 0.7, 50, 0.95  # Intermédiaire
+                
+            outputs = model_de_fr.generate(
+                inputs.input_ids,
+                max_length=50,
+                num_return_sequences=3,
+                temperature=temp,
+                top_k=k,
+                top_p=p,
+                do_sample=True
+            )
+            
+            for output in outputs:
+                translation = tokenizer_de_fr.decode(output, skip_special_tokens=True)
+                if translation not in translations['styles'][style]:
+                    translations['styles'][style].append(translation)
+                    
+        except Exception as e:
+            print(f"Erreur lors de la génération du style {style}: {e}")
+    
+    # Génération de traductions contextuelles
+    specific_contexts = [
+        "in wissenschaftlichen Texten",
+        "in der Literatur",
+        "in der Technik",
+        "in der Wirtschaft",
+        "in den Medien"
+    ]
+    
+    for context in specific_contexts:
+        prompt = f"Das Wort '{word}' {context}:"
+        try:
+            inputs = tokenizer_de_fr(prompt, return_tensors="pt", padding=True)
+            outputs = model_de_fr.generate(
+                inputs.input_ids,
+                max_length=50,
+                num_return_sequences=2,
+                temperature=0.7,
+                top_k=50,
+                top_p=0.95,
+                do_sample=True
+            )
+            
+            context_key = context.split()[-1].rstrip(':')  # Extrait le contexte principal
+            translations['contextes'][context_key] = [
+                tokenizer_de_fr.decode(output, skip_special_tokens=True)
+                for output in outputs
+            ]
+            
+        except Exception as e:
+            print(f"Erreur lors de la génération du contexte {context}: {e}")
+    
+    # Génération d'alternatives générales
+    for temp, k, p in generation_params:
+        try:
+            inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
+            outputs = model_de_fr.generate(
+                inputs.input_ids,
+                max_length=50,
+                num_return_sequences=3,
+                temperature=temp,
+                top_k=k,
+                top_p=p,
+                do_sample=True
+            )
+            
+            for output in outputs:
+                translation = tokenizer_de_fr.decode(output, skip_special_tokens=True)
+                if (translation != translations['principal'] and 
+                    translation not in translations['alternatives']):
+                    translations['alternatives'].append(translation)
+                    
+        except Exception as e:
+            print(f"Erreur lors de la génération d'alternatives: {e}")
     
     return translations
 
 def create_lexical_entry(word, models):
-    """Crée une entrée lexicographique complète pour un mot"""
+    """Crée une entrée lexicographique complète pour un mot
+    
+    Args:
+        word: Le mot à analyser
+        models: Les modèles de traduction et génération
+        
+    Returns:
+        dict: Entrée lexicographique complète avec toutes les informations
+    """
+    # Obtenir la fréquence et le niveau de difficulté recommandé
+    word_level = get_word_level(word)
+    
+    # Générer toutes les informations lexicales
+    translations = get_translations(word, models)
+    definitions = get_lexical_info(word, 'definition', models)
+    examples = generate_example_sentences(word, models)
+    pronunciation = get_pronunciation(word, models)
+    
+    # Structure enrichie de l'entrée lexicographique
     entry = {
         'word': word,
+        'level': word_level,
+        'pronunciation': pronunciation,  # Ajout de la prononciation
+        'translations': translations,
         'grammatical_info': analyze_word_class(word, models),
-        'translations': get_translations(word, models),
-        'etymology': get_lexical_info(word, 'etymology', models),
-        'definitions': get_lexical_info(word, 'definition', models),
-        'expressions': get_lexical_info(word, 'expressions', models),
-        'collocations': get_lexical_info(word, 'collocations', models),
-        'synonyms': get_lexical_info(word, 'synonyms', models),
-        'antonyms': get_lexical_info(word, 'antonyms', models),
-        'register': get_lexical_info(word, 'register', models),
-        'examples': generate_example_sentences(word, models),
-        'exercises': generate_exercises(word, models)
+        'definitions': {
+            'detaillees': definitions,
+            'exemples': examples
+        },
+        'etymologie': get_lexical_info(word, 'etymology', models),
+        'usage': {
+            'general': get_lexical_info(word, 'detailed_usage', models),
+            'expressions': get_lexical_info(word, 'expressions', models),
+            'collocations': get_lexical_info(word, 'collocations', models),
+            'registre': get_lexical_info(word, 'register', models)
+        },
+        'semantic': {
+            'synonymes': get_lexical_info(word, 'synonyms', models),
+            'antonymes': get_lexical_info(word, 'antonyms', models),
+            'champ_semantique': get_lexical_info(word, 'semantic_field', models)
+        },
+        'exercices': generate_exercises(word, models, difficulty=word_level['level'])
     }
     
     return entry
@@ -331,8 +513,14 @@ def format_exercise(exercise_type, exercise_text, word):
     # Format par défaut
     return {'text': exercise_text}
 
-def generate_exercises(word, models):
-    """Génère différents exercices pour l'apprentissage du mot"""
+def generate_exercises(word, models, difficulty='intermediate'):
+    """Génère différents exercices pour l'apprentissage du mot
+    
+    Args:
+        word: Le mot à traiter
+        models: Les modèles de traduction et génération
+        difficulty: Niveau de difficulté ('beginner', 'intermediate', 'advanced')
+    """
     tokenizer_gpt, model_gpt = models['gpt']
     tokenizer_de_fr, model_de_fr = models['de_fr']
     exercises = {}
@@ -375,6 +563,60 @@ def generate_exercises(word, models):
             exercises[exercise_type] = None
     
     return exercises
+
+def get_word_level(word):
+    """Détermine le niveau de difficulté d'un mot allemand
+    
+    Basé sur :
+    - La longueur du mot
+    - La présence de caractères spéciaux
+    - La complexité morphologique
+    """
+    # Liste de préfixes et suffixes courants en allemand
+    common_prefixes = ['un', 'auf', 'ab', 'ein', 'aus', 'mit', 'vor']
+    common_suffixes = ['ung', 'heit', 'keit', 'lich', 'ig', 'isch']
+    
+    # Calcul du score de complexité
+    score = 0
+    
+    # Longueur du mot
+    if len(word) <= 4:
+        score += 1
+    elif len(word) <= 7:
+        score += 2
+    else:
+        score += 3
+    
+    # Caractères spéciaux (umlauts, ß)
+    special_chars = 'äöüßÄÖÜ'
+    if any(c in word for c in special_chars):
+        score += 1
+    
+    # Complexité morphologique
+    if any(word.startswith(prefix) for prefix in common_prefixes):
+        score += 1
+    if any(word.endswith(suffix) for suffix in common_suffixes):
+        score += 1
+    
+    # Détermination du niveau
+    if score <= 2:
+        return {
+            'level': 'beginner',
+            'score': score,
+            'explanation': 'Mot simple, approprié pour les débutants'
+        }
+    elif score <= 4:
+        return {
+            'level': 'intermediate',
+            'score': score,
+            'explanation': 'Mot de difficulté moyenne'
+        }
+    else:
+        return {
+            'level': 'advanced',
+            'score': score,
+            'explanation': 'Mot complexe, niveau avancé'
+        }
 
 def main():
     parser = argparse.ArgumentParser(
