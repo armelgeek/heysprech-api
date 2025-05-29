@@ -526,9 +526,10 @@ def generate_exercises(word, models, difficulty='intermediate'):
     exercises = {}
     
     # Génération des différents types d'exercices
-    for exercise_type, prompt in EXERCISE_PROMPTS.items():
+    for exercise_type, prompt_dict in EXERCISE_PROMPTS.items():
         try:
-            # Génération de l'exercice en allemand
+            # Génération de l'exercice en allemand avec le bon niveau de difficulté
+            prompt = prompt_dict[difficulty]  # Sélectionne le prompt du bon niveau
             full_prompt = prompt.format(word=word)
             inputs = tokenizer_gpt(full_prompt, return_tensors="pt", padding=True)
             outputs = model_gpt.generate(
