@@ -256,38 +256,67 @@ def generate_example_sentences(word, models):
         word_type = word_type if 'word_type' in locals() else analyze_word_class(word, models)
         word_info = word_type.get('de', '').lower()
         
+        # Choisir un prompt approprié selon le type de mot
         if 'verb' in word_info:
-            verb_examples = [
-                {'de': f"Man kann {word}.", 'fr': f"On peut {word}."},
-                {'de': f"Ich muss heute {word}.", 'fr': f"Je dois {word} aujourd'hui."},
-                {'de': f"Willst du {word}?", 'fr': f"Veux-tu {word} ?"},
-                {'de': f"Sie {word} gerne.", 'fr': f"Elle aime {word}."}
+            prompts = [
+                f"Man kann {word}",
+                f"Ich möchte {word}",
+                f"Wir {word} zusammen",
+                f"Er {word} gern"
             ]
-            examples.append(verb_examples[len(examples) % len(verb_examples)])
         elif 'substantiv' in word_info or 'nomen' in word_info:
-            noun_examples = [
-                {'de': f"Das {word} ist interessant.", 'fr': f"Le/La {word} est intéressant(e)."},
-                {'de': f"Wo ist das {word}?", 'fr': f"Où est le/la {word} ?"},
-                {'de': f"Ich brauche ein {word}.", 'fr': f"J'ai besoin d'un(e) {word}."},
-                {'de': f"Das ist mein {word}.", 'fr': f"C'est mon/ma {word}."}
+            prompts = [
+                f"Das {word} ist",
+                f"Ich habe ein {word}",
+                f"Mit dem {word}",
+                f"Die {word} sind"
             ]
-            examples.append(noun_examples[len(examples) % len(noun_examples)])
         elif 'adjektiv' in word_info:
-            adj_examples = [
-                {'de': f"Es ist sehr {word}.", 'fr': f"C'est très {word}."},
-                {'de': f"Das Wetter ist {word}.", 'fr': f"Le temps est {word}."},
-                {'de': f"Sie fühlt sich {word}.", 'fr': f"Elle se sent {word}."},
-                {'de': f"Alles wird {word}.", 'fr': f"Tout devient {word}."}
+            prompts = [
+                f"Es ist {word}",
+                f"Das Wetter ist {word}",
+                f"Sie ist sehr {word}",
+                f"Alles wird {word}"
             ]
-            examples.append(adj_examples[len(examples) % len(adj_examples)])
         else:
-            generic_examples = [
-                {'de': f"Hier ist es {word}.", 'fr': f"Ici c'est {word}."},
-                {'de': f"Das macht man {word}.", 'fr': f"On fait ça {word}."},
-                {'de': f"Es geht um {word}.", 'fr': f"Il s'agit de {word}."},
-                {'de': f"Wir sind {word}.", 'fr': f"Nous sommes {word}."}
+            prompts = [
+                f"Hier ist {word}",
+                f"Das ist {word}",
+                f"Mit {word}",
+                f"Es gibt {word}"
             ]
-            examples.append(generic_examples[len(examples) % len(generic_examples)])
+        
+        # Prendre un prompt au hasard
+        prompt = prompts[len(examples) % len(prompts)]
+            
+            try:
+                # Génération en allemand
+                inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+                outputs = model_gpt.generate(
+                    inputs.input_ids,
+                    max_length=15,
+                    num_beams=3,
+                    temperature=0.5,
+                    no_repeat_ngram_size=2
+                )
+                german = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
+                if not german.endswith('.'):
+                    german += '.'
+                
+                # Traduction en français
+                inputs = tokenizer_de_fr(german, return_tensors="pt", padding=True)
+                outputs = model_de_fr.generate(**inputs)
+                french = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+                if not french.endswith('.'):
+                    french += '.'
+                
+                examples.append({
+                    'de': german,
+                    'fr': french
+                })
+            except Exception as e:
+                print(f"Erreur lors de la génération d'exemple: {e}")
+                continue
     
     return examples
 
