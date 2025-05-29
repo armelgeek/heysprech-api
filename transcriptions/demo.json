@@ -1,477 +1,91 @@
 {
   "segments": [
     {
-      "start": 0.031,
-      "end": 1.419,
-      "text": " Ich hasse Katja.",
+      "start": 0.166,
+      "end": 0.51,
+      "text": " Ich.",
       "words": [
         {
-          "word": "Ich",
-          "start": 0.031,
-          "end": 0.599,
-          "score": 0.307
-        },
-        {
-          "word": "hasse",
-          "start": 0.62,
-          "end": 0.872,
-          "score": 0.628
-        },
-        {
-          "word": "Katja.",
-          "start": 0.935,
-          "end": 1.419,
-          "score": 0.707
+          "word": "Ich.",
+          "start": 0.166,
+          "end": 0.51,
+          "score": 0.435
         }
       ],
-      "translation": "Je déteste Katja."
+      "translation": "Moi."
     }
   ],
   "word_segments": [
     {
-      "word": "Ich",
-      "start": 0.031,
-      "end": 0.599,
-      "score": 0.307
-    },
-    {
-      "word": "hasse",
-      "start": 0.62,
-      "end": 0.872,
-      "score": 0.628
-    },
-    {
-      "word": "Katja.",
-      "start": 0.935,
-      "end": 1.419,
-      "score": 0.707
+      "word": "Ich.",
+      "start": 0.166,
+      "end": 0.51,
+      "score": 0.435
     }
   ],
   "language": "de",
   "vocabulary": [
     {
-      "word": "hasse",
-      "level": {
-        "level": "beginner",
-        "score": 2,
-        "explanation": "Mot simple, approprié pour les débutants"
-      },
-      "pronunciation": {
-        "text": "hasse",
-        "ipa": "",
-        "syllables": null,
-        "stress": null,
-        "description": {
-          "de": "Geben Sie folgende Details zur Aussprache des Wortes 'hasse':\n1. IPA-Transkription in eckigen Klammern []\n2. Silbentrennung mit Bindestrichen (-)\n3. Betonung (markiert mit ' vor der betonten Silbe)\n4. Ausspracheregeln und Besonderheiten\n5. Regionale Varianten (wenn vorhanden) [] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [",
-          "fr": "Veuillez fournir les détails suivants pour la prononciation du mot 'hasse': 1. Transcription IAP entre crochets [] 2. Coupure des syllabes avec traits (-) 3. Insertion (marquée par ' avant la syllabe soulignée) 4. Règles de prononciation et particularités 5. Variantes régionales (s'il y a lieu) [] [2] [3] [4] [5] [7] [8] [9] [11] [11] [13] [13] [15] [16] [17] [19] [20] [22] [22] [22] [23] [25] [25] [25] [28] [29] [30] [30] [33] [34] [36]"
-        },
-        "audio": {
-          "url": "https://api.heysprech.de/audio/pronunciation/hasse.mp3",
-          "speaker": "native_de",
-          "dialect": "standard"
-        }
-      },
-      "translations": {
-        "principal": "hais",
-        "styles": {
-          "formel": [
-            "Le mot \"haïsse\" dans les textes formels:",
-            "Le mot \"haïsse\" dans des textes formels:",
-            "Le mot \"haïsse\" dans les textes officiels:"
-          ],
-          "courant": [
-            "Le mot \"haïsse\" dans la langue quotidienne:",
-            "Le mot \"haïsse\" dans le langage quotidien:",
-            "Le mot \"haïsse\" dans la langue de la vie quotidienne:"
-          ],
-          "familier": [
-            "Le mot \"haïsse\" dans la langue courante:",
-            "Le mot \"haïsse\" dans le langage courant:",
-            "Le mot \"haïsse\" dans la langue commune:"
-          ]
-        },
-        "contextes": {
-          "Texten": [
-            "Le mot \"haïsse\" dans les textes scientifiques:",
-            "Le mot \"haïsse\" dans des textes scientifiques:"
-          ],
-          "Literatur": [
-            "Le mot \"haïsse\" dans la littérature:",
-            "Le mot 'haïs' dans la littérature:"
-          ],
-          "Technik": [
-            "Le mot \"haïsse\" dans la technique:",
-            "Le mot \"haïsse\" en technique:"
-          ],
-          "Wirtschaft": [
-            "Le mot \"haïsse\" dans l'économie:",
-            "Le mot 'haïs' dans l'économie:"
-          ],
-          "Medien": [
-            "Le mot \"haïsse\" dans les médias:",
-            "Le mot \"haïs\" dans les médias:"
-          ]
-        },
-        "alternatives": [
-          "haïssée",
-          "Hais"
-        ]
-      },
-      "grammatical_info": {
-        "original": "Grammatische Analyse des Wortes 'hasse': Die Bedeutung von 'hass' und 'gewalt' im Kontext von 'gewalt' und 'gewalt' im Kontext von 'gewalt' und 'gewalt' im Kontext von 'gewalt' und 'gewalt' im Kontext von 'gewalt' und 'gewalt' im Kontext von 'gewalt' und 'gewalt' im Kontext von 'gewalt' und 'gewalt' im Kontext von 'gewalt' und 'gewalt' im Kontext von 'gewalt' und '",
-        "translation": "Analyse grammaticale du mot 'hasse': la signification de 'hass' et 'violence' dans le contexte de 'violence' et 'violence' dans le contexte de 'violence' et de 'violence' dans le contexte de 'violence' et de 'violence' dans le contexte de 'violence' et de 'violence' dans le contexte de 'violence' et de 'violence' dans le contexte de 'violence' et de 'violence' dans le contexte de 'violence' et de 'violence' dans le contexte de 'violence' et de 'violence' dans le contexte de 'violence' et 'violence' dans le contexte de 'violence' et 'violence' dans le contexte de 'violence' et 'violence', et '"
-      },
-      "definitions": {
-        "detaillees": {
-          "de": "Gib eine sehr detaillierte Definition des Wortes 'hasse' mit den folgenden Aspekten:\n1. Hauptbedeutung mit präziser Erklärung\n2. Alle Nebenbedeutungen und Nuancen\n3. Spezielle Verwendungen und Kontexte\n4. Fachsprachliche Bedeutungen und Terminologie\n5. Konkrete Beispiele für jeden Aspekt\n6. Grammatikalische Besonderheiten\n7. Kulturelle oder regionale Besonderheiten (z.B. Dialekt, Umgangssprache, Umgangssprache)\n8. Konkrete Beispiele für jeden Aspekt (z.B. Dialekt, Umgangssprache, Umgangssprache)\n9. Konkrete Beispiele für jeden Aspekt (z.B. Dialekt, Umgangssprache, Umgangssprache)\n10. Konkrete Beispiele für jeden Aspekt (z.B. Dialekt, Umgangssprache, Umgangssprache)\n11. Konkrete Beispiele für jeden Aspekt (z.B. Dialekt, Umgangssprache, Umgangssprache)\n12. Konkrete Beispiele für jeden Aspekt (z.B.",
-          "fr": "Donnez une définition très détaillée du mot \"hasse\" avec les aspects suivants: 1. signification principale avec explication précise 2. significations secondaires et nuances 3. utilisations et contextes spécifiques 4. significations linguistiques et terminologie 5. exemples concrets pour chaque aspect 6. particularités grammaticales 7. particularités culturelles ou régionales (par exemple, dialecte, langage coutumier, langage coutumier) 8. exemples concrets pour chaque aspect (par exemple, dialecte, langage coutumier, langage coutumier) 9. exemples concrets pour chaque aspect (par exemple, dialecte, langage coutumier, langage coutumier) 10. exemples concrets pour chaque aspect (par exemple, dialecte, langage coutumier, langage coutumier) 11. exemples concrets pour chaque aspect (par exemple, dialecte, langage coutumier, langage coutumier) 12. exemples concrets pour chaque aspect (par exemple:"
-        },
-        "exemples": [
-          {
-            "de": "Das hasse ist, dass ich nicht weiß, was ich tun soll. Ich weiß auch nicht, wie ich mich verhalten soll, wenn ich das Gefühl habe, es geht mir nicht gut.\nIch weiß nicht wie es dir geht, aber ich denke,",
-            "fr": "Je déteste ne pas savoir quoi faire, et je ne sais pas comment me comporter quand j'ai l'impression que je ne vais pas bien."
-          },
-          {
-            "de": "Ich hasse es, wenn ich mich mit Leuten treffe, die ich gar nicht kenne. Ich mag es einfach, mit ihnen zu reden, sie zu treffen und zu sehen, wie sie sich um mich kümmern.\nIch habe das Gefühl, dass die Leute",
-            "fr": "Je déteste rencontrer des gens que je ne connais pas. J'aime juste leur parler, les rencontrer et les voir s'occuper de moi."
-          },
-          {
-            "de": "Der hasse hat geschrieben: Ich weiß nicht, ob ich das so richtig verstanden habe, aber ich habe das Gefühl, dass die meisten Menschen, die ich kenne, keine Ahnung davon haben, was sie wirklich wollen.\nJa, das stimmt. Ich habe",
-            "fr": "Il a écrit: Je ne sais pas si j'ai bien compris, mais j'ai l'impression que la plupart des gens que je connais n'ont aucune idée de ce qu'ils veulent vraiment."
-          },
-          {
-            "de": "Mit hasse kann man es nicht sagen, aber ich finde, dass es ein bisschen zu viel des Guten ist.\nIch finde es auch nicht so toll, wenn man sich in einer Situation befindet, in der man nicht weiß, was man tun soll.",
-            "fr": "On ne peut pas le dire avec haïr, mais je trouve que c'est un peu trop de bien. Je ne trouve pas que c'est si génial de se trouver dans une situation où on ne sait pas quoi faire."
-          }
-        ]
-      },
-      "etymologie": {
-        "de": "Die Etymologie des Wortes 'hasse' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen):\nDas Wort 'hasse' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen) wird im Deutschen als 'hass' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen) bezeichnet.\nDas Wort 'hass' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen) wird im Deutschen als 'hass' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen) bezeichnet.\nDas Wort 'hass' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen) wird im Deutschen als 'hass' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen) bezeichnet.\nDas Wort 'hass' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen) wird im Deutschen als 'hass' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen) bezeichnet.\nDas Wort 'hass' (mit allen historischen Entwicklungen, Wurzeln",
-        "fr": "L'étymologie du mot 'hasse' (avec tous les développements historiques, racines et influences linguistiques): le mot 'hasse' (avec tous les développements historiques, racines et influences linguistiques) est appelé 'hass' en allemand (avec tous les développements historiques, racines et influences linguistiques). Le mot 'hass' (avec tous les développements historiques, racines et influences linguistiques) est appelé 'hass' en allemand (avec tous les développements historiques, racines et influences linguistiques). Le mot 'hass' (avec tous les développements historiques, racines et influences linguistiques) est appelé 'hass' en allemand (avec tous les développements historiques, racines et influences linguistiques). Le mot 'hass' (avec tous les développements historiques, racines et influences linguistiques) est appelé 'hass' en allemand (avec tous les développements historiques, racines et influences linguistiques)."
-      },
-      "usage": {
-        "general": {
-          "de": "Beschreibe sehr detailliert und mit vielen Beispielen, wie das Wort 'hasse' verwendet wird in:\n1. Alltäglicher Sprache und Umgangssprache\n2. Formeller Sprache und gehobener Sprache\n3. Fachsprache und spezifischen Bereichen\n4. Regionalen Varianten und Dialekten\n5. Literarischer Sprache\n6. Modernde Medien und Jugendsprache (z.B. Fernsehen, Radio, Zeitungen, Zeitschriften, Internet)\n7. Fachsprache und Fremdsprachen (z.B. Deutsch, Englisch, Französisch, Italienisch, Spanisch, Portugiesisch)\n8. Fachsprache und Fremdsprachen (z.B. Deutsch, Englisch, Französisch, Italienisch, Spanisch, Portugiesisch)\n9. Fachsprache und Fremdsprachen (z.B. Deutsch, Englisch, Französisch, Italienisch, Spanisch, Portugiesisch)\n10. Fachsprache und Fremdsprachen (z.B. Deutsch, Englisch, Französisch, Italienisch, Spanisch, Portugiesisch)\n11. Fachsprache und Fremdsprachen (z.B.",
-          "fr": "Décrivez en détail et avec de nombreux exemples comment le mot 'hasse' est utilisé dans: 1. La langue courante et la langue commune 2. La langue formelle et la langue de haut niveau 3. La langue technique et les domaines spécifiques 4. Les variantes régionales et les dialectes 5. La langue littéraire 6. La langue moderne et la langue de la jeunesse (par exemple la télévision, la radio, les journaux, les magazines, l'Internet) 7. La langue technique et les langues étrangères (par exemple l'allemand, l'anglais, l'italien, l'espagnol, le portugais) 8. La langue technique et les langues étrangères (par exemple l'allemand, l'anglais, l'italien, l'espagnol, le portugais) 11. La langue et les langues étrangères (par exemple, l'allemand, l'anglais, l'espagnol, l'espagnol, le portugais) 11."
-        },
-        "expressions": {
-          "de": "Liste ALLE Redewendungen, Sprichwörter und feste Ausdrücke mit 'hasse' auf. Für jeden Ausdruck gib an:\n1. Wörtliche Bedeutung\n2. Übertragene Bedeutung\n3. Verwendungskontext\n4. Stilebene\n5. Regionale Besonderheiten\n6. Beispiele in Sätzen, die mit 'hasse' beginnen und mit 'hass' enden. Für jeden Ausdruck gib an:\n1. Redewendungen, Sprichwörter und feste Ausdrücke mit 'hasse' auf. Für jeden Ausdruck gib an:\n2. Redewendungen, Sprichwörter und feste Ausdrücke mit 'hasse' auf. Für jeden Ausdruck gib an:\n3. Redewendungen, Sprichwörter und feste Ausdrücke mit 'hasse' auf. Für jeden Ausdruck gib an:\n4. Redewendungen, Sprichwörter und feste Ausdrücke mit 'hasse' auf. Für jeden Ausdruck gib an:\n5. Redewendungen, Sprichwörter und feste Ausdrücke mit 'hasse' auf",
-          "fr": "Pour chaque expression, indiquez: 1. les expressions, les proverbes et les expressions fixes avec 'hasse'. Pour chaque expression, indiquez: 1. les expressions, les mots et les expressions fixes avec 'hasse'. Pour chaque expression, indiquez: 2. les expressions, les proverbes et les expressions fixes avec 'hasse'. Pour chaque expression, indiquez: 3. les expressions, les proverbes et les expressions fixes avec 'hasse'. Pour chaque expression, indiquez: 4. les expressions, les proverbes et les expressions fixes avec 'hasse'. Pour chaque expression, indiquez: 5. les expressions, les proverbes et les expressions fixes avec 'hasse'"
-        },
-        "collocations": {
-          "de": "Liste ALLE üblichen Wortverbindungen mit 'hasse' auf, gruppiert nach:\n1. Verb + hasse\n2. hasse + Substantiv\n3. Adjektiv + hasse\n4. Präposition + hasse\n5. Typische Satzstrukturen\nFür jede Kombination gib mehrere Beispiele und Kontextinformationen. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von Beispielen verwenden. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von Beispielen verwenden. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von Beispielen verwenden. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von Beispielen verwenden. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von Beispielen verwenden. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von Beispielen verwenden. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von Beispielen verwenden. Du kannst auch eine Liste",
-          "fr": "Liste TOUTES les connexions de mots habituelles avec 'hasse', regroupées par: 1. Verb + hasse 2. hasse + nom 3. Adjectif + hasse 4. Préposition + hasse 5. Structures de phrases typiques Pour chaque combinaison, donnez plusieurs exemples et informations contextuelles. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples."
-        },
-        "registre": {
-          "de": "Beschreibe sehr detailliert das Sprachregister und die Verwendungskontexte von 'hasse', einschließlich:\n1. Stilebene (formell, neutral, umgangssprachlich, etc.)\n2. Soziale Kontexte\n3. Situative Angemessenheit\n4. Historische Entwicklung des Gebrauchs\n5. Aktuelle Trends in der Verwendung\n6. Regionale und soziale Variation in der Verwendung von 'hasse', einschließlich:\n1. Stilebene (formell, neutral, umgangssprachlich, etc.) 2. Stilebene (formell, neutral, umgangssprachlich, etc.) 3. Stilebene (formell, neutral, umgangssprachlich, etc.)\n1. Stilebene (formell, neutral, umgangssprachlich, etc.) 2. Stilebene (formell, neutral, umgangssprachlich, etc.) 3. Stilebene (formell, neutral, umgangssprachlich, etc.) 4. Stilebene (formell, neutral, umgangssprachlich, etc.) 5. Sti",
-          "fr": "Décrivez de manière très détaillée le répertoire linguistique et les contextes d'utilisation de 'hasse', y compris: 1. le niveau du style (formel, neutre, familier, etc.) 2. le contexte social 3. l'adéquation du langage 4. l'évolution historique de l'utilisation 5. les tendances actuelles dans l'utilisation 6. la variation régionale et sociale dans l'utilisation de 'hasse', y compris: 1. le niveau du style (formel, neutre, familier, etc.) 2. le niveau du style (formel, neutre, familier, etc.) 3. le niveau du style (formel, neutre, familier, etc.) 1. le niveau du style (formel, neutre, familier, etc.) 2. le niveau du style (formel, neutre, familier, etc.) 3. le niveau du style (formel, neutre, familier, etc.) 4. le niveau du style (formel, neutre, familier, etc.)."
-        }
-      },
-      "semantic": {
-        "synonymes": {
-          "de": "Liste ALLE möglichen Synonyme für 'hasse' auf, sehr detailliert geordnet nach:\n1. Exakte Synonyme (gleiche Bedeutung und Verwendung)\n2. Kontextabhängige Synonyme (mit Erklärung der Nuancen)\n3. Stilistische Varianten (formell, umgangssprachlich, etc.)\n4. Regionale Varianten und Dialektausdrücke\n5. Fachsprachliche Alternativen\nFüge für JEDES Synonym eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.\nFüge für JEDES Synonyme eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.\nFüge für JEDES Synonyme eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.\nFüge für JEDES Synonyme eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.\nFüge für JEDES Synonyme eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.\nFüge für JEDES Synonyme eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.\nFüge für JEDES Syn",
-          "fr": "Liste TOUTES les synonymes possibles pour 'hasse', classés de manière très détaillée par: 1. Synonymes exacts (même signification et utilisation) 2. Synonymes contextuels (avec explication des nuances) 3. Variantes stylistiques (formelles, familières, etc.) 4. Variantes régionales et expressions dialectiques 5. Alternatives linguistiques Appliquez une explication des nuances de signification et des exemples d'utilisation pour CHAQUE Synonymes. Ajoutez une explication des nuances de signification et des exemples d'utilisation pour CHAQUE Synonymes. Ajoutez une explication des nuances de signification et des exemples d'utilisation pour CHAQUE Synonymes. Ajoutez une explication des nuances de signification et des exemples d'utilisation pour CHAQUE Synonymes."
-        },
-        "antonymes": {
-          "de": "Liste alle möglichen Gegenwörter zu 'hasse' auf, geordnet nach:\n1. Direkte Antonyme\n2. Kontextabhängige Gegensätze\n3. Graduelle Abstufungen\nFür jedes Antonym erkläre die genaue Art des Gegensatzes und gib Verwendungsbeispiele. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich",
-          "fr": "Liste de tous les contre-mots possibles à 'hasse', classés par: 1. Direct Antonyme 2. Contours contextuels 3. Graduations Pour chaque nom Antonym, la nature exacte de l'opposition et les exemples d'utilisation sont indiqués. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples."
-        },
-        "champ_semantique": {
-          "de": "Beschreibe das semantische Feld und verwandte Begriffe zu 'hasse' mit:\n1. Übergeordnete Begriffe (Hyperonyme)\n2. Untergeordnete Begriffe (Hyponyme)\n3. Verwandte Konzepte\n4. Typische Assoziationen\n5. Kulturelle Konnotationen\n6. Semantische Beziehungen zu anderen Wortfeldern (Hyperonyme) und verwandte Begriffe (Hyperonyme)\n7. Semantische Beziehungen zu anderen Wortfeldern (Hyperonyme) und verwandte Begriffe (Hyperonyme)\n8. Semantische Beziehungen zu anderen Wortfeldern (Hyperonyme) und verwandte Begriffe (Hyperonyme)\n9. Semantische Beziehungen zu anderen Wortfeldern (Hyperonyme) und verwandte Begriffe (Hyperonyme)\n10. Semantische Beziehungen zu anderen Wortfeldern (Hyperonyme) und verwandte Begriffe (Hyperonyme)\n11. Semantische Beziehungen zu anderen Wortfeldern (Hyperonyme) und verwandte Begriffe (Hyper",
-          "fr": "Décrivez le champ sémantique et les termes associés à 'hasse' par: 1. Termes supérieurs (hyperonymes) 2. Termes subordonnés (hyponymes) 3. Concepts apparentés 4. Associations types 5. Connotations culturelles 6. Relation sémantique avec d'autres champs de mots (hyperonymes) et termes connexes (hyperonymes) 7. Relation sémantique avec d'autres champs de mots (hyperonymes) et termes connexes (hyperonymes) 8. Relation sémantique avec d'autres champs de mots (hyperonymes) et termes connexes (hyperonymes) 9. Relation sémantique avec d'autres champs de mots (hyperonymes) et termes connexes (hyperonymes) 10. Relation sémantique avec d'autres champs de mots (hyperonymes) et termes connexes (hyperonymes) 11. Relations sémantiques avec d'autres champs de mots (hyperonymes) et termes apparentés (hyperonymes)"
-        }
-      },
-      "exercices": {
-        "fill_blank": null,
-        "multiple_choice": null,
-        "word_association": null,
-        "scramble": null,
-        "context_quiz": null,
-        "usage_quiz": null
-      }
-    },
-    {
-      "word": "ich",
+      "word": "ich.",
       "level": {
         "level": "beginner",
         "score": 1,
         "explanation": "Mot simple, approprié pour les débutants"
       },
-      "pronunciation": {
-        "text": "ich",
-        "ipa": "",
-        "syllables": null,
-        "stress": null,
-        "description": {
-          "de": "Geben Sie folgende Details zur Aussprache des Wortes 'ich':\n1. IPA-Transkription in eckigen Klammern []\n2. Silbentrennung mit Bindestrichen (-)\n3. Betonung (markiert mit ' vor der betonten Silbe)\n4. Ausspracheregeln und Besonderheiten\n5. Regionale Varianten (wenn vorhanden) [] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42",
-          "fr": "Veuillez fournir les détails suivants pour la prononciation du mot 'je': 1. Transcription IAP entre crochets [] 2. Coupure des syllabes avec traits (-) 3. Insertion (marquée par ' avant la syllabe soulignée) 4. Règles de prononciation et particularités 5. Variantes régionales (s'il y en a) [] [2] [3] [4] [5] [7] [8] [9] [11] [11] [13] [13] [15] [16] [17] [19] [20] [22] [22] [23] [24] [25] [25] [27] [28] [30] [30] [33] [34] [36] [36]"
-        },
-        "audio": {
-          "url": "https://api.heysprech.de/audio/pronunciation/ich.mp3",
-          "speaker": "native_de",
-          "dialect": "standard"
-        }
-      },
       "translations": {
-        "principal": "isé",
-        "styles": {
-          "formel": [
-            "Le mot \"je\" dans des textes formels:",
-            "Le mot \"je\" dans les textes formels:",
-            "Le mot 'je' dans les textes formels:"
-          ],
-          "courant": [
-            "Le mot \"je\" dans la langue quotidienne:",
-            "Le mot 'je' dans la langue quotidienne:",
-            "Le mot \"je\" dans le langage quotidien:"
-          ],
-          "familier": [
-            "Le mot 'je' dans la langue courante:",
-            "Le mot 'je' dans le langage courant:",
-            "Le mot \"je\" dans la langue courante:"
-          ]
-        },
-        "contextes": {
-          "Texten": [
-            "Le mot \"je\" dans les textes scientifiques:",
-            "Le mot 'je' dans les textes scientifiques:"
-          ],
-          "Literatur": [
-            "Le mot \"je\" dans la littérature:",
-            "Le mot 'je' dans la littérature:"
-          ],
-          "Technik": [
-            "Le mot \"je\" dans la technique:",
-            "Le mot 'je' dans la technique:"
-          ],
-          "Wirtschaft": [
-            "Le mot \"je\" dans l'économie:",
-            "Le mot 'je' dans l'économie:"
-          ],
-          "Medien": [
-            "Le mot \"je\" dans les médias:",
-            "Le mot 'je' dans les médias:"
-          ]
-        },
-        "alternatives": [
-          "é",
-          "to",
-          "am",
-          "au"
+        "principal": "Moi.",
+        "variantes": [
+          "- Moi.",
+          "moi."
         ]
       },
-      "grammatical_info": {
-        "original": "Grammatische Analyse des Wortes 'ich': Die Bedeutung von 'ich' und 'ich' in der deutschen Sprache und Literatur\nDie Bedeutung von 'ich' und 'ich' in der deutschen Sprache und Literatur (German Edition)\nAdditional info for Die Bedeutung von 'ich' und 'ich' in der deutschen Sprache und Literatur (German Edition)\nDie Bedeutung von 'ich' und 'ich' in der deutschen Sprache und Literatur (German Edition) by Hans-Ulrich Wehler",
-        "translation": "Analyse grammaticale du mot 'je': L'importance de 'je' et 'je' dans la langue et la littérature allemandes L'importance de 'je' et 'je' dans la langue et la littérature allemandes (German Edition) Additional info for L'importance de 'je' et 'je' dans la langue et la littérature allemandes (German Edition) L'importance de 'je' et 'je' dans la langue et la littérature allemandes (German Edition) par Hans-Ulrich Wehler"
-      },
-      "definitions": {
-        "detaillees": {
-          "de": "Gib eine sehr detaillierte Definition des Wortes 'ich' mit den folgenden Aspekten:\n1. Hauptbedeutung mit präziser Erklärung\n2. Alle Nebenbedeutungen und Nuancen\n3. Spezielle Verwendungen und Kontexte\n4. Fachsprachliche Bedeutungen und Terminologie\n5. Konkrete Beispiele für jeden Aspekt\n6. Grammatikalische Besonderheiten\n7. Kulturelle oder regionale Besonderheiten (z.B. Dialekt, Umgangssprache, Umgangssprache)\n8. Konkrete Beispiele für jeden Aspekt (z.B. Dialekt, Umgangssprache, Umgangssprache)\n9. Konkrete Beispiele für jeden Aspekt (z.B. Dialekt, Umgangssprache, Umgangssprache)\n10. Konkrete Beispiele für jeden Aspekt (z.B. Dialekt, Umgangssprache, Umgangssprache)\n11. Konkrete Beispiele für jeden Aspekt (z.B. Dialekt, Umgangssprache, Umgangssprache)\n12. Konkrete Beispiele für jeden Aspekt (z.B. Dialekt",
-          "fr": "Donnez une définition très détaillée du mot 'je' avec les aspects suivants: 1. Une signification principale avec une explication précise 2. Toutes les significations secondaires et nuances 3. Utilisations et contextes spécifiques 4. Significations linguistiques et terminologie 5. Exemples concrets de chaque aspect 6. Particularités grammaticales 7. Particularités culturelles ou régionales (par exemple dialecte, langage coutumier, langage coutumier) 8. Exemples concrets de chaque aspect (par exemple dialecte, langage coutumier, langage coutumier) 9. Exemples concrets de chaque aspect (par exemple dialecte, langage coutumier, langage coutumier) 10. Exemples concrets de chaque aspect (par exemple dialecte, langage coutumier, langage coutumier) 11. Exemples concrets de chaque aspect (par exemple, dialecte, langage coutumier, langage coutumier) 12. Exemples concrets de chaque aspect (par exemple, dialecte, langage coutumier) 12. Exemples concrets de chaque aspect (par exemple, dialecte, langage coutumier)"
-        },
-        "exemples": [
-          {
-            "de": "Das ich ist ein Mann, ich bin eine Frau. Ich bin ein Mensch. Und ich habe keine Angst vor dem, was passiert, wenn ich mich selbst verletze.\nIch habe keinen Zweifel daran, dass ich in der Lage sein werde, die",
-            "fr": "Je suis une femme, je suis une humaine, et je n'ai pas peur de ce qui se passe quand je me blesse."
+      "examples": [
+        {
+          "de": "Ich ich. Ich bin ein Mann. Ich bin ein Mann. Ich bin ein Mann. Ich bin",
+          "fr": "Je suis un homme, je suis un homme, je suis un homme, je suis un homme."
+        }
+      ],
+      "exercises": {
+        "fill_blank": {
+          "de": {
+            "text": "Écrivez une phrase avec ___ pour '___': 'Ich bin ein Mensch, ___ bin ein Mensch, ___ bin ein Mensch, ___ bin ein Mensch, ___ bin ein Mensch, ___ bin ein Mensch,",
+            "answer": "ich"
           },
-          {
-            "de": "Ich ich weiß, das ist ein bisschen schwierig, aber ich habe das Gefühl, dass ich es geschafft habe, mich zu konzentrieren. Ich habe ein paar Dinge gelernt, die ich vorher noch nie gemacht habe. Und ich bin mir sicher, ich werde noch",
-            "fr": "Je sais que c'est un peu difficile, mais j'ai l'impression que j'ai réussi à me concentrer, j'ai appris des choses que je n'avais jamais faites auparavant, et je suis sûr que je vais encore"
-          },
-          {
-            "de": "Der ich hat mir gesagt, dass es so ist, wie ich es mir vorgestellt habe, und dass ich mir keine Sorgen machen muss, wenn ich nicht weiß, was ich tun soll. Es ist so, als ob ich mich nicht entscheiden kann, ob",
-            "fr": "Celui qui m'a dit que c'était ce que j'avais imaginé et que je n'avais pas à m'inquiéter si je ne savais pas quoi faire."
-          },
-          {
-            "de": "Mit ich kann man ja nicht sagen, dass es mir schlecht geht, aber ich bin mir nicht sicher, ob ich das schaffe.\nIch habe das Gefühl, ich habe ein schlechtes Gewissen, weil ich nicht weiß, wie ich mich verhalten soll. Ich",
-            "fr": "Je ne peux pas dire que je me sens mal, mais je ne sais pas si je peux le faire. J'ai l'impression d'avoir une mauvaise conscience parce que je ne sais pas comment me comporter."
+          "fr": {
+            "text": "Écrivez une phrase avec __ pour 'je': 'Je suis un homme, je suis un homme, je suis un homme, je suis un homme, je suis un homme, je suis un homme, je suis un homme, je suis un homme,",
+            "answer": "isé"
           }
-        ]
-      },
-      "etymologie": {
-        "de": "Die Etymologie des Wortes 'ich' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen):\nDas Wort 'ich' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen): 'ich bin' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen): 'ich bin' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen): 'ich bin' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen): 'ich bin' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen): 'ich bin' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen): 'ich bin' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen): 'ich bin' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen): 'ich bin' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen): 'ich bin' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen): 'ich bin' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen): '",
-        "fr": "L'étymologie du mot 'je' (avec tous les développements historiques, racines et influences linguistiques): le mot 'je' (avec tous les développements historiques, racines et influences linguistiques): 'je suis' (avec tous les développements historiques, racines et influences linguistiques): 'je suis' (avec tous les développements historiques, racines et influences linguistiques): 'je suis' (avec tous les développements historiques, racines et influences linguistiques): 'je suis' (avec tous les développements historiques, racines et influences linguistiques): 'je suis' (avec tous les développements historiques, racines et influences linguistiques): 'je suis' (avec tous les développements historiques, racines et influences linguistiques): 'je suis' (avec tous les développements historiques, racines et influences linguistiques): 'je suis' (avec tous les développements historiques, racines et influences linguistiques): 'Je suis' (avec tous les développements historiques et linguistiques): 'je suis' (avec tous les développements, racines et influences linguistiques): 'Je suis' (avec tous les développements historiques, racines et influences linguistiques): '"
-      },
-      "usage": {
-        "general": {
-          "de": "Beschreibe sehr detailliert und mit vielen Beispielen, wie das Wort 'ich' verwendet wird in:\n1. Alltäglicher Sprache und Umgangssprache\n2. Formeller Sprache und gehobener Sprache\n3. Fachsprache und spezifischen Bereichen\n4. Regionalen Varianten und Dialekten\n5. Literarischer Sprache\n6. Modernde Medien und Jugendsprache (z.B. Fernsehen, Radio, Zeitungen, Zeitschriften)\n7. Fachsprache und Fremdsprachen (z.B. Englisch, Französisch, Italienisch, Spanisch, Portugiesisch)\n8. Fachsprache und Fremdsprachen (z.B. Englisch, Französisch, Italienisch, Spanisch, Portugiesisch)\n9. Fachsprache und Fremdsprachen (z.B. Englisch, Französisch, Italienisch, Spanisch, Portugiesisch)\n10. Fachsprache und Fremdsprachen (z.B. Englisch, Französisch, Italienisch, Spanisch, Portugiesisch)\n11. Fachsprache und Fremdsprachen (z.B. Englisch, Französisch, Italienisch, Spanisch, Portugiesisch)",
-          "fr": "Décrivez en détail et avec de nombreux exemples comment le mot 'je' est utilisé dans: 1. La langue quotidienne et la langue commune 2. La langue formelle et la langue de haut niveau 3. La langue technique et les domaines spécifiques 4. Les variantes et dialectes régionaux 5. La langue littéraire 6. La langue moderne et la langue de la jeunesse (par exemple la télévision, la radio, les journaux, les magazines) 7. La langue et les langues étrangères (par exemple l'anglais, le français, l'italien, l'espagnol, le portugais) 8. La langue et les langues étrangères (par exemple l'anglais, le français, l'italien, le portugais) 9. La langue et les langues étrangères (par exemple l'anglais, l'italien, l'espagnol, le portugais) 10. La langue et les langues étrangères (par exemple l'anglais, le français, l'italien, l'espagnol, le portugais) 11. La langue et les langues étrangères (par exemple l'anglais, le français, l'italien, l'espagnol, le portugais)"
         },
-        "expressions": {
-          "de": "Liste ALLE Redewendungen, Sprichwörter und feste Ausdrücke mit 'ich' auf. Für jeden Ausdruck gib an:\n1. Wörtliche Bedeutung\n2. Übertragene Bedeutung\n3. Verwendungskontext\n4. Stilebene\n5. Regionale Besonderheiten\n6. Beispiele in Sätzen, die mit 'ich' beginnen und mit 'ich' enden. Für jeden Ausdruck gib an:\n1. Redewendungen, Sprichwörter und feste Ausdrücke mit 'ich' auf. Für jeden Ausdruck gib an:\n2. Redewendungen, Sprichwörter und feste Ausdrücke mit 'ich' auf. Für jeden Ausdruck gib an:\n3. Redewendungen, Sprichwörter und feste Ausdrücke mit 'ich' auf. Für jeden Ausdruck gib an:\n4. Redewendungen, Sprichwörter und feste Ausdrücke mit 'ich' auf. Für jeden Ausdruck gib an:\n5. Redewendungen, Sprichwörter und feste Ausdrücke mit 'ich' auf. Für jeden Ausdruck gib an:\n",
-          "fr": "Pour chaque expression, indiquez: 1. les expressions, les mots et les expressions fixes avec 'je'. Pour chaque expression, indiquez: 1. les expressions, les mots et les expressions fixes avec 'je'. Pour chaque expression, indiquez: 2. les expressions, les mots et les expressions fixes avec 'je'. Pour chaque expression, indiquez: 3. les expressions, les mots et les expressions fixes avec 'je'. Pour chaque expression, indiquez: 4. les expressions, les mots et les expressions fixes avec 'je'. Pour chaque expression, indiquez: 5. les expressions, les mots et les expressions fixes avec 'je'."
-        },
-        "collocations": {
-          "de": "Liste ALLE üblichen Wortverbindungen mit 'ich' auf, gruppiert nach:\n1. Verb + ich\n2. ich + Substantiv\n3. Adjektiv + ich\n4. Präposition + ich\n5. Typische Satzstrukturen\nFür jede Kombination gib mehrere Beispiele und Kontextinformationen. Du kannst die Liste mit den Beispielen und Kontextinformationen durchsuchen.\nDu kannst die Liste mit den Beispielen und Kontextinformationen durchsuchen. Du kannst die Liste mit den Beispielen und Kontextinformationen durchsuchen.\nDu kannst die Liste mit den Beispielen und Kontextinformationen durchsuchen. Du kannst die Liste mit den Beispielen und Kontextinformationen durchsuchen.\nDu kannst die Liste mit den Beispielen und Kontextinformationen durchsuchen. Du kannst die Liste mit den Beispielen und Kontextinformationen durchsuchen.\nDu kannst die Liste mit den Beispielen und Kontextinformationen durchsuchen. Du kannst die Liste mit den Beispielen und Kontextinformationen durchsuchen.\nDu kannst die Liste mit den Beispielen und Kontextinformationen durchsuchen. Du kannst die Liste mit den Beispielen und Kontextinformationen durchsuchen.\nDu",
-          "fr": "Liste TOUTES les connexions de mots habituelles avec 'je', groupe par: 1. Verb + je 2. je + Nom 3. adjectif + je 4. Préposition + je 5. Structures de phrases typiques Pour chaque combinaison, donnez plusieurs exemples et informations contextuelles. Vous pouvez parcourir la liste des exemples et informations contextuelles. Vous pouvez parcourir la liste des exemples et informations contextuelles. Vous pouvez parcourir la liste des exemples et informations contextuelles. Vous pouvez parcourir la liste des exemples et informations contextuelles. Vous pouvez parcourir la liste des informations contextuelles et contextuelles. Vous pouvez parcourir la liste des exemples et informations contextuelles. Vous pouvez parcourir la liste des exemples et informations contextuelles. Vous pouvez parcourir la liste des informations contextuelles et contextuelles. Vous pouvez parcourir la liste des exemples et des informations contextuelles."
-        },
-        "registre": {
-          "de": "Beschreibe sehr detailliert das Sprachregister und die Verwendungskontexte von 'ich', einschließlich:\n1. Stilebene (formell, neutral, umgangssprachlich, etc.)\n2. Soziale Kontexte\n3. Situative Angemessenheit\n4. Historische Entwicklung des Gebrauchs\n5. Aktuelle Trends in der Verwendung\n6. Regionale und soziale Variation in der Verwendung von 'ich', 'ich' und 'sozial'\n7. Die Verwendung von 'ich', 'ich' und 'sozial' im Kontext von 'sozial'\n8. Die Verwendung von 'ich', 'ich' und 'sozial' im Kontext von 'sozial'\n9. Die Verwendung von 'ich', 'ich' und 'sozial' im Kontext von 'sozial'\n10. Die Verwendung von 'ich', 'ich' und 'sozial' im Kontext von 'sozial'\n11. Die Verwendung von 'ich', 'ich' und 'sozial' im Kontext von 'sozial'\n12. Die",
-          "fr": "L'utilisation de 'je', 'je' et 'social' dans le contexte de 'social' 10. L'utilisation de 'je', 'je' et 'social' dans le contexte de 'social' 11. L'utilisation de 'je', 'je' et 'social' dans le contexte de 'social'"
-        }
-      },
-      "semantic": {
-        "synonymes": {
-          "de": "Liste ALLE möglichen Synonyme für 'ich' auf, sehr detailliert geordnet nach:\n1. Exakte Synonyme (gleiche Bedeutung und Verwendung)\n2. Kontextabhängige Synonyme (mit Erklärung der Nuancen)\n3. Stilistische Varianten (formell, umgangssprachlich, etc.)\n4. Regionale Varianten und Dialektausdrücke\n5. Fachsprachliche Alternativen\nFüge für JEDES Synonym eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.\nFüge für JEDES Synonyme eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.\nFüge für JEDES Synonyme eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.\nFüge für JEDES Synonyme eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.\nFüge für JEDES Synonyme eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.\nFüge für JEDES Synonyme eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.\nFüge für JEDES Synonyme",
-          "fr": "Liste TOUS les synonymes possibles pour 'je', classés très en détail par: 1. Synonymes exacts (même signification et utilisation) 2. Synonymes contextuels (avec explication des nuances) 3. Variantes stylistiques (formulées, approximatives, etc.) 4. Variantes régionales et expressions dialectiques 5. Alternatives linguistiques complémentaires pour TOUTES Synonymes ajouter une explication des nuances et des exemples d'utilisation. Ajoutez une explication des nuances et des exemples d'utilisation pour TOUTES synonymes. Ajoutez une explication des nuances et des exemples d'utilisation pour TOUTES synonymes. Ajoutez une explication des nuances et des exemples d'importance pour TOUTES les synonymes ajouteront une explication des nuances et des exemples d'utilisation."
-        },
-        "antonymes": {
-          "de": "Liste alle möglichen Gegenwörter zu 'ich' auf, geordnet nach:\n1. Direkte Antonyme\n2. Kontextabhängige Gegensätze\n3. Graduelle Abstufungen\nFür jedes Antonym erkläre die genaue Art des Gegensatzes und gib Verwendungsbeispiele. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele",
-          "fr": "Liste de tous les contre-mots possibles à 'je', classés par: 1. Direct Antonyme 2. Contours contextuels 3. Graduations Pour chaque nom Antonym, la nature exacte de l'opposition et les exemples d'utilisation sont indiqués. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples."
-        },
-        "champ_semantique": {
-          "de": "Beschreibe das semantische Feld und verwandte Begriffe zu 'ich' mit:\n1. Übergeordnete Begriffe (Hyperonyme)\n2. Untergeordnete Begriffe (Hyponyme)\n3. Verwandte Konzepte\n4. Typische Assoziationen\n5. Kulturelle Konnotationen\n6. Semantische Beziehungen zu anderen Wortfeldern (z.B. 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich' oder 'ich'",
-          "fr": "Décrivez le champ sémantique et les termes connexes à 'je' avec: 1. Termes supérieurs (hyperonymes) 2. Termes subordonnés (hyponymes) 3. Concepts connexes 4. Associations typiques 5. Connotations culturelles 6. Relations sémantiques avec d'autres champs de mots (par exemple 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je' ou 'je'je'je' ou 'je' ou 'je'je' ou 'je'je' ou ' ou 'je'je'je' ou ' ou 'je'je'je'je'je'je' ou 'je' ou 'je'je'je'je'je'je'je'je'je'je'je'je'je'je'je' ou 'je'je'je' ou 'je'je'je' ou 'je'je' ou 'je'je'je'je'je'je'je'je'je'je'je'je'je' ou 'je'je'je'je'je' ou ' ou 'je' ou ' ou ' ou ' ou ' ou 'je' ou ' ou '''je'je'je' ou 'je'je' ou 'je'je' ou 'je'je'je'je'je'je'je''je'je'je'je'je'je'''je'je'je'je'je'je'je'je'je'je'je'je'"
-        }
-      },
-      "exercices": {
-        "fill_blank": null,
-        "multiple_choice": null,
-        "word_association": null,
-        "scramble": null,
-        "context_quiz": null,
-        "usage_quiz": null
-      }
-    },
-    {
-      "word": "katja.",
-      "level": {
-        "level": "beginner",
-        "score": 2,
-        "explanation": "Mot simple, approprié pour les débutants"
-      },
-      "pronunciation": {
-        "text": "katja.",
-        "ipa": "",
-        "syllables": null,
-        "stress": null,
-        "description": {
-          "de": "Geben Sie folgende Details zur Aussprache des Wortes 'katja.':\n1. IPA-Transkription in eckigen Klammern []\n2. Silbentrennung mit Bindestrichen (-)\n3. Betonung (markiert mit ' vor der betonten Silbe)\n4. Ausspracheregeln und Besonderheiten\n5. Regionale Varianten (wenn vorhanden) [] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [",
-          "fr": "Veuillez fournir les détails suivants concernant la prononciation du mot 'katja.': 1. Transcription de l'IAP entre crochets [] 2. Séparation des syllabes avec traits (-) 3. mise en évidence (marquée par ' avant la syllabe soulignée) 4. Règles et particularités 5. Variantes régionales (s'il y en a) [] [1] [2] [3] [5] [7] [8] [9] [11] [12] [13] [15] [16] [17] [19] [20] [21] [22] [23] [24] [25] [25] [26] [28] [30] [30] [32] [34] [34] [36] [36]"
-        },
-        "audio": {
-          "url": "https://api.heysprech.de/audio/pronunciation/katja..mp3",
-          "speaker": "native_de",
-          "dialect": "standard"
-        }
-      },
-      "translations": {
-        "principal": "katja.",
-        "styles": {
-          "formel": [
-            "Le mot 'katja.' dans les textes formels:",
-            "Le mot 'katja.' dans des textes formels:",
-            "Le mot 'katja.' dans les textes officiels:"
-          ],
-          "courant": [
-            "Le mot 'katja.' dans la langue quotidienne:",
-            "Le mot 'katja.' dans le langage quotidien:",
-            "Le mot 'katja.' dans la langue de la vie quotidienne:"
-          ],
-          "familier": [
-            "Le mot 'katja.' dans le langage courant:",
-            "Le mot 'katja.' dans la langue courante:",
-            "Le mot 'katja.' dans la langue commune:"
-          ]
-        },
-        "contextes": {
-          "Texten": [
-            "Le mot 'katja' dans les textes scientifiques:",
-            "Le mot 'katja.' dans les textes scientifiques:"
-          ],
-          "Literatur": [
-            "Le mot 'katja.' dans la littérature:",
-            "Le mot 'katja' dans la littérature:"
-          ],
-          "Technik": [
-            "Le mot 'katja' dans la technique:",
-            "Le mot 'katja' en technique:"
-          ],
-          "Wirtschaft": [
-            "Le mot 'katja' dans l'économie:",
-            "Le mot \"katja\" dans l'économie:"
-          ],
-          "Medien": [
-            "Le mot 'katja' dans les médias:",
-            "Le mot katja dans les médias:"
-          ]
-        },
-        "alternatives": [
-          "Katja.",
-          "Katia."
-        ]
-      },
-      "grammatical_info": {
-        "original": "Grammatische Analyse des Wortes 'katja.': Die Bedeutung von 'katja' für 'Katja' und die Bedeutung von 'katja' für 'Katja'\nDie Bedeutung von 'katja.': Die Bedeutung von 'katja' für 'Katja' und die Bedeutung von 'katja' für 'Katja'\nDie Bedeutung von 'katja.': Die Bedeutung von 'katja' für 'Katja' und die Bedeutung von 'katja' für",
-        "translation": "Analyse graphique du mot 'katja.': La signification de 'katja' pour 'katja' et la signification de 'katja' pour 'katja' La signification de 'katja' pour 'katja' et la signification de 'katja' pour 'katja' La signification de 'katja' pour 'katja' La signification de 'katja' pour 'katja' et la signification de 'katja' pour 'katja' pour 'katja'"
-      },
-      "definitions": {
-        "detaillees": {
-          "de": "Gib eine sehr detaillierte Definition des Wortes 'katja.' mit den folgenden Aspekten:\n1. Hauptbedeutung mit präziser Erklärung\n2. Alle Nebenbedeutungen und Nuancen\n3. Spezielle Verwendungen und Kontexte\n4. Fachsprachliche Bedeutungen und Terminologie\n5. Konkrete Beispiele für jeden Aspekt\n6. Grammatikalische Besonderheiten\n7. Kulturelle oder regionale Besonderheiten (z.B. Dialekt, Umgangssprache, Umgangssprache)\n8. Konkrete Beispiele für jeden Aspekt (z.B. Dialekt, Umgangssprache, Umgangssprache)\n9. Konkrete Beispiele für jeden Aspekt (z.B. Dialekt, Umgangssprache, Umgangssprache)\n10. Konkrete Beispiele für jeden Aspekt (z.B. Dialekt, Umgangssprache, Umgangssprache)\n11. Konkrete Beispiele für jeden Aspekt (z.B. Dialekt, Umgangssprache, Umgangssprache)\n12. Konkrete Beispiele für jeden Aspekt (z.B.",
-          "fr": "Donnez une définition très détaillée du mot katja. avec les aspects suivants: 1. signification principale avec explication précise 2. significations secondaires et nuances 3. utilisations et contextes spécifiques 4. significations linguistiques et terminologie 5. Exemples concrets pour chaque aspect 6. Particularités grammaticales 7. Particularités culturelles ou régionales (par ex. dialecte, langage coutumier, langage coutumier) 8. Exemples concrets de chaque aspect (par ex. dialecte, langage coutumier, langage coutumier) 9. Exemples concrets de chaque aspect (par ex. dialecte, langage coutumier, langage coutumier) 10. Exemples concrets de chaque aspect (par ex. dialecte, langage coutumier, langage coutumier) 11. Exemples concrets de chaque aspect (par ex. dialecte, langage coutumier, langage coutumier) 12. Exemples concrets de chaque aspect (par ex., par ex., par ex., par ex., par ex., par ex., par ex., par exemple, par exemple, par exemple, par l'intermédiaire de l'expression \"katja.\""
-        },
-        "exemples": [
-          {
-            "de": "Das katja. ist ein sehr schönes Hotel. Das Personal ist sehr freundlich und hilfsbereit. Die Zimmer sind sehr sauber und das Frühstück ist auch sehr gut. Wir haben uns sehr wohl gefühlt und kommen gerne wieder.\nDas Hotel liegt sehr zentral in der",
-            "fr": "Le katja. est un très bel hôtel. Le personnel est très sympathique et serviable. Les chambres sont très propres et le petit déjeuner est très bon. Nous nous sommes sentis très à l'aise et nous aimons revenir."
+        "multiple_choice": {
+          "de": {
+            "question": "Dans quel contexte utilise-t-on 'ich'? A) B) C) D): D) E) F) G) H) I) J) K) L) M) N) O) P",
+            "choices": [],
+            "answer": "A"
           },
-          {
-            "de": "Ich katja.\nIch hab mir auch schon überlegt, ob ich nicht doch mal ein paar Fotos von mir machen soll. Ich bin ja auch noch nicht so weit, dass ich mir das zutraue, aber ich würde mich sehr freuen, wenn",
-            "fr": "Je me demandais si je devais prendre des photos de moi."
-          },
-          {
-            "de": "Der katja. hat geschrieben: Ich habe das Gefühl, dass es sich hier um ein Forum handelt, in dem man sich austauschen und austauschen kann.\nIch habe es auch schon versucht, aber es funktioniert nicht. Ich bekomme die Meldung: \"Die",
-            "fr": "Le katja. a écrit: J'ai l'impression qu'il s'agit d'un forum où l'on peut échanger et échanger. Je l'ai déjà essayé, mais cela ne fonctionne pas. Je reçois le message: \"La"
-          },
-          {
-            "de": "Mit katja. kann man sich ja mal ein bild machen, wie das so ist, wenn man mit dem auto unterwegs ist.\nEingetragen von ost-gothe am 03.11.2003 um 20:09 Uhr Auf diesen Beitrag antworten Mit Zitat",
-            "fr": "Avec katja. vous pouvez vous faire une idée de ce que c'est quand vous voyagez en voiture. Enregistré par ost-gothe le 03.11.2003 à 20:09 Répondre à cet article Avec citation"
+          "fr": {
+            "question": "Dans quel contexte utilise-t-on 'ich'? A) B) C) D): D) E) F) G) H) I) J) K) L) N) O) P",
+            "choices": [],
+            "answer": "A"
           }
-        ]
-      },
-      "etymologie": {
-        "de": "Die Etymologie des Wortes 'katja.' (mit allen historischen Entwicklungen, Wurzeln und Spracheinflüssen): 'katja' bedeutet 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', 'Katja', '",
-        "fr": "L'étymologie du mot 'katja.' (avec tous les développements historiques, les racines et les influences linguistiques): 'katja' signifie 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', 'katja', ', 'katja', ', ', 'katja', 'katja', 'katja', ', 'katja', 'katja', 'katja'katja', ', 'katja', ', ', 'katja', ', ', ', ', ', 'katja'katja'katja', ', ', ', 'katja', ', ', 'katja', ', ', ', ', ', ', ', 'katja', 'katja', 'katja', ', ', ' ', ', ', ', ', ', ', ', ', ', ', ', ', ' ' ' ' ' ' ' ' ' ' ' ', '"
-      },
-      "usage": {
-        "general": {
-          "de": "Beschreibe sehr detailliert und mit vielen Beispielen, wie das Wort 'katja.' verwendet wird in:\n1. Alltäglicher Sprache und Umgangssprache\n2. Formeller Sprache und gehobener Sprache\n3. Fachsprache und spezifischen Bereichen\n4. Regionalen Varianten und Dialekten\n5. Literarischer Sprache\n6. Modernde Medien und Jugendsprache (z.B. Fernsehen, Zeitungen, Zeitschriften, Internet)\n7. Fachsprache und Fremdsprachen (z.B. Englisch, Französisch, Italienisch, Spanisch, Portugiesisch)\n8. Fachsprache und Fremdsprachen (z.B. Englisch, Französisch, Italienisch, Spanisch, Portugiesisch)\n9. Fachsprache und Fremdsprachen (z.B. Englisch, Französisch, Italienisch, Spanisch, Portugiesisch)\n10. Fachsprache und Fremdsprachen (z.B. Englisch, Französisch, Italienisch, Spanisch, Portugiesisch)\n11. Fachsprache und Fremdsprachen (z.B. Englisch, Französisch, Italienisch, Spanisch, Portugiesisch",
-          "fr": "Décrivez en détail et avec de nombreux exemples comment le mot 'katja.' est utilisé dans: 1. La langue courante et la langue commune 2. La langue formelle et la langue de haut niveau 3. La langue technique et les domaines spécifiques 4. Les variantes régionales et les dialectes 5. La langue littéraire 6. La langue moderne et la langue de la jeunesse (par exemple la télévision, les journaux, les magazines, l'Internet) 7. La langue technique et les langues étrangères (par exemple l'anglais, le français, l'italien, l'espagnol, le portugais) 8. La langue technique et les langues étrangères (par exemple l'anglais, le français, l'italien, l'espagnol, le portugais) 9. La langue et les langues étrangères (par exemple l'anglais, l'italien, l'espagnol, le portugais, l'espagnol, l'espagnol, le portugais) 11. La langue technique et les langues étrangères (par exemple l'anglais, le français, l'espagnol, l'espagnol, le portugais, l'espagnol, le portugais)."
         },
-        "expressions": {
-          "de": "Liste ALLE Redewendungen, Sprichwörter und feste Ausdrücke mit 'katja.' auf. Für jeden Ausdruck gib an:\n1. Wörtliche Bedeutung\n2. Übertragene Bedeutung\n3. Verwendungskontext\n4. Stilebene\n5. Regionale Besonderheiten\n6. Beispiele in Sätzen, die mit 'katja' beginnen und mit 'katja' enden. Beispiele in Sätzen, die mit 'katja' beginnen und mit 'katja' enden. Beispiele in Sätzen, die mit 'katja' beginnen und mit 'katja' enden. Beispiele in Sätzen, die mit 'katja' beginnen und mit 'katja' enden. Beispiele in Sätzen, die mit 'katja' beginnen und mit 'katja' enden. Beispiele in Sätzen, die mit 'katja' beginnen und mit 'katja' enden. Beispiele in Sätzen, die mit 'katja' beginnen und mit 'katja' enden. Beispiele in Sätzen, die mit 'katja'",
-          "fr": "Pour chaque expression, indiquez: 1. Signification littérale 2. Signification transmise 3. Contexte d'utilisation 4. Niveau de style 5. Particularités régionales 6. Exemples de phrases commençant par 'katja' et se terminant par 'katja'. Exemples de phrases commençant par 'katja' et se terminant par 'katja'. Exemples de phrases commençant par 'katja' et se terminant par 'katja'. Exemples de phrases commençant par 'katja' et se terminant par 'katja'. Exemples de phrases commençant par 'katja' et terminant par 'katja'. Exemples de phrases commençant par 'katja'. Exemples de phrases commençant par 'katja' et terminant par 'katja'. Exemples de phrases commençant par 'katja' et terminant par 'katja'. Exemples de phrases commençant par 'katja' et terminant par 'katja'."
-        },
-        "collocations": {
-          "de": "Liste ALLE üblichen Wortverbindungen mit 'katja.' auf, gruppiert nach:\n1. Verb + katja.\n2. katja. + Substantiv\n3. Adjektiv + katja.\n4. Präposition + katja.\n5. Typische Satzstrukturen\nFür jede Kombination gib mehrere Beispiele und Kontextinformationen. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von Beispielen verwenden. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von Beispielen verwenden. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von Beispielen verwenden. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von Beispielen verwenden. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von Beispielen verwenden. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von Beispielen verwenden. Du kannst auch eine Liste von Beispielen verwenden.\nDu kannst auch eine Liste von",
-          "fr": "Liste TOUTES les connexions de mots habituelles avec 'katja.', regroupées par: 1. Verb + katja. 2. katja. + Nom 3. Adjectif + katja. 4. Préposition + katja. 5. Structures de phrases typiques Pour chaque combinaison, donnez plusieurs exemples et informations contextuelles. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples. Vous pouvez utiliser une liste d'exemples. Vous pouvez également utiliser une liste d'exemples."
-        },
-        "registre": {
-          "de": "Beschreibe sehr detailliert das Sprachregister und die Verwendungskontexte von 'katja.', einschließlich:\n1. Stilebene (formell, neutral, umgangssprachlich, etc.)\n2. Soziale Kontexte\n3. Situative Angemessenheit\n4. Historische Entwicklung des Gebrauchs\n5. Aktuelle Trends in der Verwendung\n6. Regionale und soziale Variation in der Verwendung von 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'kat",
-          "fr": "Décrivez de manière très détaillée le répertoire linguistique et les contextes d'utilisation de 'katja.', y compris: 1. niveau de style (formulé, neutre, familier, etc.) 2. contextes sociaux 3. adéquation situative 4. évolution historique de l'utilisation 5. tendances actuelles dans l'utilisation 6. variations régionales et sociales dans l'utilisation de 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', 'katja.', ', ', 'katja', ', ', 'katja'katja', ', 'katja'katja', 'katja', 'katja'katja', ', ', 'katja', ', ', ', ', 'katja'katja', ', ', ', ', 'kat'kat', 'kat'kat'kat', ', 'kat'kat', 'kat'kat', 'kat'kat', 'kat', ', ', ', 'kat'.', 'kat', 'kat'kat', ', ', ', ', ', ', ', ', ' ', ', ', ', kat', ', ', ', kat' ', ', ' ', kat', ', kat', kat' kat', '"
+        "word_association": {
+          "de": {
+            "words": [
+              "Donnez 4 mots du même thème que 'ich': 'Ich bin ein Mann",
+              "der weiß",
+              "was ich will.'\n\"Ich bin ein Mann",
+              "der weiß",
+              "was ich will.\" \"Ich bin ein Mann",
+              ""
+            ]
+          },
+          "fr": {
+            "words": [
+              "Donnez 4 mots du même thème que 'je': 'Je suis un homme qui sait ce que je veux.' \"Je suis un homme qui sait ce que je veux.\" \"Je suis un homme",
+              ""
+            ]
+          }
         }
-      },
-      "semantic": {
-        "synonymes": {
-          "de": "Liste ALLE möglichen Synonyme für 'katja.' auf, sehr detailliert geordnet nach:\n1. Exakte Synonyme (gleiche Bedeutung und Verwendung)\n2. Kontextabhängige Synonyme (mit Erklärung der Nuancen)\n3. Stilistische Varianten (formell, umgangssprachlich, etc.)\n4. Regionale Varianten und Dialektausdrücke\n5. Fachsprachliche Alternativen\nFüge für JEDES Synonym eine Erklärung der Bedeutungsnuancen und Verwendungsbeispiele hinzu.\n1. Synonyme für 'katja.' auf, sehr detailliert geordnet nach: 1. Exakte Synonyme (gleiche Bedeutung und Verwendung) 2. Kontextabhängige Synonyme (mit Erklärung der Nuancen) 3. Stilistische Varianten (formell, umgangssprachlich, etc.)\n1. Synonyme für 'katja.' auf, sehr detailliert geordnet nach: 1. Exakte Synonyme (gleiche Bedeutung und Verwendung) 2. Kontextabhängige Synonyme (mit Erklärung der Nuancen) 3. Stilistische Varianten (formell, umgangssprachlich",
-          "fr": "Liste TOUS les synonymes possibles pour 'katja.', classés très en détail par: 1. Synonymes exacts (même signification et utilisation) 2. Synonymes contextuels (avec explication des nuances) 3. Variantes stylistiques (formelles, approximatives, etc.) 4. Variantes régionales et expressions dialectiques 5. Alternatives linguistiques spécifiques Ajoutez une explication des nuances et des exemples d'utilisations pour 'katja.' 1. Synonymes pour 'katja.', très détaillés par: 1. Synonymes exacts (même signification et utilisation) 2. Synonymes contextuels (avec explication des nuances) 3. Variantes stylistiques (formelles, approximatives, etc.) 1. Synonymes pour 'katja.' sur, très détaillés par: 1. Synonymes exacts (même signification et utilisation) 2. Synonymes contextuels (avec explication des nuances) 3. Variantes stylistiques (formelles, approximatives, etc.) 1. Synoniens pour 'katja."
-        },
-        "antonymes": {
-          "de": "Liste alle möglichen Gegenwörter zu 'katja.' auf, geordnet nach:\n1. Direkte Antonyme\n2. Kontextabhängige Gegensätze\n3. Graduelle Abstufungen\nFür jedes Antonym erkläre die genaue Art des Gegensatzes und gib Verwendungsbeispiele. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich Beispiele an. Für jedes Substantiv gebe ich",
-          "fr": "Liste de tous les contre-mots possibles à 'katja.', classés par: 1. Direct Antonyme 2. Contours contextuels 3. Gradulations Pour chaque nom Antonym, le type exact de contraste et d'exemples d'utilisation. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples. Pour chaque nom, je donne des exemples."
-        },
-        "champ_semantique": {
-          "de": "Beschreibe das semantische Feld und verwandte Begriffe zu 'katja.' mit:\n1. Übergeordnete Begriffe (Hyperonyme)\n2. Untergeordnete Begriffe (Hyponyme)\n3. Verwandte Konzepte\n4. Typische Assoziationen\n5. Kulturelle Konnotationen\n6. Semantische Beziehungen zu anderen Wortfeldern (Hyperonyme) und verwandte Begriffe (Hyperonyme)\n7. Semantische Beziehungen zu anderen Wortfeldern (Hyperonyme) und verwandte Begriffe (Hyperonyme)\n8. Semantische Beziehungen zu anderen Wortfeldern (Hyperonyme) und verwandte Begriffe (Hyperonyme)\n9. Semantische Beziehungen zu anderen Wortfeldern (Hyperonyme) und verwandte Begriffe (Hyperonyme)\n10. Semantische Beziehungen zu anderen Wortfeldern (Hyperonyme) und verwandte Begriffe (Hyperonyme)\n11. Semantische Beziehungen zu anderen Wortfeldern (Hyperonyme) und verwandte Begriffe (Hyper",
-          "fr": "Décrivez le champ sémantique et les termes associés à 'katja.' avec: 1. Termes supérieurs (hyperonymes) 2. Termes subordonnés (hyponymes) 3. Concepts apparentés 4. Associations types 5. Connotations culturelles 6. Relation sémantique avec d'autres champs de mots (hyperonymes) et termes connexes (hyperonymes) 7. Relation sémantique avec d'autres champs de mots (hyperonymes) et termes connexes (hyperonymes) 8. Relation sémantique avec d'autres champs de mots (hyperonymes) et termes connexes (hyperonymes) 9. Relation sémantique avec d'autres champs de mots (hyperonymes) et termes connexes (hyperonymes) 10. Relation sémantique avec d'autres champs de mots (hyperonymes) et termes connexes (hyperonymes) 11. Relations sémantiques avec d'autres champs de mots (hyperonymes) et termes connexes (hyperonymes) et termes connexes (hyperonymes)"
-        }
-      },
-      "exercices": {
-        "fill_blank": null,
-        "multiple_choice": null,
-        "word_association": null,
-        "scramble": null,
-        "context_quiz": null,
-        "usage_quiz": null
       }
     }
   ]
