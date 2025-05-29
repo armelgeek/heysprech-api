@@ -84,14 +84,16 @@
         "de": {
           "principal": "gehen",
           "variantes": [],
-          "synonymes": []
+          "synonymes": [],
+          "definition": ""
         },
         "fr": {
-          "principal": "",
+          "principal": "gehen",
           "variantes": [],
-          "synonymes": []
+          "synonymes": [],
+          "definition": ""
         },
-        "principal": "gehen"
+        "principal": "aller"
       },
       "examples": [
         {
@@ -153,14 +155,16 @@
         "de": {
           "principal": "heute",
           "variantes": [],
-          "synonymes": []
+          "synonymes": [],
+          "definition": ""
         },
         "fr": {
-          "principal": "",
+          "principal": "heute",
           "variantes": [],
-          "synonymes": []
+          "synonymes": [],
+          "definition": ""
         },
-        "principal": "heute"
+        "principal": "Aujourd'hui"
       },
       "examples": [
         {
@@ -183,7 +187,7 @@
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Heute ist ein Tag, an dem Sie sich.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Heute ist der Tag, an dem Sie sich.",
             "answer": "heute",
             "examples": [
               "heute"
@@ -222,14 +226,16 @@
         "de": {
           "principal": "ins",
           "variantes": [],
-          "synonymes": []
+          "synonymes": [],
+          "definition": ""
         },
         "fr": {
-          "principal": "",
+          "principal": "ins",
           "variantes": [],
-          "synonymes": []
+          "synonymes": [],
+          "definition": ""
         },
-        "principal": "ins"
+        "principal": "dans la"
       },
       "examples": [
         {
@@ -291,14 +297,16 @@
         "de": {
           "principal": "kino.",
           "variantes": [],
-          "synonymes": []
+          "synonymes": [],
+          "definition": ""
         },
         "fr": {
-          "principal": "",
+          "principal": "kino.",
           "variantes": [],
-          "synonymes": []
+          "synonymes": [],
+          "definition": ""
         },
-        "principal": "kino."
+        "principal": "Cinéma."
       },
       "examples": [
         {
@@ -360,14 +368,16 @@
         "de": {
           "principal": "sie",
           "variantes": [],
-          "synonymes": []
+          "synonymes": [],
+          "definition": ""
         },
         "fr": {
-          "principal": "",
+          "principal": "sie",
           "variantes": [],
-          "synonymes": []
+          "synonymes": [],
+          "definition": ""
         },
-        "principal": "sie"
+        "principal": "et"
       },
       "examples": [
         {
