@@ -2,43 +2,79 @@
   "segments": [
     {
       "start": 0.031,
-      "end": 0.862,
-      "text": " Bitte schon!",
+      "end": 7.493,
+      "text": " Sie gehen heute ins Kino.",
       "words": [
         {
-          "word": "Bitte",
+          "word": "Sie",
           "start": 0.031,
-          "end": 0.488,
-          "score": 0.715
+          "end": 0.876,
+          "score": 0.624
         },
         {
-          "word": "schon!",
-          "start": 0.509,
-          "end": 0.862,
+          "word": "gehen",
+          "start": 3.249,
+          "end": 3.973,
+          "score": 0.672
+        },
+        {
+          "word": "heute",
+          "start": 6.508,
+          "end": 6.769,
+          "score": 0.616
+        },
+        {
+          "word": "ins",
+          "start": 6.829,
+          "end": 6.99,
           "score": 0.712
+        },
+        {
+          "word": "Kino.",
+          "start": 7.01,
+          "end": 7.493,
+          "score": 0.92
         }
       ],
-      "translation": "S'il te plaît !"
+      "translation": "Ils vont au cinéma aujourd'hui."
     }
   ],
   "word_segments": [
     {
-      "word": "Bitte",
+      "word": "Sie",
       "start": 0.031,
-      "end": 0.488,
-      "score": 0.715
+      "end": 0.876,
+      "score": 0.624
     },
     {
-      "word": "schon!",
-      "start": 0.509,
-      "end": 0.862,
+      "word": "gehen",
+      "start": 3.249,
+      "end": 3.973,
+      "score": 0.672
+    },
+    {
+      "word": "heute",
+      "start": 6.508,
+      "end": 6.769,
+      "score": 0.616
+    },
+    {
+      "word": "ins",
+      "start": 6.829,
+      "end": 6.99,
       "score": 0.712
+    },
+    {
+      "word": "Kino.",
+      "start": 7.01,
+      "end": 7.493,
+      "score": 0.92
     }
   ],
   "language": "de",
   "vocabulary": [
     {
-      "word": "bitte",
+      "word": "gehen",
       "level": {
         "level": "beginner",
         "score": 2,
@@ -46,7 +82,7 @@
       },
       "translations": {
         "de": {
-          "principal": "bitte",
+          "principal": "gehen",
           "variantes": [],
           "synonymes": []
         },
@@ -55,42 +91,42 @@
           "variantes": [],
           "synonymes": []
         },
-        "principal": "bitte"
+        "principal": "gehen"
       },
       "examples": [
         {
-          "de": "Ich bitte gern um Entschuldigung, dass ich mich hier so lange aufgehalten habe.",
-          "fr": "Excusez-moi d'être resté ici si longtemps."
+          "de": "Ich gehen gern in die Schule, aber ich habe Angst, dass ich mich.",
+          "fr": "J'aime aller à l'école, mais j'ai peur d'être moi-même."
         },
         {
-          "de": "Das bitte ist gut, aber ich bin mir nicht sicher, ob ich das.",
-          "fr": "S'il te plaît, c'est bien, mais je ne suis pas sûr de le faire."
+          "de": "Das gehen ist gut, aber es ist nicht so einfach, wie es scheint.",
+          "fr": "Ça marche bien, mais ce n'est pas aussi simple qu'il semble."
         },
         {
-          "de": "Wir haben bitte Verständnis dafür, dass wir Ihnen nicht alle Informationen zur Verfügung stellen.",
-          "fr": "Nous comprenons que nous ne vous fournissons pas toutes les informations."
+          "de": "Wir haben gehen, um zu sehen, was wir tun können, und wir.",
+          "fr": "On va voir ce qu'on peut faire, et nous."
         },
         {
-          "de": "Er bitte heute Abend noch mal anrufen, ob ich noch Zeit habe. Ich.",
-          "fr": "Il m'a demandé d'appeler ce soir pour voir si j'avais encore le temps."
+          "de": "Er gehen heute in die Schule, und ich habe keine Ahnung, was ich.",
+          "fr": "Il va à l'école aujourd'hui, et je n'ai aucune idée de ce que j'ai."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist das? Was ist das? Was ist.",
-            "answer": "bitte",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist das für ein Satz? Was ist das.",
+            "answer": "gehen",
             "examples": [
-              "bitte"
+              "gehen"
             ]
           }
         },
         "multiple_choice": {
           "de": {
-            "question": "Was bedeutet 'bitte'?",
+            "question": "Was bedeutet 'gehen'?",
             "choices": [
-              "bitte bin",
-              "bitte"
+              "gehen bin",
+              "gehen"
             ],
             "answer": "0"
           }
@@ -98,16 +134,16 @@
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'bitte': Bitte hilf mit",
-              "indem du das erste Blog-Bild hochlädst und das zweite Blog-Bild post",
-              "3 einfache verwandte Wörter zu 'bitte': Bitte hilf mit"
+              "3 einfache verwandte Wörter zu 'gehen': gehen",
+              "gehen",
+              "3 einfache verwandte Wörter zu 'gehen': gehen"
             ]
           }
         }
       }
     },
     {
-      "word": "schon!",
+      "word": "heute",
       "level": {
         "level": "beginner",
         "score": 2,
@@ -115,7 +151,7 @@
       },
       "translations": {
         "de": {
-          "principal": "schon!",
+          "principal": "heute",
           "variantes": [],
           "synonymes": []
         },
@@ -124,42 +160,42 @@
           "variantes": [],
           "synonymes": []
         },
-        "principal": "schon!"
+        "principal": "heute"
       },
       "examples": [
         {
-          "de": "Ich schon! gern würde ich mich auch mal mit einem Mann treffen, der.",
-          "fr": "J'aimerais rencontrer un homme."
+          "de": "Ich heute gern ein paar Worte verlieren, denn ich bin ein großer Fan von.",
+          "fr": "J'aime perdre quelques mots aujourd'hui, parce que je suis un grand fan de."
         },
         {
-          "de": "Das schon! ist gut, dass du es sagst. Ich habe es auch.",
-          "fr": "C'est bien que tu le dises."
+          "de": "Das heute ist gut gelaufen. Ich bin sehr zufrieden mit dem Ergebnis. Die.",
+          "fr": "Aujourd'hui, ça s'est bien passé, je suis très satisfait du résultat."
         },
         {
-          "de": "Wir haben schon! Wir haben es geschafft! Und wir sind stolz darauf!.",
-          "fr": "Nous l'avons déjà fait! Nous l'avons fait! Et nous en sommes fiers!."
+          "de": "Wir haben heute den ersten Teil unserer neuen Serie über das Thema „Bauen.",
+          "fr": "Aujourd'hui, nous avons la première partie de notre nouvelle série sur la construction."
         },
         {
-          "de": "Er schon! heute habe ich eine Frage an euch, und zwar, wie.",
-          "fr": "Aujourd'hui, j'ai une question pour vous."
+          "de": "Er heute heute noch, dass es sich dabei um eine der ältesten und ältesten.",
+          "fr": "Aujourd'hui encore, il s'agit d'une des plus anciennes et les plus anciennes."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist das? Was ist das? Was ist.",
-            "answer": "schon",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Heute ist ein Tag, an dem Sie sich.",
+            "answer": "heute",
             "examples": [
-              "schon"
+              "heute"
             ]
           }
         },
         "multiple_choice": {
           "de": {
-            "question": "Was bedeutet 'schon'?",
+            "question": "Was bedeutet 'heute'?",
             "choices": [
-              "schon bin",
-              "schon"
+              "heute bin",
+              "heute"
             ],
             "answer": "0"
           }
@@ -167,9 +203,216 @@
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'schon': schon",
-              "schon",
-              "3 einfache verwandte Wörter zu 'schon': schon"
+              "3 einfache verwandte Wörter zu 'heute': morgen",
+              "morgen",
+              "3 einfache verwandte Wörter zu 'heute': morgen"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "word": "ins",
+      "level": {
+        "level": "beginner",
+        "score": 1,
+        "explanation": "Mot simple, approprié pour les débutants"
+      },
+      "translations": {
+        "de": {
+          "principal": "ins",
+          "variantes": [],
+          "synonymes": []
+        },
+        "fr": {
+          "principal": "",
+          "variantes": [],
+          "synonymes": []
+        },
+        "principal": "ins"
+      },
+      "examples": [
+        {
+          "de": "Ich ins gern, aber ich habe keine Lust, mich mit einem Mann zu.",
+          "fr": "J'aimerais bien, mais je n'ai pas envie de sortir avec un homme."
+        },
+        {
+          "de": "Das ins ist gut so, denn es ist nicht nur eine Frage der Zeit.",
+          "fr": "C'est une bonne chose, car ce n'est pas seulement une question de temps."
+        },
+        {
+          "de": "Wir haben ins Leben gerufen, weil es uns wichtig ist, dass die Menschen.",
+          "fr": "Nous avons créé parce qu'il est important pour nous que les gens."
+        },
+        {
+          "de": "Er ins heute.de-Forum.\nIch habe mich mal wieder mit.",
+          "fr": "Il va au forum aujourd'hui. Je suis de retour avec lui."
+        }
+      ],
+      "exercises": {
+        "fill_blank": {
+          "de": {
+            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist das? Was ist das? Was ist.",
+            "answer": "ins",
+            "examples": [
+              "ins"
+            ]
+          }
+        },
+        "multiple_choice": {
+          "de": {
+            "question": "Was bedeutet 'ins'?",
+            "choices": [
+              "ins bin",
+              "ins"
+            ],
+            "answer": "0"
+          }
+        },
+        "word_association": {
+          "de": {
+            "words": [
+              "3 einfache verwandte Wörter zu 'ins': in",
+              "in",
+              "3 einfache verwandte Wörter zu 'ins': in"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "word": "kino.",
+      "level": {
+        "level": "beginner",
+        "score": 2,
+        "explanation": "Mot simple, approprié pour les débutants"
+      },
+      "translations": {
+        "de": {
+          "principal": "kino.",
+          "variantes": [],
+          "synonymes": []
+        },
+        "fr": {
+          "principal": "",
+          "variantes": [],
+          "synonymes": []
+        },
+        "principal": "kino."
+      },
+      "examples": [
+        {
+          "de": "Ich kino. gern auch mal ein paar Filme, die ich gerne sehen möchte.",
+          "fr": "J'adore les films que j'aimerais voir."
+        },
+        {
+          "de": "Das kino. ist gut, aber es ist nicht das kino, das ich.",
+          "fr": "Le cinéma. C'est bien, mais ce n'est pas le cinéma que je fais."
+        },
+        {
+          "de": "Wir haben kino.de im Rahmen einer Kooperation mit der Filmakademie Baden-.",
+          "fr": "Nous avons kino.de dans le cadre d'une coopération avec l'Académie de cinéma de Baden-."
+        },
+        {
+          "de": "Er kino. heute, 18:00 Uhr, im Theater am Potsdamer Platz.",
+          "fr": "Il est au cinéma, aujourd'hui, 18 h, au théâtre de la Potsdamer Platz."
+        }
+      ],
+      "exercises": {
+        "fill_blank": {
+          "de": {
+            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist Kino? Was ist Kino? Was ist.",
+            "answer": "kino",
+            "examples": [
+              "kino"
+            ]
+          }
+        },
+        "multiple_choice": {
+          "de": {
+            "question": "Was bedeutet 'kino'?",
+            "choices": [
+              "kino bin",
+              "kino"
+            ],
+            "answer": "0"
+          }
+        },
+        "word_association": {
+          "de": {
+            "words": [
+              "3 einfache verwandte Wörter zu 'kino': Kino",
+              "Kino",
+              "3 einfache verwandte Wörter zu 'kino': Kino"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "word": "sie",
+      "level": {
+        "level": "beginner",
+        "score": 1,
+        "explanation": "Mot simple, approprié pour les débutants"
+      },
+      "translations": {
+        "de": {
+          "principal": "sie",
+          "variantes": [],
+          "synonymes": []
+        },
+        "fr": {
+          "principal": "",
+          "variantes": [],
+          "synonymes": []
+        },
+        "principal": "sie"
+      },
+      "examples": [
+        {
+          "de": "Ich sie gern wieder sehen, wenn ich mal wieder Zeit habe. Ich bin.",
+          "fr": "J'aimerais la revoir quand j'aurai le temps."
+        },
+        {
+          "de": "Das sie ist gut, aber ich bin mir nicht sicher, ob sie wirklich.",
+          "fr": "Elle est bonne, mais je ne suis pas sûr qu'elle soit réelle."
+        },
+        {
+          "de": "Wir haben sie in den letzten Jahren immer wieder besucht und sind begeistert von den.",
+          "fr": "Nous lui avons rendu visite ces dernières années et nous en sommes ravis."
+        },
+        {
+          "de": "Er sie heute nicht mehr, weil sie sich nicht an die Regeln gehalten hat.",
+          "fr": "Il ne l'a pas fait aujourd'hui parce qu'elle n'a pas respecté les règles."
+        }
+      ],
+      "exercises": {
+        "fill_blank": {
+          "de": {
+            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich bin ein Mann, ich bin eine Frau.",
+            "answer": "sie",
+            "examples": [
+              "sie"
+            ]
+          }
+        },
+        "multiple_choice": {
+          "de": {
+            "question": "Was bedeutet 'sie'?",
+            "choices": [
+              "sie bin",
+              "sie"
+            ],
+            "answer": "0"
+          }
+        },
+        "word_association": {
+          "de": {
+            "words": [
+              "3 einfache verwandte Wörter zu 'sie': sie",
+              "sie",
+              "3 einfache verwandte Wörter zu 'sie': sie"
             ]
           }
         }
