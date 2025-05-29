@@ -41,28 +41,29 @@
       },
       "examples": [
         {
-          "de": "Ich ich. Ich bin ein Mann. Ich bin ein Mann. Ich bin ein Mann. Ich bin",
-          "fr": "Je suis un homme, je suis un homme, je suis un homme, je suis un homme."
+          "de": "Ich ich. ein Mann. ein Mann. ein.",
+          "fr": "Moi, un homme, un homme."
+        },
+        {
+          "de": "Ich ich. Ich bin ein Mann. Ich bin.",
+          "fr": "Moi, je suis un homme."
+        },
+        {
+          "de": "Er ich. gestern war ich mit meinem freund in.",
+          "fr": "Lui moi. Hier, j'étais avec mon ami."
+        },
+        {
+          "de": "Sie ich. heute gern mit dir. Ich bin.",
+          "fr": "Je l'aime avec toi aujourd'hui."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "3 kurze Beispielsätze mit '___': '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '",
+            "text": "'___ bin'",
             "answer": "ich",
             "examples": [
-              "3 kurze Beispielsätze mit 'ich': 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und '",
-              "3 kurze Beispielsätze mit 'ich': 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'Ich bin' und '",
-              "3 kurze Beispielsätze mit 'ich': 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin'\n3"
-            ]
-          },
-          "fr": {
-            "text": "3 exemples courts avec 'je suis': 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis'",
-            "answer": "isé",
-            "examples": [
-              "3 exemples courts avec 'je suis': 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis'",
-              "3 exemples courts avec 'je suis': 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '''''",
-              "3 exemples courts avec 'je suis': 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' 3"
+              "ich"
             ]
           }
         },
@@ -70,31 +71,18 @@
           "de": {
             "question": "Was bedeutet 'ich'?",
             "choices": [
-              "4 Bedeutungen für 'ich', erste ist korrekt: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und"
+              "ich bin",
+              "ich"
             ],
-            "answer": "A"
-          },
-          "fr": {
-            "question": "Que signifie 'ich'?",
-            "choices": [
-              "4 significations pour 'je suis', première est correcte: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux."
-            ],
-            "answer": "A"
+            "answer": "0"
           }
         },
         "word_association": {
           "de": {
             "words": [
-              "3 verwandte Wörter zu 'ich': ein Mann",
-              "eine Frau",
-              "ein Mann"
-            ]
-          },
-          "fr": {
-            "words": [
-              "3 mots associés à 'je': un homme",
-              "une femme",
-              "un homme"
+              "3 einfache verwandte Wörter zu 'ich': ein Mann",
+              "ein Mann",
+              "3 einfache verwandte Wörter zu 'ich': ein Mann"
             ]
           }
         }
