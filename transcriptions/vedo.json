@@ -2,134 +2,134 @@
   "segments": [
     {
       "start": 42.927,
-      "end": 43.869,
+      "end": 44.049,
       "text": " Nein.",
       "words": [
         {
           "word": "Nein.",
           "start": 42.927,
-          "end": 43.869,
-          "score": 0.759
+          "end": 44.049,
+          "score": 0.736
         }
       ],
       "translation": "Non."
     },
     {
-      "start": 44.029,
-      "end": 44.59,
+      "start": 44.089,
+      "end": 50.783,
       "text": "Entschuldigung.",
       "words": [
         {
           "word": "Entschuldigung.",
-          "start": 44.029,
-          "end": 44.59,
-          "score": 0.605
+          "start": 44.089,
+          "end": 50.783,
+          "score": 0.868
         }
       ],
       "translation": "Excusez-moi."
     },
     {
-      "start": 50.783,
-      "end": 51.405,
+      "start": 50.823,
+      "end": 60.243,
       "text": "Entschuldigung.",
       "words": [
         {
           "word": "Entschuldigung.",
-          "start": 50.783,
-          "end": 51.405,
-          "score": 0.404
+          "start": 50.823,
+          "end": 60.243,
+          "score": 0.929
         }
       ],
       "translation": "Excusez-moi."
     },
     {
-      "start": 53.749,
-      "end": 54.07,
+      "start": 60.263,
+      "end": 60.383,
       "text": "Bitte.",
       "words": [
         {
           "word": "Bitte.",
-          "start": 53.749,
-          "end": 54.07,
-          "score": 0.723
+          "start": 60.263,
+          "end": 60.383,
+          "score": 0.002
         }
       ],
       "translation": "S'il te plaît."
     },
     {
-      "start": 55.533,
-      "end": 56.014,
+      "start": 60.403,
+      "end": 60.524,
       "text": "Danke.",
       "words": [
         {
           "word": "Danke.",
-          "start": 55.533,
-          "end": 56.014,
-          "score": 0.823
+          "start": 60.403,
+          "end": 60.524,
+          "score": 0.003
         }
       ],
       "translation": "Merci."
     },
     {
-      "start": 58.8,
-      "end": 60.944,
+      "start": 60.544,
+      "end": 60.864,
       "text": "Wie heißt du?",
       "words": [
         {
           "word": "Wie",
-          "start": 58.8,
-          "end": 58.86,
-          "score": 0.032
+          "start": 60.544,
+          "end": 60.604,
+          "score": 0.001
         },
         {
           "word": "heißt",
-          "start": 58.88,
-          "end": 59.121,
-          "score": 0.522
+          "start": 60.624,
+          "end": 60.724,
+          "score": 0.002
         },
         {
           "word": "du?",
-          "start": 59.141,
-          "end": 60.944,
-          "score": 0.601
+          "start": 60.744,
+          "end": 60.864,
+          "score": 0.43
         }
       ],
       "translation": "Comment tu t'appelles ?"
     },
     {
-      "start": 60.964,
-      "end": 62.387,
+      "start": 60.884,
+      "end": 62.808,
       "text": "Ich heiße Katja und du?",
       "words": [
         {
           "word": "Ich",
-          "start": 60.964,
-          "end": 61.025,
-          "score": 0.001
+          "start": 60.884,
+          "end": 61.005,
+          "score": 0.636
         },
         {
           "word": "heiße",
           "start": 61.045,
-          "end": 61.245,
-          "score": 0.502
+          "end": 61.305,
+          "score": 0.636
         },
         {
           "word": "Katja",
-          "start": 61.285,
-          "end": 61.746,
-          "score": 0.865
+          "start": 61.345,
+          "end": 62.027,
+          "score": 0.597
         },
         {
           "word": "und",
-          "start": 62.047,
-          "end": 62.147,
-          "score": 0.657
+          "start": 62.067,
+          "end": 62.728,
+          "score": 0.723
         },
         {
           "word": "du?",
-          "start": 62.167,
-          "end": 62.387,
-          "score": 0.877
+          "start": 62.748,
+          "end": 62.808,
+          "score": 0.375
         }
       ],
       "translation": "Je m'appelle Katia et toi ?"
@@ -142,506 +142,506 @@
         {
           "word": "Ich",
           "start": 62.828,
-          "end": 62.888,
-          "score": 0.004
+          "end": 62.908,
+          "score": 0.824
         },
         {
           "word": "heiß",
-          "start": 62.908,
-          "end": 63.009,
-          "score": 0.482
+          "start": 62.929,
+          "end": 63.069,
+          "score": 0.362
         },
         {
           "word": "Alexander.",
-          "start": 63.049,
+          "start": 63.089,
           "end": 63.67,
-          "score": 0.956
+          "score": 0.769
         }
       ],
       "translation": "Je m'appelle Alexander."
     },
     {
       "start": 74.838,
-      "end": 75.519,
+      "end": 75.779,
       "text": " Was suchst du?",
       "words": [
         {
           "word": "Was",
           "start": 74.838,
-          "end": 75.098,
-          "score": 0.779
+          "end": 75.259,
+          "score": 0.479
         },
         {
           "word": "suchst",
-          "start": 75.118,
-          "end": 75.439,
-          "score": 0.498
+          "start": 75.279,
+          "end": 75.479,
+          "score": 0.22
         },
         {
           "word": "du?",
-          "start": 75.459,
-          "end": 75.519,
-          "score": 0.65
+          "start": 75.499,
+          "end": 75.779,
+          "score": 0.751
         }
       ],
       "translation": "Qu'est-ce que tu cherches ?"
     },
     {
-      "start": 75.759,
-      "end": 76.78,
+      "start": 75.799,
+      "end": 77.281,
       "text": "Ich suche eine Wohnung in Berlin.",
       "words": [
         {
           "word": "Ich",
-          "start": 75.759,
-          "end": 75.819,
-          "score": 0.092
+          "start": 75.799,
+          "end": 75.879,
+          "score": 0.768
         },
         {
           "word": "suche",
-          "start": 75.859,
-          "end": 75.979,
-          "score": 0.1
+          "start": 75.919,
+          "end": 76.059,
+          "score": 0.87
         },
         {
           "word": "eine",
-          "start": 75.999,
-          "end": 76.1,
-          "score": 0.765
+          "start": 76.08,
+          "end": 76.2,
+          "score": 0.844
         },
         {
           "word": "Wohnung",
           "start": 76.22,
-          "end": 76.4,
-          "score": 0.5
+          "end": 76.42,
+          "score": 0.76
         },
         {
           "word": "in",
-          "start": 76.42,
-          "end": 76.48,
-          "score": 0.886
+          "start": 76.46,
+          "end": 76.54,
+          "score": 0.918
         },
         {
           "word": "Berlin.",
-          "start": 76.52,
-          "end": 76.78,
-          "score": 0.861
+          "start": 76.56,
+          "end": 77.281,
+          "score": 0.799
         }
       ],
       "translation": "Je cherche un appartement à Berlin."
     },
     {
       "start": 77.301,
-      "end": 77.982,
+      "end": 78.643,
       "text": "Ich komme aus München.",
       "words": [
         {
           "word": "Ich",
           "start": 77.301,
           "end": 77.361,
-          "score": 0.146
+          "score": 0.893
         },
         {
           "word": "komme",
-          "start": 77.381,
-          "end": 77.501,
-          "score": 0.352
+          "start": 77.401,
+          "end": 77.561,
+          "score": 0.958
         },
         {
           "word": "aus",
-          "start": 77.521,
-          "end": 77.641,
-          "score": 0.645
+          "start": 77.601,
+          "end": 77.701,
+          "score": 0.932
         },
         {
           "word": "München.",
-          "start": 77.681,
-          "end": 77.982,
-          "score": 0.632
+          "start": 77.721,
+          "end": 78.643,
+          "score": 0.764
         }
       ],
       "translation": "Je viens de Munich."
     },
     {
-      "start": 78.643,
-      "end": 79.183,
+      "start": 78.663,
+      "end": 80.084,
       "text": "Woher kommst du?",
       "words": [
         {
           "word": "Woher",
-          "start": 78.643,
-          "end": 78.763,
-          "score": 0.615
+          "start": 78.663,
+          "end": 78.823,
+          "score": 0.557
         },
         {
           "word": "kommst",
-          "start": 78.823,
-          "end": 78.963,
-          "score": 0.62
+          "start": 78.843,
+          "end": 79.043,
+          "score": 0.466
         },
         {
           "word": "du?",
-          "start": 79.003,
-          "end": 79.183,
-          "score": 0.856
+          "start": 79.063,
+          "end": 80.084,
+          "score": 0.717
         }
       ],
       "translation": "D'où viens-tu ?"
     },
     {
-      "start": 80.184,
-      "end": 81.166,
+      "start": 80.124,
+      "end": 81.766,
       "text": "Ich komme aus Berlin.",
       "words": [
         {
           "word": "Ich",
-          "start": 80.184,
-          "end": 80.245,
-          "score": 0.179
+          "start": 80.124,
+          "end": 80.285,
+          "score": 0.492
         },
         {
           "word": "komme",
-          "start": 80.285,
-          "end": 80.525,
-          "score": 0.491
+          "start": 80.345,
+          "end": 80.585,
+          "score": 0.966
         },
         {
           "word": "aus",
-          "start": 80.545,
-          "end": 80.705,
-          "score": 0.699
+          "start": 80.625,
+          "end": 80.785,
+          "score": 0.979
         },
         {
           "word": "Berlin.",
-          "start": 80.725,
-          "end": 81.166,
-          "score": 0.943
+          "start": 80.805,
+          "end": 81.766,
+          "score": 0.968
         }
       ],
       "translation": "Je viens de Berlin."
     },
     {
-      "start": 81.746,
-      "end": 82.427,
+      "start": 81.806,
+      "end": 84.41,
       "text": "Ich wohne hier.",
       "words": [
         {
           "word": "Ich",
-          "start": 81.746,
-          "end": 81.887,
-          "score": 0.396
+          "start": 81.806,
+          "end": 81.927,
+          "score": 0.907
         },
         {
           "word": "wohne",
-          "start": 81.907,
-          "end": 82.227,
-          "score": 0.746
+          "start": 81.967,
+          "end": 82.247,
+          "score": 0.774
         },
         {
           "word": "hier.",
-          "start": 82.267,
-          "end": 82.427,
-          "score": 0.57
+          "start": 82.287,
+          "end": 84.41,
+          "score": 0.862
         }
       ],
       "translation": "J'habite ici."
     },
     {
       "start": 84.45,
-      "end": 85.571,
+      "end": 86.092,
       "text": "Und was machst du in Berlin?",
       "words": [
         {
           "word": "Und",
           "start": 84.45,
-          "end": 84.51,
-          "score": 0.647
+          "end": 84.57,
+          "score": 0.919
         },
         {
           "word": "was",
-          "start": 84.55,
-          "end": 84.73,
-          "score": 0.757
+          "start": 84.63,
+          "end": 84.79,
+          "score": 0.967
         },
         {
           "word": "machst",
-          "start": 84.75,
+          "start": 84.83,
           "end": 85.01,
-          "score": 0.413
+          "score": 0.51
         },
         {
           "word": "du",
           "start": 85.03,
-          "end": 85.13,
-          "score": 0.667
+          "end": 85.17,
+          "score": 0.682
         },
         {
           "word": "in",
-          "start": 85.15,
-          "end": 85.231,
-          "score": 0.778
+          "start": 85.191,
+          "end": 85.271,
+          "score": 0.89
         },
         {
           "word": "Berlin?",
-          "start": 85.251,
-          "end": 85.571,
-          "score": 0.852
+          "start": 85.311,
+          "end": 86.092,
+          "score": 0.756
         }
       ],
       "translation": "Qu'est-ce que tu fais à Berlin ?"
     },
     {
-      "start": 86.092,
-      "end": 87.033,
+      "start": 86.112,
+      "end": 88.134,
       "text": "Ich studiere Medizin.",
       "words": [
         {
           "word": "Ich",
-          "start": 86.092,
-          "end": 86.152,
-          "score": 0.086
+          "start": 86.112,
+          "end": 86.232,
+          "score": 0.469
         },
         {
           "word": "studiere",
-          "start": 86.172,
-          "end": 86.552,
-          "score": 0.49
+          "start": 86.272,
+          "end": 86.632,
+          "score": 0.649
         },
         {
           "word": "Medizin.",
-          "start": 86.572,
-          "end": 87.033,
-          "score": 0.552
+          "start": 86.672,
+          "end": 88.134,
+          "score": 0.701
         }
       ],
       "translation": "J'étudie la médecine."
     },
     {
-      "start": 88.114,
-      "end": 88.595,
+      "start": 88.174,
+      "end": 89.396,
       "text": "Was machst du?",
       "words": [
         {
           "word": "Was",
-          "start": 88.114,
-          "end": 88.234,
-          "score": 0.817
+          "start": 88.174,
+          "end": 88.274,
+          "score": 0.914
         },
         {
           "word": "machst",
-          "start": 88.254,
+          "start": 88.334,
           "end": 88.454,
-          "score": 0.551
+          "score": 0.333
         },
         {
           "word": "du?",
           "start": 88.474,
-          "end": 88.595,
-          "score": 0.43
+          "end": 89.396,
+          "score": 0.589
         }
       ],
       "translation": "Qu'est-ce que tu fais ?"
     },
     {
-      "start": 89.376,
+      "start": 89.416,
       "end": 92.299,
       "text": "Was bist du von Beruf?",
       "words": [
         {
           "word": "Was",
-          "start": 89.376,
-          "end": 89.496,
-          "score": 0.793
+          "start": 89.416,
+          "end": 89.916,
+          "score": 0.92
         },
         {
           "word": "bist",
-          "start": 89.916,
-          "end": 90.076,
-          "score": 0.757
+          "start": 89.936,
+          "end": 90.137,
+          "score": 0.751
         },
         {
           "word": "du",
-          "start": 90.096,
-          "end": 90.137,
-          "score": 0.373
+          "start": 90.157,
+          "end": 90.197,
+          "score": 0.479
         },
         {
           "word": "von",
-          "start": 90.177,
-          "end": 90.317,
-          "score": 0.774
+          "start": 90.217,
+          "end": 90.397,
+          "score": 0.941
         },
         {
           "word": "Beruf?",
-          "start": 90.337,
+          "start": 90.417,
           "end": 92.299,
-          "score": 0.674
+          "score": 0.888
         }
       ],
       "translation": "Qu'est-ce que tu fais ?"
     },
     {
       "start": 92.319,
-      "end": 93.44,
+      "end": 94.302,
       "text": "Ich studiere Kunst.",
       "words": [
         {
           "word": "Ich",
           "start": 92.319,
-          "end": 92.399,
-          "score": 0.147
+          "end": 92.419,
+          "score": 0.874
         },
         {
           "word": "studiere",
-          "start": 92.419,
-          "end": 92.9,
-          "score": 0.684
+          "start": 92.479,
+          "end": 92.98,
+          "score": 0.848
         },
         {
           "word": "Kunst.",
-          "start": 92.92,
-          "end": 93.44,
-          "score": 0.887
+          "start": 93.04,
+          "end": 94.302,
+          "score": 0.972
         }
       ],
       "translation": "J'étudie l'art."
     },
     {
-      "start": 94.302,
-      "end": 95.944,
+      "start": 94.342,
+      "end": 97.586,
       "text": "Ich möchte mal Künstlerin werden.",
       "words": [
         {
           "word": "Ich",
-          "start": 94.302,
-          "end": 94.442,
-          "score": 0.408
+          "start": 94.342,
+          "end": 94.462,
+          "score": 0.833
         },
         {
           "word": "möchte",
-          "start": 94.462,
-          "end": 94.722,
-          "score": 0.553
+          "start": 94.502,
+          "end": 94.742,
+          "score": 0.802
         },
         {
           "word": "mal",
-          "start": 94.742,
-          "end": 94.902,
-          "score": 0.618
+          "start": 94.802,
+          "end": 94.982,
+          "score": 0.695
         },
         {
           "word": "Künstlerin",
-          "start": 94.922,
-          "end": 95.503,
-          "score": 0.753
+          "start": 95.022,
+          "end": 95.583,
+          "score": 0.843
         },
         {
           "word": "werden.",
-          "start": 95.563,
-          "end": 95.944,
-          "score": 0.899
+          "start": 95.623,
+          "end": 97.586,
+          "score": 0.915
         }
       ],
       "translation": "Je veux être artiste."
     },
     {
-      "start": 97.586,
-      "end": 98.266,
+      "start": 97.606,
+      "end": 99.728,
       "text": "Wie alt bist du?",
       "words": [
         {
           "word": "Wie",
-          "start": 97.586,
-          "end": 97.646,
-          "score": 0.283
+          "start": 97.606,
+          "end": 97.706,
+          "score": 0.824
         },
         {
           "word": "alt",
-          "start": 97.726,
-          "end": 97.806,
-          "score": 0.171
+          "start": 97.746,
+          "end": 97.886,
+          "score": 0.548
         },
         {
           "word": "bist",
-          "start": 97.826,
-          "end": 98.086,
-          "score": 0.681
+          "start": 97.906,
+          "end": 98.106,
+          "score": 0.583
         },
         {
           "word": "du?",
-          "start": 98.106,
-          "end": 98.266,
-          "score": 0.669
+          "start": 98.126,
+          "end": 99.728,
+          "score": 0.707
         }
       ],
       "translation": "Quel âge as-tu ?"
     },
     {
-      "start": 99.708,
-      "end": 101.35,
+      "start": 99.748,
+      "end": 102.091,
       "text": "Ich bin 27 Jahre alt und du?",
       "words": [
         {
           "word": "Ich",
-          "start": 99.708,
-          "end": 99.788,
-          "score": 0.372
+          "start": 99.748,
+          "end": 99.848,
+          "score": 0.795
         },
         {
           "word": "bin",
-          "start": 99.828,
-          "end": 99.988,
-          "score": 0.704
+          "start": 99.888,
+          "end": 100.048,
+          "score": 0.967
         },
         {
           "word": "27",
-          "start": 100.008,
-          "end": 100.169,
-          "score": 0.467
+          "start": 100.069,
+          "end": 100.649,
+          "score": 0.656
         },
         {
           "word": "Jahre",
-          "start": 100.189,
-          "end": 100.329,
-          "score": 0.267
+          "start": 100.669,
+          "end": 100.93,
+          "score": 0.658
         },
         {
           "word": "alt",
-          "start": 100.409,
-          "end": 100.91,
-          "score": 0.652
+          "start": 100.95,
+          "end": 101.09,
+          "score": 0.8
         },
         {
           "word": "und",
-          "start": 101.07,
-          "end": 101.19,
-          "score": 0.726
+          "start": 101.11,
+          "end": 101.25,
+          "score": 0.792
         },
         {
           "word": "du?",
           "start": 101.27,
-          "end": 101.35,
-          "score": 0.603
+          "end": 102.091,
+          "score": 0.66
         }
       ],
       "translation": "J'ai 27 ans et toi ?"
     },
     {
-      "start": 102.031,
+      "start": 102.111,
       "end": 102.972,
       "text": "Was glaubst du?",
       "words": [
         {
           "word": "Was",
-          "start": 102.031,
-          "end": 102.191,
-          "score": 0.681
+          "start": 102.111,
+          "end": 102.271,
+          "score": 0.958
         },
         {
           "word": "glaubst",
-          "start": 102.211,
-          "end": 102.792,
-          "score": 0.708
+          "start": 102.311,
+          "end": 102.892,
+          "score": 0.91
         },
         {
           "word": "du?",
@@ -660,522 +660,522 @@
         {
           "word": "Um,",
           "start": 103.205,
-          "end": 103.786,
-          "score": 0.714
+          "end": 103.365,
+          "score": 0.35
         },
         {
           "word": "vielleicht",
-          "start": 104.387,
-          "end": 105.027,
-          "score": 0.48
+          "start": 104.727,
+          "end": 105.428,
+          "score": 0.395
         },
         {
           "word": "25?",
-          "start": 105.047,
+          "start": 105.448,
           "end": 105.929,
-          "score": 0.663
+          "score": 0.771
         }
       ],
       "translation": "Peut-être 25 ?"
     },
     {
       "start": 105.949,
-      "end": 107.751,
+      "end": 107.531,
       "text": "Ich bin 26.",
       "words": [
         {
           "word": "Ich",
           "start": 105.949,
-          "end": 106.029,
-          "score": 0.349
+          "end": 107.17,
+          "score": 0.751
         },
         {
           "word": "bin",
-          "start": 107.13,
-          "end": 107.33,
-          "score": 0.612
+          "start": 107.21,
+          "end": 107.411,
+          "score": 0.978
         },
         {
           "word": "26.",
           "start": 107.431,
-          "end": 107.751,
-          "score": 0.797
+          "end": 107.531,
+          "score": 0.665
         }
       ],
       "translation": "J'ai 26 ans."
     },
     {
-      "start": 107.911,
-      "end": 113.999,
+      "start": 107.551,
+      "end": 114.019,
       "text": "Hast du vielleicht ein paar Tipps für die Wohnungssuche?",
       "words": [
         {
           "word": "Hast",
-          "start": 107.911,
-          "end": 108.272,
-          "score": 0.794
+          "start": 107.551,
+          "end": 111.356,
+          "score": 0.563
         },
         {
           "word": "du",
-          "start": 111.276,
-          "end": 111.316,
-          "score": 0.462
+          "start": 111.376,
+          "end": 111.416,
+          "score": 0.122
         },
         {
           "word": "vielleicht",
-          "start": 111.396,
-          "end": 111.596,
-          "score": 0.242
+          "start": 111.436,
+          "end": 111.676,
+          "score": 0.641
         },
         {
           "word": "ein",
-          "start": 111.636,
-          "end": 111.716,
-          "score": 0.484
+          "start": 111.716,
+          "end": 111.796,
+          "score": 0.747
         },
         {
           "word": "paar",
-          "start": 111.736,
-          "end": 111.857,
-          "score": 0.552
+          "start": 111.816,
+          "end": 111.937,
+          "score": 0.349
         },
         {
           "word": "Tipps",
-          "start": 111.877,
-          "end": 112.097,
-          "score": 0.715
+          "start": 111.957,
+          "end": 112.658,
+          "score": 0.687
         },
         {
           "word": "für",
-          "start": 112.638,
-          "end": 112.758,
-          "score": 0.473
+          "start": 112.698,
+          "end": 112.798,
+          "score": 0.957
         },
         {
           "word": "die",
-          "start": 112.778,
-          "end": 112.838,
-          "score": 0.269
+          "start": 112.818,
+          "end": 112.878,
+          "score": 0.989
         },
         {
           "word": "Wohnungssuche?",
-          "start": 112.858,
-          "end": 113.999,
-          "score": 0.556
+          "start": 112.918,
+          "end": 114.019,
+          "score": 0.868
         }
       ],
       "translation": "Tu as des conseils pour trouver un appartement ?"
     },
     {
-      "start": 114.019,
-      "end": 115.942,
+      "start": 114.039,
+      "end": 115.902,
       "text": "Ja, aber es ist schon spät.",
       "words": [
         {
           "word": "Ja,",
-          "start": 114.019,
-          "end": 114.14,
-          "score": 0.663
+          "start": 114.039,
+          "end": 114.12,
+          "score": 0.349
         },
         {
           "word": "aber",
-          "start": 114.16,
-          "end": 114.34,
-          "score": 0.806
+          "start": 114.14,
+          "end": 115.161,
+          "score": 0.949
         },
         {
           "word": "es",
-          "start": 115.161,
-          "end": 115.241,
-          "score": 0.626
+          "start": 115.201,
+          "end": 115.301,
+          "score": 0.895
         },
         {
           "word": "ist",
-          "start": 115.301,
-          "end": 115.361,
-          "score": 0.223
+          "start": 115.321,
+          "end": 115.401,
+          "score": 0.953
         },
         {
           "word": "schon",
-          "start": 115.381,
-          "end": 115.541,
-          "score": 0.397
+          "start": 115.441,
+          "end": 115.622,
+          "score": 0.806
         },
         {
           "word": "spät.",
-          "start": 115.561,
-          "end": 115.942,
-          "score": 0.679
+          "start": 115.662,
+          "end": 115.902,
+          "score": 0.72
         }
       ],
       "translation": "Oui, mais il est tard."
     },
     {
-      "start": 116.122,
-      "end": 117.083,
+      "start": 115.922,
+      "end": 118.065,
       "text": "Ich gehe jetzt einkaufen.",
       "words": [
         {
           "word": "Ich",
-          "start": 116.122,
-          "end": 116.182,
-          "score": 0.032
+          "start": 115.922,
+          "end": 116.202,
+          "score": 0.905
         },
         {
           "word": "gehe",
-          "start": 116.202,
-          "end": 116.343,
-          "score": 0.354
+          "start": 116.242,
+          "end": 116.383,
+          "score": 0.68
         },
         {
           "word": "jetzt",
-          "start": 116.363,
-          "end": 116.503,
-          "score": 0.344
+          "start": 116.403,
+          "end": 116.583,
+          "score": 0.759
         },
         {
           "word": "einkaufen.",
-          "start": 116.603,
-          "end": 117.083,
-          "score": 0.568
+          "start": 116.623,
+          "end": 118.065,
+          "score": 0.848
         }
       ],
       "translation": "Je vais faire des courses."
     },
     {
-      "start": 118.025,
-      "end": 121.67,
+      "start": 118.085,
+      "end": 121.79,
       "text": "Aber hast du morgen um 15 Uhr Zeit?",
       "words": [
         {
           "word": "Aber",
-          "start": 118.025,
-          "end": 118.345,
-          "score": 0.858
+          "start": 118.085,
+          "end": 119.407,
+          "score": 0.97
         },
         {
           "word": "hast",
-          "start": 119.367,
-          "end": 119.627,
-          "score": 0.766
+          "start": 119.447,
+          "end": 119.647,
+          "score": 0.651
         },
         {
           "word": "du",
-          "start": 119.647,
-          "end": 119.747,
-          "score": 0.448
+          "start": 119.667,
+          "end": 119.807,
+          "score": 0.806
         },
         {
           "word": "morgen",
-          "start": 119.767,
-          "end": 120.148,
-          "score": 0.735
+          "start": 119.847,
+          "end": 120.027,
+          "score": 0.951
         },
         {
           "word": "um",
-          "start": 120.368,
-          "end": 120.608,
-          "score": 0.835
+          "start": 120.087,
+          "end": 120.328,
+          "score": 0.908
         },
         {
           "word": "15",
-          "start": 120.628,
-          "end": 120.788,
-          "score": 0.65
+          "start": 120.348,
+          "end": 120.849,
+          "score": 0.818
         },
         {
           "word": "Uhr",
           "start": 120.889,
-          "end": 121.109,
-          "score": 0.176
+          "end": 121.089,
+          "score": 0.736
         },
         {
           "word": "Zeit?",
-          "start": 121.129,
-          "end": 121.67,
-          "score": 0.538
+          "start": 121.109,
+          "end": 121.79,
+          "score": 0.694
         }
       ],
       "translation": "Mais est-ce que tu as le temps demain à 15 h ?"
     },
     {
-      "start": 121.69,
-      "end": 122.31,
+      "start": 121.81,
+      "end": 123.993,
       "text": "Ja, klar.",
       "words": [
         {
           "word": "Ja,",
-          "start": 121.69,
-          "end": 121.95,
-          "score": 0.643
+          "start": 121.81,
+          "end": 122.03,
+          "score": 0.772
         },
         {
           "word": "klar.",
-          "start": 121.97,
-          "end": 122.31,
-          "score": 0.811
+          "start": 122.05,
+          "end": 123.993,
+          "score": 0.872
         }
       ],
       "translation": "Oui, bien sûr."
     },
     {
-      "start": 123.973,
-      "end": 125.074,
+      "start": 124.013,
+      "end": 126.136,
       "text": "Gehen wir einen Kaffee trinken?",
       "words": [
         {
           "word": "Gehen",
-          "start": 123.973,
+          "start": 124.013,
           "end": 124.173,
-          "score": 0.231
+          "score": 0.833
         },
         {
           "word": "wir",
           "start": 124.193,
-          "end": 124.253,
-          "score": 0.313
+          "end": 124.293,
+          "score": 0.972
         },
         {
           "word": "einen",
-          "start": 124.273,
-          "end": 124.373,
-          "score": 0.365
+          "start": 124.333,
+          "end": 124.453,
+          "score": 0.715
         },
         {
           "word": "Kaffee",
-          "start": 124.393,
-          "end": 124.714,
-          "score": 0.519
+          "start": 124.493,
+          "end": 124.774,
+          "score": 0.826
         },
         {
           "word": "trinken?",
-          "start": 124.734,
-          "end": 125.074,
-          "score": 0.632
+          "start": 124.814,
+          "end": 126.136,
+          "score": 0.855
         }
       ],
       "translation": "On va prendre un café ?"
     },
     {
-      "start": 125.895,
-      "end": 126.636,
+      "start": 126.156,
+      "end": 128.038,
       "text": "Ja, sehr gerne.",
       "words": [
         {
           "word": "Ja,",
-          "start": 125.895,
-          "end": 126.156,
-          "score": 0.797
+          "start": 126.156,
+          "end": 126.216,
+          "score": 0.296
         },
         {
           "word": "sehr",
-          "start": 126.196,
-          "end": 126.336,
-          "score": 0.262
+          "start": 126.236,
+          "end": 126.376,
+          "score": 0.777
         },
         {
           "word": "gerne.",
-          "start": 126.356,
-          "end": 126.636,
-          "score": 0.647
+          "start": 126.416,
+          "end": 128.038,
+          "score": 0.955
         }
       ],
       "translation": "Oui, j'adorerais."
     },
     {
       "start": 128.058,
-      "end": 131.302,
+      "end": 130.041,
       "text": "Wie ist deine Telefonnummer?",
       "words": [
         {
           "word": "Wie",
           "start": 128.058,
           "end": 128.118,
-          "score": 0.154
+          "score": 0.732
         },
         {
           "word": "ist",
-          "start": 128.138,
-          "end": 128.198,
-          "score": 0.294
+          "start": 128.158,
+          "end": 128.218,
+          "score": 0.39
         },
         {
           "word": "deine",
-          "start": 128.218,
-          "end": 128.338,
-          "score": 0.129
+          "start": 128.238,
+          "end": 128.359,
+          "score": 0.899
         },
         {
           "word": "Telefonnummer?",
-          "start": 128.359,
-          "end": 131.302,
-          "score": 0.551
+          "start": 128.399,
+          "end": 130.041,
+          "score": 0.718
         }
       ],
       "translation": "Comment est ton numéro de téléphone ?"
     },
     {
-      "start": 131.322,
+      "start": 130.061,
       "end": 131.743,
       "text": "0.153?",
       "words": [
         {
           "word": "0.153?",
-          "start": 131.322,
+          "start": 130.061,
           "end": 131.743,
-          "score": 0.955
+          "score": 0.775
         }
       ],
       "translation": "0.553 ?"
     },
     {
       "start": 132.618,
-      "end": 135.481,
+      "end": 137.623,
       "text": " 4-8-2, 2-3-7, 0-9-1.",
       "words": [
         {
           "word": "4-8-2,",
           "start": 132.618,
-          "end": 133.379,
-          "score": 0.892
+          "end": 133.159,
+          "score": 0.785
         },
         {
           "word": "2-3-7,",
-          "start": 133.479,
-          "end": 133.859,
-          "score": 0.813
+          "start": 133.219,
+          "end": 135.681,
+          "score": 0.69
         },
         {
           "word": "0-9-1.",
-          "start": 133.879,
-          "end": 135.481,
-          "score": 0.445
+          "start": 135.721,
+          "end": 137.623,
+          "score": 0.863
         }
       ],
       "translation": "4-8-2, 2-3-7, 0-9-1."
     },
     {
-      "start": 135.501,
-      "end": 141.808,
+      "start": 139.345,
+      "end": 141.587,
       "text": "Okay, 0-1-7-3, 4-8-2, 2-3-7, 0-9-1.",
       "words": [
         {
           "word": "Okay,",
-          "start": 135.501,
-          "end": 135.681,
-          "score": 0.503
+          "start": 139.345,
+          "end": 139.866,
+          "score": 0.547
         },
         {
           "word": "0-1-7-3,",
-          "start": 135.721,
-          "end": 138.144,
-          "score": 0.843
+          "start": 139.886,
+          "end": 140.126,
+          "score": 0.632
         },
         {
           "word": "4-8-2,",
-          "start": 138.164,
-          "end": 139.986,
-          "score": 0.818
+          "start": 140.146,
+          "end": 140.606,
+          "score": 0.544
         },
         {
           "word": "2-3-7,",
-          "start": 140.046,
-          "end": 140.446,
-          "score": 0.899
+          "start": 140.626,
+          "end": 141.347,
+          "score": 0.752
         },
         {
           "word": "0-9-1.",
-          "start": 140.466,
-          "end": 141.808,
-          "score": 0.851
+          "start": 141.367,
+          "end": 141.587,
+          "score": 0.813
         }
       ],
       "translation": "Ok, 0-1-7-3, 4-8-2, 2-3-7, 0-9-1."
     },
     {
-      "start": 142.228,
-      "end": 142.408,
+      "start": 141.607,
+      "end": 144.791,
       "text": "Ja.",
       "words": [
         {
           "word": "Ja.",
-          "start": 142.228,
-          "end": 142.408,
-          "score": 0.521
+          "start": 141.607,
+          "end": 144.791,
+          "score": 0.895
         }
       ],
       "translation": "Oui."
     },
     {
-      "start": 144.21,
-      "end": 148.174,
+      "start": 144.851,
+      "end": 151.758,
       "text": "Vielen Dank.",
       "words": [
         {
           "word": "Vielen",
-          "start": 144.21,
-          "end": 146.092,
-          "score": 0.626
+          "start": 144.851,
+          "end": 145.852,
+          "score": 0.737
         },
         {
           "word": "Dank.",
-          "start": 147.874,
-          "end": 148.174,
-          "score": 0.935
+          "start": 151.658,
+          "end": 151.758,
+          "score": 0.163
         }
       ],
       "translation": "Merci."
     },
     {
-      "start": 151.718,
-      "end": 152.259,
+      "start": 151.778,
+      "end": 155.822,
       "text": "Bis morgen.",
       "words": [
         {
           "word": "Bis",
-          "start": 151.718,
-          "end": 151.898,
-          "score": 0.76
+          "start": 151.778,
+          "end": 151.958,
+          "score": 0.808
         },
         {
           "word": "morgen.",
-          "start": 151.918,
-          "end": 152.259,
-          "score": 0.708
+          "start": 151.998,
+          "end": 155.822,
+          "score": 0.7
         }
       ],
       "translation": "À demain."
     },
     {
-      "start": 155.742,
-      "end": 155.862,
+      "start": 155.842,
+      "end": 155.962,
       "text": "Danke.",
       "words": [
         {
           "word": "Danke.",
-          "start": 155.742,
-          "end": 155.862,
-          "score": 0.0
+          "start": 155.842,
+          "end": 155.962,
+          "score": 0.135
         }
       ],
       "translation": "Merci."
     },
     {
-      "start": 155.882,
+      "start": 155.982,
       "end": 156.583,
       "text": "Bis morgen.",
       "words": [
         {
           "word": "Bis",
-          "start": 155.882,
-          "end": 156.123,
-          "score": 0.89
+          "start": 155.982,
+          "end": 156.423,
+          "score": 0.799
         },
         {
           "word": "morgen.",
-          "start": 156.143,
+          "start": 156.443,
           "end": 156.583,
-          "score": 0.67
+          "score": 0.144
         }
       ],
       "translation": "À demain."
@@ -1185,464 +1185,464 @@
     {
       "word": "Nein.",
       "start": 42.927,
-      "end": 43.869,
-      "score": 0.759
+      "end": 44.049,
+      "score": 0.736
     },
     {
       "word": "Entschuldigung.",
-      "start": 44.029,
-      "end": 44.59,
-      "score": 0.605
+      "start": 44.089,
+      "end": 50.783,
+      "score": 0.868
     },
     {
       "word": "Entschuldigung.",
-      "start": 50.783,
-      "end": 51.405,
-      "score": 0.404
+      "start": 50.823,
+      "end": 60.243,
+      "score": 0.929
     },
     {
       "word": "Bitte.",
-      "start": 53.749,
-      "end": 54.07,
-      "score": 0.723
+      "start": 60.263,
+      "end": 60.383,
+      "score": 0.002
     },
     {
       "word": "Danke.",
-      "start": 55.533,
-      "end": 56.014,
-      "score": 0.823
+      "start": 60.403,
+      "end": 60.524,
+      "score": 0.003
     },
     {
       "word": "Wie",
-      "start": 58.8,
-      "end": 58.86,
-      "score": 0.032
+      "start": 60.544,
+      "end": 60.604,
+      "score": 0.001
     },
     {
       "word": "heißt",
-      "start": 58.88,
-      "end": 59.121,
-      "score": 0.522
+      "start": 60.624,
+      "end": 60.724,
+      "score": 0.002
     },
     {
       "word": "du?",
-      "start": 59.141,
-      "end": 60.944,
-      "score": 0.601
+      "start": 60.744,
+      "end": 60.864,
+      "score": 0.43
     },
     {
       "word": "Ich",
-      "start": 60.964,
-      "end": 61.025,
-      "score": 0.001
+      "start": 60.884,
+      "end": 61.005,
+      "score": 0.636
     },
     {
       "word": "heiße",
       "start": 61.045,
-      "end": 61.245,
-      "score": 0.502
+      "end": 61.305,
+      "score": 0.636
     },
     {
       "word": "Katja",
-      "start": 61.285,
-      "end": 61.746,
-      "score": 0.865
+      "start": 61.345,
+      "end": 62.027,
+      "score": 0.597
     },
     {
       "word": "und",
-      "start": 62.047,
-      "end": 62.147,
-      "score": 0.657
+      "start": 62.067,
+      "end": 62.728,
+      "score": 0.723
     },
     {
       "word": "du?",
-      "start": 62.167,
-      "end": 62.387,
-      "score": 0.877
+      "start": 62.748,
+      "end": 62.808,
+      "score": 0.375
     },
     {
       "word": "Ich",
       "start": 62.828,
-      "end": 62.888,
-      "score": 0.004
+      "end": 62.908,
+      "score": 0.824
     },
     {
       "word": "heiß",
-      "start": 62.908,
-      "end": 63.009,
-      "score": 0.482
+      "start": 62.929,
+      "end": 63.069,
+      "score": 0.362
     },
     {
       "word": "Alexander.",
-      "start": 63.049,
+      "start": 63.089,
       "end": 63.67,
-      "score": 0.956
+      "score": 0.769
     },
     {
       "word": "Was",
       "start": 74.838,
-      "end": 75.098,
-      "score": 0.779
+      "end": 75.259,
+      "score": 0.479
     },
     {
       "word": "suchst",
-      "start": 75.118,
-      "end": 75.439,
-      "score": 0.498
+      "start": 75.279,
+      "end": 75.479,
+      "score": 0.22
     },
     {
       "word": "du?",
-      "start": 75.459,
-      "end": 75.519,
-      "score": 0.65
+      "start": 75.499,
+      "end": 75.779,
+      "score": 0.751
     },
     {
       "word": "Ich",
-      "start": 75.759,
-      "end": 75.819,
-      "score": 0.092
+      "start": 75.799,
+      "end": 75.879,
+      "score": 0.768
     },
     {
       "word": "suche",
-      "start": 75.859,
-      "end": 75.979,
-      "score": 0.1
+      "start": 75.919,
+      "end": 76.059,
+      "score": 0.87
     },
     {
       "word": "eine",
-      "start": 75.999,
-      "end": 76.1,
-      "score": 0.765
+      "start": 76.08,
+      "end": 76.2,
+      "score": 0.844
     },
     {
       "word": "Wohnung",
       "start": 76.22,
-      "end": 76.4,
-      "score": 0.5
+      "end": 76.42,
+      "score": 0.76
     },
     {
       "word": "in",
-      "start": 76.42,
-      "end": 76.48,
-      "score": 0.886
+      "start": 76.46,
+      "end": 76.54,
+      "score": 0.918
     },
     {
       "word": "Berlin.",
-      "start": 76.52,
-      "end": 76.78,
-      "score": 0.861
+      "start": 76.56,
+      "end": 77.281,
+      "score": 0.799
     },
     {
       "word": "Ich",
       "start": 77.301,
       "end": 77.361,
-      "score": 0.146
+      "score": 0.893
     },
     {
       "word": "komme",
-      "start": 77.381,
-      "end": 77.501,
-      "score": 0.352
+      "start": 77.401,
+      "end": 77.561,
+      "score": 0.958
     },
     {
       "word": "aus",
-      "start": 77.521,
-      "end": 77.641,
-      "score": 0.645
+      "start": 77.601,
+      "end": 77.701,
+      "score": 0.932
     },
     {
       "word": "München.",
-      "start": 77.681,
-      "end": 77.982,
-      "score": 0.632
+      "start": 77.721,
+      "end": 78.643,
+      "score": 0.764
     },
     {
       "word": "Woher",
-      "start": 78.643,
-      "end": 78.763,
-      "score": 0.615
+      "start": 78.663,
+      "end": 78.823,
+      "score": 0.557
     },
     {
       "word": "kommst",
-      "start": 78.823,
-      "end": 78.963,
-      "score": 0.62
+      "start": 78.843,
+      "end": 79.043,
+      "score": 0.466
     },
     {
       "word": "du?",
-      "start": 79.003,
-      "end": 79.183,
-      "score": 0.856
+      "start": 79.063,
+      "end": 80.084,
+      "score": 0.717
     },
     {
       "word": "Ich",
-      "start": 80.184,
-      "end": 80.245,
-      "score": 0.179
+      "start": 80.124,
+      "end": 80.285,
+      "score": 0.492
     },
     {
       "word": "komme",
-      "start": 80.285,
-      "end": 80.525,
-      "score": 0.491
+      "start": 80.345,
+      "end": 80.585,
+      "score": 0.966
     },
     {
       "word": "aus",
-      "start": 80.545,
-      "end": 80.705,
-      "score": 0.699
+      "start": 80.625,
+      "end": 80.785,
+      "score": 0.979
     },
     {
       "word": "Berlin.",
-      "start": 80.725,
-      "end": 81.166,
-      "score": 0.943
+      "start": 80.805,
+      "end": 81.766,
+      "score": 0.968
     },
     {
       "word": "Ich",
-      "start": 81.746,
-      "end": 81.887,
-      "score": 0.396
+      "start": 81.806,
+      "end": 81.927,
+      "score": 0.907
     },
     {
       "word": "wohne",
-      "start": 81.907,
-      "end": 82.227,
-      "score": 0.746
+      "start": 81.967,
+      "end": 82.247,
+      "score": 0.774
     },
     {
       "word": "hier.",
-      "start": 82.267,
-      "end": 82.427,
-      "score": 0.57
+      "start": 82.287,
+      "end": 84.41,
+      "score": 0.862
     },
     {
       "word": "Und",
       "start": 84.45,
-      "end": 84.51,
-      "score": 0.647
+      "end": 84.57,
+      "score": 0.919
     },
     {
       "word": "was",
-      "start": 84.55,
-      "end": 84.73,
-      "score": 0.757
+      "start": 84.63,
+      "end": 84.79,
+      "score": 0.967
     },
     {
       "word": "machst",
-      "start": 84.75,
+      "start": 84.83,
       "end": 85.01,
-      "score": 0.413
+      "score": 0.51
     },
     {
       "word": "du",
       "start": 85.03,
-      "end": 85.13,
-      "score": 0.667
+      "end": 85.17,
+      "score": 0.682
     },
     {
       "word": "in",
-      "start": 85.15,
-      "end": 85.231,
-      "score": 0.778
+      "start": 85.191,
+      "end": 85.271,
+      "score": 0.89
     },
     {
       "word": "Berlin?",
-      "start": 85.251,
-      "end": 85.571,
-      "score": 0.852
+      "start": 85.311,
+      "end": 86.092,
+      "score": 0.756
     },
     {
       "word": "Ich",
-      "start": 86.092,
-      "end": 86.152,
-      "score": 0.086
+      "start": 86.112,
+      "end": 86.232,
+      "score": 0.469
     },
     {
       "word": "studiere",
-      "start": 86.172,
-      "end": 86.552,
-      "score": 0.49
+      "start": 86.272,
+      "end": 86.632,
+      "score": 0.649
     },
     {
       "word": "Medizin.",
-      "start": 86.572,
-      "end": 87.033,
-      "score": 0.552
+      "start": 86.672,
+      "end": 88.134,
+      "score": 0.701
     },
     {
       "word": "Was",
-      "start": 88.114,
-      "end": 88.234,
-      "score": 0.817
+      "start": 88.174,
+      "end": 88.274,
+      "score": 0.914
     },
     {
       "word": "machst",
-      "start": 88.254,
+      "start": 88.334,
       "end": 88.454,
-      "score": 0.551
+      "score": 0.333
     },
     {
       "word": "du?",
       "start": 88.474,
-      "end": 88.595,
-      "score": 0.43
+      "end": 89.396,
+      "score": 0.589
     },
     {
       "word": "Was",
-      "start": 89.376,
-      "end": 89.496,
-      "score": 0.793
+      "start": 89.416,
+      "end": 89.916,
+      "score": 0.92
     },
     {
       "word": "bist",
-      "start": 89.916,
-      "end": 90.076,
-      "score": 0.757
+      "start": 89.936,
+      "end": 90.137,
+      "score": 0.751
     },
     {
       "word": "du",
-      "start": 90.096,
-      "end": 90.137,
-      "score": 0.373
+      "start": 90.157,
+      "end": 90.197,
+      "score": 0.479
     },
     {
       "word": "von",
-      "start": 90.177,
-      "end": 90.317,
-      "score": 0.774
+      "start": 90.217,
+      "end": 90.397,
+      "score": 0.941
     },
     {
       "word": "Beruf?",
-      "start": 90.337,
+      "start": 90.417,
       "end": 92.299,
-      "score": 0.674
+      "score": 0.888
     },
     {
       "word": "Ich",
       "start": 92.319,
-      "end": 92.399,
-      "score": 0.147
+      "end": 92.419,
+      "score": 0.874
     },
     {
       "word": "studiere",
-      "start": 92.419,
-      "end": 92.9,
-      "score": 0.684
+      "start": 92.479,
+      "end": 92.98,
+      "score": 0.848
     },
     {
       "word": "Kunst.",
-      "start": 92.92,
-      "end": 93.44,
-      "score": 0.887
+      "start": 93.04,
+      "end": 94.302,
+      "score": 0.972
     },
     {
       "word": "Ich",
-      "start": 94.302,
-      "end": 94.442,
-      "score": 0.408
+      "start": 94.342,
+      "end": 94.462,
+      "score": 0.833
     },
     {
       "word": "möchte",
-      "start": 94.462,
-      "end": 94.722,
-      "score": 0.553
+      "start": 94.502,
+      "end": 94.742,
+      "score": 0.802
     },
     {
       "word": "mal",
-      "start": 94.742,
-      "end": 94.902,
-      "score": 0.618
+      "start": 94.802,
+      "end": 94.982,
+      "score": 0.695
     },
     {
       "word": "Künstlerin",
-      "start": 94.922,
-      "end": 95.503,
-      "score": 0.753
+      "start": 95.022,
+      "end": 95.583,
+      "score": 0.843
     },
     {
       "word": "werden.",
-      "start": 95.563,
-      "end": 95.944,
-      "score": 0.899
+      "start": 95.623,
+      "end": 97.586,
+      "score": 0.915
     },
     {
       "word": "Wie",
-      "start": 97.586,
-      "end": 97.646,
-      "score": 0.283
+      "start": 97.606,
+      "end": 97.706,
+      "score": 0.824
     },
     {
       "word": "alt",
-      "start": 97.726,
-      "end": 97.806,
-      "score": 0.171
+      "start": 97.746,
+      "end": 97.886,
+      "score": 0.548
     },
     {
       "word": "bist",
-      "start": 97.826,
-      "end": 98.086,
-      "score": 0.681
+      "start": 97.906,
+      "end": 98.106,
+      "score": 0.583
     },
     {
       "word": "du?",
-      "start": 98.106,
-      "end": 98.266,
-      "score": 0.669
+      "start": 98.126,
+      "end": 99.728,
+      "score": 0.707
     },
     {
       "word": "Ich",
-      "start": 99.708,
-      "end": 99.788,
-      "score": 0.372
+      "start": 99.748,
+      "end": 99.848,
+      "score": 0.795
     },
     {
       "word": "bin",
-      "start": 99.828,
-      "end": 99.988,
-      "score": 0.704
+      "start": 99.888,
+      "end": 100.048,
+      "score": 0.967
     },
     {
       "word": "27",
-      "start": 100.008,
-      "end": 100.169,
-      "score": 0.467
+      "start": 100.069,
+      "end": 100.649,
+      "score": 0.656
     },
     {
       "word": "Jahre",
-      "start": 100.189,
-      "end": 100.329,
-      "score": 0.267
+      "start": 100.669,
+      "end": 100.93,
+      "score": 0.658
     },
     {
       "word": "alt",
-      "start": 100.409,
-      "end": 100.91,
-      "score": 0.652
+      "start": 100.95,
+      "end": 101.09,
+      "score": 0.8
     },
     {
       "word": "und",
-      "start": 101.07,
-      "end": 101.19,
-      "score": 0.726
+      "start": 101.11,
+      "end": 101.25,
+      "score": 0.792
     },
     {
       "word": "du?",
       "start": 101.27,
-      "end": 101.35,
-      "score": 0.603
+      "end": 102.091,
+      "score": 0.66
     },
     {
       "word": "Was",
-      "start": 102.031,
-      "end": 102.191,
-      "score": 0.681
+      "start": 102.111,
+      "end": 102.271,
+      "score": 0.958
     },
     {
       "word": "glaubst",
-      "start": 102.211,
-      "end": 102.792,
-      "score": 0.708
+      "start": 102.311,
+      "end": 102.892,
+      "score": 0.91
     },
     {
       "word": "du?",
@@ -1653,387 +1653,2091 @@
     {
       "word": "Um,",
       "start": 103.205,
-      "end": 103.786,
-      "score": 0.714
+      "end": 103.365,
+      "score": 0.35
     },
     {
       "word": "vielleicht",
-      "start": 104.387,
-      "end": 105.027,
-      "score": 0.48
+      "start": 104.727,
+      "end": 105.428,
+      "score": 0.395
     },
     {
       "word": "25?",
-      "start": 105.047,
+      "start": 105.448,
       "end": 105.929,
-      "score": 0.663
+      "score": 0.771
     },
     {
       "word": "Ich",
       "start": 105.949,
-      "end": 106.029,
-      "score": 0.349
+      "end": 107.17,
+      "score": 0.751
     },
     {
       "word": "bin",
-      "start": 107.13,
-      "end": 107.33,
-      "score": 0.612
+      "start": 107.21,
+      "end": 107.411,
+      "score": 0.978
     },
     {
       "word": "26.",
       "start": 107.431,
-      "end": 107.751,
-      "score": 0.797
+      "end": 107.531,
+      "score": 0.665
     },
     {
       "word": "Hast",
-      "start": 107.911,
-      "end": 108.272,
-      "score": 0.794
+      "start": 107.551,
+      "end": 111.356,
+      "score": 0.563
     },
     {
       "word": "du",
-      "start": 111.276,
-      "end": 111.316,
-      "score": 0.462
+      "start": 111.376,
+      "end": 111.416,
+      "score": 0.122
     },
     {
       "word": "vielleicht",
-      "start": 111.396,
-      "end": 111.596,
-      "score": 0.242
+      "start": 111.436,
+      "end": 111.676,
+      "score": 0.641
     },
     {
       "word": "ein",
-      "start": 111.636,
-      "end": 111.716,
-      "score": 0.484
+      "start": 111.716,
+      "end": 111.796,
+      "score": 0.747
     },
     {
       "word": "paar",
-      "start": 111.736,
-      "end": 111.857,
-      "score": 0.552
+      "start": 111.816,
+      "end": 111.937,
+      "score": 0.349
     },
     {
       "word": "Tipps",
-      "start": 111.877,
-      "end": 112.097,
-      "score": 0.715
+      "start": 111.957,
+      "end": 112.658,
+      "score": 0.687
     },
     {
       "word": "für",
-      "start": 112.638,
-      "end": 112.758,
-      "score": 0.473
+      "start": 112.698,
+      "end": 112.798,
+      "score": 0.957
     },
     {
       "word": "die",
-      "start": 112.778,
-      "end": 112.838,
-      "score": 0.269
+      "start": 112.818,
+      "end": 112.878,
+      "score": 0.989
     },
     {
       "word": "Wohnungssuche?",
-      "start": 112.858,
-      "end": 113.999,
-      "score": 0.556
+      "start": 112.918,
+      "end": 114.019,
+      "score": 0.868
     },
     {
       "word": "Ja,",
-      "start": 114.019,
-      "end": 114.14,
-      "score": 0.663
+      "start": 114.039,
+      "end": 114.12,
+      "score": 0.349
     },
     {
       "word": "aber",
-      "start": 114.16,
-      "end": 114.34,
-      "score": 0.806
+      "start": 114.14,
+      "end": 115.161,
+      "score": 0.949
     },
     {
       "word": "es",
-      "start": 115.161,
-      "end": 115.241,
-      "score": 0.626
+      "start": 115.201,
+      "end": 115.301,
+      "score": 0.895
     },
     {
       "word": "ist",
-      "start": 115.301,
-      "end": 115.361,
-      "score": 0.223
+      "start": 115.321,
+      "end": 115.401,
+      "score": 0.953
     },
     {
       "word": "schon",
-      "start": 115.381,
-      "end": 115.541,
-      "score": 0.397
+      "start": 115.441,
+      "end": 115.622,
+      "score": 0.806
     },
     {
       "word": "spät.",
-      "start": 115.561,
-      "end": 115.942,
-      "score": 0.679
+      "start": 115.662,
+      "end": 115.902,
+      "score": 0.72
     },
     {
       "word": "Ich",
-      "start": 116.122,
-      "end": 116.182,
-      "score": 0.032
+      "start": 115.922,
+      "end": 116.202,
+      "score": 0.905
     },
     {
       "word": "gehe",
-      "start": 116.202,
-      "end": 116.343,
-      "score": 0.354
+      "start": 116.242,
+      "end": 116.383,
+      "score": 0.68
     },
     {
       "word": "jetzt",
-      "start": 116.363,
-      "end": 116.503,
-      "score": 0.344
+      "start": 116.403,
+      "end": 116.583,
+      "score": 0.759
     },
     {
       "word": "einkaufen.",
-      "start": 116.603,
-      "end": 117.083,
-      "score": 0.568
+      "start": 116.623,
+      "end": 118.065,
+      "score": 0.848
     },
     {
       "word": "Aber",
-      "start": 118.025,
-      "end": 118.345,
-      "score": 0.858
+      "start": 118.085,
+      "end": 119.407,
+      "score": 0.97
     },
     {
       "word": "hast",
-      "start": 119.367,
-      "end": 119.627,
-      "score": 0.766
+      "start": 119.447,
+      "end": 119.647,
+      "score": 0.651
     },
     {
       "word": "du",
-      "start": 119.647,
-      "end": 119.747,
-      "score": 0.448
+      "start": 119.667,
+      "end": 119.807,
+      "score": 0.806
     },
     {
       "word": "morgen",
-      "start": 119.767,
-      "end": 120.148,
-      "score": 0.735
+      "start": 119.847,
+      "end": 120.027,
+      "score": 0.951
     },
     {
       "word": "um",
-      "start": 120.368,
-      "end": 120.608,
-      "score": 0.835
+      "start": 120.087,
+      "end": 120.328,
+      "score": 0.908
     },
     {
       "word": "15",
-      "start": 120.628,
-      "end": 120.788,
-      "score": 0.65
+      "start": 120.348,
+      "end": 120.849,
+      "score": 0.818
     },
     {
       "word": "Uhr",
       "start": 120.889,
-      "end": 121.109,
-      "score": 0.176
+      "end": 121.089,
+      "score": 0.736
     },
     {
       "word": "Zeit?",
-      "start": 121.129,
-      "end": 121.67,
-      "score": 0.538
+      "start": 121.109,
+      "end": 121.79,
+      "score": 0.694
     },
     {
       "word": "Ja,",
-      "start": 121.69,
-      "end": 121.95,
-      "score": 0.643
+      "start": 121.81,
+      "end": 122.03,
+      "score": 0.772
     },
     {
       "word": "klar.",
-      "start": 121.97,
-      "end": 122.31,
-      "score": 0.811
+      "start": 122.05,
+      "end": 123.993,
+      "score": 0.872
     },
     {
       "word": "Gehen",
-      "start": 123.973,
+      "start": 124.013,
       "end": 124.173,
-      "score": 0.231
+      "score": 0.833
     },
     {
       "word": "wir",
       "start": 124.193,
-      "end": 124.253,
-      "score": 0.313
+      "end": 124.293,
+      "score": 0.972
     },
     {
       "word": "einen",
-      "start": 124.273,
-      "end": 124.373,
-      "score": 0.365
+      "start": 124.333,
+      "end": 124.453,
+      "score": 0.715
     },
     {
       "word": "Kaffee",
-      "start": 124.393,
-      "end": 124.714,
-      "score": 0.519
+      "start": 124.493,
+      "end": 124.774,
+      "score": 0.826
     },
     {
       "word": "trinken?",
-      "start": 124.734,
-      "end": 125.074,
-      "score": 0.632
+      "start": 124.814,
+      "end": 126.136,
+      "score": 0.855
     },
     {
       "word": "Ja,",
-      "start": 125.895,
-      "end": 126.156,
-      "score": 0.797
+      "start": 126.156,
+      "end": 126.216,
+      "score": 0.296
     },
     {
       "word": "sehr",
-      "start": 126.196,
-      "end": 126.336,
-      "score": 0.262
+      "start": 126.236,
+      "end": 126.376,
+      "score": 0.777
     },
     {
       "word": "gerne.",
-      "start": 126.356,
-      "end": 126.636,
-      "score": 0.647
+      "start": 126.416,
+      "end": 128.038,
+      "score": 0.955
     },
     {
       "word": "Wie",
       "start": 128.058,
       "end": 128.118,
-      "score": 0.154
+      "score": 0.732
     },
     {
       "word": "ist",
-      "start": 128.138,
-      "end": 128.198,
-      "score": 0.294
+      "start": 128.158,
+      "end": 128.218,
+      "score": 0.39
     },
     {
       "word": "deine",
-      "start": 128.218,
-      "end": 128.338,
-      "score": 0.129
+      "start": 128.238,
+      "end": 128.359,
+      "score": 0.899
     },
     {
       "word": "Telefonnummer?",
-      "start": 128.359,
-      "end": 131.302,
-      "score": 0.551
+      "start": 128.399,
+      "end": 130.041,
+      "score": 0.718
     },
     {
       "word": "0.153?",
-      "start": 131.322,
+      "start": 130.061,
       "end": 131.743,
-      "score": 0.955
+      "score": 0.775
     },
     {
       "word": "4-8-2,",
       "start": 132.618,
-      "end": 133.379,
-      "score": 0.892
+      "end": 133.159,
+      "score": 0.785
     },
     {
       "word": "2-3-7,",
-      "start": 133.479,
-      "end": 133.859,
-      "score": 0.813
+      "start": 133.219,
+      "end": 135.681,
+      "score": 0.69
     },
     {
       "word": "0-9-1.",
-      "start": 133.879,
-      "end": 135.481,
-      "score": 0.445
+      "start": 135.721,
+      "end": 137.623,
+      "score": 0.863
     },
     {
       "word": "Okay,",
-      "start": 135.501,
-      "end": 135.681,
-      "score": 0.503
+      "start": 139.345,
+      "end": 139.866,
+      "score": 0.547
     },
     {
       "word": "0-1-7-3,",
-      "start": 135.721,
-      "end": 138.144,
-      "score": 0.843
+      "start": 139.886,
+      "end": 140.126,
+      "score": 0.632
     },
     {
       "word": "4-8-2,",
-      "start": 138.164,
-      "end": 139.986,
-      "score": 0.818
+      "start": 140.146,
+      "end": 140.606,
+      "score": 0.544
     },
     {
       "word": "2-3-7,",
-      "start": 140.046,
-      "end": 140.446,
-      "score": 0.899
+      "start": 140.626,
+      "end": 141.347,
+      "score": 0.752
     },
     {
       "word": "0-9-1.",
-      "start": 140.466,
-      "end": 141.808,
-      "score": 0.851
+      "start": 141.367,
+      "end": 141.587,
+      "score": 0.813
     },
     {
       "word": "Ja.",
-      "start": 142.228,
-      "end": 142.408,
-      "score": 0.521
+      "start": 141.607,
+      "end": 144.791,
+      "score": 0.895
     },
     {
       "word": "Vielen",
-      "start": 144.21,
-      "end": 146.092,
-      "score": 0.626
+      "start": 144.851,
+      "end": 145.852,
+      "score": 0.737
     },
     {
       "word": "Dank.",
-      "start": 147.874,
-      "end": 148.174,
-      "score": 0.935
+      "start": 151.658,
+      "end": 151.758,
+      "score": 0.163
     },
     {
       "word": "Bis",
-      "start": 151.718,
-      "end": 151.898,
-      "score": 0.76
+      "start": 151.778,
+      "end": 151.958,
+      "score": 0.808
     },
     {
       "word": "morgen.",
-      "start": 151.918,
-      "end": 152.259,
-      "score": 0.708
+      "start": 151.998,
+      "end": 155.822,
+      "score": 0.7
     },
     {
       "word": "Danke.",
-      "start": 155.742,
-      "end": 155.862,
-      "score": 0.0
+      "start": 155.842,
+      "end": 155.962,
+      "score": 0.135
     },
     {
       "word": "Bis",
-      "start": 155.882,
-      "end": 156.123,
-      "score": 0.89
+      "start": 155.982,
+      "end": 156.423,
+      "score": 0.799
     },
     {
       "word": "morgen.",
-      "start": 156.143,
+      "start": 156.443,
       "end": 156.583,
-      "score": 0.67
+      "score": 0.144
     }
   ],
-  "language": "de"
+  "language": "de",
+  "vocabulary": [
+    {
+      "word": "aber",
+      "level": "beginner",
+      "translation": {
+        "de": "aber",
+        "fr": "mais"
+      },
+      "example": {
+        "de": "Wir brauchen aber.",
+        "fr": "On en a besoin."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'mais'"
+        },
+        "answer": "aber",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:02:57.569818"
+    },
+    {
+      "word": "alexander",
+      "level": "advanced",
+      "translation": {
+        "de": "alexander",
+        "fr": "Alexander"
+      },
+      "example": {
+        "de": "Das ist ein alexander.",
+        "fr": "C'est un Alexander."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Alexander'"
+        },
+        "answer": "alexander",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:02:58.411258"
+    },
+    {
+      "word": "alt",
+      "level": "beginner",
+      "translation": {
+        "de": "alt",
+        "fr": "vieux"
+      },
+      "example": {
+        "de": "Ich habe einen alt.",
+        "fr": "J'en ai un vieux."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'vieux'"
+        },
+        "answer": "alt",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:02:59.126689"
+    },
+    {
+      "word": "aus",
+      "level": "beginner",
+      "translation": {
+        "de": "aus",
+        "fr": "excl."
+      },
+      "example": {
+        "de": "Der aus ist schön.",
+        "fr": "C'est beau, celui-là."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'excl.'"
+        },
+        "answer": "aus",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:00.094391"
+    },
+    {
+      "word": "berlin",
+      "level": "intermediate",
+      "translation": {
+        "de": "berlin",
+        "fr": "berlin"
+      },
+      "example": {
+        "de": "Der berlin ist schön.",
+        "fr": "Le berlin est beau."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'berlin'"
+        },
+        "answer": "berlin",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:01.041739"
+    },
+    {
+      "word": "beruf",
+      "level": "intermediate",
+      "translation": {
+        "de": "beruf",
+        "fr": "• • • • • • • • •"
+      },
+      "example": {
+        "de": "Wir brauchen beruf.",
+        "fr": "On a besoin d'un boulot."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour '• • • • • • • • •'"
+        },
+        "answer": "beruf",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:03.056039"
+    },
+    {
+      "word": "bin",
+      "level": "beginner",
+      "translation": {
+        "de": "bin",
+        "fr": "bin"
+      },
+      "example": {
+        "de": "Das ist ein bin.",
+        "fr": "C'est un moi."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'bin'"
+        },
+        "answer": "bin",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:03.844772"
+    },
+    {
+      "word": "bis",
+      "level": "beginner",
+      "translation": {
+        "de": "bis",
+        "fr": "à"
+      },
+      "example": {
+        "de": "Wir brauchen bis.",
+        "fr": "On a besoin d'ici."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'à'"
+        },
+        "answer": "bis",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:04.978129"
+    },
+    {
+      "word": "bist",
+      "level": "beginner",
+      "translation": {
+        "de": "bist",
+        "fr": "tu es"
+      },
+      "example": {
+        "de": "Wir brauchen bist.",
+        "fr": "On a besoin de toi."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'tu es'"
+        },
+        "answer": "bist",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:05.768132"
+    },
+    {
+      "word": "bitte",
+      "level": "intermediate",
+      "translation": {
+        "de": "bitte",
+        "fr": "S'il vous plaît"
+      },
+      "example": {
+        "de": "Ich habe einen bitte.",
+        "fr": "J'en ai un, s'il vous plaît."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'S'il vous plaît'"
+        },
+        "answer": "bitte",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:07.050509"
+    },
+    {
+      "word": "dank",
+      "level": "beginner",
+      "translation": {
+        "de": "dank",
+        "fr": "merci"
+      },
+      "example": {
+        "de": "Das ist ein dank.",
+        "fr": "C'est gentil."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'merci'"
+        },
+        "answer": "dank",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:07.657967"
+    },
+    {
+      "word": "danke",
+      "level": "intermediate",
+      "translation": {
+        "de": "danke",
+        "fr": "Merci."
+      },
+      "example": {
+        "de": "Wir brauchen danke.",
+        "fr": "On a besoin de merci."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Merci.'"
+        },
+        "answer": "danke",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:08.316796"
+    },
+    {
+      "word": "deine",
+      "level": "intermediate",
+      "translation": {
+        "de": "deine",
+        "fr": "votre"
+      },
+      "example": {
+        "de": "Das ist ein deine.",
+        "fr": "C'est le tien."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'votre'"
+        },
+        "answer": "deine",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:09.036561"
+    },
+    {
+      "word": "die",
+      "level": "beginner",
+      "translation": {
+        "de": "die",
+        "fr": "qui:"
+      },
+      "example": {
+        "de": "Ich habe einen die.",
+        "fr": "J'en ai un."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'qui:'"
+        },
+        "answer": "die",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:09.692515"
+    },
+    {
+      "word": "du",
+      "level": "beginner",
+      "translation": {
+        "de": "du",
+        "fr": "vous"
+      },
+      "example": {
+        "de": "Wir brauchen du.",
+        "fr": "On a besoin de toi."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'vous'"
+        },
+        "answer": "du",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:10.285478"
+    },
+    {
+      "word": "ein",
+      "level": "beginner",
+      "translation": {
+        "de": "ein",
+        "fr": "un"
+      },
+      "example": {
+        "de": "Der ein ist schön.",
+        "fr": "Celui-là est beau."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'un'"
+        },
+        "answer": "ein",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:10.902635"
+    },
+    {
+      "word": "eine",
+      "level": "beginner",
+      "translation": {
+        "de": "eine",
+        "fr": "une"
+      },
+      "example": {
+        "de": "Wir brauchen eine.",
+        "fr": "Il nous en faut une."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'une'"
+        },
+        "answer": "eine",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:11.496926"
+    },
+    {
+      "word": "einen",
+      "level": "intermediate",
+      "translation": {
+        "de": "einen",
+        "fr": "un"
+      },
+      "example": {
+        "de": "Der einen ist schön.",
+        "fr": "Celui-là est beau."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'un'"
+        },
+        "answer": "einen",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:12.269606"
+    },
+    {
+      "word": "einkaufen",
+      "level": "advanced",
+      "translation": {
+        "de": "einkaufen",
+        "fr": "Achats"
+      },
+      "example": {
+        "de": "Wir brauchen einkaufen.",
+        "fr": "Il nous faut des courses."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Achats'"
+        },
+        "answer": "einkaufen",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:13.365227"
+    },
+    {
+      "word": "entschuldigung",
+      "level": "advanced",
+      "translation": {
+        "de": "entschuldigung",
+        "fr": "Excusez-moi."
+      },
+      "example": {
+        "de": "Das ist ein entschuldigung.",
+        "fr": "Excusez-moi."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Excusez-moi.'"
+        },
+        "answer": "entschuldigung",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:14.319373"
+    },
+    {
+      "word": "es",
+      "level": "beginner",
+      "translation": {
+        "de": "es",
+        "fr": "pl"
+      },
+      "example": {
+        "de": "Wir brauchen es.",
+        "fr": "On en a besoin."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'pl'"
+        },
+        "answer": "es",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:14.975543"
+    },
+    {
+      "word": "für",
+      "level": "beginner",
+      "translation": {
+        "de": "für",
+        "fr": "pour"
+      },
+      "example": {
+        "de": "Das ist ein für.",
+        "fr": "C'est un pour."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'pour'"
+        },
+        "answer": "für",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:15.630110"
+    },
+    {
+      "word": "gehe",
+      "level": "beginner",
+      "translation": {
+        "de": "gehe",
+        "fr": "Vas-y"
+      },
+      "example": {
+        "de": "Der gehe ist schön.",
+        "fr": "Il est beau, celui-là."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Vas-y'"
+        },
+        "answer": "gehe",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:16.539803"
+    },
+    {
+      "word": "gehen",
+      "level": "intermediate",
+      "translation": {
+        "de": "gehen",
+        "fr": "aller"
+      },
+      "example": {
+        "de": "Das ist ein gehen.",
+        "fr": "C'est une bonne idée."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'aller'"
+        },
+        "answer": "gehen",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:17.261162"
+    },
+    {
+      "word": "gerne",
+      "level": "intermediate",
+      "translation": {
+        "de": "gerne",
+        "fr": "s'il vous plaît"
+      },
+      "example": {
+        "de": "Das ist ein gerne.",
+        "fr": "C'est un plaisir."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 's'il vous plaît'"
+        },
+        "answer": "gerne",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:18.209049"
+    },
+    {
+      "word": "glaubst",
+      "level": "intermediate",
+      "translation": {
+        "de": "glaubst",
+        "fr": "Crois-tu"
+      },
+      "example": {
+        "de": "Der glaubst ist schön.",
+        "fr": "C'est beau, celui-là."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Crois-tu'"
+        },
+        "answer": "glaubst",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:19.256081"
+    },
+    {
+      "word": "hast",
+      "level": "beginner",
+      "translation": {
+        "de": "hast",
+        "fr": "tu as"
+      },
+      "example": {
+        "de": "Der hast ist schön.",
+        "fr": "Elle est belle."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'tu as'"
+        },
+        "answer": "hast",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:19.912235"
+    },
+    {
+      "word": "heiß",
+      "level": "beginner",
+      "translation": {
+        "de": "heiß",
+        "fr": "chaud"
+      },
+      "example": {
+        "de": "Der heiß ist schön.",
+        "fr": "C'est beau."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'chaud'"
+        },
+        "answer": "heiß",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:20.505180"
+    },
+    {
+      "word": "heiße",
+      "level": "intermediate",
+      "translation": {
+        "de": "heiße",
+        "fr": "chaud"
+      },
+      "example": {
+        "de": "Wir brauchen heiße.",
+        "fr": "Il nous faut du chaud."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'chaud'"
+        },
+        "answer": "heiße",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:21.210056"
+    },
+    {
+      "word": "heißt",
+      "level": "intermediate",
+      "translation": {
+        "de": "heißt",
+        "fr": "s'appelle"
+      },
+      "example": {
+        "de": "Der heißt ist schön.",
+        "fr": "C'est beau."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 's'appelle'"
+        },
+        "answer": "heißt",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:22.123458"
+    },
+    {
+      "word": "hier",
+      "level": "beginner",
+      "translation": {
+        "de": "hier",
+        "fr": "ici"
+      },
+      "example": {
+        "de": "Ich habe einen hier.",
+        "fr": "J'en ai un ici."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'ici'"
+        },
+        "answer": "hier",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:22.831295"
+    },
+    {
+      "word": "ich",
+      "level": "beginner",
+      "translation": {
+        "de": "ich",
+        "fr": "isé"
+      },
+      "example": {
+        "de": "Das ist ein ich.",
+        "fr": "C'est un moi."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'isé'"
+        },
+        "answer": "ich",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:23.485929"
+    },
+    {
+      "word": "in",
+      "level": "beginner",
+      "translation": {
+        "de": "in",
+        "fr": "dans"
+      },
+      "example": {
+        "de": "Der in ist schön.",
+        "fr": "Celui-là est beau."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'dans'"
+        },
+        "answer": "in",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:24.082020"
+    },
+    {
+      "word": "ist",
+      "level": "beginner",
+      "translation": {
+        "de": "ist",
+        "fr": "est"
+      },
+      "example": {
+        "de": "Wir brauchen ist.",
+        "fr": "On a besoin d'être."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'est'"
+        },
+        "answer": "ist",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:24.801953"
+    },
+    {
+      "word": "ja",
+      "level": "beginner",
+      "translation": {
+        "de": "ja",
+        "fr": "oui"
+      },
+      "example": {
+        "de": "Wir brauchen ja.",
+        "fr": "On a besoin de ça."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'oui'"
+        },
+        "answer": "ja",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:25.515340"
+    },
+    {
+      "word": "jahre",
+      "level": "intermediate",
+      "translation": {
+        "de": "jahre",
+        "fr": "Années"
+      },
+      "example": {
+        "de": "Wir brauchen jahre.",
+        "fr": "Il nous faut des années."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Années'"
+        },
+        "answer": "jahre",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:26.192551"
+    },
+    {
+      "word": "jetzt",
+      "level": "intermediate",
+      "translation": {
+        "de": "jetzt",
+        "fr": "maintenant"
+      },
+      "example": {
+        "de": "Der jetzt ist schön.",
+        "fr": "Celui-là est beau."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'maintenant'"
+        },
+        "answer": "jetzt",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:26.904126"
+    },
+    {
+      "word": "kaffee",
+      "level": "intermediate",
+      "translation": {
+        "de": "kaffee",
+        "fr": "Café"
+      },
+      "example": {
+        "de": "Wir brauchen kaffee.",
+        "fr": "Il nous faut du café."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Café'"
+        },
+        "answer": "kaffee",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:27.767750"
+    },
+    {
+      "word": "katja",
+      "level": "intermediate",
+      "translation": {
+        "de": "katja",
+        "fr": "katja"
+      },
+      "example": {
+        "de": "Ich habe einen katja.",
+        "fr": "J'ai un katja."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'katja'"
+        },
+        "answer": "katja",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:28.633123"
+    },
+    {
+      "word": "klar",
+      "level": "beginner",
+      "translation": {
+        "de": "klar",
+        "fr": "clair"
+      },
+      "example": {
+        "de": "Ich habe einen klar.",
+        "fr": "J'en ai un clair."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'clair'"
+        },
+        "answer": "klar",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:29.286824"
+    },
+    {
+      "word": "komme",
+      "level": "intermediate",
+      "translation": {
+        "de": "komme",
+        "fr": "Venez"
+      },
+      "example": {
+        "de": "Das ist ein komme.",
+        "fr": "C'est une venue."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Venez'"
+        },
+        "answer": "komme",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:30.081073"
+    },
+    {
+      "word": "kommst",
+      "level": "intermediate",
+      "translation": {
+        "de": "kommst",
+        "fr": "Viens."
+      },
+      "example": {
+        "de": "Das ist ein kommst.",
+        "fr": "C'est une venue."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Viens.'"
+        },
+        "answer": "kommst",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:31.048974"
+    },
+    {
+      "word": "kunst",
+      "level": "intermediate",
+      "translation": {
+        "de": "kunst",
+        "fr": "art"
+      },
+      "example": {
+        "de": "Das ist ein kunst.",
+        "fr": "C'est un art."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'art'"
+        },
+        "answer": "kunst",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:31.780476"
+    },
+    {
+      "word": "künstlerin",
+      "level": "advanced",
+      "translation": {
+        "de": "künstlerin",
+        "fr": "Artiste"
+      },
+      "example": {
+        "de": "Wir brauchen künstlerin.",
+        "fr": "On a besoin d'artistes."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Artiste'"
+        },
+        "answer": "künstlerin",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:32.565394"
+    },
+    {
+      "word": "machst",
+      "level": "intermediate",
+      "translation": {
+        "de": "machst",
+        "fr": "Tu vas le faire"
+      },
+      "example": {
+        "de": "Der machst ist schön.",
+        "fr": "C'est joli."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Tu vas le faire'"
+        },
+        "answer": "machst",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:33.433780"
+    },
+    {
+      "word": "mal",
+      "level": "beginner",
+      "translation": {
+        "de": "mal",
+        "fr": "une fois"
+      },
+      "example": {
+        "de": "Wir brauchen mal.",
+        "fr": "On a besoin d'aide."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'une fois'"
+        },
+        "answer": "mal",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:34.356110"
+    },
+    {
+      "word": "medizin",
+      "level": "intermediate",
+      "translation": {
+        "de": "medizin",
+        "fr": "médecine"
+      },
+      "example": {
+        "de": "Ich habe einen medizin.",
+        "fr": "J'ai un médecin."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'médecine'"
+        },
+        "answer": "medizin",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:35.017709"
+    },
+    {
+      "word": "morgen",
+      "level": "intermediate",
+      "translation": {
+        "de": "morgen",
+        "fr": "Demain"
+      },
+      "example": {
+        "de": "Das ist ein morgen.",
+        "fr": "C'est demain."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Demain'"
+        },
+        "answer": "morgen",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:35.661092"
+    },
+    {
+      "word": "möchte",
+      "level": "intermediate",
+      "translation": {
+        "de": "möchte",
+        "fr": "souhaite:"
+      },
+      "example": {
+        "de": "Wir brauchen möchte.",
+        "fr": "On veut en avoir besoin."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'souhaite:'"
+        },
+        "answer": "möchte",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:36.312766"
+    },
+    {
+      "word": "münchen",
+      "level": "intermediate",
+      "translation": {
+        "de": "münchen",
+        "fr": "moule"
+      },
+      "example": {
+        "de": "Wir brauchen münchen.",
+        "fr": "On a besoin de mouchoirs."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'moule'"
+        },
+        "answer": "münchen",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:37.085370"
+    },
+    {
+      "word": "nein",
+      "level": "beginner",
+      "translation": {
+        "de": "nein",
+        "fr": "non"
+      },
+      "example": {
+        "de": "Ich habe einen nein.",
+        "fr": "J'ai un non."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'non'"
+        },
+        "answer": "nein",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:37.982223"
+    },
+    {
+      "word": "okay",
+      "level": "beginner",
+      "translation": {
+        "de": "okay",
+        "fr": "OK"
+      },
+      "example": {
+        "de": "Wir brauchen okay.",
+        "fr": "On a besoin d'accord."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'OK'"
+        },
+        "answer": "okay",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:38.818314"
+    },
+    {
+      "word": "paar",
+      "level": "beginner",
+      "translation": {
+        "de": "paar",
+        "fr": "Quelques"
+      },
+      "example": {
+        "de": "Wir brauchen paar.",
+        "fr": "Il nous en faut quelques-uns."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Quelques'"
+        },
+        "answer": "paar",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:39.621249"
+    },
+    {
+      "word": "schon",
+      "level": "intermediate",
+      "translation": {
+        "de": "schon",
+        "fr": "déjà"
+      },
+      "example": {
+        "de": "Der schon ist schön.",
+        "fr": "C'est beau."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'déjà'"
+        },
+        "answer": "schon",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:40.225751"
+    },
+    {
+      "word": "sehr",
+      "level": "beginner",
+      "translation": {
+        "de": "sehr",
+        "fr": "Très"
+      },
+      "example": {
+        "de": "Das ist ein sehr.",
+        "fr": "C'est très."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Très'"
+        },
+        "answer": "sehr",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:40.881915"
+    },
+    {
+      "word": "spät",
+      "level": "beginner",
+      "translation": {
+        "de": "spät",
+        "fr": "en retard"
+      },
+      "example": {
+        "de": "Wir brauchen spät.",
+        "fr": "Il nous faut du retard."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'en retard'"
+        },
+        "answer": "spät",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:41.545342"
+    },
+    {
+      "word": "studiere",
+      "level": "intermediate",
+      "translation": {
+        "de": "studiere",
+        "fr": "étudiant"
+      },
+      "example": {
+        "de": "Ich habe einen studiere.",
+        "fr": "J'en ai étudié un."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'étudiant'"
+        },
+        "answer": "studiere",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:42.302937"
+    },
+    {
+      "word": "suche",
+      "level": "intermediate",
+      "translation": {
+        "de": "suche",
+        "fr": "Recherche"
+      },
+      "example": {
+        "de": "Der suche ist schön.",
+        "fr": "C'est une belle recherche."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Recherche'"
+        },
+        "answer": "suche",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:43.169590"
+    },
+    {
+      "word": "suchst",
+      "level": "intermediate",
+      "translation": {
+        "de": "suchst",
+        "fr": "Recherche"
+      },
+      "example": {
+        "de": "Ich habe einen suchst.",
+        "fr": "J'en cherche un."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Recherche'"
+        },
+        "answer": "suchst",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:44.112489"
+    },
+    {
+      "word": "telefonnummer",
+      "level": "advanced",
+      "translation": {
+        "de": "telefonnummer",
+        "fr": "Numéro de téléphone"
+      },
+      "example": {
+        "de": "Ich habe einen telefonnummer.",
+        "fr": "J'ai un numéro de téléphone."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Numéro de téléphone'"
+        },
+        "answer": "telefonnummer",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:44.963929"
+    },
+    {
+      "word": "tipps",
+      "level": "intermediate",
+      "translation": {
+        "de": "tipps",
+        "fr": "astuces"
+      },
+      "example": {
+        "de": "Das ist ein tipps.",
+        "fr": "C'est un conseil."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'astuces'"
+        },
+        "answer": "tipps",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:45.752671"
+    },
+    {
+      "word": "trinken",
+      "level": "intermediate",
+      "translation": {
+        "de": "trinken",
+        "fr": "Boire"
+      },
+      "example": {
+        "de": "Wir brauchen trinken.",
+        "fr": "On a besoin de boire."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Boire'"
+        },
+        "answer": "trinken",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:46.417872"
+    },
+    {
+      "word": "uhr",
+      "level": "beginner",
+      "translation": {
+        "de": "uhr",
+        "fr": "Horloge"
+      },
+      "example": {
+        "de": "Der uhr ist schön.",
+        "fr": "C'est une belle montre."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Horloge'"
+        },
+        "answer": "uhr",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:47.252350"
+    },
+    {
+      "word": "um",
+      "level": "beginner",
+      "translation": {
+        "de": "um",
+        "fr": "à"
+      },
+      "example": {
+        "de": "Das ist ein um.",
+        "fr": "C'est un tour."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'à'"
+        },
+        "answer": "um",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:47.990188"
+    },
+    {
+      "word": "und",
+      "level": "beginner",
+      "translation": {
+        "de": "und",
+        "fr": "et"
+      },
+      "example": {
+        "de": "Der und ist schön.",
+        "fr": "Celle-là et elle est belle."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'et'"
+        },
+        "answer": "und",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:48.840374"
+    },
+    {
+      "word": "vielen",
+      "level": "intermediate",
+      "translation": {
+        "de": "vielen",
+        "fr": "beaucoup"
+      },
+      "example": {
+        "de": "Wir brauchen vielen.",
+        "fr": "Il nous en faut beaucoup."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'beaucoup'"
+        },
+        "answer": "vielen",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:49.521020"
+    },
+    {
+      "word": "vielleicht",
+      "level": "advanced",
+      "translation": {
+        "de": "vielleicht",
+        "fr": "Peut-être"
+      },
+      "example": {
+        "de": "Wir brauchen vielleicht.",
+        "fr": "On a peut-être besoin."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Peut-être'"
+        },
+        "answer": "vielleicht",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:50.515221"
+    },
+    {
+      "word": "von",
+      "level": "beginner",
+      "translation": {
+        "de": "von",
+        "fr": "de"
+      },
+      "example": {
+        "de": "Der von ist schön.",
+        "fr": "C'est joli."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'de'"
+        },
+        "answer": "von",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:51.354713"
+    },
+    {
+      "word": "was",
+      "level": "beginner",
+      "translation": {
+        "de": "was",
+        "fr": "ce que"
+      },
+      "example": {
+        "de": "Ich habe einen was.",
+        "fr": "J'en ai un."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'ce que'"
+        },
+        "answer": "was",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:52.080527"
+    },
+    {
+      "word": "werden",
+      "level": "intermediate",
+      "translation": {
+        "de": "werden",
+        "fr": "sera"
+      },
+      "example": {
+        "de": "Wir brauchen werden.",
+        "fr": "On va avoir besoin."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'sera'"
+        },
+        "answer": "werden",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:52.861493"
+    },
+    {
+      "word": "wie",
+      "level": "beginner",
+      "translation": {
+        "de": "wie",
+        "fr": "comment"
+      },
+      "example": {
+        "de": "Der wie ist schön.",
+        "fr": "C'est beau comme ça."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'comment'"
+        },
+        "answer": "wie",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:53.529206"
+    },
+    {
+      "word": "wir",
+      "level": "beginner",
+      "translation": {
+        "de": "wir",
+        "fr": "nous"
+      },
+      "example": {
+        "de": "Ich habe einen wir.",
+        "fr": "J'en ai un."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'nous'"
+        },
+        "answer": "wir",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:54.278517"
+    },
+    {
+      "word": "woher",
+      "level": "intermediate",
+      "translation": {
+        "de": "woher",
+        "fr": "D'où vient"
+      },
+      "example": {
+        "de": "Der woher ist schön.",
+        "fr": "C'est joli, celui-là."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'D'où vient'"
+        },
+        "answer": "woher",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:55.307603"
+    },
+    {
+      "word": "wohne",
+      "level": "intermediate",
+      "translation": {
+        "de": "wohne",
+        "fr": "Habitants"
+      },
+      "example": {
+        "de": "Das ist ein wohne.",
+        "fr": "C'est un habit."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Habitants'"
+        },
+        "answer": "wohne",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:56.157433"
+    },
+    {
+      "word": "wohnung",
+      "level": "intermediate",
+      "translation": {
+        "de": "wohnung",
+        "fr": "logement"
+      },
+      "example": {
+        "de": "Wir brauchen wohnung.",
+        "fr": "On a besoin d'un appartement."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'logement'"
+        },
+        "answer": "wohnung",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:56.980477"
+    },
+    {
+      "word": "wohnungssuche",
+      "level": "advanced",
+      "translation": {
+        "de": "wohnungssuche",
+        "fr": "Recherche d'un logement"
+      },
+      "example": {
+        "de": "Das ist ein wohnungssuche.",
+        "fr": "C'est une recherche d'appartement."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Recherche d'un logement'"
+        },
+        "answer": "wohnungssuche",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:58.079877"
+    },
+    {
+      "word": "zeit",
+      "level": "beginner",
+      "translation": {
+        "de": "zeit",
+        "fr": "Temps"
+      },
+      "example": {
+        "de": "Das ist ein zeit.",
+        "fr": "C'est un moment."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'Temps'"
+        },
+        "answer": "zeit",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T15:03:58.677252"
+    }
+  ],
+  "vocabulary_stats": {
+    "total_words": 77,
+    "levels": {
+      "beginner": 36,
+      "intermediate": 34,
+      "advanced": 7
+    }
+  }
 }
