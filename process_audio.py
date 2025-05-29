@@ -50,7 +50,7 @@ def transcribe_file(audio_path, output_directory):
         return None
 
 def translate_json(json_path):
-    """Translate transcribed JSON file using local model"""
+    """Translate transcribed JSON file using local model and extract vocabulary"""
     print(f"\nStep 2: Translating {os.path.basename(json_path)}...")
     
     try:
@@ -63,16 +63,29 @@ def translate_json(json_path):
         with open(json_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
         
-        # Translate each segment
+        # Initialize vocabulary set
+        all_words = set()
+        
+        # Translate each segment and collect vocabulary
         for segment in data['segments']:
             text = segment['text'].strip()
             if text:
+                # Add words to vocabulary set
+                words = text.split()
+                all_words.update(word.lower() for word in words)
+                
                 # Translate
                 inputs = tokenizer(text, return_tensors="pt", padding=True)
                 outputs = model.generate(**inputs)
                 translation = tokenizer.decode(outputs[0], skip_special_tokens=True)
                 # Add translation to segment
                 segment['translation'] = translation
+        
+        # Add vocabulary section
+        data['vocabulary'] = {
+            'unique_words': sorted(list(all_words)),
+            'word_count': len(all_words)
+        }
         
         # Save modified JSON
         with open(json_path, 'w', encoding='utf-8') as f:
