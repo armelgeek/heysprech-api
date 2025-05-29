@@ -205,10 +205,23 @@ def generate_example_sentences(word, models):
             if not german.endswith('.'):
                 german += '.'
             
-            # Traduction en français
+            # Traduction littérale en français d'abord
             inputs = tokenizer_de_fr(german, return_tensors="pt", padding=True)
             outputs = model_de_fr.generate(**inputs)
-            french = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+            french_literal = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+            
+            # Amélioration de la traduction pour la rendre plus naturelle
+            prompt_fr = f"Reformulez cette phrase en français idiomatique : '{french_literal}'"
+            inputs = tokenizer_gpt(prompt_fr, return_tensors="pt", padding=True)
+            outputs = model_gpt.generate(
+                inputs.input_ids,
+                max_length=30,
+                num_beams=3,
+                temperature=0.5,
+                do_sample=True,
+                no_repeat_ngram_size=2
+            )
+            french = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
             if not french.endswith('.'):
                 french += '.'
             
