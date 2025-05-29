@@ -97,18 +97,20 @@
       },
       "examples": [
         {
-          "de": "Hier ist es gehen.",
-          "fr": "Ici c'est gehen."
+          "full_sentence": "Hier ist gehen Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist gehen\n      case : contenance/collection/component\n          Confirmation : Contenancé ce qui peu de l'écriture,",
+          "completion": "Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist gehen\n      case : contenance/collection/component\n          Confirmation : Contenancé ce qui peu de l'écriture,",
+          "context": "présentation/localisation",
+          "word_focus": "gehen"
         },
         {
-          "de": "Das macht man gehen.",
-          "fr": "On fait ça gehen."
+          "de": "Hier ist gehen 000J schl Mit\"\u000ben$aU>�c.$�U\u0003#.",
+          "fr": "C'est là que vont les milliers d'années de travail avec $aU> c.$u#."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich habe keine Ahnung, was ich tun soll.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich möchte, dass Sie mit mir sprechen.",
             "answer": "gehen",
             "examples": [
               "gehen"
@@ -128,9 +130,9 @@
         "word_association": {
           "de": {
             "words": [
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'gehen': gehen",
-              "gehen und gehen Sie wie folgt vor:\nWenn Sie das Wort \"",
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'gehen': gehen"
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'gehen': geht gehen",
+              "gehen und gehen - mit Präfix/Suffix-Les",
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'gehen': geht gehen"
             ]
           }
         }
@@ -160,12 +162,14 @@
       },
       "examples": [
         {
-          "de": "Hier ist es heute.",
-          "fr": "Ici c'est heute."
+          "full_sentence": "Hier ist heute Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist heute\n      case : Construction/Constructions/Phrases/Questions/Categoriques/Savoir-vivre/présentation/product",
+          "completion": "Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist heute\n      case : Construction/Constructions/Phrases/Questions/Categoriques/Savoir-vivre/présentation/product",
+          "context": "présentation/localisation",
+          "word_focus": "heute"
         },
         {
-          "de": "Das macht man heute.",
-          "fr": "On fait ça heute."
+          "de": "Hier ist heute 000J Mit Welt$reis\",�n$�H).Tn$ stellteU#.",
+          "fr": "Voici aujourd'hui 000J Avec le riz du monde,\" n$ H).Tn$ a misU#."
         }
       ],
       "exercises": {
@@ -191,9 +195,9 @@
         "word_association": {
           "de": {
             "words": [
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'heute': heute",
-              "morgen",
-              "heute für Beispielsätze mit \"heute\" und \"morgen\""
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'heute': (Synonyme",
+              "Definition",
+              "Beispiele)\nDer Begriff \"heute\" stammt aus"
             ]
           }
         }
@@ -223,18 +227,20 @@
       },
       "examples": [
         {
-          "de": "Hier ist es ins.",
-          "fr": "Ici c'est ins."
+          "full_sentence": "Hier ist ins Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist ins\n      Database : Context : http://www.pinterest.de/p/Pinterest_Pinnwand_Platte_platte.jpg\n          Picture : Pic",
+          "completion": "Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist ins\n      Database : Context : http://www.pinterest.de/p/Pinterest_Pinnwand_Platte_platte.jpg\n          Picture : Pic",
+          "context": "présentation/localisation",
+          "word_focus": "ins"
         },
         {
-          "de": "Das macht man ins.",
-          "fr": "On fait ça ins."
+          "de": "Hier ist ins 000Jär, wel\"�$a\fe Sch�$�fach#.",
+          "fr": "Ici, c'est le millier d'années de cours."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist das? Was ist das? Was ist.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist der Unterschied zwischen '___' und '.",
             "answer": "ins",
             "examples": [
               "ins"
@@ -254,9 +260,9 @@
         "word_association": {
           "de": {
             "words": [
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'ins': zum Beispiel ins",
-              "ins und aus",
-              "zum und zum"
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'ins': ein",
+              "zwei",
+              "drei"
             ]
           }
         }
@@ -286,12 +292,14 @@
       },
       "examples": [
         {
-          "de": "Hier ist es kino..",
-          "fr": "Ici c'est kino.."
+          "full_sentence": "Hier ist kino. Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist kino.\n      case : construction/component/constructions/collection\n          context : nécessaire de la recherche de l’école",
+          "completion": "Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist kino.\n      case : construction/component/constructions/collection\n          context : nécessaire de la recherche de l’école",
+          "context": "présentation/localisation",
+          "word_focus": "kino."
         },
         {
-          "de": "Das macht man kino..",
-          "fr": "On fait ça kino.."
+          "de": "Hier ist kino. 000J Schmutz#»,\"m bo�0ington% Schmutz9 auchB� Min#.",
+          "fr": "Ici c'est kino. 000J sale # ',\"m bo 0ington% sale9 aussiB Min#."
         }
       ],
       "exercises": {
@@ -349,18 +357,20 @@
       },
       "examples": [
         {
-          "de": "Hier ist es sie.",
-          "fr": "Ici c'est sie."
+          "full_sentence": "Hier ist sie Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist sie\n      Cursor :  cursors.google.com/dlpage/gaoptout?hl=de (https://www.kom.pl/de/analytics/terms-and-",
+          "completion": "Complète cette phrase allemande de manière naturelle et idiomatique.\n    Contexte : présentation/localisation\n    Guide : description ou explication\n    Phrase à compléter : Hier ist sie\n      Cursor :  cursors.google.com/dlpage/gaoptout?hl=de (https://www.kom.pl/de/analytics/terms-and-",
+          "context": "présentation/localisation",
+          "word_focus": "sie"
         },
         {
-          "de": "Das macht man sie.",
-          "fr": "On fait ça sie."
+          "de": "Hier ist sie 000Jär\"3eineB fr�oggen#.",
+          "fr": "Ici, elle est en milliers d'années."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich bin ein Mann, ich bin eine Frau.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich bin ein Mensch, der gerne lacht und.",
             "answer": "sie",
             "examples": [
               "sie"
@@ -380,9 +390,9 @@
         "word_association": {
           "de": {
             "words": [
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'sie': Sie können die Wörter entweder durch Leerzeichen getrennt voneinander lesen.\nDie Worthäufigkeit",
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'sie': Sie können die Wörter entweder durch Leerzeichen getrennt voneinander lesen.\nDie Worthäufigkeit",
-              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'sie': Sie können die Wörter entweder durch Leerzeichen getrennt voneinander lesen.\nDie Worthäufigkeit"
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'sie': Sie können die Wörter entweder durch Kombinieren von 0 bis 9 voneinander trennen.",
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'sie': Sie können die Wörter entweder durch Kombinieren von 0 bis 9 voneinander trennen.",
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'sie': Sie können die Wörter entweder durch Kombinieren von 0 bis 9 voneinander trennen."
             ]
           }
         }
