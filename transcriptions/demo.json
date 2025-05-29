@@ -81,8 +81,8 @@
         "fr": "aller"
       },
       "definition": {
-        "de": "das Verb 'ausgehen' mit 'aussteigen' gleichbedeutend ist.\nDas Verb 'absteigen' wird mit 'abgehen' gleichgesetzt. Das Verb '",
-        "fr": "le verbe \" sortir \" est synonyme de \" descendre .\" Le verbe ' descendre' est assimilé à \" quitter '. Le verbes '"
+        "de": "ist man in der Lage, sich selbst zu heilen. Man kann sich selbst heilen, indem man sich selbst heilt.\nMan kann auch heilen, wenn man sich selber nicht heilen kann, weil man sich nicht",
+        "fr": "on peut se guérir soi-même. On peut se soigner en se guérissant lui-même; on peut aussi guérir si on ne peut pas se guérisser, parce qu'on ne se soigne pas."
       },
       "example": {
         "de": "Das Wort 'gehen' ist sehr nützlich.",
@@ -90,22 +90,15 @@
       },
       "exercises": [
         {
-          "type": "sentence_building",
+          "type": "definition_match",
           "question": {
-            "de": "Bilden Sie einen Satz mit diesen Wörtern: schön, gut, das, ein, gehen, sehr, der, ist",
-            "fr": "Formez une phrase avec ces mots: schön, gut, das, ein, gehen, sehr, der, ist"
+            "de": "Zu welchem Wort gehört diese Definition: \"ist man in der Lage, sich selbst zu heilen. Man kann sich selbst heilen, indem man sich selbst heilt\"?",
+            "fr": "Quel mot correspond à cette définition : \"on peut se guérir soi-même. On peut se soigner en se guérissant lui-même; on peut aussi guérir si on ne peut pas se guérisser, parce qu'on ne se soigne pas\" ?"
           },
-          "word_pool": [
-            "schön",
-            "gut",
-            "das",
-            "ein",
-            "gehen",
-            "sehr",
-            "der",
-            "ist"
-          ],
-          "target_sentence": "Das ist ein gehen.",
+          "definition": {
+            "de": "ist man in der Lage, sich selbst zu heilen. Man kann sich selbst heilen, indem man sich selbst heilt",
+            "fr": "on peut se guérir soi-même. On peut se soigner en se guérissant lui-même; on peut aussi guérir si on ne peut pas se guérisser, parce qu'on ne se soigne pas"
+          },
           "answer": "gehen",
           "level": "intermediate"
         },
@@ -114,12 +107,12 @@
           "examples": [
             {
               "question": {
-                "de": "Die Kinder ___ durch den Garten.",
+                "de": "Wir ___ jeden Tag spazieren.",
                 "fr": "Complétez la phrase avec le mot 'aller' (Le mot manquant est au milieu)"
               },
               "solution": {
-                "de": "Die Kinder gehen durch den Garten.",
-                "fr": "Les enfants marchent à travers le jardin."
+                "de": "Wir gehen jeden Tag spazieren.",
+                "fr": "Nous allons nous promener tous les jours."
               },
               "context": "Le mot manquant est au milieu"
             },
@@ -146,18 +139,18 @@
             "fr": "Quel mot signifie 'aller' ?"
           },
           "choices": [
+            "tisch",
             "stuhl",
             "auto",
-            "gehen",
-            "tisch"
+            "gehen"
           ],
           "correct_answer": "gehen",
-          "correct_index": 2,
+          "correct_index": 3,
           "level": "intermediate"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:36:15.325774"
+      "processed_at": "2025-05-29T11:40:28.459838"
     },
     {
       "word": "heute",
@@ -167,8 +160,8 @@
         "fr": "Aujourd'hui"
       },
       "definition": {
-        "de": "die Vorstellung, dass der Mensch in der Lage ist, sich selbst und andere zu erkennen und zu verstehen.\nDer Mensch ist fähig, sich zu erkennen, zu verstehen, zu handeln und sich selbst zu erkennen. Er ist",
-        "fr": "l'idée que l'homme est capable de se reconnaître et de comprendre lui-même et les autres. L'homme peut se reconnaître, se comprendre, agir et se reconnaître."
+        "de": ", an dem man sich mit dem Thema auseinandersetzt, um dann festzustellen, dass es sich um ein sehr komplexes Thema handelt.\nIn diesem Artikel möchte ich Ihnen zeigen, wie Sie sich mit der Thematik auseinander setzen, um",
+        "fr": "Dans cet article, je voudrais vous montrer comment vous abordez la question, afin de:"
       },
       "example": {
         "de": "Das Wort 'heute' ist sehr nützlich.",
@@ -191,12 +184,12 @@
             },
             {
               "question": {
-                "de": "Ich verstehe das ___.",
+                "de": "Das gefällt mir sehr ___.",
                 "fr": "Complétez la phrase avec le mot 'Aujourd'hui' (Le mot manquant est à la fin)"
               },
               "solution": {
-                "de": "Ich verstehe das heute.",
-                "fr": "Je comprends le Aujourd'hui."
+                "de": "Das gefällt mir sehr heute.",
+                "fr": "Cela me plaît beaucoup Aujourd'hui."
               },
               "context": "Le mot manquant est à la fin"
             }
@@ -204,26 +197,6 @@
           "answer": "heute",
           "level": "intermediate",
           "translation": "Aujourd'hui"
-        },
-        {
-          "type": "sentence_building",
-          "question": {
-            "de": "Bilden Sie einen Satz mit diesen Wörtern: ein, sehr, das, ist, heute, der, schön, gut",
-            "fr": "Formez une phrase avec ces mots: ein, sehr, das, ist, heute, der, schön, gut"
-          },
-          "word_pool": [
-            "ein",
-            "sehr",
-            "das",
-            "ist",
-            "heute",
-            "der",
-            "schön",
-            "gut"
-          ],
-          "target_sentence": "Das ist ein heute.",
-          "answer": "heute",
-          "level": "intermediate"
         },
         {
           "type": "translation",
@@ -235,10 +208,23 @@
           "source_word": "Aujourd'hui",
           "direction": "fr_to_de",
           "level": "intermediate"
+        },
+        {
+          "type": "definition_match",
+          "question": {
+            "de": "Welches Wort wird hier definiert: \", an dem man sich mit dem Thema auseinandersetzt, um dann festzustellen, dass es sich um ein sehr komplexes Thema handelt. In diesem Artikel möchte ich Ihnen zeigen, wie Sie sich mit der Thematik auseinander setzen, um\"?",
+            "fr": "Quel mot correspond à cette définition : \"Dans cet article, je voudrais vous montrer comment vous abordez la question, afin de:\" ?"
+          },
+          "definition": {
+            "de": ", an dem man sich mit dem Thema auseinandersetzt, um dann festzustellen, dass es sich um ein sehr komplexes Thema handelt. In diesem Artikel möchte ich Ihnen zeigen, wie Sie sich mit der Thematik auseinander setzen, um",
+            "fr": "Dans cet article, je voudrais vous montrer comment vous abordez la question, afin de:"
+          },
+          "answer": "heute",
+          "level": "intermediate"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:36:21.960319"
+      "processed_at": "2025-05-29T11:40:33.834983"
     },
     {
       "word": "ins",
@@ -248,8 +234,8 @@
         "fr": "dans la"
       },
       "definition": {
-        "de": "es sich um ein Wort handelt, das in mehreren Wörtern vorkommt, z.B. in einem Satz oder in einer Redewendung.\nDer Präpositionsraum ist ein Raum, in dem ein Wort oder eine",
-        "fr": "il s'agit d'un mot qui apparaît dans plusieurs mots, par exemple dans une phrase ou dans une expression."
+        "de": "einem Mann und einer Frau, die sich nicht nur körperlich, sondern auch seelisch verändert hat.\nDer Film zeigt, wie eine Frau sich verändert, wenn sie eine Beziehung mit einem Mann eingeht, der sie nicht liebt.",
+        "fr": "un homme et une femme qui ont changé non seulement physiquement, mais aussi mentalement. Le film montre comment une femme change quand elle entre en relation avec un homme qui ne l'aime pas."
       },
       "example": {
         "de": "Das Wort 'ins' ist sehr nützlich.",
@@ -257,30 +243,23 @@
       },
       "exercises": [
         {
-          "type": "gender_article",
-          "question": {
-            "de": "Welcher Artikel gehört zu 'ins'?",
-            "fr": "Quel article va avec 'ins' ?"
-          },
-          "choices": [
-            "der",
-            "die",
-            "das"
+          "type": "fill_blank",
+          "examples": [
+            {
+              "question": {
+                "de": "Das Buch liegt ___ dem Tisch.",
+                "fr": "Complétez la phrase avec le mot 'dans la' (Le mot manquant est au milieu)"
+              },
+              "solution": {
+                "de": "Das Buch liegt ins dem Tisch.",
+                "fr": "Le livre est dans la la table."
+              },
+              "context": "Le mot manquant est au milieu"
+            }
           ],
-          "answer": "der",
-          "word": "ins",
-          "level": "beginner"
-        },
-        {
-          "type": "translation",
-          "question": {
-            "de": "Übersetzen Sie: dans la",
-            "fr": "Traduisez: dans la"
-          },
           "answer": "ins",
-          "source_word": "dans la",
-          "direction": "fr_to_de",
-          "level": "beginner"
+          "level": "beginner",
+          "translation": "dans la"
         },
         {
           "type": "multiple_choice",
@@ -289,18 +268,38 @@
             "fr": "Quel mot signifie 'dans la' ?"
           },
           "choices": [
+            "buch",
             "ins",
-            "wasser",
-            "milch",
-            "stuhl"
+            "stuhl",
+            "tisch"
           ],
           "correct_answer": "ins",
-          "correct_index": 0,
+          "correct_index": 1,
+          "level": "beginner"
+        },
+        {
+          "type": "sentence_building",
+          "question": {
+            "de": "Bilden Sie einen Satz mit diesen Wörtern: ins, schön, sehr, der, ist, das, ein, gut",
+            "fr": "Formez une phrase avec ces mots: ins, schön, sehr, der, ist, das, ein, gut"
+          },
+          "word_pool": [
+            "ins",
+            "schön",
+            "sehr",
+            "der",
+            "ist",
+            "das",
+            "ein",
+            "gut"
+          ],
+          "target_sentence": "Das ist ein ins.",
+          "answer": "ins",
           "level": "beginner"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:36:26.979953"
+      "processed_at": "2025-05-29T11:40:40.019816"
     },
     {
       "word": "kino",
@@ -310,14 +309,40 @@
         "fr": "cinéma"
       },
       "definition": {
-        "de": "die Bezeichnung für eine bestimmte Art von Film, bei dem ein Film in einer bestimmten Zeit gezeigt wird.\nDer Begriff \"Kino\" ist ein Sammelbegriff für alle Arten von Filmen, die in einem bestimmten Zeitraum gezeigt werden.",
-        "fr": "Le terme \"cinéma\" est un terme générique utilisé pour désigner tous les types de films présentés pendant une période donnée."
+        "de": "man sich merken sollte, wenn man sich auf einen Film einlassen möchte.\nDer Film ist sehr gut gemacht und man kann sich sehr gut in die Geschichte hineinversetzen. Man erfährt viel über die Charaktere und die Geschichte",
+        "fr": "Le film est très bien fait et on peut très bien s'intégrer dans l'histoire. On en apprend beaucoup sur les personnages et l'Histoire."
       },
       "example": {
         "de": "Das Wort 'kino' ist sehr nützlich.",
         "fr": "Le mot 'kino' est très utile."
       },
       "exercises": [
+        {
+          "type": "translation",
+          "question": {
+            "de": "Übersetzen Sie: kino",
+            "fr": "Traduisez: kino"
+          },
+          "answer": "cinéma",
+          "source_word": "kino",
+          "direction": "de_to_fr",
+          "level": "beginner"
+        },
+        {
+          "type": "gender_article",
+          "question": {
+            "de": "Welcher Artikel gehört zu 'kino'?",
+            "fr": "Quel article va avec 'kino' ?"
+          },
+          "choices": [
+            "der",
+            "die",
+            "das"
+          ],
+          "answer": "das",
+          "word": "kino",
+          "level": "beginner"
+        },
         {
           "type": "fill_blank",
           "examples": [
@@ -336,46 +361,10 @@
           "answer": "kino",
           "level": "beginner",
           "translation": "cinéma"
-        },
-        {
-          "type": "sentence_building",
-          "question": {
-            "de": "Bilden Sie einen Satz mit diesen Wörtern: ist, gut, sehr, das, schön, kino, ein, der",
-            "fr": "Formez une phrase avec ces mots: ist, gut, sehr, das, schön, kino, ein, der"
-          },
-          "word_pool": [
-            "ist",
-            "gut",
-            "sehr",
-            "das",
-            "schön",
-            "kino",
-            "ein",
-            "der"
-          ],
-          "target_sentence": "Das ist ein kino.",
-          "answer": "kino",
-          "level": "beginner"
-        },
-        {
-          "type": "multiple_choice",
-          "question": {
-            "de": "Welches Wort bedeutet 'cinéma'?",
-            "fr": "Quel mot signifie 'cinéma' ?"
-          },
-          "choices": [
-            "wasser",
-            "kino",
-            "buch",
-            "stuhl"
-          ],
-          "correct_answer": "kino",
-          "correct_index": 1,
-          "level": "beginner"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:36:32.446976"
+      "processed_at": "2025-05-29T11:40:45.741515"
     },
     {
       "word": "sie",
@@ -385,8 +374,8 @@
         "fr": "et"
       },
       "definition": {
-        "de": "Menschen, die in der Lage sind, sich selbst und andere zu verstehen, zu verstehen und zu akzeptieren.\nDer Begriff ist ein Sammelbegriff, der sich aus der englischen Sprache zusammensetzt. Er bezeichnet Personen, die sich selbst",
-        "fr": "Les personnes capables de se comprendre, de comprendre et d'accepter soi-même et les autres. Le terme est un terme générique composé de la langue anglaise."
+        "de": "Menschen, die aufgrund ihrer körperlichen, geistigen oder seelischen Behinderung nicht in der Lage sind, sich selbst zu führen.\nSie wird verwendet, um Menschen zu befähigen, selbst Entscheidungen zu treffen, die für sie von Bedeutung sind",
+        "fr": "Les personnes qui, en raison de leur handicap physique, mental ou mental, ne sont pas en mesure de se conduire elles-mêmes, sont utilisées pour permettre aux gens de prendre eux-mêmes des décisions importantes pour elles."
       },
       "example": {
         "de": "Das Wort 'sie' ist sehr nützlich.",
@@ -394,64 +383,74 @@
       },
       "exercises": [
         {
-          "type": "definition_match",
-          "question": {
-            "de": "Welches Wort wird hier definiert: \"Menschen, die in der Lage sind, sich selbst und andere zu verstehen, zu verstehen und zu akzeptieren. Der Begriff ist ein Sammelbegriff, der sich aus der englischen Sprache zusammensetzt\"?",
-            "fr": "Quel mot correspond à cette définition : \"Les personnes capables de se comprendre, de comprendre et d'accepter soi-même et les autres. Le terme est un terme générique composé de la langue anglaise\" ?"
-          },
-          "definition": {
-            "de": "Menschen, die in der Lage sind, sich selbst und andere zu verstehen, zu verstehen und zu akzeptieren. Der Begriff ist ein Sammelbegriff, der sich aus der englischen Sprache zusammensetzt",
-            "fr": "Les personnes capables de se comprendre, de comprendre et d'accepter soi-même et les autres. Le terme est un terme générique composé de la langue anglaise"
-          },
-          "answer": "sie",
-          "level": "beginner"
-        },
-        {
           "type": "sentence_building",
           "question": {
-            "de": "Bilden Sie einen Satz mit diesen Wörtern: sehr, der, schön, ein, das, gut, sie, ist",
-            "fr": "Formez une phrase avec ces mots: sehr, der, schön, ein, das, gut, sie, ist"
+            "de": "Bilden Sie einen Satz mit diesen Wörtern: ein, sie, schön, der, das, ist, sehr, gut",
+            "fr": "Formez une phrase avec ces mots: ein, sie, schön, der, das, ist, sehr, gut"
           },
           "word_pool": [
-            "sehr",
-            "der",
-            "schön",
             "ein",
-            "das",
-            "gut",
             "sie",
-            "ist"
+            "schön",
+            "der",
+            "das",
+            "ist",
+            "sehr",
+            "gut"
           ],
           "target_sentence": "Das ist ein sie.",
           "answer": "sie",
           "level": "beginner"
         },
         {
-          "type": "translation",
+          "type": "gender_article",
           "question": {
-            "de": "Übersetzen Sie: sie",
-            "fr": "Traduisez: sie"
+            "de": "Welcher Artikel gehört zu 'sie'?",
+            "fr": "Quel article va avec 'sie' ?"
           },
-          "answer": "et",
-          "source_word": "sie",
-          "direction": "de_to_fr",
+          "choices": [
+            "der",
+            "die",
+            "das"
+          ],
+          "answer": "die",
+          "word": "sie",
           "level": "beginner"
+        },
+        {
+          "type": "fill_blank",
+          "examples": [
+            {
+              "question": {
+                "de": "Das Buch liegt ___ dem Tisch.",
+                "fr": "Complétez la phrase avec le mot 'et' (Le mot manquant est au milieu)"
+              },
+              "solution": {
+                "de": "Das Buch liegt sie dem Tisch.",
+                "fr": "Le livre est et la table."
+              },
+              "context": "Le mot manquant est au milieu"
+            }
+          ],
+          "answer": "sie",
+          "level": "beginner",
+          "translation": "et"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T11:36:38.787177"
+      "processed_at": "2025-05-29T11:40:51.796996"
     }
   ],
   "vocabulary_stats": {
     "total_words": 5,
     "total_exercises": 15,
     "exercise_types": {
-      "sentence_building": 4,
-      "fill_blank": 3,
-      "multiple_choice": 3,
-      "translation": 3,
-      "gender_article": 1,
-      "definition_match": 1
+      "definition_match": 2,
+      "fill_blank": 5,
+      "multiple_choice": 2,
+      "translation": 2,
+      "sentence_building": 2,
+      "gender_article": 2
     },
     "levels": {
       "beginner": 3,
