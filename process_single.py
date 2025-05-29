@@ -669,9 +669,6 @@ def main():
     print(f"\n✓ Processing completed successfully!")
     print(f"Output file: {json_path}")
 
-if __name__ == "__main__":
-    main()
-
 def get_pronunciation(word, models):
     """Obtient la prononciation phonétique d'un mot allemand
     
@@ -769,3 +766,6 @@ def extract_stress_position(text):
             return 'last'
         return position
     return None
+
+if __name__ == "__main__":
+    main()
