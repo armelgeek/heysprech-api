@@ -214,71 +214,108 @@ class VocabularyProcessor:
         Le mot manquant peut être placé au début, au milieu ou à la fin de la phrase
         selon le template choisi. Chaque exercice contient plusieurs phrases d'exemple.
         """
-        # Templates plus naturels et adaptés au contexte
+        # Templates plus naturels et adaptés au contexte avec leurs traductions
         templates = {
             'verbs': {
                 'middle': [
-                    "Die Kinder ____ im Garten.",
-                    "Wir ____ gerne zusammen.",
-                    "Sie ____ jeden Tag zur Arbeit."
+                    {
+                        'de': "Die Kinder ____ im Garten.",
+                        'de_solution': "Die Kinder gehen im Garten.",
+                        'fr_solution': "Les enfants marchent dans le jardin."
+                    },
+                    {
+                        'de': "Wir ____ gerne zusammen.",
+                        'de_solution': "Wir gehen gerne zusammen.",
+                        'fr_solution': "Nous aimons marcher ensemble."
+                    }
                 ],
                 'end': [
-                    "Die Musik können wir nicht ____.",
-                    "Ich möchte maintenant ____.",
-                    "Er will nach Hause ____."
+                    {
+                        'de': "Die Musik können wir nicht ____.",
+                        'de_solution': "Die Musik können wir nicht gehen.",
+                        'fr_solution': "Nous ne pouvons pas aller à la musique."
+                    },
+                    {
+                        'de': "Er will nach Hause ____.",
+                        'de_solution': "Er will nach Hause gehen.",
+                        'fr_solution': "Il veut rentrer à la maison."
+                    }
                 ]
             },
             'nouns': {
                 'middle': [
-                    "Der ____ steht im Wohnzimmer.",
-                    "Eine ____ liegt auf dem Tisch.",
-                    "Das ____ ist sehr intéressant."
+                    {
+                        'de': "Der ____ steht im Wohnzimmer.",
+                        'de_solution': "Der {} steht im Wohnzimmer.",
+                        'fr_solution': "Le {} est dans le salon."
+                    },
+                    {
+                        'de': "Eine ____ liegt auf dem Tisch.",
+                        'de_solution': "Eine {} liegt auf dem Tisch.",
+                        'fr_solution': "Un {} est sur la table."
+                    }
                 ],
                 'end': [
-                    "Ich suche meinen ____.",
-                    "Wir brauchen einen ____.",
-                    "Sie kauft heute une ____."
-                ]
-            },
-            'adjectives': {
-                'middle': [
-                    "Das ____ Haus gefällt mir.",
-                    "Der ____ Tag war anstrengend.",
-                    "Eine ____ Katze schläft dort."
-                ],
-                'end': [
-                    "Das Wetter est aujourd'hui ____.",
-                    "Die Suppe schmeckt très ____.",
-                    "Der Film war vraiment ____."
+                    {
+                        'de': "Ich suche meinen ____.",
+                        'de_solution': "Ich suche meinen {}.",
+                        'fr_solution': "Je cherche mon {}."
+                    },
+                    {
+                        'de': "Wir brauchen einen ____.",
+                        'de_solution': "Wir brauchen einen {}.",
+                        'fr_solution': "Nous avons besoin d'un {}."
+                    }
                 ]
             },
             'prepositions': {
                 'middle': [
-                    "Das Buch liegt ____ dem Tisch.",
-                    "Wir gehen ____ den Park.",
-                    "Die Katze springt ____ das Sofa."
+                    {
+                        'de': "Das Buch liegt ____ dem Tisch.",
+                        'de_solution': "Das Buch liegt {} dem Tisch.",
+                        'fr_solution': "Le livre est {} la table."
+                    },
+                    {
+                        'de': "Wir gehen ____ den Park.",
+                        'de_solution': "Wir gehen {} den Park.",
+                        'fr_solution': "Nous allons {} le parc."
+                    }
                 ]
             },
             'general': {
                 'middle': [
-                    "Ich habe ____ vergessen.",
-                    "Sie hat ____ gekauft.",
-                    "Wir können ____ sehen."
+                    {
+                        'de': "Ich habe ____ gesehen.",
+                        'de_solution': "Ich habe {} gesehen.",
+                        'fr_solution': "J'ai vu {}."
+                    },
+                    {
+                        'de': "Sie hat ____ gekauft.",
+                        'de_solution': "Sie hat {} gekauft.",
+                        'fr_solution': "Elle a acheté {}."
+                    }
                 ],
                 'end': [
-                    "Das gefällt mir sehr ____.",
-                    "Ich verstehe das ____.",
-                    "Hier kommt der ____."
+                    {
+                        'de': "Das gefällt mir sehr ____.",
+                        'de_solution': "Das gefällt mir sehr {}.",
+                        'fr_solution': "Cela me plaît beaucoup {}."
+                    },
+                    {
+                        'de': "Ich verstehe das ____.",
+                        'de_solution': "Ich verstehe das {}.",
+                        'fr_solution': "Je comprends le {}."
+                    }
                 ]
             }
         }
 
-        # Détermine la catégorie du mot (simplifié)
+        # Détermine la catégorie du mot
         if word.endswith('en'):
             word_type = 'verbs'
         elif word.startswith(('der', 'die', 'das', 'ein', 'eine')):
             word_type = 'nouns'
-        elif len(word) <= 4:  # Hypothèse simple pour les prépositions
+        elif len(word) <= 4:
             word_type = 'prepositions'
         else:
             word_type = 'general'
@@ -291,20 +328,18 @@ class VocabularyProcessor:
         
         # Au moins un exemple de chaque position disponible
         for position in word_templates.keys():
-            if position in ['middle', 'end']:  # On évite les positions 'start' car moins naturelles
+            if position in ['middle', 'end']:  # On évite les positions 'start'
                 template = random.choice(word_templates[position])
+                # Format solutions with the actual word
+                de_solution = template['de_solution'].format(word) if '{}' in template['de_solution'] else template['de_solution']
+                fr_solution = template['fr_solution'].format(translation) if '{}' in template['fr_solution'] else template['fr_solution']
+                
                 selected_examples.append({
-                    'sentence': template.replace('____', '___'),  # Uniformise les blancs
-                    'hint': f"Le mot manquant est {position=='middle' and 'au milieu' or 'à la fin'}"
-                })
-        
-        # Ajoute un exemple supplémentaire au hasard si nécessaire
-        if len(selected_examples) < 3:
-            position = random.choice(['middle', 'end'])
-            if position in word_templates:
-                template = random.choice(word_templates[position])
-                selected_examples.append({
-                    'sentence': template.replace('____', '___'),
+                    'sentence': template['de'].replace('____', '___'),
+                    'solution': {
+                        'de': de_solution,
+                        'fr': fr_solution
+                    },
                     'hint': f"Le mot manquant est {position=='middle' and 'au milieu' or 'à la fin'}"
                 })
 
@@ -316,6 +351,7 @@ class VocabularyProcessor:
                         'de': example['sentence'],
                         'fr': f"Complétez la phrase avec le mot '{translation}' ({example['hint']})"
                     },
+                    'solution': example['solution'],
                     'context': example['hint']
                 }
                 for example in selected_examples
