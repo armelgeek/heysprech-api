@@ -171,27 +171,70 @@ class VocabularyProcessor:
         """Génère un exemple simple d'utilisation"""
         tokenizer_de_fr, model_de_fr = self.models['de_fr']
         
-        # Templates simples prédéfinis
-        simple_templates = [
-            f"Das ist ein {word}.",
-            f"Ich habe einen {word}.",
-            f"Der {word} ist schön.",
-            f"Wir brauchen {word}.",
-            f"Mein {word} ist neu.",
-            f"Ich kaufe {word}.",
-            f"Der {word} gehört mir."
-        ]
+        # Templates adaptés selon le type de mot
+        templates = {
+            'verbs': [  # Pour les verbes
+                "Ich {} jeden Tag zur Arbeit.",
+                "Die Kinder {} gerne im Park.",
+                "Wir {} aujourd'hui ins Kino.",
+                "Sie {} morgen nach Berlin."
+            ],
+            'nouns': [  # Pour les noms
+                "Das {} ist sehr schön.",
+                "Ich habe ein neues {} acheté.",
+                "Mein {} est dans la cuisine.",
+                "Das {} gefällt mir beaucoup."
+            ],
+            'time_words': [  # Pour les mots temporels comme "heute"
+                "Nous allons {} au restaurant.",
+                "{} fait beau aujourd'hui.",
+                "J'ai {} beaucoup à faire.",
+                "{} je rencontre mes amis."
+            ],
+            'prepositions': [  # Pour les prépositions
+                "Le livre est {} la table.",
+                "Le chat saute {} le canapé.",
+                "Nous allons {} le parc.",
+                "Le stylo est {} le tiroir."
+            ],
+            'pronouns': [  # Pour les pronoms
+                "{} va à l'école.",
+                "{} travaille beaucoup.",
+                "Je vois {} tous les jours.",
+                "{} vient d'Allemagne."
+            ],
+            'general': [  # Pour les autres types de mots
+                "C'est très {}.",
+                "Je trouve ça {}.",
+                "Il fait {} ici.",
+                "Ça coûte {}."
+            ]
+        }
         
         try:
-            # Choisir un template au hasard
-            german_sentence = random.choice(simple_templates)
+            # Déterminer le type de mot
+            word_type = 'general'
+            if word.endswith('en'):
+                word_type = 'verbs'
+            elif word in ['heute', 'morgen', 'jetzt', 'später']:
+                word_type = 'time_words'
+            elif word.startswith(('der', 'die', 'das', 'ein', 'eine')):
+                word_type = 'nouns'
+            elif len(word) <= 4 and word in ['in', 'auf', 'mit', 'bei', 'zu', 'aus', 'von', 'nach', 'ins']:
+                word_type = 'prepositions'
+            elif word in ['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'sie', 'Sie']:
+                word_type = 'pronouns'
+            
+            # Choisir et formater le template
+            template = random.choice(templates[word_type])
+            german_sentence = template.format(word)
             
             # Traduire en français
             inputs = tokenizer_de_fr(german_sentence, return_tensors="pt", padding=True)
             outputs = model_de_fr.generate(
                 inputs.input_ids,
-                max_length=30,
-                num_beams=3,
+                max_length=50,
+                num_beams=5,
                 temperature=0.3
             )
             french_sentence = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
@@ -203,9 +246,10 @@ class VocabularyProcessor:
             
         except Exception as e:
             print(f"Erreur génération exemple pour '{word}': {e}")
+            # Fallback avec une phrase simple mais correcte
             return {
-                'de': f"Das ist {word}.",
-                'fr': f"C'est {word}."
+                'de': f"Das Wort '{word}' ist sehr nützlich.",
+                'fr': f"Le mot '{word}' est très utile."
             }
     
     def create_fill_blank_exercise(self, word: str, translation: str) -> Dict:
