@@ -156,6 +156,171 @@ def load_models():
         'gpt': (tokenizer_gpt, model_gpt)
     }
 
+def generate_contextual_prompts(word, word_type=None, models=None):
+    """
+    Génère des prompts contextuels intelligents pour un mot allemand
+    selon son type grammatical avec des complétions de haute qualité.
+    """
+    # Analyser le type de mot si non fourni
+    word_type = word_type if word_type else analyze_word_class(word, models)
+    word_info = word_type.get('de', '').lower() if word_type else ''
+    
+    # Prompts optimisés selon le type de mot
+    if 'verb' in word_info:
+        prompts = [
+            {
+                'start': f"Man kann {word}",
+                'context': "capacité/possibilité",
+                'completion_hint': "complément d'objet + circonstanciel de lieu/temps"
+            },
+            {
+                'start': f"Ich möchte {word}",
+                'context': "désir/intention",
+                'completion_hint': "but ou destination avec 'um zu' ou préposition"
+            },
+            {
+                'start': f"Wir {word} zusammen",
+                'context': "action collective",
+                'completion_hint': "activité partagée + détails temporels"
+            },
+            {
+                'start': f"Sie {word} jeden Tag",
+                'context': "habitude quotidienne",
+                'completion_hint': "routine avec détails de lieu/manière"
+            }
+        ]
+        
+    elif 'substantiv' in word_info or 'nomen' in word_info:
+        # Déterminer le genre probable pour les articles
+        articles = ['das', 'die', 'der']
+        prompts = [
+            {
+                'start': f"Das {word} ist",
+                'context': "description/état",
+                'completion_hint': "adjectifs descriptifs + détails"
+            },
+            {
+                'start': f"Ich brauche ein {word}",
+                'context': "besoin/nécessité",
+                'completion_hint': "raison ou usage avec 'für' ou 'um zu'"
+            },
+            {
+                'start': f"Mit dem {word}",
+                'context': "instrument/moyen",
+                'completion_hint': "action réalisée + résultat/but"
+            },
+            {
+                'start': f"Ohne {word}",
+                'context': "absence/manque",
+                'completion_hint': "conséquence ou difficulté"
+            }
+        ]
+        
+    elif 'adjektiv' in word_info:
+        prompts = [
+            {
+                'start': f"Es ist sehr {word}",
+                'context': "intensité/degré",
+                'completion_hint': "conséquence ou comparaison"
+            },
+            {
+                'start': f"Das Wetter wird {word}",
+                'context': "changement/évolution",
+                'completion_hint': "prédiction temporelle + détails"
+            },
+            {
+                'start': f"Sie fühlt sich {word}",
+                'context': "état émotionnel",
+                'completion_hint': "cause avec 'weil' ou 'da'"
+            },
+            {
+                'start': f"Etwas so {word}",
+                'context': "comparaison/exemple",
+                'completion_hint': "exemple concret ou métaphore"
+            }
+        ]
+        
+    elif 'adverb' in word_info:
+        prompts = [
+            {
+                'start': f"Er arbeitet {word}",
+                'context': "manière d'agir",
+                'completion_hint': "résultat ou conséquence de cette manière"
+            },
+            {
+                'start': f"{word.capitalize()} passiert etwas",
+                'context': "circonstance temporelle",
+                'completion_hint': "événement spécifique"
+            }
+        ]
+        
+    else:
+        # Prompts génériques pour mots non classifiés
+        prompts = [
+            {
+                'start': f"Hier ist {word}",
+                'context': "présentation/localisation",
+                'completion_hint': "description ou explication"
+            },
+            {
+                'start': f"Das bedeutet {word}",
+                'context': "explication/définition",
+                'completion_hint': "clarification ou exemple"
+            },
+            {
+                'start': f"Mit {word}",
+                'context': "accompagnement/moyen",
+                'completion_hint': "action ou résultat"
+            }
+        ]
+    
+    return prompts
+
+def generate_quality_completion(prompt_data, word, ai_model):
+    """
+    Génère une complétion de haute qualité pour un prompt donné.
+    """
+    system_prompt = f"""
+    Tu es un expert en langue allemande. Complète la phrase de manière naturelle et grammaticalement correcte.
+    
+    Critères obligatoires :
+    - 8-20 mots maximum pour la complétion
+    - Grammaire parfaite (cas, genre, conjugaisons)
+    - Style naturel qu'utiliserait un natif
+    - Contexte cohérent : {prompt_data['context']}
+    - Guide : {prompt_data['completion_hint']}
+    
+    Évite : les clichés, répétitions, phrases trop simples
+    Privilégie : structures variées, vocabulaire riche, situations réalistes
+    """
+    
+    user_prompt = f"Complète cette phrase allemande : '{prompt_data['start']}'"
+    
+    # Appel au modèle IA (à adapter selon votre implémentation)
+    completion = ai_model.generate(system_prompt, user_prompt)
+    
+    return {
+        'full_sentence': f"{prompt_data['start']} {completion}",
+        'completion': completion,
+        'context': prompt_data['context'],
+        'word_focus': word
+    }
+
+# Exemple d'utilisation améliorée
+def enhanced_text_generation(word, models, num_examples=4):
+    """
+    Génère des exemples de texte de haute qualité pour un mot allemand.
+    """
+    # Obtenir les prompts contextuels
+    prompts = generate_contextual_prompts(word, models=models)
+    
+    # Générer les complétions
+    results = []
+    for prompt_data in prompts[:num_examples]:
+        completion_result = generate_quality_completion(prompt_data, word, models['text_generator'])
+        results.append(completion_result)
+    
+    return results
 def remove_repetitions(text):
     """Supprime les répétitions de phrases et de mots consécutifs"""
     # Nettoie d'abord les répétitions au niveau des phrases
