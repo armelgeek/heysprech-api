@@ -345,19 +345,68 @@ def get_translations(word, models):
     }
     
     try:
-        # Traduction principale
-        inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
-        outputs = model_de_fr.generate(
+        # 1. Obtenir et valider la définition en allemand
+        prompt_def_de = f"Definieren Sie das Wort '{word}' in einem klaren und präzisen Satz:"
+        inputs = tokenizer_gpt(prompt_def_de, return_tensors="pt", padding=True)
+        outputs = model_gpt.generate(
             inputs.input_ids,
-            max_length=20,
+            max_length=50,
             num_beams=3,
             temperature=0.3,
             do_sample=False
         )
+        definition_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
+        if definition_de and len(definition_de.split()) >= 3:  # Validation minimale
+            translations['de']['definition'] = definition_de
+
+        # 2. Obtenir et valider les synonymes en allemand
+        prompt_syn_de = f"Nennen Sie bis zu 5 genaue Synonyme für '{word}' (ein Wort pro Zeile):"
+        inputs = tokenizer_gpt(prompt_syn_de, return_tensors="pt", padding=True)
+        outputs = model_gpt.generate(
+            inputs.input_ids,
+            max_length=50,
+            num_beams=5,
+            temperature=0.7,
+            do_sample=True
+        )
+        synonyms_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+        # Filtrer les synonymes valides
+        translations['de']['synonymes'] = [
+            s.strip() for s in synonyms_de.split('\n')
+            if s.strip() and s.strip().lower() != word.lower()
+        ][:5]
+
+        # 3. Traduction principale en français avec validation
+        inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
+        outputs = model_de_fr.generate(
+            inputs.input_ids,
+            max_length=20,
+            num_beams=5,  # Augmenté pour une meilleure qualité
+            temperature=0.3,
+            do_sample=False
+        )
         translated = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
-        translations['fr']['principal'] = reformat_french_text(translated, models, context='definition')
-        
-        # Variantes de traduction (5+)
+        formatted_translation = reformat_french_text(translated, models, context='definition')
+        if formatted_translation:
+            translations['fr']['principal'] = formatted_translation
+
+        # 4. Traduction de la définition allemande en français
+        if translations['de']['definition']:
+            inputs = tokenizer_de_fr(translations['de']['definition'], return_tensors="pt", padding=True)
+            outputs = model_de_fr.generate(
+                inputs.input_ids,
+                max_length=100,  # Augmenté pour les définitions plus longues
+                num_beams=5,
+                temperature=0.3,
+                do_sample=False
+            )
+            translated_def = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+            formatted_def = reformat_french_text(translated_def, models, context='definition')
+            if formatted_def:
+                translations['fr']['definition'] = formatted_def
+
+        # 5. Générer des variantes de traduction en français
+        seen_translations = {translations['fr']['principal']}
         outputs = model_de_fr.generate(
             inputs.input_ids,
             max_length=20,
@@ -366,56 +415,43 @@ def get_translations(word, models):
             top_k=50,
             top_p=0.95,
             do_sample=True,
-            diversity_penalty=0.5  # Pour encourager la diversité
+            diversity_penalty=0.8  # Augmenté pour plus de diversité
         )
         
         for output in outputs:
             translation = tokenizer_de_fr.decode(output, skip_special_tokens=True)
             reformulated = reformat_french_text(translation, models)
-            if reformulated != translations['fr']['principal'] and reformulated not in translations['fr']['variantes']:
+            if reformulated and reformulated not in seen_translations and len(reformulated.split()) >= 1:
                 translations['fr']['variantes'].append(reformulated)
-        
-        # Générer des synonymes en français
-        if translations['principal']:
-            prompt = f"Donnez 5 synonymes du mot français '{translations['fr']['principal']}' (un par ligne):"
-            inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-            outputs = model_gpt.generate(
-                inputs.input_ids,
-                max_length=50,
-                num_beams=5,
-                temperature=0.7,
-                do_sample=True
-            )
-            synonyms_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
-            translations['fr']['synonymes'] = [s.strip() for s in synonyms_text.split('\n') if s.strip()][:5]
+                seen_translations.add(reformulated)
 
-            # Générer une définition en français
-            prompt_def_fr = f"Définissez le mot '{translations['fr']['principal']}' en une phrase claire et concise:"
-            inputs = tokenizer_gpt(prompt_def_fr, return_tensors="pt", padding=True)
-            outputs = model_gpt.generate(
-                inputs.input_ids,
-                max_length=50,
-                num_beams=3,
-                temperature=0.3,
-                do_sample=False
-            )
-            translations['fr']['definition'] = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
-
-            # Générer une définition en allemand
-            prompt_def_de = f"Definieren Sie das Wort '{word}' in einem klaren und präzisen Satz:"
-            inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-            outputs = model_gpt.generate(
-                inputs.input_ids,
-                max_length=50,
-                num_beams=3,
-                temperature=0.3,
-                do_sample=False
-            )
-            translations['de']['definition'] = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
+        # 6. Traduire les synonymes allemands en français
+        translations['fr']['synonymes'] = []
+        for syn in translations['de']['synonymes']:
+            try:
+                inputs = tokenizer_de_fr(syn, return_tensors="pt", padding=True)
+                outputs = model_de_fr.generate(
+                    inputs.input_ids,
+                    max_length=20,
+                    num_beams=5,
+                    temperature=0.3,
+                    do_sample=False
+                )
+                syn_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+                formatted_syn = reformat_french_text(syn_fr, models)
+                if formatted_syn and formatted_syn not in translations['fr']['synonymes']:
+                    translations['fr']['synonymes'].append(formatted_syn)
+            except Exception:
+                continue
 
     except Exception as e:
-        print(f"Erreur lors de la traduction: {e}")
-        translations['fr']['principal'] = word
+        print(f"Erreur lors de la traduction de '{word}': {e}")
+        if not translations['fr']['principal']:
+            translations['fr']['principal'] = word
+
+    # Validation finale et nettoyage
+    translations['fr']['variantes'] = list(dict.fromkeys(translations['fr']['variantes']))[:5]
+    translations['fr']['synonymes'] = list(dict.fromkeys(translations['fr']['synonymes']))[:5]
     
     return translations
 
@@ -1009,13 +1045,3 @@ Assurez-vous que la formulation soit claire et correcte grammaticalement."""
     except Exception as e:
         print(f"Erreur lors de la reformulation: {e}")
         return text
-
-if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        print("\nOpération interrompue par l'utilisateur")
-        sys.exit(1)
-    except Exception as e:
-        print(f"Une erreur est survenue: {e}", file=sys.stderr)
-        sys.exit(1)
