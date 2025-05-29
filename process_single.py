@@ -181,12 +181,12 @@ def generate_example_sentences(word, models):
     tokenizer_de_fr, model_de_fr = models['de_fr']
     examples = []
     
-    # Prompts pour quatre phrases différentes
+    # Prompts pour quatre phrases différentes avec structures standard
     prompts = [
-        f"Ich {word} ein Mann",      # Premier exemple avec complément
-        f"Ich {word}",               # Deuxième exemple minimaliste
-        f"Er {word} gestern",        # Troisième exemple avec temps
-        f"Sie {word} heute gern"     # Quatrième exemple avec adverbe
+        f"Ich bin {word}, weil",      # Premier exemple avec cause
+        f"Heute {word} wir",          # Deuxième exemple au présent
+        f"Er hat {word}, dass",       # Troisième exemple avec subordonnée
+        f"Sie werden {word}, wenn"     # Quatrième exemple avec condition
     ]
     
     for prompt in prompts:
@@ -195,10 +195,11 @@ def generate_example_sentences(word, models):
             inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
             outputs = model_gpt.generate(
                 inputs.input_ids,
-                max_length=10,  # Très court pour des phrases simples
-                num_beams=3,
-                temperature=0.3,
-                do_sample=False  # Pas d'échantillonnage pour plus de cohérence
+                max_length=30,  # Plus long pour des phrases complètes
+                num_beams=5,    # Plus de beams pour une meilleure qualité
+                temperature=0.7, # Plus de créativité
+                no_repeat_ngram_size=2,  # Éviter les répétitions
+                do_sample=True  # Échantillonnage pour plus de variété
             )
             german = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
             if not german.endswith('.'):
