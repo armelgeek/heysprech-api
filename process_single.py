@@ -261,10 +261,11 @@ def analyze_word_class(word, models):
             temperature=0.3
         )
         analysis_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+        reformulated_fr = reformat_french_text(analysis_fr, models)
         
         return {
             'de': analysis,
-            'fr': analysis_fr
+            'fr': reformulated_fr
         }
     except Exception as e:
         print(f"Erreur lors de l'analyse grammaticale de '{word}': {e}")
@@ -290,10 +291,11 @@ def get_lexical_info(word, prompt_key, models):
         inputs = tokenizer_de_fr(info, return_tensors="pt", padding=True)
         outputs = model_de_fr.generate(**inputs)
         info_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+        reformulated_fr = reformat_french_text(info_fr, models)
         
         return {
             'de': info,
-            'fr': info_fr
+            'fr': reformulated_fr
         }
     except Exception as e:
         print(f"Erreur lors de la récupération des informations '{prompt_key}' pour '{word}': {e}")
@@ -336,7 +338,8 @@ def get_translations(word, models):
             temperature=0.3,
             do_sample=False
         )
-        translations['principal'] = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+        translated = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+        translations['fr']['principal'] = reformat_french_text(translated, models)
         
         # Variantes de traduction (5+)
         outputs = model_de_fr.generate(
@@ -352,12 +355,13 @@ def get_translations(word, models):
         
         for output in outputs:
             translation = tokenizer_de_fr.decode(output, skip_special_tokens=True)
-            if translation != translations['principal'] and translation not in translations['variantes']:
-                translations['variantes'].append(translation)
+            reformulated = reformat_french_text(translation, models)
+            if reformulated != translations['fr']['principal'] and reformulated not in translations['fr']['variantes']:
+                translations['fr']['variantes'].append(reformulated)
         
         # Générer des synonymes en français
         if translations['principal']:
-            prompt = f"Donnez 5 synonymes du mot français '{translations['principal']}' (un par ligne):"
+            prompt = f"Donnez 5 synonymes du mot français '{translations['fr']['principal']}' (un par ligne):"
             inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
             outputs = model_gpt.generate(
                 inputs.input_ids,
@@ -734,6 +738,41 @@ def extract_stress_position(text):
             return 'last'
         return position
     return None
+
+def reformat_french_text(text, models):
+    """Reformule un texte français pour le rendre plus naturel
+    
+    Args:
+        text: Le texte français à reformuler
+        models: Les modèles de traduction
+        
+    Returns:
+        str: Le texte reformulé
+    """
+    tokenizer_gpt, model_gpt = models['gpt']
+    
+    try:
+        # Prompt pour reformulation
+        prompt = f"Reformulez cette phrase en français naturel et élégant: '{text}'"
+        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+        outputs = model_gpt.generate(
+            inputs.input_ids,
+            max_length=len(text) + 50,  # Un peu plus long que l'original
+            num_beams=5,
+            temperature=0.3,  # Température basse pour rester fidèle
+            do_sample=False
+        )
+        reformulated = model_gpt.decode(outputs[0], skip_special_tokens=True)
+        
+        # Nettoyage du texte reformulé
+        reformulated = reformulated.strip()
+        if reformulated.startswith('"') and reformulated.endswith('"'):
+            reformulated = reformulated[1:-1]
+        
+        return reformulated if reformulated else text
+    except Exception as e:
+        print(f"Erreur lors de la reformulation: {e}")
+        return text
 
 if __name__ == "__main__":
     try:
