@@ -30,6 +30,16 @@ LEXICAL_PROMPTS = {
     'register': "Sprachregister und Verwendungskontext von '{word}':"
 }
 
+# Prompts pour les exercices d'apprentissage
+EXERCISE_PROMPTS = {
+    'fill_blank': "Generiere einen Lückentextsatz mit dem Wort '{word}':",
+    'multiple_choice': "Erstelle Multiple-Choice-Fragen zum Wort '{word}':",
+    'word_association': "Erstelle ein Wortassoziationsspiel mit '{word}':",
+    'scramble': "Erstelle einen Satz mit '{word}' zum Unscrambling:",
+    'context_quiz': "Erstelle Kontextfragen für das Wort '{word}':",
+    'usage_quiz': "Erstelle Verwendungsbeispiele mit '{word}' zum Üben:"
+}
+
 AUDIO_EXTENSIONS = (
     ".opus", ".mp3", ".wav", ".m4a", ".ogg",
     ".flac", ".aac", ".aiff", ".wma"
@@ -266,10 +276,105 @@ def create_lexical_entry(word, models):
         'synonyms': get_lexical_info(word, 'synonyms', models),
         'antonyms': get_lexical_info(word, 'antonyms', models),
         'register': get_lexical_info(word, 'register', models),
-        'examples': generate_example_sentences(word, models)
+        'examples': generate_example_sentences(word, models),
+        'exercises': generate_exercises(word, models)
     }
     
     return entry
+
+def format_exercise(exercise_type, exercise_text, word):
+    """Formate l'exercice selon son type"""
+    if exercise_type == 'multiple_choice':
+        # Format attendu: Question\nA) réponse1\nB) réponse2\nC) réponse3\nD) réponse4\nCorrect: X
+        lines = exercise_text.split('\n')
+        if len(lines) >= 5:  # Au moins une question et 4 choix
+            return {
+                'question': lines[0],
+                'choices': [
+                    {'id': 'A', 'text': lines[1][3:] if lines[1].startswith('A)') else lines[1]},
+                    {'id': 'B', 'text': lines[2][3:] if lines[2].startswith('B)') else lines[2]},
+                    {'id': 'C', 'text': lines[3][3:] if lines[3].startswith('C)') else lines[3]},
+                    {'id': 'D', 'text': lines[4][3:] if lines[4].startswith('D)') else lines[4]}
+                ],
+                'correct_answer': 'B'  # Par défaut, la bonne réponse est la traduction correcte
+            }
+    elif exercise_type == 'fill_blank':
+        # Format: Phrase avec ___ pour le mot manquant
+        return {
+            'sentence': exercise_text.replace(word, '___'),
+            'answer': word
+        }
+    elif exercise_type == 'scramble':
+        # Format: Mots mélangés | Phrase correcte
+        if '|' in exercise_text:
+            scrambled, correct = exercise_text.split('|')
+            return {
+                'scrambled_words': scrambled.strip().split(),
+                'correct_sentence': correct.strip()
+            }
+    elif exercise_type == 'word_association':
+        # Format: mot1:catégorie1, mot2:catégorie2, etc.
+        pairs = [pair.strip() for pair in exercise_text.split(',')]
+        return {
+            'pairs': [{'word': p.split(':')[0].strip(), 'category': p.split(':')[1].strip()} 
+                     for p in pairs if ':' in p]
+        }
+    elif exercise_type == 'context_quiz':
+        # Format: Question?|Réponse correcte
+        if '|' in exercise_text:
+            question, answer = exercise_text.split('|')
+            return {
+                'question': question.strip(),
+                'correct_answer': answer.strip()
+            }
+    
+    # Format par défaut
+    return {'text': exercise_text}
+
+def generate_exercises(word, models):
+    """Génère différents exercices pour l'apprentissage du mot"""
+    tokenizer_gpt, model_gpt = models['gpt']
+    tokenizer_de_fr, model_de_fr = models['de_fr']
+    exercises = {}
+    
+    # Génération des différents types d'exercices
+    for exercise_type, prompt in EXERCISE_PROMPTS.items():
+        try:
+            # Génération de l'exercice en allemand
+            full_prompt = prompt.format(word=word)
+            inputs = tokenizer_gpt(full_prompt, return_tensors="pt", padding=True)
+            outputs = model_gpt.generate(
+                inputs.input_ids,
+                max_length=200,
+                num_beams=5,
+                temperature=0.8,
+                top_k=50,
+                top_p=0.95,
+                do_sample=True
+            )
+            exercise_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+            
+            # Traduction en français
+            inputs = tokenizer_de_fr(exercise_de, return_tensors="pt", padding=True)
+            outputs = model_de_fr.generate(**inputs)
+            exercise_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+            
+            # Formatage structuré des exercices
+            formatted_de = format_exercise(exercise_type, exercise_de, word)
+            formatted_fr = format_exercise(exercise_type, exercise_fr, 
+                                        get_translations(word, models)['fr'])
+            
+            exercises[exercise_type] = {
+                'de': formatted_de,
+                'fr': formatted_fr,
+                'type': exercise_type
+            }
+            
+        except Exception as e:
+            print(f"Erreur lors de la génération de l'exercice '{exercise_type}' pour '{word}': {e}")
+            exercises[exercise_type] = None
+    
+    return exercises
 
 def main():
     parser = argparse.ArgumentParser(
