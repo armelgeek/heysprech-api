@@ -96,20 +96,12 @@
       },
       "examples": [
         {
-          "de": "Ich gehen gern in die Schule, aber ich habe Angst, dass ich mich.",
-          "fr": "J'aime aller à l'école, mais j'ai peur d'être moi-même."
+          "de": "Ich gehen.",
+          "fr": "Je suis."
         },
         {
-          "de": "Das gehen ist gut, aber es ist nicht so einfach, wie es scheint.",
-          "fr": "Ça marche bien, mais ce n'est pas aussi simple qu'il semble."
-        },
-        {
-          "de": "Wir haben gehen, um zu sehen, was wir tun können, und wir.",
-          "fr": "On va voir ce qu'on peut faire, et nous."
-        },
-        {
-          "de": "Er gehen heute in die Schule, und ich habe keine Ahnung, was ich.",
-          "fr": "Il va à l'école aujourd'hui, et je n'ai aucune idée de ce que j'ai."
+          "de": "Ich gehen.",
+          "fr": "Je suis."
         }
       ],
       "exercises": {
@@ -128,25 +120,25 @@
           },
           {
             "de": {
-              "text": "Wenn Sie den __ ____ in den Wald ____, werden Sie feststellen, dass der Wald sehr schön ist. Es gibt viele Bäume und Sträucher,",
+              "text": "Wenn Sie mit dem Auto unterwegs sind, ist es wichtig, dass Sie die Möglichkeit haben, die Straße zu überqueren.\nWenn Sie mit dem Fahrrad",
               "answer": "gehen",
-              "complete_sentence": "Wenn Sie den __ gehen in den Wald gehen, werden Sie feststellen, dass der Wald sehr schön ist. Es gibt viele Bäume und Sträucher,"
+              "complete_sentence": "Wenn Sie mit dem Auto unterwegs sind, ist es wichtig, dass Sie die Möglichkeit haben, die Straße zu überqueren.\nWenn Sie mit dem Fahrrad"
             },
             "fr": {
-              "text": "Si vous allez dans la forêt __, vous remarquerez que la forêt est très belle. Il y a beaucoup d'arbres et d'arbustes,",
-              "translation": "Si vous allez dans la forêt __, vous remarquerez que la forêt est très belle. Il y a beaucoup d'arbres et d'arbustes,",
+              "text": "Si vous voyagez en voiture, il est important que vous ayez la possibilité de traverser la rue.",
+              "translation": "Si vous voyagez en voiture, il est important que vous ayez la possibilité de traverser la rue.",
               "instruction": "Complétez avec le mot allemand pour 'gehen'"
             }
           },
           {
             "de": {
-              "text": "Wenn ja, wie? Wenn nein, wie? Wenn nein, wie? Wenn nein, wie? Wenn nein, wie? Wenn nein, wie?",
+              "text": "Wenn du den __ ____ gibst, dann kannst du mir den __ ____ geben. Wenn du den __ ____ gibst, dann kannst du",
               "answer": "gehen",
-              "complete_sentence": "Wenn ja, wie? Wenn nein, wie? Wenn nein, wie? Wenn nein, wie? Wenn nein, wie? Wenn nein, wie?"
+              "complete_sentence": "Wenn du den __ gehen gibst, dann kannst du mir den __ gehen geben. Wenn du den __ gehen gibst, dann kannst du"
             },
             "fr": {
-              "text": "Si oui, comment? Si non, comment? Si non, comment? Si non, comment? Si non, comment? Si non, comment? Si non, comment?",
-              "translation": "Si oui, comment? Si non, comment? Si non, comment? Si non, comment? Si non, comment? Si non, comment? Si non, comment?",
+              "text": "Si tu donnes le ___ aller, tu peux me donner le __ aller. Si tu donnes le __ aller, alors tu peux",
+              "translation": "Si tu donnes le ___ aller, tu peux me donner le __ aller. Si tu donnes le __ aller, alors tu peux",
               "instruction": "Complétez avec le mot allemand pour 'gehen'"
             }
           }
@@ -155,23 +147,23 @@
           "de": {
             "question": "Was bedeutet das Wort 'gehen' auf Französisch?",
             "choices": [
-              "A) voiture",
-              "B) aller",
+              "A) aller",
+              "B) maison",
               "C) livre",
-              "D) maison"
+              "D) voiture"
             ],
-            "answer": "B",
+            "answer": "A",
             "explanation": "'gehen' bedeutet 'aller' auf Französisch."
           },
           "fr": {
             "question": "Que signifie le mot allemand 'gehen' ?",
             "choices": [
-              "A) voiture",
-              "B) aller",
+              "A) aller",
+              "B) maison",
               "C) livre",
-              "D) maison"
+              "D) voiture"
             ],
-            "answer": "B",
+            "answer": "A",
             "explanation": "'gehen' signifie 'aller' en français."
           }
         },
@@ -244,57 +236,49 @@
       },
       "examples": [
         {
-          "de": "Ich heute gern ein paar Worte verlieren, denn ich bin ein großer Fan von.",
-          "fr": "J'aime perdre quelques mots aujourd'hui, parce que je suis un grand fan de."
+          "de": "Ich heute.",
+          "fr": "Je suis."
         },
         {
-          "de": "Das heute ist gut gelaufen. Ich bin sehr zufrieden mit dem Ergebnis. Die.",
-          "fr": "Aujourd'hui, ça s'est bien passé, je suis très satisfait du résultat."
-        },
-        {
-          "de": "Wir haben heute den ersten Teil unserer neuen Serie über das Thema „Bauen.",
-          "fr": "Aujourd'hui, nous avons la première partie de notre nouvelle série sur la construction."
-        },
-        {
-          "de": "Er heute heute noch, dass es sich dabei um eine der ältesten und ältesten.",
-          "fr": "Aujourd'hui encore, il s'agit d'une des plus anciennes et les plus anciennes."
+          "de": "Ich heute.",
+          "fr": "Je suis."
         }
       ],
       "exercises": {
         "fill_blank": [
           {
             "de": {
-              "text": "Heute habe ich __ ____ gekauft. Heute habe ich __ ____ gekauft. Heute habe ich __ ____ gekauft. Heute habe ich __ ____",
+              "text": "Heute habe ich __ morgen. Heute habe ich __ morgen. Heute habe ich __ morgen. Heute habe ich __ morgen. Heute habe",
               "answer": "heute",
-              "complete_sentence": "Heute habe ich __ heute gekauft. Heute habe ich __ heute gekauft. Heute habe ich __ heute gekauft. Heute habe ich __ heute"
+              "complete_sentence": "Heute habe ich __ morgen. Heute habe ich __ morgen. Heute habe ich __ morgen. Heute habe ich __ morgen. Heute habe"
             },
             "fr": {
-              "text": "Aujourd'hui, j'ai acheté __ aujourd'hui. Aujourd'hui, j'ai acheté __ aujourd'hui. Aujourd'hui, j'ai acheté __ aujourd'hui.",
-              "translation": "Aujourd'hui, j'ai acheté __ aujourd'hui. Aujourd'hui, j'ai acheté __ aujourd'hui. Aujourd'hui, j'ai acheté __ aujourd'hui.",
+              "text": "Aujourd'hui j'ai __ demain. Aujourd'hui j'ai __ demain. Aujourd'hui j'ai __ demain. Aujourd'hui, j'ai __ demain. Aujourd'hui",
+              "translation": "Aujourd'hui j'ai __ demain. Aujourd'hui j'ai __ demain. Aujourd'hui j'ai __ demain. Aujourd'hui, j'ai __ demain. Aujourd'hui",
               "instruction": "Complétez avec le mot allemand pour 'heute'"
             }
           },
           {
             "de": {
-              "text": "Es ist ein Tag, an dem Sie sich entspannen und die Seele baumeln lassen können. Es ist ein Tag, an dem Sie sich einfach nur entspannen und",
+              "text": "Sie können ihn auch auf andere Art und Weise verwenden. Sie können ihn auch auf andere Art und Weise verwenden. Sie können ihn auch auf andere Art und",
               "answer": "heute",
-              "complete_sentence": "Es ist ein Tag, an dem Sie sich entspannen und die Seele baumeln lassen können. Es ist ein Tag, an dem Sie sich einfach nur entspannen und"
+              "complete_sentence": "Sie können ihn auch auf andere Art und Weise verwenden. Sie können ihn auch auf andere Art und Weise verwenden. Sie können ihn auch auf andere Art und"
             },
             "fr": {
-              "text": "C'est un jour où vous pouvez vous détendre et laisser l'âme se détendre. C'est un jour où vous pouvez simplement vous détendre et vous détendre.",
-              "translation": "C'est un jour où vous pouvez vous détendre et laisser l'âme se détendre. C'est un jour où vous pouvez simplement vous détendre et vous détendre.",
+              "text": "Vous pouvez également l'utiliser d'une autre manière. Vous pouvez également l'utiliser d'une autre manière.",
+              "translation": "Vous pouvez également l'utiliser d'une autre manière. Vous pouvez également l'utiliser d'une autre manière.",
               "instruction": "Complétez avec le mot allemand pour 'heute'"
             }
           },
           {
             "de": {
-              "text": "Ich habe ____ den __ ____ gegeben. Ich habe ____ den __ ____ gegeben. Ich habe ____ den __ ____ gegeben. Ich habe",
+              "text": "Ich bin ein Mann, Ich bin eine Frau, Ich bin ein Mann, Ich bin ein Mann, Ich bin ein Mann, Ich bin ein Mann",
               "answer": "heute",
-              "complete_sentence": "Ich habe heute den __ heute gegeben. Ich habe heute den __ heute gegeben. Ich habe heute den __ heute gegeben. Ich habe"
+              "complete_sentence": "Ich bin ein Mann, Ich bin eine Frau, Ich bin ein Mann, Ich bin ein Mann, Ich bin ein Mann, Ich bin ein Mann"
             },
             "fr": {
-              "text": "J'ai donné aujourd'hui le ____ aujourd'hui. J'ai donné aujourd'hui le ____ aujourd'hui. J'ai donné aujourd'hui le ____ aujourd'hui.",
-              "translation": "J'ai donné aujourd'hui le ____ aujourd'hui. J'ai donné aujourd'hui le ____ aujourd'hui. J'ai donné aujourd'hui le ____ aujourd'hui.",
+              "text": "Je suis un homme, Je suis une femme, Je suis un homme, Je suis un homme, Je suis un homme, Je suis un homme",
+              "translation": "Je suis un homme, Je suis une femme, Je suis un homme, Je suis un homme, Je suis un homme, Je suis un homme",
               "instruction": "Complétez avec le mot allemand pour 'heute'"
             }
           }
@@ -303,23 +287,23 @@
           "de": {
             "question": "Was bedeutet das Wort 'heute' auf Französisch?",
             "choices": [
-              "A) voiture",
-              "B) Aujourd'hui",
-              "C) livre",
-              "D) maison"
+              "A) Aujourd'hui",
+              "B) voiture",
+              "C) maison",
+              "D) livre"
             ],
-            "answer": "B",
+            "answer": "A",
             "explanation": "'heute' bedeutet 'Aujourd'hui' auf Französisch."
           },
           "fr": {
             "question": "Que signifie le mot allemand 'heute' ?",
             "choices": [
-              "A) voiture",
-              "B) Aujourd'hui",
-              "C) livre",
-              "D) maison"
+              "A) Aujourd'hui",
+              "B) voiture",
+              "C) maison",
+              "D) livre"
             ],
-            "answer": "B",
+            "answer": "A",
             "explanation": "'heute' signifie 'Aujourd'hui' en français."
           }
         },
@@ -392,20 +376,12 @@
       },
       "examples": [
         {
-          "de": "Ich ins gern, aber ich habe keine Lust, mich mit einem Mann zu.",
-          "fr": "J'aimerais bien, mais je n'ai pas envie de sortir avec un homme."
+          "de": "Ich ins.",
+          "fr": "Je suis."
         },
         {
-          "de": "Das ins ist gut so, denn es ist nicht nur eine Frage der Zeit.",
-          "fr": "C'est une bonne chose, car ce n'est pas seulement une question de temps."
-        },
-        {
-          "de": "Wir haben ins Leben gerufen, weil es uns wichtig ist, dass die Menschen.",
-          "fr": "Nous avons créé parce qu'il est important pour nous que les gens."
-        },
-        {
-          "de": "Er ins heute.de-Forum.\nIch habe mich mal wieder mit.",
-          "fr": "Il va au forum aujourd'hui. Je suis de retour avec lui."
+          "de": "Ich ins.",
+          "fr": "Je suis."
         }
       ],
       "exercises": {
@@ -424,25 +400,25 @@
           },
           {
             "de": {
-              "text": "Der __ ____ ist sehr schön, weil es so schön ist, weil es so schön ist, weil es so schön ist, weil es so",
+              "text": "Wenn Sie sich für eine Immobilie entscheiden, ist es wichtig, dass Sie wissen, was Sie wollen. Wenn Sie sich für eine Immobilie entscheiden, ist",
               "answer": "ins",
-              "complete_sentence": "Der __ ins ist sehr schön, weil es so schön ist, weil es so schön ist, weil es so schön ist, weil es so"
+              "complete_sentence": "Wenn Sie sich für eine Immobilie entscheiden, ist es wichtig, dass Sie wissen, was Sie wollen. Wenn Sie sich für eine Immobilie entscheiden, ist"
             },
             "fr": {
-              "text": "Le __in est très beau parce qu'il est si beau parce qu'il est si beau parce qu'il est si beau",
-              "translation": "Le __in est très beau parce qu'il est si beau parce qu'il est si beau parce qu'il est si beau",
+              "text": "Si vous choisissez une propriété, il est important que vous sachiez ce que vous voulez.",
+              "translation": "Si vous choisissez une propriété, il est important que vous sachiez ce que vous voulez.",
               "instruction": "Complétez avec le mot allemand pour 'ins'"
             }
           },
           {
             "de": {
-              "text": "Ich bin ein Mann, Ich suche eine Frau, mit der ich eine schöne Zeit verbringen kann. Ich bin ein Mann, Ich suche eine Frau,",
+              "text": "Ich habe eine Frage. Ich habe ein Problem, das ich nicht alleine lösen kann. Ich habe ein Problem, das ich nicht alleine lösen kann.",
               "answer": "ins",
-              "complete_sentence": "Ich bin ein Mann, Ich suche eine Frau, mit der ich eine schöne Zeit verbringen kann. Ich bin ein Mann, Ich suche eine Frau,"
+              "complete_sentence": "Ich habe eine Frage. Ich habe ein Problem, das ich nicht alleine lösen kann. Ich habe ein Problem, das ich nicht alleine lösen kann."
             },
             "fr": {
-              "text": "Je suis un homme, Je cherche une femme avec qui je peux passer un bon moment. Je suis un homme, Je cherche une femme,",
-              "translation": "Je suis un homme, Je cherche une femme avec qui je peux passer un bon moment. Je suis un homme, Je cherche une femme,",
+              "text": "J'ai une question, j'ai un problème que je ne peux pas résoudre seule.",
+              "translation": "J'ai une question, j'ai un problème que je ne peux pas résoudre seule.",
               "instruction": "Complétez avec le mot allemand pour 'ins'"
             }
           }
@@ -452,9 +428,9 @@
             "question": "Was bedeutet das Wort 'ins' auf Französisch?",
             "choices": [
               "A) dans la",
-              "B) maison",
-              "C) livre",
-              "D) voiture"
+              "B) voiture",
+              "C) maison",
+              "D) livre"
             ],
             "answer": "A",
             "explanation": "'ins' bedeutet 'dans la' auf Französisch."
@@ -463,9 +439,9 @@
             "question": "Que signifie le mot allemand 'ins' ?",
             "choices": [
               "A) dans la",
-              "B) maison",
-              "C) livre",
-              "D) voiture"
+              "B) voiture",
+              "C) maison",
+              "D) livre"
             ],
             "answer": "A",
             "explanation": "'ins' signifie 'dans la' en français."
@@ -540,20 +516,12 @@
       },
       "examples": [
         {
-          "de": "Ich kino. gern auch mal ein paar Filme, die ich gerne sehen möchte.",
-          "fr": "J'adore les films que j'aimerais voir."
+          "de": "Ich kino..",
+          "fr": "Je suis."
         },
         {
-          "de": "Das kino. ist gut, aber es ist nicht das kino, das ich.",
-          "fr": "Le cinéma. C'est bien, mais ce n'est pas le cinéma que je fais."
-        },
-        {
-          "de": "Wir haben kino.de im Rahmen einer Kooperation mit der Filmakademie Baden-.",
-          "fr": "Nous avons kino.de dans le cadre d'une coopération avec l'Académie de cinéma de Baden-."
-        },
-        {
-          "de": "Er kino. heute, 18:00 Uhr, im Theater am Potsdamer Platz.",
-          "fr": "Il est au cinéma, aujourd'hui, 18 h, au théâtre de la Potsdamer Platz."
+          "de": "Ich kino..",
+          "fr": "Je suis."
         }
       ],
       "exercises": {
@@ -572,25 +540,25 @@
           },
           {
             "de": {
-              "text": "Es ist sehr schön. Es ist sehr schön. Es ist sehr schön. Es ist sehr schön. Es ist sehr schön. Es ist sehr schön.",
+              "text": "Der __ ____ ist sehr schön. Das __ ____ ist sehr schön. Das __ ____ ist sehr schön. Das __ ____ ist",
               "answer": "kino",
-              "complete_sentence": "Es ist sehr schön. Es ist sehr schön. Es ist sehr schön. Es ist sehr schön. Es ist sehr schön. Es ist sehr schön."
+              "complete_sentence": "Der __ kino ist sehr schön. Das __ kino ist sehr schön. Das __ kino ist sehr schön. Das __ kino ist"
             },
             "fr": {
-              "text": "C'est très beau. C'est très beau. C'est très beau. C'est très beau. C'est très beau.",
-              "translation": "C'est très beau. C'est très beau. C'est très beau. C'est très beau. C'est très beau.",
+              "text": "Le __ cinéma est très beau. Le __ cinéma est très beau. Le __ cinéma est très beau.",
+              "translation": "Le __ cinéma est très beau. Le __ cinéma est très beau. Le __ cinéma est très beau.",
               "instruction": "Complétez avec le mot allemand pour 'kino'"
             }
           },
           {
             "de": {
-              "text": "Ich bin ein Mann, Ich suche eine Frau, mit der ich Spaß haben kann. Ich bin ein Mann, Ich suche eine Frau, mit der ich",
+              "text": "Ich habe mir den Film angesehen und muss sagen, dass er mir sehr gut gefallen hat. Ich habe mich sehr gefreut, als ich den Film gesehen",
               "answer": "kino",
-              "complete_sentence": "Ich bin ein Mann, Ich suche eine Frau, mit der ich Spaß haben kann. Ich bin ein Mann, Ich suche eine Frau, mit der ich"
+              "complete_sentence": "Ich habe mir den Film angesehen und muss sagen, dass er mir sehr gut gefallen hat. Ich habe mich sehr gefreut, als ich den Film gesehen"
             },
             "fr": {
-              "text": "Je suis un homme, Je cherche une femme avec qui je peux m'amuser. Je suis un homme, Je cherche une femme avec qui je peux m'amuser",
-              "translation": "Je suis un homme, Je cherche une femme avec qui je peux m'amuser. Je suis un homme, Je cherche une femme avec qui je peux m'amuser",
+              "text": "J'ai regardé le film et je dois dire qu'il m'a beaucoup plu.",
+              "translation": "J'ai regardé le film et je dois dire qu'il m'a beaucoup plu.",
               "instruction": "Complétez avec le mot allemand pour 'kino'"
             }
           }
@@ -599,23 +567,23 @@
           "de": {
             "question": "Was bedeutet das Wort 'kino' auf Französisch?",
             "choices": [
-              "A) cinéma",
-              "B) maison",
-              "C) livre",
-              "D) voiture"
+              "A) maison",
+              "B) voiture",
+              "C) cinéma",
+              "D) livre"
             ],
-            "answer": "A",
+            "answer": "C",
             "explanation": "'kino' bedeutet 'cinéma' auf Französisch."
           },
           "fr": {
             "question": "Que signifie le mot allemand 'kino' ?",
             "choices": [
-              "A) cinéma",
-              "B) maison",
-              "C) livre",
-              "D) voiture"
+              "A) maison",
+              "B) voiture",
+              "C) cinéma",
+              "D) livre"
             ],
-            "answer": "A",
+            "answer": "C",
             "explanation": "'kino' signifie 'cinéma' en français."
           }
         },
@@ -688,20 +656,12 @@
       },
       "examples": [
         {
-          "de": "Ich sie gern wieder sehen, wenn ich mal wieder Zeit habe. Ich bin.",
-          "fr": "J'aimerais la revoir quand j'aurai le temps."
+          "de": "Ich sie.",
+          "fr": "Je suis."
         },
         {
-          "de": "Das sie ist gut, aber ich bin mir nicht sicher, ob sie wirklich.",
-          "fr": "Elle est bonne, mais je ne suis pas sûr qu'elle soit réelle."
-        },
-        {
-          "de": "Wir haben sie in den letzten Jahren immer wieder besucht und sind begeistert von den.",
-          "fr": "Nous lui avons rendu visite ces dernières années et nous en sommes ravis."
-        },
-        {
-          "de": "Er sie heute nicht mehr, weil sie sich nicht an die Regeln gehalten hat.",
-          "fr": "Il ne l'a pas fait aujourd'hui parce qu'elle n'a pas respecté les règles."
+          "de": "Ich sie.",
+          "fr": "Je suis."
         }
       ],
       "exercises": {
@@ -732,13 +692,13 @@
           },
           {
             "de": {
-              "text": "Wenn ja, warum? Wenn nein, warum? Wenn nein, warum? Wenn nein, warum? Wenn nein, warum? Wenn nein, warum?",
+              "text": "Ich bin mir nicht sicher, ob es nicht besser wäre, wenn du den Satz auf natürliche Weise auf natürliche Weise auf natürliche Weise auf natürliche Weise auf",
               "answer": "sie",
-              "complete_sentence": "Wenn ja, warum? Wenn nein, warum? Wenn nein, warum? Wenn nein, warum? Wenn nein, warum? Wenn nein, warum?"
+              "complete_sentence": "Ich bin mir nicht sicher, ob es nicht besser wäre, wenn du den Satz auf natürliche Weise auf natürliche Weise auf natürliche Weise auf natürliche Weise auf"
             },
             "fr": {
-              "text": "Si oui, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi?",
-              "translation": "Si oui, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi? Si non, pourquoi?",
+              "text": "Je ne suis pas sûr qu'il ne serait pas préférable que vous ayez l'ensemble d'une manière naturelle de façon naturelle et naturelle.",
+              "translation": "Je ne suis pas sûr qu'il ne serait pas préférable que vous ayez l'ensemble d'une manière naturelle de façon naturelle et naturelle.",
               "instruction": "Complétez avec le mot allemand pour 'sie'"
             }
           }
@@ -748,22 +708,22 @@
             "question": "Was bedeutet das Wort 'sie' auf Französisch?",
             "choices": [
               "A) voiture",
-              "B) livre",
-              "C) et",
+              "B) et",
+              "C) livre",
               "D) maison"
             ],
-            "answer": "C",
+            "answer": "B",
             "explanation": "'sie' bedeutet 'et' auf Französisch."
           },
           "fr": {
             "question": "Que signifie le mot allemand 'sie' ?",
             "choices": [
               "A) voiture",
-              "B) livre",
-              "C) et",
+              "B) et",
+              "C) livre",
               "D) maison"
             ],
-            "answer": "C",
+            "answer": "B",
             "explanation": "'sie' signifie 'et' en français."
           }
         },
