@@ -156,182 +156,6 @@ def load_models():
         'gpt': (tokenizer_gpt, model_gpt)
     }
 
-def generate_contextual_prompts(word, word_type=None, models=None):
-    """
-    Génère des prompts contextuels intelligents pour un mot allemand
-    selon son type grammatical avec des complétions de haute qualité.
-    """
-    # Analyser le type de mot si non fourni
-    word_type = word_type if word_type else analyze_word_class(word, models)
-    word_info = word_type.get('de', '').lower() if word_type else ''
-    
-    # Prompts optimisés selon le type de mot
-    if 'verb' in word_info:
-        prompts = [
-            {
-                'start': f"Man kann {word}",
-                'context': "capacité/possibilité",
-                'completion_hint': "complément d'objet + circonstanciel de lieu/temps"
-            },
-            {
-                'start': f"Ich möchte {word}",
-                'context': "désir/intention",
-                'completion_hint': "but ou destination avec 'um zu' ou préposition"
-            },
-            {
-                'start': f"Wir {word} zusammen",
-                'context': "action collective",
-                'completion_hint': "activité partagée + détails temporels"
-            },
-            {
-                'start': f"Sie {word} jeden Tag",
-                'context': "habitude quotidienne",
-                'completion_hint': "routine avec détails de lieu/manière"
-            }
-        ]
-        
-    elif 'substantiv' in word_info or 'nomen' in word_info:
-        # Déterminer le genre probable pour les articles
-        articles = ['das', 'die', 'der']
-        prompts = [
-            {
-                'start': f"Das {word} ist",
-                'context': "description/état",
-                'completion_hint': "adjectifs descriptifs + détails"
-            },
-            {
-                'start': f"Ich brauche ein {word}",
-                'context': "besoin/nécessité",
-                'completion_hint': "raison ou usage avec 'für' ou 'um zu'"
-            },
-            {
-                'start': f"Mit dem {word}",
-                'context': "instrument/moyen",
-                'completion_hint': "action réalisée + résultat/but"
-            },
-            {
-                'start': f"Ohne {word}",
-                'context': "absence/manque",
-                'completion_hint': "conséquence ou difficulté"
-            }
-        ]
-        
-    elif 'adjektiv' in word_info:
-        prompts = [
-            {
-                'start': f"Es ist sehr {word}",
-                'context': "intensité/degré",
-                'completion_hint': "conséquence ou comparaison"
-            },
-            {
-                'start': f"Das Wetter wird {word}",
-                'context': "changement/évolution",
-                'completion_hint': "prédiction temporelle + détails"
-            },
-            {
-                'start': f"Sie fühlt sich {word}",
-                'context': "état émotionnel",
-                'completion_hint': "cause avec 'weil' ou 'da'"
-            },
-            {
-                'start': f"Etwas so {word}",
-                'context': "comparaison/exemple",
-                'completion_hint': "exemple concret ou métaphore"
-            }
-        ]
-        
-    elif 'adverb' in word_info:
-        prompts = [
-            {
-                'start': f"Er arbeitet {word}",
-                'context': "manière d'agir",
-                'completion_hint': "résultat ou conséquence de cette manière"
-            },
-            {
-                'start': f"{word.capitalize()} passiert etwas",
-                'context': "circonstance temporelle",
-                'completion_hint': "événement spécifique"
-            }
-        ]
-        
-    else:
-        # Prompts génériques pour mots non classifiés
-        prompts = [
-            {
-                'start': f"Hier ist {word}",
-                'context': "présentation/localisation",
-                'completion_hint': "description ou explication"
-            },
-            {
-                'start': f"Das bedeutet {word}",
-                'context': "explication/définition",
-                'completion_hint': "clarification ou exemple"
-            },
-            {
-                'start': f"Mit {word}",
-                'context': "accompagnement/moyen",
-                'completion_hint': "action ou résultat"
-            }
-        ]
-    
-    return prompts
-
-def generate_quality_completion(prompt_data, word, models):
-    """
-    Génère une complétion de haute qualité pour un prompt donné.
-    """
-    tokenizer_gpt, model_gpt = models['gpt']
-    
-    # Combine system and user prompts
-    combined_prompt = f"""Complète cette phrase allemande de manière naturelle et idiomatique.
-    Contexte : {prompt_data['context']}
-    Guide : {prompt_data['completion_hint']}
-    Phrase à compléter : {prompt_data['start']}
-    """
-    
-    try:
-        # Générer la complétion
-        inputs = tokenizer_gpt(combined_prompt, return_tensors="pt", padding=True)
-        outputs = model_gpt.generate(
-            inputs.input_ids,
-            max_length=100,  # Increased to accommodate longer prompts
-            num_beams=3,
-            temperature=0.7,
-            no_repeat_ngram_size=2,
-            do_sample=True,
-            min_length=20   # Added to ensure meaningful completions
-        )
-        completion = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
-        
-        # Extract only the completion part if it contains the initial prompt
-        if completion.startswith(prompt_data['start']):
-            completion = completion[len(prompt_data['start']):].strip()
-        
-        return {
-            'full_sentence': f"{prompt_data['start']} {completion}",
-            'completion': completion,
-            'context': prompt_data['context'],
-            'word_focus': word
-        }
-    except Exception as e:
-        print(f"Erreur lors de la génération de la complétion: {e}")
-        return None
-
-# Exemple d'utilisation améliorée
-def enhanced_text_generation(word, models, num_examples=4):
-    """
-    Génère des exemples de texte de haute qualité pour un mot allemand.
-    """
-    # Obtenir les prompts contextuels
-    prompts = generate_contextual_prompts(word, models=models)
-    
-    # Générer les complétions
-    results = []
-    for prompt_data in prompts[:num_examples]:
-        completion_result = generate_quality_completion(prompt_data, word, models['text_generator'])
-        results.append(completion_result)
-    
-    return results
 def remove_repetitions(text):
     """Supprime les répétitions de phrases et de mots consécutifs"""
     # Nettoie d'abord les répétitions au niveau des phrases
@@ -357,29 +181,13 @@ def generate_example_sentences(word, models):
     tokenizer_de_fr, model_de_fr = models['de_fr']
     examples = []
     
-    # Prompts pour quatre phrases courtes et simples adaptées au mot
-    word_type = analyze_word_class(word, models)
-    if 'Verb' in word_type.get('de', ''):
-        prompts = [
-            f"{word} Sie in die Stadt?",        # Question
-            f"Ich möchte {word}",               # Souhait
-            f"Wir {word} zusammen",             # Action commune
-            f"Er {word} nach Hause"             # Direction
-        ]
-    elif 'Substantiv' in word_type.get('de', ''):
-        prompts = [
-            f"Das {word} ist schön",            # Description
-            f"Ich habe ein {word}",             # Possession
-            f"Mit dem {word} können wir",       # Utilisation
-            f"Viele {word} sind hier"           # Quantité
-        ]
-    else:
-        prompts = [
-            f"Ich bin {word}",                  # État
-            f"Es ist {word} wichtig",           # Importance
-            f"Sie macht das {word}",            # Action
-            f"Alles ist {word} hier"            # Description
-        ]
+    # Prompts pour quatre phrases courtes et simples
+    prompts = [
+        f"Ich {word} gern",           # Premier exemple simple
+        f"Das {word} ist gut",        # Deuxième exemple descriptif
+        f"Wir haben {word}",          # Troisième exemple possessif
+        f"Er {word} heute"            # Quatrième exemple temporel
+    ]
     
     for prompt in prompts:
         try:
@@ -397,23 +205,10 @@ def generate_example_sentences(word, models):
             if not german.endswith('.'):
                 german += '.'
             
-            # Traduction littérale en français d'abord
+            # Traduction en français
             inputs = tokenizer_de_fr(german, return_tensors="pt", padding=True)
             outputs = model_de_fr.generate(**inputs)
-            french_literal = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
-            
-            # Amélioration de la traduction pour la rendre plus naturelle
-            prompt_fr = f"Reformulez cette phrase en français idiomatique : '{french_literal}'"
-            inputs = tokenizer_gpt(prompt_fr, return_tensors="pt", padding=True)
-            outputs = model_gpt.generate(
-                inputs.input_ids,
-                max_length=30,
-                num_beams=3,
-                temperature=0.5,
-                do_sample=True,
-                no_repeat_ngram_size=2
-            )
-            french = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
+            french = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
             if not french.endswith('.'):
                 french += '.'
             
@@ -426,59 +221,12 @@ def generate_example_sentences(word, models):
             print(f"Erreur lors de la génération d'exemple: {e}")
             continue
     
-    # Assurer qu'on a toujours au moins 2 exemples pertinents
+    # Assurer qu'on a toujours 2 exemples
     while len(examples) < 2:
-        # Obtenir des prompts contextuels intelligents
-        prompts = generate_contextual_prompts(word, word_type, models)
-        
-        # Choisir un prompt non utilisé
-        prompt_data = prompts[len(examples) % len(prompts)]
-       
-        
-        # Créer un prompt système pour guider la génération
-        system_prompt = f"""
-        Complète la phrase en allemand de manière naturelle et grammaticalement correcte.
-        Contexte : {prompt_data['context']}
-        Guide : {prompt_data['completion_hint']}
-        - Maximum 15 mots
-        - Grammaire parfaite
-        - Style naturel
-        - Situation réaliste
-        """
-        
-        # Utiliser le prompt de base
-        prompt = prompt_data['start']
-        
-        # Générer la complétion de haute qualité
-        try:
-            example = generate_quality_completion(prompt_data, word, models)
-            if example:
-                examples.append(example)
-                completion = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
-                
-                # Extraire la partie générée après le prompt initial
-                if completion.startswith(prompt):
-                    completion = completion[len(prompt):].strip()
-                
-                # Construire la phrase complète
-                german = f"{prompt} {completion}"
-                if not german.endswith('.'):
-                    german += '.'
-                
-                # Traduction en français
-                inputs = tokenizer_de_fr(german, return_tensors="pt", padding=True)
-                outputs = model_de_fr.generate(**inputs)
-                french = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
-                if not french.endswith('.'):
-                    french += '.'
-                
-                examples.append({
-                    'de': german,
-                    'fr': french
-                })
-        except Exception as e:
-            print(f"Erreur lors de la génération d'exemple: {e}")
-            continue
+        examples.append({
+            'de': f"Ich {word}.",
+            'fr': "Je suis."
+        })
     
     return examples
 
@@ -739,44 +487,29 @@ def generate_exercises(word, models, difficulty='intermediate'):
                 'answer': clean_word_input,
                 'examples': [clean_word_input]
             }
-        }            # Choix multiples avec des options pertinentes
-        word_type = analyze_word_class(clean_word_input, models)
-        translations = get_translations(clean_word_input, models)
+        }
         
-        # Générer 4 choix réalistes
-        choices = [
-            translations['fr']['principal'],  # La bonne réponse
-            translations['fr'].get('variantes', [])[0] if translations['fr'].get('variantes') else None,
-            translations['fr'].get('synonymes', [])[0] if translations['fr'].get('synonymes') else None
-        ]
-        # Filtrer les None et s'assurer d'avoir au moins 2 choix
-        choices = [c for c in choices if c]
-        while len(choices) < 2:
-            choices.append(translations['fr']['principal'])
-            
+        # Choix multiples - options simples
         exercises['multiple_choice'] = {
             'de': {
                 'question': f"Was bedeutet '{clean_word_input}'?",
-                'choices': choices,
-                'answer': "0"  # La bonne réponse est toujours la première
+                'choices': [
+                    f"{clean_word_input} bin",
+                    clean_word_input
+                ],
+                'answer': "0"
             }
-        }            # Association de mots contextuelle
-        word_class = analyze_word_class(clean_word_input, models)
-        if 'Verb' in word_class.get('de', ''):
-            prompt = f"Geben Sie 3 verwandte Verben zu '{clean_word_input}' (im Infinitiv):"
-        elif 'Substantiv' in word_class.get('de', ''):
-            prompt = f"Geben Sie 3 verwandte Substantive zu '{clean_word_input}' (im Nominativ):"
-        else:
-            prompt = f"Geben Sie 3 verwandte Wörter zur gleichen Wortart wie '{clean_word_input}':"
-            
+        }
+        
+        # Association de mots - 3 mots simples et uniques
+        prompt = f"3 einfache verwandte Wörter zu '{clean_word_input}':"
         inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
         outputs = model_gpt.generate(
             inputs.input_ids,
             max_length=30,
-            num_beams=5,
-            temperature=0.7,
-            no_repeat_ngram_size=2,
-            do_sample=True
+            num_beams=3,
+            temperature=0.5,
+            do_sample=False
         )
         
         words_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
