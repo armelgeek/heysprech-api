@@ -58,7 +58,7 @@ class VocabularyProcessor:
             return None
             
         self.processed_words.add(word)
-        return worda
+        return word
     
     def extract_vocabulary(self, segments: List[Dict]) -> List[str]:
         """Extrait et nettoie le vocabulaire des segments transcrits"""
