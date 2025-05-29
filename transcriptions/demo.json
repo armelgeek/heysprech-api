@@ -2,39 +2,51 @@
   "segments": [
     {
       "start": 0.031,
-      "end": 0.644,
-      "text": " Das.",
+      "end": 0.862,
+      "text": " Bitte schon!",
       "words": [
         {
-          "word": "Das.",
+          "word": "Bitte",
           "start": 0.031,
-          "end": 0.644,
-          "score": 0.904
+          "end": 0.488,
+          "score": 0.715
+        },
+        {
+          "word": "schon!",
+          "start": 0.509,
+          "end": 0.862,
+          "score": 0.712
         }
       ],
-      "translation": "Ça."
+      "translation": "S'il te plaît !"
     }
   ],
   "word_segments": [
     {
-      "word": "Das.",
+      "word": "Bitte",
       "start": 0.031,
-      "end": 0.644,
-      "score": 0.904
+      "end": 0.488,
+      "score": 0.715
+    },
+    {
+      "word": "schon!",
+      "start": 0.509,
+      "end": 0.862,
+      "score": 0.712
     }
   ],
   "language": "de",
   "vocabulary": [
     {
-      "word": "das.",
+      "word": "bitte",
       "level": {
         "level": "beginner",
-        "score": 1,
+        "score": 2,
         "explanation": "Mot simple, approprié pour les débutants"
       },
       "translations": {
         "de": {
-          "principal": "das.",
+          "principal": "bitte",
           "variantes": [],
           "synonymes": []
         },
@@ -43,42 +55,42 @@
           "variantes": [],
           "synonymes": []
         },
-        "principal": "das."
+        "principal": "bitte"
       },
       "examples": [
         {
-          "de": "Ich das. gern würde ich mal wissen, wie es dir geht. Ich.",
-          "fr": "J'aimerais savoir comment tu vas."
+          "de": "Ich bitte gern um Entschuldigung, dass ich mich hier so lange aufgehalten habe.",
+          "fr": "Excusez-moi d'être resté ici si longtemps."
         },
         {
-          "de": "Das das. ist gut so, denn es ist nicht so einfach, wie.",
-          "fr": "C'est bien, parce que ce n'est pas aussi simple que ça."
+          "de": "Das bitte ist gut, aber ich bin mir nicht sicher, ob ich das.",
+          "fr": "S'il te plaît, c'est bien, mais je ne suis pas sûr de le faire."
         },
         {
-          "de": "Wir haben das.\nIch bin ein Mann, ich bin eine Frau.",
-          "fr": "Je suis un homme, une femme."
+          "de": "Wir haben bitte Verständnis dafür, dass wir Ihnen nicht alle Informationen zur Verfügung stellen.",
+          "fr": "Nous comprenons que nous ne vous fournissons pas toutes les informations."
         },
         {
-          "de": "Er das. heute.de/news/der-bundestag-.",
-          "fr": "Il l'a fait aujourd'hui.de/news/le Bundestag."
+          "de": "Er bitte heute Abend noch mal anrufen, ob ich noch Zeit habe. Ich.",
+          "fr": "Il m'a demandé d'appeler ce soir pour voir si j'avais encore le temps."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist ___? Was ist ___? Was ist.",
-            "answer": "das",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist das? Was ist das? Was ist.",
+            "answer": "bitte",
             "examples": [
-              "das"
+              "bitte"
             ]
           }
         },
         "multiple_choice": {
           "de": {
-            "question": "Was bedeutet 'das'?",
+            "question": "Was bedeutet 'bitte'?",
             "choices": [
-              "das bin",
-              "das"
+              "bitte bin",
+              "bitte"
             ],
             "answer": "0"
           }
@@ -86,9 +98,78 @@
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'das': das",
-              "das",
-              "3 einfache verwandte Wörter zu 'das': das"
+              "3 einfache verwandte Wörter zu 'bitte': Bitte hilf mit",
+              "indem du das erste Blog-Bild hochlädst und das zweite Blog-Bild post",
+              "3 einfache verwandte Wörter zu 'bitte': Bitte hilf mit"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "word": "schon!",
+      "level": {
+        "level": "beginner",
+        "score": 2,
+        "explanation": "Mot simple, approprié pour les débutants"
+      },
+      "translations": {
+        "de": {
+          "principal": "schon!",
+          "variantes": [],
+          "synonymes": []
+        },
+        "fr": {
+          "principal": "",
+          "variantes": [],
+          "synonymes": []
+        },
+        "principal": "schon!"
+      },
+      "examples": [
+        {
+          "de": "Ich schon! gern würde ich mich auch mal mit einem Mann treffen, der.",
+          "fr": "J'aimerais rencontrer un homme."
+        },
+        {
+          "de": "Das schon! ist gut, dass du es sagst. Ich habe es auch.",
+          "fr": "C'est bien que tu le dises."
+        },
+        {
+          "de": "Wir haben schon! Wir haben es geschafft! Und wir sind stolz darauf!.",
+          "fr": "Nous l'avons déjà fait! Nous l'avons fait! Et nous en sommes fiers!."
+        },
+        {
+          "de": "Er schon! heute habe ich eine Frage an euch, und zwar, wie.",
+          "fr": "Aujourd'hui, j'ai une question pour vous."
+        }
+      ],
+      "exercises": {
+        "fill_blank": {
+          "de": {
+            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist das? Was ist das? Was ist.",
+            "answer": "schon",
+            "examples": [
+              "schon"
+            ]
+          }
+        },
+        "multiple_choice": {
+          "de": {
+            "question": "Was bedeutet 'schon'?",
+            "choices": [
+              "schon bin",
+              "schon"
+            ],
+            "answer": "0"
+          }
+        },
+        "word_association": {
+          "de": {
+            "words": [
+              "3 einfache verwandte Wörter zu 'schon': schon",
+              "schon",
+              "3 einfache verwandte Wörter zu 'schon': schon"
             ]
           }
         }
