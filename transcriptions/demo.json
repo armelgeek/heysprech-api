@@ -1,78 +1,77 @@
 {
   "segments": [
     {
-      "start": 0.166,
-      "end": 0.51,
-      "text": " Ich.",
+      "start": 0.031,
+      "end": 0.811,
+      "text": " Dessier.",
       "words": [
         {
-          "word": "Ich.",
-          "start": 0.166,
-          "end": 0.51,
-          "score": 0.435
+          "word": "Dessier.",
+          "start": 0.031,
+          "end": 0.811,
+          "score": 0.536
         }
       ],
-      "translation": "Moi."
+      "translation": "Dessier."
     }
   ],
   "word_segments": [
     {
-      "word": "Ich.",
-      "start": 0.166,
-      "end": 0.51,
-      "score": 0.435
+      "word": "Dessier.",
+      "start": 0.031,
+      "end": 0.811,
+      "score": 0.536
     }
   ],
   "language": "de",
   "vocabulary": [
     {
-      "word": "ich.",
+      "word": "dessier.",
       "level": {
-        "level": "beginner",
-        "score": 1,
-        "explanation": "Mot simple, approprié pour les débutants"
+        "level": "intermediate",
+        "score": 3,
+        "explanation": "Mot de difficulté moyenne"
       },
       "translations": {
-        "principal": "Moi.",
+        "principal": "Dessier.",
         "variantes": [
-          "- Moi.",
-          "moi."
+          "dessier."
         ]
       },
       "examples": [
         {
-          "de": "Ich ich. ein Mann. ein Mann. ein.",
-          "fr": "Moi, un homme, un homme."
+          "de": "Ich bin dessier., weil ich in den letzten Jahren immer mal wieder mit dem Gedanken gespielt habe, dass ich mal ein paar Fotos machen könnte.",
+          "fr": "Je suis dessien, parce que j'ai joué ces dernières années avec l'idée que je pourrais prendre quelques photos."
         },
         {
-          "de": "Ich ich. Ich bin ein Mann. Ich bin.",
-          "fr": "Moi, je suis un homme."
+          "de": "Heute dessier. wir haben es geschafft, dass wir in den letzten Wochen ein paar Fotos gemacht haben, die wir euch nicht vorenthalten wollen.",
+          "fr": "Aujourd'hui, nous avons réussi à prendre des photos que nous ne voulons pas vous cacher."
         },
         {
-          "de": "Er ich. gestern war ich mit meinem freund in.",
-          "fr": "Lui moi. Hier, j'étais avec mon ami."
+          "de": "Er hat dessier., dass es sich um ein Produkt handelt, das von einem Hersteller stammt, der auf den Markt gekommen ist.\nEs ist.",
+          "fr": "Il a dessié qu'il s'agit d'un produit provenant d'un fabricant qui est venu sur le marché."
         },
         {
-          "de": "Sie ich. heute gern mit dir. Ich bin.",
-          "fr": "Je l'aime avec toi aujourd'hui."
+          "de": "Sie werden dessier., wenn Sie sich für die Verwendung von Cookies entscheiden. Wenn Sie fortfahren, diese Seite zu verwenden, nehmen wir an,.",
+          "fr": "Si vous continuez à utiliser ce site, nous supposons que vous choisissez d'utiliser des cookies."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
             "text": "'___ bin'",
-            "answer": "ich",
+            "answer": "dessier",
             "examples": [
-              "ich"
+              "dessier"
             ]
           }
         },
         "multiple_choice": {
           "de": {
-            "question": "Was bedeutet 'ich'?",
+            "question": "Was bedeutet 'dessier'?",
             "choices": [
-              "ich bin",
-              "ich"
+              "dessier bin",
+              "dessier"
             ],
             "answer": "0"
           }
@@ -80,9 +79,9 @@
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'ich': ein Mann",
-              "ein Mann",
-              "3 einfache verwandte Wörter zu 'ich': ein Mann"
+              "3 einfache verwandte Wörter zu 'dessier': dessi",
+              "dessi",
+              "3 einfache verwandte Wörter zu 'dessier': dessi"
             ]
           }
         }
