@@ -97,18 +97,18 @@
       },
       "examples": [
         {
-          "de": "Ich gehen.",
-          "fr": "Je suis."
+          "de": "Hier ist es gehen.",
+          "fr": "Ici c'est gehen."
         },
         {
-          "de": "Ich gehen.",
-          "fr": "Je suis."
+          "de": "Das macht man gehen.",
+          "fr": "On fait ça gehen."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich bin ein Mann, ich bin eine Frau.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich habe keine Ahnung, was ich tun soll.",
             "answer": "gehen",
             "examples": [
               "gehen"
@@ -119,7 +119,7 @@
           "de": {
             "question": "Was bedeutet 'gehen'?",
             "choices": [
-              "gehen bin",
+              "gehen",
               "gehen"
             ],
             "answer": "0"
@@ -128,9 +128,9 @@
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'gehen': gehen",
-              "gehen",
-              "3 einfache verwandte Wörter zu 'gehen': gehen"
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'gehen': gehen",
+              "gehen und gehen Sie wie folgt vor:\nWenn Sie das Wort \"",
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'gehen': gehen"
             ]
           }
         }
@@ -160,18 +160,18 @@
       },
       "examples": [
         {
-          "de": "Ich heute.",
-          "fr": "Je suis."
+          "de": "Hier ist es heute.",
+          "fr": "Ici c'est heute."
         },
         {
-          "de": "Ich heute.",
-          "fr": "Je suis."
+          "de": "Das macht man heute.",
+          "fr": "On fait ça heute."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Heute ist ein Tag, an dem Sie sich.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Heute ist der Tag, an dem Sie sich.",
             "answer": "heute",
             "examples": [
               "heute"
@@ -182,7 +182,7 @@
           "de": {
             "question": "Was bedeutet 'heute'?",
             "choices": [
-              "heute bin",
+              "heute",
               "heute"
             ],
             "answer": "0"
@@ -191,9 +191,9 @@
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'heute': morgen",
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'heute': heute",
               "morgen",
-              "3 einfache verwandte Wörter zu 'heute': morgen"
+              "heute für Beispielsätze mit \"heute\" und \"morgen\""
             ]
           }
         }
@@ -223,12 +223,12 @@
       },
       "examples": [
         {
-          "de": "Ich ins.",
-          "fr": "Je suis."
+          "de": "Hier ist es ins.",
+          "fr": "Ici c'est ins."
         },
         {
-          "de": "Ich ins.",
-          "fr": "Je suis."
+          "de": "Das macht man ins.",
+          "fr": "On fait ça ins."
         }
       ],
       "exercises": {
@@ -245,7 +245,7 @@
           "de": {
             "question": "Was bedeutet 'ins'?",
             "choices": [
-              "ins bin",
+              "ins",
               "ins"
             ],
             "answer": "0"
@@ -254,9 +254,9 @@
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'ins': in",
-              "in",
-              "3 einfache verwandte Wörter zu 'ins': in"
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'ins': zum Beispiel ins",
+              "ins und aus",
+              "zum und zum"
             ]
           }
         }
@@ -286,18 +286,18 @@
       },
       "examples": [
         {
-          "de": "Ich kino..",
-          "fr": "Je suis."
+          "de": "Hier ist es kino..",
+          "fr": "Ici c'est kino.."
         },
         {
-          "de": "Ich kino..",
-          "fr": "Je suis."
+          "de": "Das macht man kino..",
+          "fr": "On fait ça kino.."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich bin ein Mann, ich bin eine Frau.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist Kino? Was ist Kino? Was ist.",
             "answer": "kino",
             "examples": [
               "kino"
@@ -308,7 +308,7 @@
           "de": {
             "question": "Was bedeutet 'kino'?",
             "choices": [
-              "kino bin",
+              "kino",
               "kino"
             ],
             "answer": "0"
@@ -317,9 +317,9 @@
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'kino': Kino",
-              "Kino",
-              "3 einfache verwandte Wörter zu 'kino': Kino"
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'kino': a",
+              "b",
+              "c"
             ]
           }
         }
@@ -349,12 +349,12 @@
       },
       "examples": [
         {
-          "de": "Ich sie.",
-          "fr": "Je suis."
+          "de": "Hier ist es sie.",
+          "fr": "Ici c'est sie."
         },
         {
-          "de": "Ich sie.",
-          "fr": "Je suis."
+          "de": "Das macht man sie.",
+          "fr": "On fait ça sie."
         }
       ],
       "exercises": {
@@ -371,7 +371,7 @@
           "de": {
             "question": "Was bedeutet 'sie'?",
             "choices": [
-              "sie bin",
+              "sie",
               "sie"
             ],
             "answer": "0"
@@ -380,9 +380,9 @@
         "word_association": {
           "de": {
             "words": [
-              "3 einfache verwandte Wörter zu 'sie': sie",
-              "sie",
-              "3 einfache verwandte Wörter zu 'sie': sie"
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'sie': Sie können die Wörter entweder durch Leerzeichen getrennt voneinander lesen.\nDie Worthäufigkeit",
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'sie': Sie können die Wörter entweder durch Leerzeichen getrennt voneinander lesen.\nDie Worthäufigkeit",
+              "Geben Sie 3 verwandte Wörter zur gleichen Wortart wie 'sie': Sie können die Wörter entweder durch Leerzeichen getrennt voneinander lesen.\nDie Worthäufigkeit"
             ]
           }
         }
