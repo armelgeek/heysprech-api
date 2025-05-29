@@ -363,21 +363,21 @@ def generate_example_sentences(word, models):
         
         # Utiliser le prompt de base
         prompt = prompt_data['start']
+        
+        # Générer la complétion de haute qualité
+        example = generate_quality_completion(prompt_data, word, models)
+        if example:
+            examples.append(example)
+            completion = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
             
-            # Générer la complétion de haute qualité
-            example = generate_quality_completion(prompt_data, word, models)
-            if example:
-                examples.append(example)
-                completion = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
-                
-                # Extraire la partie générée après le prompt initial
-                if completion.startswith(prompt):
-                    completion = completion[len(prompt):].strip()
-                
-                # Construire la phrase complète
-                german = f"{prompt} {completion}"
-                if not german.endswith('.'):
-                    german += '.'
+            # Extraire la partie générée après le prompt initial
+            if completion.startswith(prompt):
+                completion = completion[len(prompt):].strip()
+            
+            # Construire la phrase complète
+            german = f"{prompt} {completion}"
+            if not german.endswith('.'):
+                german += '.'
                 
                 # Traduction en français
                 inputs = tokenizer_de_fr(german, return_tensors="pt", padding=True)
