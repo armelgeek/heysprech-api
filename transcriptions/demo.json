@@ -149,19 +149,25 @@
         "fr": "une"
       },
       "example": {
-        "de": "Der eine ist schön.",
-        "fr": "L'un est beau."
+        "de": "Ich habe einen eine.",
+        "fr": "J'en ai un."
       },
       "exercise": {
-        "type": "fill_blank",
+        "type": "multiple_choice",
         "question": {
-          "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'une'"
+          "de": "Welches Wort bedeutet 'une'?",
+          "fr": "Choisissez la traduction correcte pour 'une'"
         },
+        "options": [
+          "hier",
+          "eine",
+          "noch",
+          "ein"
+        ],
         "answer": "eine",
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T13:07:36.046172"
+      "processed_at": "2025-05-29T16:45:34.544965"
     },
     {
       "word": "etwas",
@@ -171,19 +177,25 @@
         "fr": "quelque chose"
       },
       "example": {
-        "de": "Das ist ein etwas.",
-        "fr": "C'est quelque chose."
+        "de": "Der etwas ist schön.",
+        "fr": "C'est beau."
       },
       "exercise": {
-        "type": "fill_blank",
+        "type": "multiple_choice",
         "question": {
-          "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'quelque chose'"
+          "de": "Welches Wort bedeutet 'quelque chose'?",
+          "fr": "Choisissez la traduction correcte pour 'quelque chose'"
         },
+        "options": [
+          "noch",
+          "hier",
+          "etwas",
+          "ein"
+        ],
         "answer": "etwas",
-        "level": "beginner"
+        "level": "intermediate"
       },
-      "processed_at": "2025-05-29T13:07:36.947688"
+      "processed_at": "2025-05-29T16:45:37.236427"
     },
     {
       "word": "euch",
@@ -193,19 +205,25 @@
         "fr": "à vous"
       },
       "example": {
-        "de": "Der euch ist schön.",
-        "fr": "Vous êtes belles."
+        "de": "Wir brauchen euch.",
+        "fr": "On a besoin de vous."
       },
       "exercise": {
-        "type": "fill_blank",
+        "type": "multiple_choice",
         "question": {
-          "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'à vous'"
+          "de": "Welches Wort bedeutet 'à vous'?",
+          "fr": "Choisissez la traduction correcte pour 'à vous'"
         },
+        "options": [
+          "noch",
+          "ein",
+          "euch",
+          "hier"
+        ],
         "answer": "euch",
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T13:07:37.578490"
+      "processed_at": "2025-05-29T16:45:39.734375"
     },
     {
       "word": "gehen",
@@ -215,19 +233,25 @@
         "fr": "aller"
       },
       "example": {
-        "de": "Das ist ein gehen.",
-        "fr": "C'est une bonne idée."
+        "de": "Wir brauchen gehen.",
+        "fr": "Il faut qu'on parte."
       },
       "exercise": {
-        "type": "fill_blank",
+        "type": "multiple_choice",
         "question": {
-          "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'aller'"
+          "de": "Welches Wort bedeutet 'aller'?",
+          "fr": "Choisissez la traduction correcte pour 'aller'"
         },
+        "options": [
+          "gehen",
+          "ein",
+          "hier",
+          "noch"
+        ],
         "answer": "gehen",
-        "level": "beginner"
+        "level": "intermediate"
       },
-      "processed_at": "2025-05-29T13:07:38.258444"
+      "processed_at": "2025-05-29T16:45:42.693944"
     },
     {
       "word": "ich",
@@ -241,15 +265,21 @@
         "fr": "C'est un moi."
       },
       "exercise": {
-        "type": "fill_blank",
+        "type": "multiple_choice",
         "question": {
-          "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'isé'"
+          "de": "Welches Wort bedeutet 'isé'?",
+          "fr": "Choisissez la traduction correcte pour 'isé'"
         },
+        "options": [
+          "ein",
+          "noch",
+          "ich",
+          "hier"
+        ],
         "answer": "ich",
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T13:07:38.905614"
+      "processed_at": "2025-05-29T16:45:45.222249"
     },
     {
       "word": "kann",
@@ -259,19 +289,25 @@
         "fr": "peut"
       },
       "example": {
-        "de": "Ich habe einen kann.",
-        "fr": "J'en ai un."
+        "de": "Das ist ein kann.",
+        "fr": "C'est possible."
       },
       "exercise": {
-        "type": "fill_blank",
+        "type": "multiple_choice",
         "question": {
-          "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'peut'"
+          "de": "Welches Wort bedeutet 'peut'?",
+          "fr": "Choisissez la traduction correcte pour 'peut'"
         },
+        "options": [
+          "kann",
+          "hier",
+          "noch",
+          "ein"
+        ],
         "answer": "kann",
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T13:07:39.676081"
+      "processed_at": "2025-05-29T16:45:47.695228"
     },
     {
       "word": "kleinigkeit",
@@ -281,19 +317,25 @@
         "fr": "Petiteur"
       },
       "example": {
-        "de": "Wir brauchen kleinigkeit.",
-        "fr": "On a besoin de petites choses."
+        "de": "Das ist ein kleinigkeit.",
+        "fr": "C'est une petite chose."
       },
       "exercise": {
-        "type": "fill_blank",
+        "type": "multiple_choice",
         "question": {
-          "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'Petiteur'"
+          "de": "Welches Wort bedeutet 'Petiteur'?",
+          "fr": "Choisissez la traduction correcte pour 'Petiteur'"
         },
+        "options": [
+          "ein",
+          "hier",
+          "kleinigkeit",
+          "noch"
+        ],
         "answer": "kleinigkeit",
-        "level": "beginner"
+        "level": "advanced"
       },
-      "processed_at": "2025-05-29T13:07:40.526961"
+      "processed_at": "2025-05-29T16:45:50.399342"
     },
     {
       "word": "mich",
@@ -303,19 +345,25 @@
         "fr": "moi"
       },
       "example": {
-        "de": "Das ist ein mich.",
-        "fr": "C'est moi."
+        "de": "Wir brauchen mich.",
+        "fr": "On a besoin de moi."
       },
       "exercise": {
-        "type": "fill_blank",
+        "type": "multiple_choice",
         "question": {
-          "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'moi'"
+          "de": "Welches Wort bedeutet 'moi'?",
+          "fr": "Choisissez la traduction correcte pour 'moi'"
         },
+        "options": [
+          "mich",
+          "hier",
+          "ein",
+          "noch"
+        ],
         "answer": "mich",
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T13:07:41.167139"
+      "processed_at": "2025-05-29T16:45:52.931279"
     },
     {
       "word": "unterscheidet",
@@ -325,19 +373,25 @@
         "fr": "différent"
       },
       "example": {
-        "de": "Das ist ein unterscheidet.",
-        "fr": "C'est une différence."
+        "de": "Der unterscheidet ist schön.",
+        "fr": "C'est beau, celui-là."
       },
       "exercise": {
-        "type": "fill_blank",
+        "type": "multiple_choice",
         "question": {
-          "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'différent'"
+          "de": "Welches Wort bedeutet 'différent'?",
+          "fr": "Choisissez la traduction correcte pour 'différent'"
         },
+        "options": [
+          "noch",
+          "ein",
+          "unterscheidet",
+          "hier"
+        ],
         "answer": "unterscheidet",
-        "level": "beginner"
+        "level": "advanced"
       },
-      "processed_at": "2025-05-29T13:07:41.749192"
+      "processed_at": "2025-05-29T16:45:55.676503"
     },
     {
       "word": "von",
@@ -347,19 +401,25 @@
         "fr": "de"
       },
       "example": {
-        "de": "Das ist ein von.",
-        "fr": "C'est un des leurs."
+        "de": "Ich habe einen von.",
+        "fr": "J'en ai un."
       },
       "exercise": {
-        "type": "fill_blank",
+        "type": "multiple_choice",
         "question": {
-          "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'de'"
+          "de": "Welches Wort bedeutet 'de'?",
+          "fr": "Choisissez la traduction correcte pour 'de'"
         },
+        "options": [
+          "ein",
+          "hier",
+          "von",
+          "noch"
+        ],
         "answer": "von",
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T13:07:42.566148"
+      "processed_at": "2025-05-29T16:45:58.276872"
     }
   ],
   "vocabulary_stats": {
