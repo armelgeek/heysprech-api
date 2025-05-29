@@ -181,12 +181,12 @@ def generate_example_sentences(word, models):
     tokenizer_de_fr, model_de_fr = models['de_fr']
     examples = []
     
-    # Prompts pour quatre phrases différentes avec structures standard
+    # Prompts pour quatre phrases courtes et simples
     prompts = [
-        f"Ich bin {word}, weil",      # Premier exemple avec cause
-        f"Heute {word} wir",          # Deuxième exemple au présent
-        f"Er hat {word}, dass",       # Troisième exemple avec subordonnée
-        f"Sie werden {word}, wenn"     # Quatrième exemple avec condition
+        f"Ich {word} gern",           # Premier exemple simple
+        f"Das {word} ist gut",        # Deuxième exemple descriptif
+        f"Wir haben {word}",          # Troisième exemple possessif
+        f"Er {word} heute"            # Quatrième exemple temporel
     ]
     
     for prompt in prompts:
@@ -195,11 +195,11 @@ def generate_example_sentences(word, models):
             inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
             outputs = model_gpt.generate(
                 inputs.input_ids,
-                max_length=30,  # Plus long pour des phrases complètes
-                num_beams=5,    # Plus de beams pour une meilleure qualité
-                temperature=0.7, # Plus de créativité
+                max_length=15,   # Plus court pour des phrases concises
+                num_beams=3,     # Moins de beams pour plus de simplicité
+                temperature=0.3, # Température plus basse pour plus de cohérence
                 no_repeat_ngram_size=2,  # Éviter les répétitions
-                do_sample=True  # Échantillonnage pour plus de variété
+                do_sample=False  # Pas d'échantillonnage pour plus de contrôle
             )
             german = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
             if not german.endswith('.'):
@@ -413,10 +413,27 @@ def generate_exercises(word, models, difficulty='intermediate'):
     clean_word_input = clean_word(word)
     
     try:
-        # Exercice à trous - phrase très simple
+        # Exercice à trous - phrase générée dynamiquement
+        # Génération d'une phrase avec le mot
+        prompt = f"Schreiben Sie einen kurzen Satz mit '{clean_word_input}':"
+        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+        outputs = model_gpt.generate(
+            inputs.input_ids,
+            max_length=20,
+            num_beams=3,
+            temperature=0.5,
+            do_sample=True
+        )
+        sentence = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
+        if not sentence.endswith('.'):
+            sentence += '.'
+            
+        # Remplacer le mot par ___
+        fill_blank_text = sentence.replace(clean_word_input, '___')
+        
         exercises['fill_blank'] = {
             'de': {
-                'text': f"'___ bin'",
+                'text': fill_blank_text,
                 'answer': clean_word_input,
                 'examples': [clean_word_input]
             }
