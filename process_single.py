@@ -18,8 +18,17 @@ LANGUAGE = "de"
 OUTPUT_FORMAT = "json"
 TRANSLATION_MODEL_PATH = "./opus-mt-de-fr"
 GERMAN_GPT_MODEL = "benjamin/gpt2-wechsel-german"
-DE_EN_MODEL = "Helsinki-NLP/opus-mt-de-en"
-EN_FR_MODEL = "Helsinki-NLP/opus-mt-en-fr"
+
+# Prompts pour l'analyse lexicographique
+LEXICAL_PROMPTS = {
+    'etymology': "Die Etymologie des Wortes '{word}' ist:",
+    'definition': "Definition und Verwendung des Wortes '{word}':",
+    'expressions': "Häufige Redewendungen mit '{word}':",
+    'collocations': "Typische Wortverbindungen mit '{word}':",
+    'synonyms': "Synonyme für '{word}':",
+    'antonyms': "Antonyme für '{word}':",
+    'register': "Sprachregister und Verwendungskontext von '{word}':"
+}
 
 AUDIO_EXTENSIONS = (
     ".opus", ".mp3", ".wav", ".m4a", ".ogg",
@@ -110,32 +119,25 @@ def load_models():
     print("Chargement des modèles de traduction et génération...")
     
     # Modèle DE -> FR direct
+    print("✓ Chargement modèle DE -> FR...")
     tokenizer_de_fr = MarianTokenizer.from_pretrained(TRANSLATION_MODEL_PATH)
     model_de_fr = MarianMTModel.from_pretrained(TRANSLATION_MODEL_PATH)
     
-    # Modèle DE -> EN
-    tokenizer_de_en = MarianTokenizer.from_pretrained(DE_EN_MODEL)
-    model_de_en = MarianMTModel.from_pretrained(DE_EN_MODEL)
-    
-    # Modèle EN -> FR
-    tokenizer_en_fr = MarianTokenizer.from_pretrained(EN_FR_MODEL)
-    model_en_fr = MarianMTModel.from_pretrained(EN_FR_MODEL)
-    
     # Modèle de génération allemand
+    print("✓ Chargement modèle GPT allemand...")
     tokenizer_gpt = AutoTokenizer.from_pretrained(GERMAN_GPT_MODEL)
     model_gpt = GPT2LMHeadModel.from_pretrained(GERMAN_GPT_MODEL)
     tokenizer_gpt.pad_token = tokenizer_gpt.eos_token
     
     return {
         'de_fr': (tokenizer_de_fr, model_de_fr),
-        'de_en': (tokenizer_de_en, model_de_en),
-        'en_fr': (tokenizer_en_fr, model_en_fr),
         'gpt': (tokenizer_gpt, model_gpt)
     }
 
 def generate_example_sentences(word, models):
     """Génère des phrases d'exemple pour un mot"""
     tokenizer_gpt, model_gpt = models['gpt']
+    tokenizer_de_fr, model_de_fr = models['de_fr']
     
     prompts = [
         f"Das {word} ist",
@@ -161,23 +163,13 @@ def generate_example_sentences(word, models):
             )
             german = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
             
-            # Traduction DE -> EN -> FR pour plus de précision
-            tokenizer_de_en, model_de_en = models['de_en']
-            tokenizer_en_fr, model_en_fr = models['en_fr']
-            
-            # DE -> EN
-            inputs = tokenizer_de_en(german, return_tensors="pt", padding=True)
-            outputs = model_de_en.generate(**inputs)
-            english = tokenizer_de_en.decode(outputs[0], skip_special_tokens=True)
-            
-            # EN -> FR
-            inputs = tokenizer_en_fr(english, return_tensors="pt", padding=True)
-            outputs = model_en_fr.generate(**inputs)
-            french = tokenizer_en_fr.decode(outputs[0], skip_special_tokens=True)
+            # Traduction directe DE -> FR
+            inputs = tokenizer_de_fr(german, return_tensors="pt", padding=True)
+            outputs = model_de_fr.generate(**inputs)
+            french = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
             
             examples.append({
                 'de': german,
-                'en': english,
                 'fr': french
             })
         except Exception as e:
@@ -187,22 +179,97 @@ def generate_example_sentences(word, models):
     return examples
 
 def process_vocabulary(text, models):
-    """Traite un mot du vocabulaire"""
+    """Traite un mot du vocabulaire avec analyse lexicographique complète"""
+    print(f"\nAnalyse lexicographique de '{text}'...")
+    return create_lexical_entry(text, models)
+
+def analyze_word_class(word, models):
+    """Détermine la classe grammaticale et les informations morphologiques"""
+    tokenizer_gpt, model_gpt = models['gpt']
+    prompt = f"Grammatische Analyse des Wortes '{word}':"
+    
+    try:
+        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+        outputs = model_gpt.generate(
+            inputs.input_ids,
+            max_length=100,
+            num_beams=5,
+            temperature=0.7
+        )
+        analysis = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+        
+        # Traduction de l'analyse
+        tokenizer_de_fr, model_de_fr = models['de_fr']
+        inputs = tokenizer_de_fr(analysis, return_tensors="pt", padding=True)
+        outputs = model_de_fr.generate(**inputs)
+        analysis_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+        
+        return {
+            'original': analysis,
+            'translation': analysis_fr
+        }
+    except Exception as e:
+        print(f"Erreur lors de l'analyse grammaticale de '{word}': {e}")
+        return None
+
+def get_lexical_info(word, prompt_key, models):
+    """Obtient des informations lexicales spécifiques pour un mot"""
+    tokenizer_gpt, model_gpt = models['gpt']
+    prompt = LEXICAL_PROMPTS[prompt_key].format(word=word)
+    
+    try:
+        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+        outputs = model_gpt.generate(
+            inputs.input_ids,
+            max_length=200,
+            num_beams=5,
+            temperature=0.7
+        )
+        info = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+        
+        # Traduction
+        tokenizer_de_fr, model_de_fr = models['de_fr']
+        inputs = tokenizer_de_fr(info, return_tensors="pt", padding=True)
+        outputs = model_de_fr.generate(**inputs)
+        info_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+        
+        return {
+            'de': info,
+            'fr': info_fr
+        }
+    except Exception as e:
+        print(f"Erreur lors de la récupération des informations '{prompt_key}' pour '{word}': {e}")
+        return None
+
+def get_translations(word, models):
+    """Obtient la traduction en français"""
+    translations = {}
+    
+    # Français uniquement
     tokenizer_de_fr, model_de_fr = models['de_fr']
-    
-    # Traduction directe
-    inputs = tokenizer_de_fr(text, return_tensors="pt", padding=True)
+    inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
     outputs = model_de_fr.generate(**inputs)
-    translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+    translations['fr'] = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
     
-    # Génération d'exemples
-    examples = generate_example_sentences(text, models)
-    
-    return {
-        'word': text,
-        'translation': translation,
-        'examples': examples
+    return translations
+
+def create_lexical_entry(word, models):
+    """Crée une entrée lexicographique complète pour un mot"""
+    entry = {
+        'word': word,
+        'grammatical_info': analyze_word_class(word, models),
+        'translations': get_translations(word, models),
+        'etymology': get_lexical_info(word, 'etymology', models),
+        'definitions': get_lexical_info(word, 'definition', models),
+        'expressions': get_lexical_info(word, 'expressions', models),
+        'collocations': get_lexical_info(word, 'collocations', models),
+        'synonyms': get_lexical_info(word, 'synonyms', models),
+        'antonyms': get_lexical_info(word, 'antonyms', models),
+        'register': get_lexical_info(word, 'register', models),
+        'examples': generate_example_sentences(word, models)
     }
+    
+    return entry
 
 def main():
     parser = argparse.ArgumentParser(
