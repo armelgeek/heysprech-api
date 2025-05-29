@@ -276,35 +276,45 @@ def generate_contextual_prompts(word, word_type=None, models=None):
     
     return prompts
 
-def generate_quality_completion(prompt_data, word, ai_model):
+def generate_quality_completion(prompt_data, word, models):
     """
     Génère une complétion de haute qualité pour un prompt donné.
     """
-    system_prompt = f"""
-    Tu es un expert en langue allemande. Complète la phrase de manière naturelle et grammaticalement correcte.
+    tokenizer_gpt, model_gpt = models['gpt']
     
-    Critères obligatoires :
-    - 8-20 mots maximum pour la complétion
-    - Grammaire parfaite (cas, genre, conjugaisons)
-    - Style naturel qu'utiliserait un natif
-    - Contexte cohérent : {prompt_data['context']}
-    - Guide : {prompt_data['completion_hint']}
-    
-    Évite : les clichés, répétitions, phrases trop simples
-    Privilégie : structures variées, vocabulaire riche, situations réalistes
+    # Combine system and user prompts
+    combined_prompt = f"""Complète cette phrase allemande de manière naturelle et idiomatique.
+    Contexte : {prompt_data['context']}
+    Guide : {prompt_data['completion_hint']}
+    Phrase à compléter : {prompt_data['start']}
     """
     
-    user_prompt = f"Complète cette phrase allemande : '{prompt_data['start']}'"
-    
-    # Appel au modèle IA (à adapter selon votre implémentation)
-    completion = ai_model.generate(system_prompt, user_prompt)
-    
-    return {
-        'full_sentence': f"{prompt_data['start']} {completion}",
-        'completion': completion,
-        'context': prompt_data['context'],
-        'word_focus': word
-    }
+    try:
+        # Générer la complétion
+        inputs = tokenizer_gpt(combined_prompt, return_tensors="pt", padding=True)
+        outputs = model_gpt.generate(
+            inputs.input_ids,
+            max_length=30,
+            num_beams=3,
+            temperature=0.7,
+            no_repeat_ngram_size=2,
+            do_sample=True
+        )
+        completion = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
+        
+        # Extract only the completion part if it contains the initial prompt
+        if completion.startswith(prompt_data['start']):
+            completion = completion[len(prompt_data['start']):].strip()
+        
+        return {
+            'full_sentence': f"{prompt_data['start']} {completion}",
+            'completion': completion,
+            'context': prompt_data['context'],
+            'word_focus': word
+        }
+    except Exception as e:
+        print(f"Erreur lors de la génération de la complétion: {e}")
+        return None
 
 # Exemple d'utilisation améliorée
 def enhanced_text_generation(word, models, num_examples=4):
