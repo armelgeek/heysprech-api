@@ -35,34 +35,19 @@ LEXICAL_PROMPTS = {
 # Prompts pour les exercices d'apprentissage
 EXERCISE_PROMPTS = {
     'fill_blank': {
-        'beginner': "Generiere einen einfachen Lückentextsatz mit dem Wort '{word}':",
-        'intermediate': "Generiere einen mittelschweren Lückentextsatz mit dem Wort '{word}':",
-        'advanced': "Generiere einen komplexen Lückentextsatz mit dem Wort '{word}':"
+        'beginner': "Écrivez une phrase avec ___ pour '{word}':",
+        'intermediate': "Écrivez une phrase avec ___ pour '{word}':",
+        'advanced': "Écrivez une phrase complexe avec ___ pour '{word}':"
     },
     'multiple_choice': {
-        'beginner': "Erstelle einfache Multiple-Choice-Fragen zum Wort '{word}' mit Grundbedeutungen:",
-        'intermediate': "Erstelle Multiple-Choice-Fragen zum Wort '{word}' mit verschiedenen Kontexten:",
-        'advanced': "Erstelle anspruchsvolle Multiple-Choice-Fragen zum Wort '{word}' mit Nuancen und idiomatischen Verwendungen:"
+        'beginner': "Quelle est la signification de '{word}'? A) B) C) D):",
+        'intermediate': "Dans quel contexte utilise-t-on '{word}'? A) B) C) D):",
+        'advanced': "Comment utilise-t-on '{word}' correctement? A) B) C) D):"
     },
     'word_association': {
-        'beginner': "Erstelle ein einfaches Wortassoziationsspiel mit '{word}' (max. 4 Wörter):",
-        'intermediate': "Erstelle ein Wortassoziationsspiel mit '{word}' und thematischen Gruppen:",
-        'advanced': "Erstelle ein komplexes Wortassoziationsnetz mit '{word}' und semantischen Beziehungen:"
-    },
-    'scramble': {
-        'beginner': "Erstelle einen einfachen Satz mit '{word}' (max. 5 Wörter) zum Unscrambling:",
-        'intermediate': "Erstelle einen Satz mittlerer Länge mit '{word}' zum Unscrambling:",
-        'advanced': "Erstelle einen komplexen Satz mit '{word}' und Nebensätzen zum Unscrambling:"
-    },
-    'context_quiz': {
-        'beginner': "Erstelle einfache Kontextfragen für Anfänger zum Wort '{word}':",
-        'intermediate': "Erstelle Kontextfragen mittleren Niveaus zum Wort '{word}':",
-        'advanced': "Erstelle anspruchsvolle Kontextfragen mit kulturellen Bezügen zum Wort '{word}':"
-    },
-    'usage_quiz': {
-        'beginner': "Erstelle grundlegende Verwendungsbeispiele mit '{word}':",
-        'intermediate': "Erstelle Verwendungsbeispiele mit '{word}' in verschiedenen Zeitformen:",
-        'advanced': "Erstelle Verwendungsbeispiele mit '{word}' in idiomatischen Wendungen:"
+        'beginner': "Donnez 3 mots associés à '{word}':",
+        'intermediate': "Donnez 4 mots du même thème que '{word}':",
+        'advanced': "Donnez 5 mots liés au concept de '{word}':"
     }
 }
 
@@ -171,48 +156,37 @@ def load_models():
     }
 
 def generate_example_sentences(word, models):
-    """Génère des phrases d'exemple pour un mot"""
+    """Génère une phrase d'exemple simple pour un mot"""
     tokenizer_gpt, model_gpt = models['gpt']
     tokenizer_de_fr, model_de_fr = models['de_fr']
     
-    prompts = [
-        f"Das {word} ist",
-        f"Ich {word}",
-        f"Der {word} hat",
-        f"Mit {word} kann man"
-    ]
+    # Un seul prompt simple
+    prompt = f"Ich {word}"
     
-    examples = []
-    for prompt in prompts:
-        try:
-            # Génération de la phrase en allemand
-            inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-            outputs = model_gpt.generate(
-                inputs.input_ids,
-                max_length=50,
-                num_beams=5,
-                no_repeat_ngram_size=2,
-                top_k=50,
-                top_p=0.95,
-                temperature=0.7,
-                do_sample=True
-            )
-            german = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
-            
-            # Traduction directe DE -> FR
-            inputs = tokenizer_de_fr(german, return_tensors="pt", padding=True)
-            outputs = model_de_fr.generate(**inputs)
-            french = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
-            
-            examples.append({
-                'de': german,
-                'fr': french
-            })
-        except Exception as e:
-            print(f"Erreur lors de la génération d'exemple pour '{prompt}': {e}")
-            continue
-            
-    return examples
+    try:
+        # Génération de la phrase en allemand
+        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+        outputs = model_gpt.generate(
+            inputs.input_ids,
+            max_length=20,  # Longueur réduite pour une phrase simple
+            num_beams=3,
+            temperature=0.7,
+            do_sample=True
+        )
+        german = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+        
+        # Traduction directe DE -> FR
+        inputs = tokenizer_de_fr(german, return_tensors="pt", padding=True)
+        outputs = model_de_fr.generate(**inputs)
+        french = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+        
+        return [{
+            'de': german,
+            'fr': french
+        }]  # Retourne une liste avec un seul exemple
+    except Exception as e:
+        print(f"Erreur lors de la génération d'exemple: {e}")
+        return []
 
 def process_vocabulary(text, models):
     """Traite un mot du vocabulaire avec analyse lexicographique complète"""
@@ -222,27 +196,33 @@ def process_vocabulary(text, models):
 def analyze_word_class(word, models):
     """Détermine la classe grammaticale et les informations morphologiques"""
     tokenizer_gpt, model_gpt = models['gpt']
-    prompt = f"Grammatische Analyse des Wortes '{word}':"
+    prompt = f"Kurze grammatikalische Analyse für '{word}': Wortart, Genus, Numerus, Kasus."
     
     try:
         inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
         outputs = model_gpt.generate(
             inputs.input_ids,
-            max_length=100,
-            num_beams=5,
-            temperature=0.7
+            max_length=50,  # Réduit pour une réponse concise
+            num_beams=3,
+            temperature=0.3,  # Température basse pour plus de précision
+            do_sample=False  # Pas d'échantillonnage pour plus de précision
         )
         analysis = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
         
         # Traduction de l'analyse
         tokenizer_de_fr, model_de_fr = models['de_fr']
         inputs = tokenizer_de_fr(analysis, return_tensors="pt", padding=True)
-        outputs = model_de_fr.generate(**inputs)
+        outputs = model_de_fr.generate(
+            inputs.input_ids,
+            max_length=50,
+            num_beams=3,
+            temperature=0.3
+        )
         analysis_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
         
         return {
-            'original': analysis,
-            'translation': analysis_fr
+            'de': analysis,
+            'fr': analysis_fr
         }
     except Exception as e:
         print(f"Erreur lors de l'analyse grammaticale de '{word}': {e}")
@@ -278,239 +258,98 @@ def get_lexical_info(word, prompt_key, models):
         return None
 
 def get_translations(word, models):
-    """Obtient plusieurs variantes de traduction en français avec différents niveaux de style
+    """Obtient la traduction principale et quelques variantes
     
     Args:
         word: Le mot à traduire
         models: Les modèles de traduction et génération
         
     Returns:
-        dict: Traductions structurées par style et contexte
+        dict: Traduction principale et quelques variantes
     """
     tokenizer_de_fr, model_de_fr = models['de_fr']
     translations = {
-        'principal': '',  # Traduction principale/neutre
-        'styles': {       # Variations stylistiques
-            'formel': [],
-            'courant': [],
-            'familier': []
-        },
-        'contextes': {},  # Traductions selon le contexte
-        'alternatives': [] # Autres variantes possibles
+        'principal': '',
+        'variantes': []
     }
     
-    # Configurations pour différents styles de traduction
-    generation_params = [
-        # (température, top_k, top_p) - plus la température est haute, plus les résultats sont créatifs
-        (0.3, 50, 0.95),  # Style neutre/standard
-        (0.7, 50, 0.95),  # Style varié
-        (0.9, 50, 0.95)   # Style très créatif
-    ]
-    
-    # Génération de la traduction principale (style neutre)
     try:
+        # Traduction principale
         inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
         outputs = model_de_fr.generate(
             inputs.input_ids,
-            max_length=50,
-            num_beams=5,
+            max_length=20,  # Réduits pour avoir des traductions concises
+            num_beams=3,
             temperature=0.3,  # Température basse pour une traduction fidèle
-            do_sample=False   # Pas d'échantillonnage pour la traduction principale
+            do_sample=False
         )
         translations['principal'] = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
-    except Exception as e:
-        print(f"Erreur lors de la traduction principale: {e}")
-        translations['principal'] = word
-    
-    # Génération des variations stylistiques
-    contexts = [
-        ("in formellen Texten", 'formel'),
-        ("in der Alltagssprache", 'courant'),
-        ("in der Umgangssprache", 'familier')
-    ]
-    
-    for context, style in contexts:
-        prompt = f"Das Wort '{word}' {context}:"
-        try:
-            inputs = tokenizer_de_fr(prompt, return_tensors="pt", padding=True)
-            
-            # Utiliser différents paramètres selon le style
-            if style == 'formel':
-                temp, k, p = 0.3, 50, 0.95  # Plus conservateur
-            elif style == 'familier':
-                temp, k, p = 0.9, 50, 0.95  # Plus créatif
-            else:
-                temp, k, p = 0.7, 50, 0.95  # Intermédiaire
+        
+        # Quelques variantes (maximum 3)
+        outputs = model_de_fr.generate(
+            inputs.input_ids,
+            max_length=20,
+            num_return_sequences=3,
+            temperature=0.7,
+            top_k=50,
+            top_p=0.95,
+            do_sample=True
+        )
+        
+        for output in outputs:
+            translation = tokenizer_de_fr.decode(output, skip_special_tokens=True)
+            if translation != translations['principal'] and translation not in translations['variantes']:
+                translations['variantes'].append(translation)
                 
-            outputs = model_de_fr.generate(
-                inputs.input_ids,
-                max_length=50,
-                num_return_sequences=3,
-                temperature=temp,
-                top_k=k,
-                top_p=p,
-                do_sample=True
-            )
-            
-            for output in outputs:
-                translation = tokenizer_de_fr.decode(output, skip_special_tokens=True)
-                if translation not in translations['styles'][style]:
-                    translations['styles'][style].append(translation)
-                    
-        except Exception as e:
-            print(f"Erreur lors de la génération du style {style}: {e}")
-    
-    # Génération de traductions contextuelles
-    specific_contexts = [
-        "in wissenschaftlichen Texten",
-        "in der Literatur",
-        "in der Technik",
-        "in der Wirtschaft",
-        "in den Medien"
-    ]
-    
-    for context in specific_contexts:
-        prompt = f"Das Wort '{word}' {context}:"
-        try:
-            inputs = tokenizer_de_fr(prompt, return_tensors="pt", padding=True)
-            outputs = model_de_fr.generate(
-                inputs.input_ids,
-                max_length=50,
-                num_return_sequences=2,
-                temperature=0.7,
-                top_k=50,
-                top_p=0.95,
-                do_sample=True
-            )
-            
-            context_key = context.split()[-1].rstrip(':')  # Extrait le contexte principal
-            translations['contextes'][context_key] = [
-                tokenizer_de_fr.decode(output, skip_special_tokens=True)
-                for output in outputs
-            ]
-            
-        except Exception as e:
-            print(f"Erreur lors de la génération du contexte {context}: {e}")
-    
-    # Génération d'alternatives générales
-    for temp, k, p in generation_params:
-        try:
-            inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
-            outputs = model_de_fr.generate(
-                inputs.input_ids,
-                max_length=50,
-                num_return_sequences=3,
-                temperature=temp,
-                top_k=k,
-                top_p=p,
-                do_sample=True
-            )
-            
-            for output in outputs:
-                translation = tokenizer_de_fr.decode(output, skip_special_tokens=True)
-                if (translation != translations['principal'] and 
-                    translation not in translations['alternatives']):
-                    translations['alternatives'].append(translation)
-                    
-        except Exception as e:
-            print(f"Erreur lors de la génération d'alternatives: {e}")
+    except Exception as e:
+        print(f"Erreur lors de la traduction: {e}")
+        translations['principal'] = word
     
     return translations
 
 def create_lexical_entry(word, models):
-    """Crée une entrée lexicographique complète pour un mot
+    """Crée une entrée lexicographique simplifiée pour un mot
     
     Args:
         word: Le mot à analyser
         models: Les modèles de traduction et génération
         
     Returns:
-        dict: Entrée lexicographique complète avec toutes les informations
+        dict: Entrée lexicographique avec les informations essentielles
     """
-    # Obtenir la fréquence et le niveau de difficulté recommandé
-    word_level = get_word_level(word)
-    
-    # Générer toutes les informations lexicales
+    # Obtenir uniquement les informations essentielles
     translations = get_translations(word, models)
-    definitions = get_lexical_info(word, 'definition', models)
     examples = generate_example_sentences(word, models)
-    pronunciation = get_pronunciation(word, models)
     
-    # Structure enrichie de l'entrée lexicographique
+    # Structure simplifiée de l'entrée
     entry = {
         'word': word,
-        'level': word_level,
-        'pronunciation': pronunciation,  # Ajout de la prononciation
+        'level': get_word_level(word),
         'translations': translations,
-        'grammatical_info': analyze_word_class(word, models),
-        'definitions': {
-            'detaillees': definitions,
-            'exemples': examples
-        },
-        'etymologie': get_lexical_info(word, 'etymology', models),
-        'usage': {
-            'general': get_lexical_info(word, 'detailed_usage', models),
-            'expressions': get_lexical_info(word, 'expressions', models),
-            'collocations': get_lexical_info(word, 'collocations', models),
-            'registre': get_lexical_info(word, 'register', models)
-        },
-        'semantic': {
-            'synonymes': get_lexical_info(word, 'synonyms', models),
-            'antonymes': get_lexical_info(word, 'antonyms', models),
-            'champ_semantique': get_lexical_info(word, 'semantic_field', models)
-        },
-        'exercices': generate_exercises(word, models, difficulty=word_level['level'])
+        'examples': examples[:2],  # Limité à 2 exemples
+        'exercises': generate_exercises(word, models)
     }
     
     return entry
 
 def format_exercise(exercise_type, exercise_text, word):
-    """Formate l'exercice selon son type"""
+    """Formate l'exercice selon son type de manière simplifiée"""
     if exercise_type == 'multiple_choice':
-        # Format attendu: Question\nA) réponse1\nB) réponse2\nC) réponse3\nD) réponse4\nCorrect: X
         lines = exercise_text.split('\n')
-        if len(lines) >= 5:  # Au moins une question et 4 choix
-            return {
-                'question': lines[0],
-                'choices': [
-                    {'id': 'A', 'text': lines[1][3:] if lines[1].startswith('A)') else lines[1]},
-                    {'id': 'B', 'text': lines[2][3:] if lines[2].startswith('B)') else lines[2]},
-                    {'id': 'C', 'text': lines[3][3:] if lines[3].startswith('C)') else lines[3]},
-                    {'id': 'D', 'text': lines[4][3:] if lines[4].startswith('D)') else lines[4]}
-                ],
-                'correct_answer': 'B'  # Par défaut, la bonne réponse est la traduction correcte
-            }
-    elif exercise_type == 'fill_blank':
-        # Format: Phrase avec ___ pour le mot manquant
         return {
-            'sentence': exercise_text.replace(word, '___'),
+            'question': lines[0],
+            'choices': [l.strip() for l in lines[1:5] if l.strip()],
+            'answer': lines[-1].replace('Correct: ', '') if len(lines) > 5 else 'A'
+        }
+    elif exercise_type == 'fill_blank':
+        return {
+            'text': exercise_text.replace(word, '___'),
             'answer': word
         }
-    elif exercise_type == 'scramble':
-        # Format: Mots mélangés | Phrase correcte
-        if '|' in exercise_text:
-            scrambled, correct = exercise_text.split('|')
-            return {
-                'scrambled_words': scrambled.strip().split(),
-                'correct_sentence': correct.strip()
-            }
     elif exercise_type == 'word_association':
-        # Format: mot1:catégorie1, mot2:catégorie2, etc.
-        pairs = [pair.strip() for pair in exercise_text.split(',')]
-        return {
-            'pairs': [{'word': p.split(':')[0].strip(), 'category': p.split(':')[1].strip()} 
-                     for p in pairs if ':' in p]
-        }
-    elif exercise_type == 'context_quiz':
-        # Format: Question?|Réponse correcte
-        if '|' in exercise_text:
-            question, answer = exercise_text.split('|')
-            return {
-                'question': question.strip(),
-                'correct_answer': answer.strip()
-            }
+        words = [w.strip() for w in exercise_text.split(',')]
+        return {'words': words}
     
-    # Format par défaut
     return {'text': exercise_text}
 
 def clean_word(word):
@@ -524,34 +363,26 @@ def clean_word(word):
     return word
 
 def generate_exercises(word, models, difficulty='intermediate'):
-    """Génère différents exercices pour l'apprentissage du mot
-    
-    Args:
-        word: Le mot à traiter
-        models: Les modèles de traduction et génération
-        difficulty: Niveau de difficulté ('beginner', 'intermediate', 'advanced')
-    """
+    """Génère des exercices simplifiés pour l'apprentissage du mot"""
     tokenizer_gpt, model_gpt = models['gpt']
     tokenizer_de_fr, model_de_fr = models['de_fr']
     exercises = {}
     
-    # Nettoie le mot avant de générer les exercices
     clean_word_input = clean_word(word)
     
-    # Génération des différents types d'exercices
     for exercise_type, prompt_dict in EXERCISE_PROMPTS.items():
         try:
-            # Génération de l'exercice en allemand avec le bon niveau de difficulté
-            prompt = prompt_dict[difficulty]  # Sélectionne le prompt du bon niveau
+            prompt = prompt_dict[difficulty]
             full_prompt = prompt.format(word=clean_word_input)
+            
+            # Génération en allemand
             inputs = tokenizer_gpt(full_prompt, return_tensors="pt", padding=True)
             outputs = model_gpt.generate(
                 inputs.input_ids,
-                max_length=200,
-                num_beams=5,
-                temperature=0.8,
+                max_length=50,  # Réduits pour des réponses très concises
+                num_beams=3,
+                temperature=0.7,
                 top_k=50,
-                top_p=0.95,
                 do_sample=True
             )
             exercise_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
@@ -561,24 +392,13 @@ def generate_exercises(word, models, difficulty='intermediate'):
             outputs = model_de_fr.generate(**inputs)
             exercise_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
             
-            # Formatage structuré des exercices
-            formatted_de = format_exercise(exercise_type, exercise_de, clean_word_input)
-            
-            # Obtenir la traduction du mot
-            translation = get_translations(clean_word_input, models)
-            word_fr = translation.get('principal', clean_word_input)  # Utilise le mot nettoyé si pas de traduction
-            
-            formatted_fr = format_exercise(exercise_type, exercise_fr, word_fr)
-            
+            # Formatage simplifié
             exercises[exercise_type] = {
-                'de': formatted_de,
-                'fr': formatted_fr,
-                'type': exercise_type,
-                'difficulty': difficulty
+                'de': format_exercise(exercise_type, exercise_de, clean_word_input),
+                'fr': format_exercise(exercise_type, exercise_fr, get_translations(clean_word_input, models).get('principal', clean_word_input))
             }
-            
         except Exception as e:
-            print(f"Erreur lors de la génération de l'exercice '{exercise_type}' pour '{word}': {e}")
+            print(f"Erreur: {e}")
             exercises[exercise_type] = None
     
     return exercises
