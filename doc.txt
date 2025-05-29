@@ -1,0 +1,2 @@
+git add transcriptions && git commit -m "transcripton" && git push origin master
+python process_single.py audios/demo.mp3 -o transcriptions

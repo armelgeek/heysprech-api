@@ -458,6 +458,7 @@ def clean_word(word):
     word = re.sub(r'[.,!?]$', '', word)
     return word
 
+
 def generate_exercises(word, models, difficulty='intermediate'):
     """Génère des exercices d'apprentissage pour un mot allemand
     
@@ -476,141 +477,253 @@ def generate_exercises(word, models, difficulty='intermediate'):
     clean_word_input = clean_word(word)
     
     try:
-        # 1. Exercice à trous - génération de phrases contextuelles
-        prompt = f"""Schreiben Sie drei verschiedene Sätze mit dem Wort '{clean_word_input}':
-1. Ein sehr einfacher Satz für Anfänger (mit Alltagsvokabular).
-2. Ein Satz mittlerer Schwierigkeit mit einer wichtigen Redewendung.
-3. Ein anspruchsvoller Satz mit komplexerer Grammatik."""
-
-        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-        outputs = model_gpt.generate(
-            inputs.input_ids,
-            max_length=150,
-            num_beams=5,
-            temperature=0.7,
-            do_sample=True
-        )
-        sentences_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).split('\n')
-        sentences_de = [s.strip() for s in sentences_de if s.strip() and clean_word_input in s.lower()]
-
+        # 1. Exercice à trous - génération de phrases contextuelles simples
         fill_blank_exercises = []
-        for i, sent_de in enumerate(sentences_de[:3]):
-            # Traduction en français
-            inputs = tokenizer_de_fr(sent_de, return_tensors="pt", padding=True)
-            outputs = model_de_fr.generate(**inputs)
-            translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
-            
-            # Reformulation en français naturel
-            translation = reformat_french_text(translation, models, context='example')
-            
-            fill_blank_exercises.append({
-                'de': sent_de.replace(clean_word_input, '___'),
-                'fr': translation,
-                'answer': clean_word_input,
-                'difficulty': ['beginner', 'intermediate', 'advanced'][i] if i < 3 else 'advanced'
-            })
-
-        exercises['fill_blank'] = {'de': fill_blank_exercises}
-
-        # 2. Choix multiples avec contexte réel
-        prompt = f"""Erstellen Sie eine Multiple-Choice-Frage für das Wort '{clean_word_input}':
-Frage: Wie wird das Wort '{clean_word_input}' korrekt verwendet?
-A) [Korrekte Verwendung mit typischem Kontext]
-B) [Ähnliche, aber leicht falsche Verwendung]
-C) [Häufiger Fehler bei der Verwendung]
-D) [Komplett falsche Verwendung]
-Richtige Antwort: A"""
-
-        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-        outputs = model_gpt.generate(
-            inputs.input_ids,
-            max_length=200,
-            num_beams=5,
-            temperature=0.6
-        )
-        qcm_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
         
-        # Traduction et reformulation du QCM
-        inputs = tokenizer_de_fr(qcm_de, return_tensors="pt", padding=True)
-        outputs = model_de_fr.generate(**inputs)
-        qcm_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
-
-        # Extrait la question et les choix
-        de_lines = qcm_de.split('\n')
-        fr_lines = qcm_fr.split('\n')
-
-        question_de = next((l for l in de_lines if '?' in l), '')
-        question_fr = reformat_french_text(next((l for l in fr_lines if '?' in l), ''), 
-                                         models, context='exercise_question')
-
-        choices_de = [l[3:].strip() for l in de_lines if l.startswith(('A)', 'B)', 'C)', 'D)'))]
-        choices_fr = [reformat_french_text(l[3:].strip(), models, context='exercise_choice') 
-                     for l in fr_lines if l.startswith(('A)', 'B)', 'C)', 'D)'))]
-
-        exercises['multiple_choice'] = {
-            'de': {
-                'question': question_de,
-                'choices': choices_de,
-                'answer': 'A'
-            },
-            'fr': {
-                'question': question_fr,
-                'choices': choices_fr,
-                'answer': 'A'
-            }
-        }
-
-        # 3. Association de mots avec contexte
-        prompt = f"""Geben Sie 6 wichtige verwandte Wörter zu '{clean_word_input}' an:
-1. Ein gebräuchliches Synonym
-2. Ein häufig verwendetes Verb in diesem Kontext
-3. Ein passendes Adjektiv
-4. Ein klarer Gegenbegriff
-5. Die übergeordnete Kategorie
-6. Ein spezifischerer Begriff"""
-
-        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-        outputs = model_gpt.generate(
-            inputs.input_ids,
-            max_length=150,
-            num_beams=5,
-            temperature=0.6
-        )
-        
-        related_words_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).split('\n')
-        related_words_de = [w.split('.')[-1].strip() if '.' in w else w.strip() 
-                          for w in related_words_de if w.strip()]
-
-        # Traduction et reformulation des mots associés
-        related_words_fr = []
-        for word_de in related_words_de:
-            inputs = tokenizer_de_fr(word_de, return_tensors="pt", padding=True)
-            outputs = model_de_fr.generate(**inputs)
-            translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
-            reformulated = reformat_french_text(translation, models, context='definition')
-            related_words_fr.append(reformulated)
-
-        categories_de = ['Synonym', 'Verb', 'Adjektiv', 'Antonym', 
-                        'Oberbegriff', 'Unterbegriff']
-        categories_fr = ['Synonyme', 'Verbe associé', 'Adjectif', 'Antonyme', 
-                        'Catégorie', 'Terme spécifique']
-
-        exercises['word_association'] = {
-            'de': {
-                'words': related_words_de,
-                'categories': categories_de
-            },
-            'fr': {
-                'words': related_words_fr,
-                'categories': categories_fr
-            }
+        # Templates de phrases simples adaptés au niveau
+        sentence_templates = {
+            'beginner': [
+                f"Ich __ {clean_word_input}.",
+                f"Das ist ein __ {clean_word_input}.",
+                f"Wir haben __ {clean_word_input}."
+            ],
+            'intermediate': [
+                f"Gestern habe ich __ {clean_word_input} gekauft.",
+                f"Der __ {clean_word_input} ist sehr schön.",
+                f"Kannst du mir den __ {clean_word_input} geben?"
+            ],
+            'advanced': [
+                f"Obwohl der __ {clean_word_input} teuer war, haben wir ihn gekauft.",
+                f"Nachdem ich den __ {clean_word_input} gesehen hatte, war ich beeindruckt.",
+                f"Je mehr ich über __ {clean_word_input} lerne, desto interessanter wird es."
+            ]
         }
         
-        return exercises
+        # Générer des phrases naturelles pour chaque template
+        for i, template in enumerate(sentence_templates.get(difficulty, sentence_templates['intermediate'])[:3]):
+            try:
+                # Template simple pour démarrer la génération
+                prompt = f"Vervollständigen Sie diesen Satz auf natürliche Weise: {template}"
+                
+                inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True, truncation=True, max_length=100)
+                outputs = model_gpt.generate(
+                    inputs.input_ids,
+                    max_length=inputs.input_ids.shape[1] + 30,  # Longueur raisonnable
+                    num_beams=3,
+                    temperature=0.5,
+                    do_sample=True,
+                    pad_token_id=tokenizer_gpt.eos_token_id
+                )
+                
+                generated_sentence = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+                # Nettoyer la phrase générée
+                generated_sentence = generated_sentence.replace(prompt, "").strip()
+                
+                # Si la génération n'est pas satisfaisante, utiliser un exemple prédéfini
+                if not generated_sentence or len(generated_sentence) < 5:
+                    predefined_sentences = {
+                        'beginner': [
+                            f"Ich mag {clean_word_input}.",
+                            f"Das ist mein {clean_word_input}.",
+                            f"Wir brauchen {clean_word_input}."
+                        ],
+                        'intermediate': [
+                            f"Gestern habe ich einen {clean_word_input} gekauft.",
+                            f"Der neue {clean_word_input} funktioniert gut.",
+                            f"Kannst du mir deinen {clean_word_input} leihen?"
+                        ],
+                        'advanced': [
+                            f"Obwohl der {clean_word_input} kompliziert ist, verstehe ich ihn.",
+                            f"Nachdem ich den {clean_word_input} studiert hatte, war alles klarer.",
+                            f"Je öfter ich {clean_word_input} benutze, desto besser wird es."
+                        ]
+                    }
+                    generated_sentence = predefined_sentences[difficulty][i]
+                
+                # Traduction de la phrase
+                inputs_fr = tokenizer_de_fr(generated_sentence, return_tensors="pt", padding=True)
+                outputs_fr = model_de_fr.generate(
+                    inputs_fr.input_ids,
+                    max_length=inputs_fr.input_ids.shape[1] + 20,
+                    num_beams=3,
+                    temperature=0.3
+                )
+                sentence_fr = tokenizer_de_fr.decode(outputs_fr[0], skip_special_tokens=True)
+                
+                # Créer l'exercice à trous
+                sentence_with_blank = generated_sentence.replace(clean_word_input, "____")
+                sentence_fr_with_blank = sentence_fr.replace(clean_word_input.lower(), "____")
+                
+                fill_blank_exercises.append({
+                    'de': {
+                        'text': sentence_with_blank,
+                        'answer': clean_word_input,
+                        'complete_sentence': generated_sentence
+                    },
+                    'fr': {
+                        'text': sentence_fr_with_blank,
+                        'translation': sentence_fr,
+                        'instruction': f"Complétez avec le mot allemand pour '{clean_word_input}'"
+                    }
+                })
+                
+            except Exception as e:
+                print(f"Erreur pour l'exercice à trous {i+1}: {e}")
+                continue
+        
+        exercises['fill_blank'] = fill_blank_exercises
+
+        # 2. Choix multiples - créer des questions sur le sens et l'usage
+        try:
+            # Obtenir d'abord la traduction principale
+            inputs = tokenizer_de_fr(clean_word_input, return_tensors="pt", padding=True)
+            outputs = model_de_fr.generate(inputs.input_ids, max_length=20, num_beams=3)
+            main_translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+            
+            # Créer des choix plausibles mais incorrects
+            distractors = []
+            similar_words = ['maison', 'voiture', 'livre', 'chien', 'eau', 'temps', 'personne', 'travail']
+            for word_fr in similar_words:
+                if word_fr != main_translation.lower():
+                    distractors.append(word_fr)
+                if len(distractors) >= 3:
+                    break
+            
+            choices = [main_translation] + distractors[:3]
+            import random
+            random.shuffle(choices)
+            correct_index = choices.index(main_translation)
+            correct_letter = ['A', 'B', 'C', 'D'][correct_index]
+            
+            exercises['multiple_choice'] = {
+                'de': {
+                    'question': f"Was bedeutet das Wort '{clean_word_input}' auf Französisch?",
+                    'choices': [f"{chr(65+i)}) {choice}" for i, choice in enumerate(choices)],
+                    'answer': correct_letter,
+                    'explanation': f"'{clean_word_input}' bedeutet '{main_translation}' auf Französisch."
+                },
+                'fr': {
+                    'question': f"Que signifie le mot allemand '{clean_word_input}' ?",
+                    'choices': [f"{chr(65+i)}) {choice}" for i, choice in enumerate(choices)],
+                    'answer': correct_letter,
+                    'explanation': f"'{clean_word_input}' signifie '{main_translation}' en français."
+                }
+            }
+            
+        except Exception as e:
+            print(f"Erreur pour le QCM: {e}")
+            exercises['multiple_choice'] = None
+
+        # 3. Association de mots - générer des mots sémantiquement liés
+        try:
+            # Créer des associations basées sur des catégories sémantiques
+            word_associations = {
+                'de': {
+                    'target_word': clean_word_input,
+                    'associated_words': [],
+                    'categories': ['Synonym', 'Gegenteil', 'Verwandt', 'Bereich']
+                },
+                'fr': {
+                    'target_word': main_translation,
+                    'associated_words': [],
+                    'categories': ['Synonyme', 'Contraire', 'Lié', 'Domaine']
+                }
+            }
+            
+            # Générer des mots associés simples
+            association_prompts = [
+                f"Ein Wort ähnlich wie {clean_word_input}:",
+                f"Das Gegenteil von {clean_word_input}:",
+                f"Ein Wort aus demselben Bereich wie {clean_word_input}:",
+                f"Ein verwandter Begriff zu {clean_word_input}:"
+            ]
+            
+            for prompt in association_prompts[:4]:  # Limiter à 4 associations
+                try:
+                    inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True, truncation=True)
+                    outputs = model_gpt.generate(
+                        inputs.input_ids,
+                        max_length=inputs.input_ids.shape[1] + 10,
+                        num_beams=3,
+                        temperature=0.6,
+                        pad_token_id=tokenizer_gpt.eos_token_id
+                    )
+                    associated_word = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+                    associated_word = associated_word.replace(prompt, "").strip().split()[0]
+                    
+                    # Traduction du mot associé
+                    inputs_fr = tokenizer_de_fr(associated_word, return_tensors="pt", padding=True)
+                    outputs_fr = model_de_fr.generate(inputs_fr.input_ids, max_length=15)
+                    associated_word_fr = tokenizer_de_fr.decode(outputs_fr[0], skip_special_tokens=True).strip()
+                    
+                    word_associations['de']['associated_words'].append(associated_word)
+                    word_associations['fr']['associated_words'].append(associated_word_fr)
+                    
+                except Exception as e:
+                    print(f"Erreur pour l'association: {e}")
+                    continue
+            
+            exercises['word_association'] = word_associations
+            
+        except Exception as e:
+            print(f"Erreur pour les associations de mots: {e}")
+            exercises['word_association'] = None
+
+        # 4. Exercice de construction de phrases
+        try:
+            sentence_building = {
+                'de': {
+                    'instruction': f"Bilden Sie einen Satz mit dem Wort '{clean_word_input}'",
+                    'example': f"Beispiel: Ich verwende {clean_word_input} jeden Tag.",
+                    'level': difficulty
+                },
+                'fr': {
+                    'instruction': f"Construisez une phrase avec le mot allemand '{clean_word_input}'",
+                    'example': f"Exemple: J'utilise {clean_word_input} tous les jours.",
+                    'level': difficulty
+                }
+            }
+            exercises['sentence_building'] = sentence_building
+            
+        except Exception as e:
+            print(f"Erreur pour la construction de phrases: {e}")
+            exercises['sentence_building'] = None
+        
     except Exception as e:
-        print(f"Erreur lors de la génération des exercices: {e}")
-        return None
+        print(f"Erreur générale lors de la génération des exercices: {e}")
+        return {
+            'error': str(e),
+            'word': clean_word_input,
+            'fallback_exercises': {
+                'fill_blank': [{
+                    'de': {'text': f"Ich benutze ____.", 'answer': clean_word_input},
+                    'fr': {'text': f"J'utilise ____.", 'instruction': "Complétez en allemand"}
+                }]
+            }
+        }
+    
+    return exercises
 
+
+
+def format_exercise_output(exercises, word):
+    """Formate la sortie des exercices pour un affichage cohérent"""
+    formatted = {
+        'word': word,
+        'total_exercises': 0,
+        'exercise_types': []
+    }
+    
+    for exercise_type, exercise_data in exercises.items():
+        if exercise_data and exercise_type != 'error':
+            formatted['exercise_types'].append(exercise_type)
+            if exercise_type == 'fill_blank' and isinstance(exercise_data, list):
+                formatted['total_exercises'] += len(exercise_data)
+            else:
+                formatted['total_exercises'] += 1
+    
+    formatted['exercises'] = exercises
+    return formatted
 def get_word_level(word):
     """Détermine le niveau de difficulté d'un mot allemand
     
@@ -880,3 +993,13 @@ Assurez-vous que la formulation soit claire et correcte grammaticalement."""
     except Exception as e:
         print(f"Erreur lors de la reformulation: {e}")
         return text
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nOpération interrompue par l'utilisateur")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Une erreur est survenue: {e}", file=sys.stderr)
+        sys.exit(1)
