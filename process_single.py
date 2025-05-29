@@ -252,54 +252,130 @@ def generate_example_sentences(word, models):
     
     # Assurer qu'on a toujours au moins 2 exemples pertinents
     while len(examples) < 2:
-        # Obtenir le type de mot pour générer un exemple adapté
-        word_type = word_type if 'word_type' in locals() else analyze_word_class(word, models)
-        word_info = word_type.get('de', '').lower()
+        # Obtenir des prompts contextuels intelligents
+        prompts = generate_contextual_prompts(word, word_type, models)
         
-        # Choisir un prompt approprié selon le type de mot
+        # Choisir un prompt non utilisé
+        prompt_data = prompts[len(examples) % len(prompts)]
+        
+        # Générer des prompts contextuels intelligents
         if 'verb' in word_info:
             prompts = [
-                f"Man kann {word}",
-                f"Ich möchte {word}",
-                f"Wir {word} zusammen",
-                f"Er {word} gern"
+                {
+                    'start': f"Man kann {word}",
+                    'context': "capacité/possibilité",
+                    'completion_hint': "complément d'objet + circonstanciel"
+                },
+                {
+                    'start': f"Ich möchte {word}",
+                    'context': "désir/intention",
+                    'completion_hint': "but ou destination"
+                },
+                {
+                    'start': f"Wir {word} zusammen",
+                    'context': "action collective",
+                    'completion_hint': "activité partagée + détails"
+                },
+                {
+                    'start': f"Sie {word} jeden Tag",
+                    'context': "habitude quotidienne",
+                    'completion_hint': "routine avec détails"
+                }
             ]
         elif 'substantiv' in word_info or 'nomen' in word_info:
             prompts = [
-                f"Das {word} ist",
-                f"Ich habe ein {word}",
-                f"Mit dem {word}",
-                f"Die {word} sind"
+                {
+                    'start': f"Das {word} ist",
+                    'context': "description/état",
+                    'completion_hint': "adjectifs descriptifs"
+                },
+                {
+                    'start': f"Ich brauche ein {word}",
+                    'context': "besoin/nécessité",
+                    'completion_hint': "raison ou usage"
+                },
+                {
+                    'start': f"Mit dem {word}",
+                    'context': "instrument/moyen",
+                    'completion_hint': "action réalisée"
+                },
+                {
+                    'start': f"Ohne {word}",
+                    'context': "absence/manque",
+                    'completion_hint': "conséquence"
+                }
             ]
         elif 'adjektiv' in word_info:
             prompts = [
-                f"Es ist {word}",
-                f"Das Wetter ist {word}",
-                f"Sie ist sehr {word}",
-                f"Alles wird {word}"
+                {
+                    'start': f"Es ist sehr {word}",
+                    'context': "intensité/degré",
+                    'completion_hint': "conséquence"
+                },
+                {
+                    'start': f"Das Wetter wird {word}",
+                    'context': "changement/évolution",
+                    'completion_hint': "prédiction temporelle"
+                },
+                {
+                    'start': f"Sie fühlt sich {word}",
+                    'context': "état émotionnel",
+                    'completion_hint': "cause"
+                },
+                {
+                    'start': f"Etwas so {word}",
+                    'context': "comparaison/exemple",
+                    'completion_hint': "exemple concret"
+                }
             ]
         else:
             prompts = [
-                f"Hier ist {word}",
-                f"Das ist {word}",
-                f"Mit {word}",
-                f"Es gibt {word}"
+                {
+                    'start': f"Hier ist {word}",
+                    'context': "présentation/localisation",
+                    'completion_hint': "description"
+                },
+                {
+                    'start': f"Das bedeutet {word}",
+                    'context': "explication/définition",
+                    'completion_hint': "clarification"
+                },
+                {
+                    'start': f"Mit {word}",
+                    'context': "accompagnement/moyen",
+                    'completion_hint': "action"
+                }
             ]
         
-        # Prendre un prompt au hasard
-        prompt = prompts[len(examples) % len(prompts)]
+        # Prendre un prompt au hasard avec son contexte
+        prompt_data = prompts[len(examples) % len(prompts)]
+        
+        # Créer un prompt système pour guider la génération
+        system_prompt = f"""
+        Complète la phrase en allemand de manière naturelle et grammaticalement correcte.
+        Contexte : {prompt_data['context']}
+        Guide : {prompt_data['completion_hint']}
+        - Maximum 15 mots
+        - Grammaire parfaite
+        - Style naturel
+        - Situation réaliste
+        """
+        
+        # Utiliser le prompt de base
+        prompt = prompt_data['start']
             
-            try:
-                # Génération en allemand
-                inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-                outputs = model_gpt.generate(
-                    inputs.input_ids,
-                    max_length=15,
-                    num_beams=3,
-                    temperature=0.5,
-                    no_repeat_ngram_size=2
-                )
-                german = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
+            # Générer la complétion de haute qualité
+            example = generate_quality_completion(prompt_data, word, models)
+            if example:
+                examples.append(example)
+                completion = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
+                
+                # Extraire la partie générée après le prompt initial
+                if completion.startswith(prompt):
+                    completion = completion[len(prompt):].strip()
+                
+                # Construire la phrase complète
+                german = f"{prompt} {completion}"
                 if not german.endswith('.'):
                     german += '.'
                 
