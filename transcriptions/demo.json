@@ -2,77 +2,211 @@
   "segments": [
     {
       "start": 0.031,
-      "end": 7.493,
-      "text": " Sie gehen heute ins Kino.",
+      "end": 7.898,
+      "text": " Etwas eine Kleinigkeit unterscheidet mich von euch.",
       "words": [
         {
-          "word": "Sie",
+          "word": "Etwas",
           "start": 0.031,
-          "end": 0.353,
-          "score": 0.695
+          "end": 1.014,
+          "score": 0.87
         },
         {
-          "word": "gehen",
-          "start": 0.373,
-          "end": 0.634,
-          "score": 0.862
+          "word": "eine",
+          "start": 1.054,
+          "end": 1.215,
+          "score": 0.65
         },
         {
-          "word": "heute",
-          "start": 0.675,
-          "end": 0.936,
-          "score": 0.799
+          "word": "Kleinigkeit",
+          "start": 1.255,
+          "end": 2.058,
+          "score": 0.902
         },
         {
-          "word": "ins",
-          "start": 0.976,
-          "end": 1.137,
-          "score": 0.947
+          "word": "unterscheidet",
+          "start": 2.098,
+          "end": 2.72,
+          "score": 0.944
         },
         {
-          "word": "Kino.",
-          "start": 1.198,
-          "end": 7.493,
-          "score": 0.805
+          "word": "mich",
+          "start": 2.76,
+          "end": 2.901,
+          "score": 0.848
+        },
+        {
+          "word": "von",
+          "start": 2.941,
+          "end": 3.122,
+          "score": 0.897
+        },
+        {
+          "word": "euch.",
+          "start": 3.182,
+          "end": 7.898,
+          "score": 0.854
         }
       ],
-      "translation": "Ils vont au cinéma aujourd'hui."
+      "translation": "Quelque chose me distingue de vous."
+    },
+    {
+      "start": 7.938,
+      "end": 16.808,
+      "text": "Ich kann gehen.",
+      "words": [
+        {
+          "word": "Ich",
+          "start": 7.938,
+          "end": 8.038,
+          "score": 0.782
+        },
+        {
+          "word": "kann",
+          "start": 8.058,
+          "end": 8.239,
+          "score": 0.824
+        },
+        {
+          "word": "gehen.",
+          "start": 8.279,
+          "end": 16.808,
+          "score": 0.864
+        }
+      ],
+      "translation": "Je peux y aller."
     }
   ],
   "word_segments": [
     {
-      "word": "Sie",
+      "word": "Etwas",
       "start": 0.031,
-      "end": 0.353,
-      "score": 0.695
+      "end": 1.014,
+      "score": 0.87
     },
     {
-      "word": "gehen",
-      "start": 0.373,
-      "end": 0.634,
-      "score": 0.862
+      "word": "eine",
+      "start": 1.054,
+      "end": 1.215,
+      "score": 0.65
     },
     {
-      "word": "heute",
-      "start": 0.675,
-      "end": 0.936,
-      "score": 0.799
+      "word": "Kleinigkeit",
+      "start": 1.255,
+      "end": 2.058,
+      "score": 0.902
     },
     {
-      "word": "ins",
-      "start": 0.976,
-      "end": 1.137,
-      "score": 0.947
+      "word": "unterscheidet",
+      "start": 2.098,
+      "end": 2.72,
+      "score": 0.944
     },
     {
-      "word": "Kino.",
-      "start": 1.198,
-      "end": 7.493,
-      "score": 0.805
+      "word": "mich",
+      "start": 2.76,
+      "end": 2.901,
+      "score": 0.848
+    },
+    {
+      "word": "von",
+      "start": 2.941,
+      "end": 3.122,
+      "score": 0.897
+    },
+    {
+      "word": "euch.",
+      "start": 3.182,
+      "end": 7.898,
+      "score": 0.854
+    },
+    {
+      "word": "Ich",
+      "start": 7.938,
+      "end": 8.038,
+      "score": 0.782
+    },
+    {
+      "word": "kann",
+      "start": 8.058,
+      "end": 8.239,
+      "score": 0.824
+    },
+    {
+      "word": "gehen.",
+      "start": 8.279,
+      "end": 16.808,
+      "score": 0.864
     }
   ],
   "language": "de",
   "vocabulary": [
+    {
+      "word": "eine",
+      "level": "beginner",
+      "translation": {
+        "de": "eine",
+        "fr": "une"
+      },
+      "example": {
+        "de": "Der eine ist schön.",
+        "fr": "L'un est beau."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'une'"
+        },
+        "answer": "eine",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T13:07:36.046172"
+    },
+    {
+      "word": "etwas",
+      "level": "intermediate",
+      "translation": {
+        "de": "etwas",
+        "fr": "quelque chose"
+      },
+      "example": {
+        "de": "Das ist ein etwas.",
+        "fr": "C'est quelque chose."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'quelque chose'"
+        },
+        "answer": "etwas",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T13:07:36.947688"
+    },
+    {
+      "word": "euch",
+      "level": "beginner",
+      "translation": {
+        "de": "euch",
+        "fr": "à vous"
+      },
+      "example": {
+        "de": "Der euch ist schön.",
+        "fr": "Vous êtes belles."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'à vous'"
+        },
+        "answer": "euch",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T13:07:37.578490"
+    },
     {
       "word": "gehen",
       "level": "intermediate",
@@ -81,8 +215,8 @@
         "fr": "aller"
       },
       "example": {
-        "de": "Wir brauchen gehen.",
-        "fr": "Il faut qu'on parte."
+        "de": "Das ist ein gehen.",
+        "fr": "C'est une bonne idée."
       },
       "exercise": {
         "type": "fill_blank",
@@ -93,103 +227,147 @@
         "answer": "gehen",
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T12:31:22.289810"
+      "processed_at": "2025-05-29T13:07:38.258444"
     },
     {
-      "word": "heute",
-      "level": "intermediate",
-      "translation": {
-        "de": "heute",
-        "fr": "Aujourd'hui"
-      },
-      "example": {
-        "de": "Das ist ein heute.",
-        "fr": "C'est aujourd'hui."
-      },
-      "exercise": {
-        "type": "fill_blank",
-        "question": {
-          "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'Aujourd'hui'"
-        },
-        "answer": "heute",
-        "level": "beginner"
-      },
-      "processed_at": "2025-05-29T12:31:23.178603"
-    },
-    {
-      "word": "ins",
+      "word": "ich",
       "level": "beginner",
       "translation": {
-        "de": "ins",
-        "fr": "dans la"
+        "de": "ich",
+        "fr": "isé"
       },
       "example": {
-        "de": "Das ist ein ins.",
-        "fr": "Ça, c'est dans l'ordre."
+        "de": "Das ist ein ich.",
+        "fr": "C'est un moi."
       },
       "exercise": {
         "type": "fill_blank",
         "question": {
           "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'dans la'"
+          "fr": "Complétez avec le mot allemand pour 'isé'"
         },
-        "answer": "ins",
+        "answer": "ich",
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T12:31:24.205219"
+      "processed_at": "2025-05-29T13:07:38.905614"
     },
     {
-      "word": "kino",
+      "word": "kann",
       "level": "beginner",
       "translation": {
-        "de": "kino",
-        "fr": "cinéma"
+        "de": "kann",
+        "fr": "peut"
       },
       "example": {
-        "de": "Der kino ist schön.",
-        "fr": "Le cinéma est beau."
+        "de": "Ich habe einen kann.",
+        "fr": "J'en ai un."
       },
       "exercise": {
         "type": "fill_blank",
         "question": {
           "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'cinéma'"
+          "fr": "Complétez avec le mot allemand pour 'peut'"
         },
-        "answer": "kino",
+        "answer": "kann",
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T12:31:24.871707"
+      "processed_at": "2025-05-29T13:07:39.676081"
     },
     {
-      "word": "sie",
-      "level": "beginner",
+      "word": "kleinigkeit",
+      "level": "advanced",
       "translation": {
-        "de": "sie",
-        "fr": "et"
+        "de": "kleinigkeit",
+        "fr": "Petiteur"
       },
       "example": {
-        "de": "Wir brauchen sie.",
-        "fr": "On a besoin d'elle."
+        "de": "Wir brauchen kleinigkeit.",
+        "fr": "On a besoin de petites choses."
       },
       "exercise": {
         "type": "fill_blank",
         "question": {
           "de": "Ich brauche einen ____.",
-          "fr": "Complétez avec le mot allemand pour 'et'"
+          "fr": "Complétez avec le mot allemand pour 'Petiteur'"
         },
-        "answer": "sie",
+        "answer": "kleinigkeit",
         "level": "beginner"
       },
-      "processed_at": "2025-05-29T12:31:25.520575"
+      "processed_at": "2025-05-29T13:07:40.526961"
+    },
+    {
+      "word": "mich",
+      "level": "beginner",
+      "translation": {
+        "de": "mich",
+        "fr": "moi"
+      },
+      "example": {
+        "de": "Das ist ein mich.",
+        "fr": "C'est moi."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'moi'"
+        },
+        "answer": "mich",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T13:07:41.167139"
+    },
+    {
+      "word": "unterscheidet",
+      "level": "advanced",
+      "translation": {
+        "de": "unterscheidet",
+        "fr": "différent"
+      },
+      "example": {
+        "de": "Das ist ein unterscheidet.",
+        "fr": "C'est une différence."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'différent'"
+        },
+        "answer": "unterscheidet",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T13:07:41.749192"
+    },
+    {
+      "word": "von",
+      "level": "beginner",
+      "translation": {
+        "de": "von",
+        "fr": "de"
+      },
+      "example": {
+        "de": "Das ist ein von.",
+        "fr": "C'est un des leurs."
+      },
+      "exercise": {
+        "type": "fill_blank",
+        "question": {
+          "de": "Ich brauche einen ____.",
+          "fr": "Complétez avec le mot allemand pour 'de'"
+        },
+        "answer": "von",
+        "level": "beginner"
+      },
+      "processed_at": "2025-05-29T13:07:42.566148"
     }
   ],
   "vocabulary_stats": {
-    "total_words": 5,
+    "total_words": 10,
     "levels": {
-      "beginner": 3,
+      "beginner": 6,
       "intermediate": 2,
-      "advanced": 0
+      "advanced": 2
     }
   }
 }
