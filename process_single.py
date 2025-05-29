@@ -3,6 +3,7 @@ import os
 import sys
 import subprocess
 import argparse
+import re  # Ajout de l'import manquant
 from transformers import (
     MarianMTModel, 
     MarianTokenizer, 
@@ -670,3 +671,13 @@ def extract_stress_position(text):
             return 'last'
         return position
     return None
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nOpération interrompue par l'utilisateur")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Une erreur est survenue: {e}", file=sys.stderr)
+        sys.exit(1)
