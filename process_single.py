@@ -138,19 +138,118 @@ class VocabularyProcessor:
             }
     
     def create_simple_exercise(self, word: str, translation: str) -> Dict:
-        """Crée un exercice simple à trous"""
-        german_sentence = f"Ich brauche einen ____."
-        french_instruction = f"Complétez avec le mot allemand pour '{translation}'"
+        """Crée un exercice à choix multiples (QCM)"""
+        french_instruction = f"Choisissez la traduction correcte pour '{translation}'"
         
-        return {
-            'type': 'fill_blank',
-            'question': {
-                'de': german_sentence,
-                'fr': french_instruction
-            },
-            'answer': word,
-            'level': 'beginner'
-        }
+        tokenizer_gpt, model_gpt = self.models['gpt']
+        
+        # Prompt pour générer des mots aléatoires en allemand
+        prompts = [
+            "Ein zufälliges deutsches Wort:",
+            "Hier ist ein anderes deutsches Wort:",
+            "Noch ein deutsches Wort:"
+        ]
+        
+        try:
+            wrong_options = []
+            
+            # Générer des mots aléatoires pour chaque prompt
+            for prompt in prompts:
+                # Configuration pour la génération
+                inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+                outputs = model_gpt.generate(
+                    inputs.input_ids,
+                    max_length=20,
+                    num_return_sequences=1,
+                    temperature=1.0,  # Température élevée pour plus de randomisation
+                    do_sample=True,
+                    top_k=50,
+                    top_p=0.95
+                )
+                
+                # Extraire le mot généré
+                generated_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+                # Chercher un mot valide dans le texte généré
+                words = re.findall(r'\b[a-zäöüß]{3,}\b', generated_text.lower())
+                
+                if words:
+                    # Prendre le premier mot valide trouvé
+                    random_word = words[0]
+                    # Vérifier que le mot est différent du mot original et unique
+                    if random_word != word and random_word not in wrong_options:
+                        wrong_options.append(random_word)
+            
+            # Si nous n'avons pas assez de mots valides, générer d'autres mots
+            attempts = 0
+            while len(wrong_options) < 3 and attempts < 5:
+                inputs = tokenizer_gpt("Ein weiteres deutsches Wort:", return_tensors="pt", padding=True)
+                outputs = model_gpt.generate(
+                    inputs.input_ids,
+                    max_length=20,
+                    num_return_sequences=1,
+                    temperature=1.0,
+                    do_sample=True
+                )
+                
+                generated_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+                words = re.findall(r'\b[a-zäöüß]{3,}\b', generated_text.lower())
+                
+                if words:
+                    random_word = words[0]
+                    if random_word != word and random_word not in wrong_options:
+                        wrong_options.append(random_word)
+                
+                attempts += 1
+            
+            # Si on n'a toujours pas assez d'options, utiliser des fallbacks
+            while len(wrong_options) < 3:
+                # Générer des mots similaires mais différents
+                suffixes = ['en', 'er', 'e', 'ung', 'heit', 'keit']
+                for suffix in suffixes:
+                    fallback = word + suffix
+                    if fallback not in wrong_options and fallback != word:
+                        wrong_options.append(fallback)
+                        if len(wrong_options) >= 3:
+                            break
+            
+            wrong_options = wrong_options[:3]
+            
+            options = [word] + wrong_options
+            random.shuffle(options)
+            
+            return {
+                'type': 'multiple_choice',
+                'question': {
+                    'de': f"Welches Wort bedeutet '{translation}'?",
+                    'fr': french_instruction
+                },
+                'options': options,
+                'answer': word,
+                'level': self.determine_word_level(word)
+            }
+            
+        except Exception as e:
+            print(f"Erreur lors de la génération des options pour '{word}': {e}")
+            fallback_suffixes = ['ung', 'heit', 'keit', 'chen', 'lein', 'ig']
+            wrong_options = []
+            for suffix in fallback_suffixes:
+                fallback = word + suffix
+                if len(wrong_options) < 3:
+                    wrong_options.append(fallback)
+            
+            options = [word] + wrong_options
+            random.shuffle(options)
+            
+            return {
+                'type': 'multiple_choice',
+                'question': {
+                    'de': f"Welches Wort bedeutet '{translation}'?",
+                    'fr': french_instruction
+                },
+                'options': options,
+                'answer': word,
+                'level': self.determine_word_level(word)
+            }
     
     def determine_word_level(self, word: str) -> str:
         """Détermine le niveau de difficulté du mot"""
