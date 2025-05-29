@@ -300,19 +300,28 @@ def get_lexical_info(word, prompt_key, models):
         return None
 
 def get_translations(word, models):
-    """Obtient la traduction principale et quelques variantes
+    """Obtient la traduction principale, les variantes et les synonymes
     
     Args:
         word: Le mot à traduire
         models: Les modèles de traduction et génération
         
     Returns:
-        dict: Traduction principale et quelques variantes
+        dict: Traduction principale, variantes et synonymes
     """
     tokenizer_de_fr, model_de_fr = models['de_fr']
+    tokenizer_gpt, model_gpt = models['gpt']
     translations = {
-        'principal': '',
-        'variantes': []
+        'de': {
+            'principal': word,
+            'variantes': [],
+            'synonymes': []
+        },
+        'fr': {
+            'principal': '',
+            'variantes': [],
+            'synonymes': []
+        }
     }
     
     try:
@@ -320,28 +329,43 @@ def get_translations(word, models):
         inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
         outputs = model_de_fr.generate(
             inputs.input_ids,
-            max_length=20,  # Réduits pour avoir des traductions concises
+            max_length=20,
             num_beams=3,
-            temperature=0.3,  # Température basse pour une traduction fidèle
+            temperature=0.3,
             do_sample=False
         )
         translations['principal'] = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
         
-        # Quelques variantes (maximum 3)
+        # Variantes de traduction (5+)
         outputs = model_de_fr.generate(
             inputs.input_ids,
             max_length=20,
-            num_return_sequences=3,
-            temperature=0.7,
+            num_return_sequences=5,
+            temperature=0.8,
             top_k=50,
             top_p=0.95,
-            do_sample=True
+            do_sample=True,
+            diversity_penalty=0.5  # Pour encourager la diversité
         )
         
         for output in outputs:
             translation = tokenizer_de_fr.decode(output, skip_special_tokens=True)
             if translation != translations['principal'] and translation not in translations['variantes']:
                 translations['variantes'].append(translation)
+        
+        # Générer des synonymes en français
+        if translations['principal']:
+            prompt = f"Donnez 5 synonymes du mot français '{translations['principal']}' (un par ligne):"
+            inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+            outputs = model_gpt.generate(
+                inputs.input_ids,
+                max_length=50,
+                num_beams=5,
+                temperature=0.7,
+                do_sample=True
+            )
+            synonyms_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+            translations['synonymes'] = [s.strip() for s in synonyms_text.split('\n') if s.strip()][:5]
                 
     except Exception as e:
         print(f"Erreur lors de la traduction: {e}")
