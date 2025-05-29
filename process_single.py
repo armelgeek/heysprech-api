@@ -179,14 +179,12 @@ def generate_example_sentences(word, models):
     """Génère deux phrases d'exemple simples pour un mot"""
     tokenizer_gpt, model_gpt = models['gpt']
     tokenizer_de_fr, model_de_fr = models['de_fr']
-    examples = []
-    
-    # Prompts pour quatre phrases courtes et simples
+    examples = []        # Prompts pour des phrases courtes et complètes
     prompts = [
-        f"Ich {word} gern",           # Premier exemple simple
-        f"Das {word} ist gut",        # Deuxième exemple descriptif
-        f"Wir haben {word}",          # Troisième exemple possessif
-        f"Er {word} heute"            # Quatrième exemple temporel
+        f"Schreiben Sie einen kurzen, vollständigen Satz mit '{word}' (maximal 8 Wörter).",
+        f"Bilden Sie einen einfachen Satz mit '{word}' (maximal 6 Wörter).",
+        f"Machen Sie einen präzisen Satz mit '{word}' (maximal 7 Wörter).",
+        f"Erstellen Sie einen klaren Satz mit '{word}' (maximal 5 Wörter)."
     ]
     
     for prompt in prompts:
@@ -195,22 +193,40 @@ def generate_example_sentences(word, models):
             inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
             outputs = model_gpt.generate(
                 inputs.input_ids,
-                max_length=15,   # Plus court pour des phrases concises
-                num_beams=3,     # Moins de beams pour plus de simplicité
-                temperature=0.3, # Température plus basse pour plus de cohérence
+                max_length=30,   # Assez long pour une phrase complète
+                min_length=5,    # Assez court pour rester concis
+                num_beams=5,     # Plus de beams pour de meilleures phrases
+                temperature=0.4,  # Un peu plus de créativité
                 no_repeat_ngram_size=2,  # Éviter les répétitions
-                do_sample=False  # Pas d'échantillonnage pour plus de contrôle
+                do_sample=True,  # Permettre un peu de variation
+                top_p=0.9,       # Garder les meilleures options
+                early_stopping=True  # Arrêter quand la phrase est complète
             )
             german = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
-            if not german.endswith('.'):
+            
+            # Nettoyer et valider la phrase allemande
+            if not any(german.endswith(p) for p in ['.', '!', '?']):
                 german += '.'
+            
+            # Vérifier que la phrase est complète et contient le mot
+            if not german or word.lower() not in german.lower() or len(german.split()) > 8:
+                continue  # Ignorer les phrases invalides
             
             # Traduction en français
             inputs = tokenizer_de_fr(german, return_tensors="pt", padding=True)
             outputs = model_de_fr.generate(**inputs)
             french = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
-            if not french.endswith('.'):
+            
+            # Nettoyer et valider la traduction française
+            if not any(french.endswith(p) for p in ['.', '!', '?']):
                 french += '.'
+            
+            # Vérifier que la phrase française est complète
+            if len(french.split()) <= 2 or len(french.split()) > 10:
+                continue  # Ignorer les traductions trop courtes ou trop longues
+                
+            # Reformuler pour plus de naturel
+            french = reformat_french_text(french, models, context='example')
             
             examples.append({
                 'de': german,
