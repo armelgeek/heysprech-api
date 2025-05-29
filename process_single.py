@@ -294,11 +294,12 @@ def generate_quality_completion(prompt_data, word, models):
         inputs = tokenizer_gpt(combined_prompt, return_tensors="pt", padding=True)
         outputs = model_gpt.generate(
             inputs.input_ids,
-            max_length=30,
+            max_length=100,  # Increased to accommodate longer prompts
             num_beams=3,
             temperature=0.7,
             no_repeat_ngram_size=2,
-            do_sample=True
+            do_sample=True,
+            min_length=20   # Added to ensure meaningful completions
         )
         completion = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
         
