@@ -124,34 +124,91 @@ class VocabularyProcessor:
         tokenizer_gpt, model_gpt = self.models['gpt']
         tokenizer_de_fr, model_de_fr = self.models['de_fr']
         
+        # Templates de définition plus spécifiques selon le type de mot
+        definition_templates = {
+            'verbs': [
+                "Das Verb '{}' bedeutet une action, bei der man",
+                "Mit dem Verb '{}' beschreibt man une activité, wobei",
+                "Wenn man '{}' tut, dann"
+            ],
+            'nouns': [
+                "Ein {} ist ein Gegenstand, der",
+                "Das Wort {} bezeichnet",
+                "Als {} versteht man"
+            ],
+            'time_words': [
+                "{} ist ein Zeitbegriff, der",
+                "Der Ausdruck {} bezieht sich auf",
+                "Mit {} meint man den Zeitpunkt"
+            ],
+            'adjectives': [
+                "Das Adjektiv {} beschreibt",
+                "Mit {} bezeichnet man",
+                "Etwas, das {} ist, hat die Eigenschaft"
+            ],
+            'prepositions': [
+                "Die Präposition {} wird verwendet, wenn",
+                "{} zeigt eine Beziehung zwischen",
+                "Man benutzt {}, um auszudrücken"
+            ],
+            'general': [
+                "{} ist ein wichtiges Wort, das",
+                "Der Begriff {} wird verwendet für",
+                "Mit {} bezeichnet man"
+            ]
+        }
+
         try:
-            # Générer une définition en allemand
-            definition_prompt = random.choice(CONFIG['definition_templates']).format(word)
+            # Déterminer le type de mot
+            if word.endswith('en'):
+                word_type = 'verbs'
+            elif word in ['heute', 'morgen', 'jetzt', 'später']:
+                word_type = 'time_words'
+            elif word.startswith(('der', 'die', 'das', 'ein', 'eine')):
+                word_type = 'nouns'
+            elif len(word) <= 4 and word in ['in', 'auf', 'mit', 'bei', 'zu', 'aus', 'von', 'nach', 'ins']:
+                word_type = 'prepositions'
+            else:
+                word_type = 'general'
+
+            # Sélectionner un template approprié
+            templates = definition_templates.get(word_type, definition_templates['general'])
+            definition_prompt = random.choice(templates).format(word)
             
+            # Générer la définition en allemand
             inputs = tokenizer_gpt(definition_prompt, return_tensors="pt", padding=True)
             outputs = model_gpt.generate(
                 inputs.input_ids,
                 max_length=50,
-                num_beams=3,
+                num_beams=5,  # Augmenté pour plus de cohérence
                 temperature=0.7,
                 do_sample=True,
+                no_repeat_ngram_size=3,  # Éviter les répétitions de phrases
                 pad_token_id=tokenizer_gpt.eos_token_id
             )
             
             german_definition = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
             german_definition = german_definition.replace(definition_prompt, "").strip()
             
-            # Si la définition est vide ou trop courte, utiliser une définition simple
-            if not german_definition or len(german_definition) < 10:
-                german_definition = f"Ein {word} ist ein wichtiges deutsches Wort."
+            # Validation de la définition
+            if not german_definition or len(german_definition.split()) < 5:
+                fallback_definitions = {
+                    'verbs': f"Das Verb '{word}' beschreibt une importante Handlung im Alltag.",
+                    'nouns': f"Ein {word} ist ein wichtiger Gegenstand im täglichen Leben.",
+                    'time_words': f"{word} bezeichnet einen bestimmten Zeitpunkt oder Zeitraum.",
+                    'prepositions': f"Die Präposition {word} zeigt une räumliche oder zeitliche Beziehung.",
+                    'general': f"{word} ist ein nützliches deutsches Wort im Alltag."
+                }
+                german_definition = fallback_definitions.get(word_type, fallback_definitions['general'])
             
             # Traduire la définition en français
             inputs_fr = tokenizer_de_fr(german_definition, return_tensors="pt", padding=True)
             outputs_fr = model_de_fr.generate(
                 inputs_fr.input_ids,
                 max_length=60,
-                num_beams=3,
-                temperature=0.3
+                num_beams=5,
+                temperature=0.3,
+                no_repeat_ngram_size=3
             )
             french_definition = tokenizer_de_fr.decode(outputs_fr[0], skip_special_tokens=True).strip()
             
@@ -162,54 +219,23 @@ class VocabularyProcessor:
             
         except Exception as e:
             print(f"Erreur génération définition pour '{word}': {e}")
+            fallback = {
+                'verbs': (f"Das Verb '{word}' beschreibt une Aktion.", f"Le verbe '{word}' décrit une action."),
+                'nouns': (f"'{word}' ist ein nützliches Substantiv.", f"'{word}' est un nom utile."),
+                'time_words': (f"'{word}' bezieht sich auf die Zeit.", f"'{word}' fait référence au temps."),
+                'prepositions': (f"'{word}' ist eine wichtige Präposition.", f"'{word}' est une préposition importante."),
+                'general': (f"'{word}' ist ein deutsches Wort.", f"'{word}' est un mot allemand.")
+            }
+            de_fallback, fr_fallback = fallback.get(word_type, fallback['general'])
             return {
-                'de': f"Ein {word} ist ein deutsches Wort.",
-                'fr': f"Un {word} est un mot allemand."
+                'de': de_fallback,
+                'fr': fr_fallback
             }
     
     def generate_simple_example(self, word: str) -> Dict[str, str]:
-        """Génère un exemple simple d'utilisation"""
+        """Génère un exemple de phrase naturelle en utilisant le modèle GPT"""
         tokenizer_de_fr, model_de_fr = self.models['de_fr']
-        
-        # Templates adaptés selon le type de mot
-        templates = {
-            'verbs': [  # Pour les verbes
-                "Ich {} jeden Tag zur Arbeit.",
-                "Die Kinder {} gerne im Park.",
-                "Wir {} aujourd'hui ins Kino.",
-                "Sie {} morgen nach Berlin."
-            ],
-            'nouns': [  # Pour les noms
-                "Das {} ist sehr schön.",
-                "Ich habe ein neues {} acheté.",
-                "Mein {} est dans la cuisine.",
-                "Das {} gefällt mir beaucoup."
-            ],
-            'time_words': [  # Pour les mots temporels comme "heute"
-                "Nous allons {} au restaurant.",
-                "{} fait beau aujourd'hui.",
-                "J'ai {} beaucoup à faire.",
-                "{} je rencontre mes amis."
-            ],
-            'prepositions': [  # Pour les prépositions
-                "Le livre est {} la table.",
-                "Le chat saute {} le canapé.",
-                "Nous allons {} le parc.",
-                "Le stylo est {} le tiroir."
-            ],
-            'pronouns': [  # Pour les pronoms
-                "{} va à l'école.",
-                "{} travaille beaucoup.",
-                "Je vois {} tous les jours.",
-                "{} vient d'Allemagne."
-            ],
-            'general': [  # Pour les autres types de mots
-                "C'est très {}.",
-                "Je trouve ça {}.",
-                "Il fait {} ici.",
-                "Ça coûte {}."
-            ]
-        }
+        tokenizer_gpt, model_gpt = self.models['gpt']
         
         try:
             # Déterminer le type de mot
@@ -224,24 +250,127 @@ class VocabularyProcessor:
                 word_type = 'prepositions'
             elif word in ['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'sie', 'Sie']:
                 word_type = 'pronouns'
-            
-            # Choisir et formater le template
-            template = random.choice(templates[word_type])
-            german_sentence = template.format(word)
-            
-            # Traduire en français
-            inputs = tokenizer_de_fr(german_sentence, return_tensors="pt", padding=True)
-            outputs = model_de_fr.generate(
-                inputs.input_ids,
+
+            # Créer un prompt contextuel selon le type de mot
+            prompts = {
+                'verbs': [
+                    f"Schreiben Sie einen einfachen Satz mit dem Verb '{word}' im Präsens.",
+                    f"Beschreiben Sie mit dem Verb '{word}' eine alltägliche Situation.",
+                    f"Verwenden Sie das Verb '{word}' in einem natürlichen Kontext."
+                ],
+                'nouns': [
+                    f"Beschreiben Sie kurz, wo sich {word} befindet.",
+                    f"Was macht man mit {word}? Antworten Sie in einem Satz.",
+                    f"Verwenden Sie {word} in einem einfachen Beispielsatz."
+                ],
+                'time_words': [
+                    f"Wann passiert etwas? Verwenden Sie {word} in Ihrer Antwort.",
+                    f"Beschreiben Sie mit {word} einen Zeitpunkt in Ihrem Tag.",
+                    f"Wann machen Sie etwas? Nutzen Sie {word} in der Antwort."
+                ],
+                'prepositions': [
+                    f"Wo liegt etwas? Nutzen Sie die Präposition '{word}'.",
+                    f"Beschreiben Sie eine räumliche Beziehung mit '{word}'.",
+                    f"Verwenden Sie '{word}' um zu zeigen, wo sich etwas befindet."
+                ],
+                'pronouns': [
+                    f"Was macht {word}? Beschreiben Sie eine einfache Aktivität.",
+                    f"Erzählen Sie kurz, was {word} heute macht.",
+                    f"Verwenden Sie {word} in einem Satz über den Alltag."
+                ],
+                'general': [
+                    f"Bilden Sie einen einfachen Satz mit '{word}'.",
+                    f"Wie können Sie '{word}' in einem klaren Kontext verwenden?",
+                    f"Schreiben Sie einen natürlichen Satz mit '{word}'."
+                ]
+            }
+            # Choisir un prompt aléatoire pour plus de variété
+            prompt = random.choice(prompts[word_type])
+
+            # Générer une phrase en utilisant le modèle GPT
+            prompt = prompts[word_type]
+            input_ids = tokenizer_gpt(prompt, return_tensors="pt").input_ids
+            outputs = model_gpt.generate(
+                input_ids,
                 max_length=50,
-                num_beams=5,
-                temperature=0.3
+                num_return_sequences=3,  # Générer plusieurs phrases pour choisir la meilleure
+                temperature=0.8,  # Légèrement plus créatif
+                top_p=0.9,
+                do_sample=True,
+                no_repeat_ngram_size=3,  # Éviter les répétitions
+                num_beams=5,  # Recherche de faisceau pour de meilleurs résultats
+                early_stopping=True
             )
-            french_sentence = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+            # Décodage et sélection de la meilleure phrase
+            examples = [tokenizer_gpt.decode(output, skip_special_tokens=True).strip()
+                      for output in outputs]
+            
+            # Filtrer et évaluer les phrases générées
+            valid_examples = []
+            for ex in examples:
+                # Vérifier les critères de base
+                if not word.lower() in ex.lower() or len(ex.split()) < 4:
+                    continue
+
+                # Calcul du score de qualité
+                score = 0
+                
+                # Longueur optimale (entre 5 et 12 mots)
+                words = len(ex.split())
+                if 5 <= words <= 12:
+                    score += 3
+                elif words < 15:
+                    score += 1
+                
+                # Présence de ponctuation appropriée
+                if ex.endswith(('.', '!', '?')):
+                    score += 2
+                
+                # Vérification de la structure selon le type de mot
+                if word_type == 'verbs':
+                    # Le verbe doit être conjugué
+                    if any(ex.lower().startswith(p.lower()) for p in ['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr']):
+                        score += 3
+                elif word_type == 'nouns':
+                    # Le nom doit avoir un article
+                    if any(article.lower() + ' ' + word.lower() in ex.lower() 
+                          for article in ['der', 'die', 'das', 'ein', 'eine']):
+                        score += 3
+                elif word_type == 'prepositions':
+                    # La préposition doit être suivie d'un groupe nominal
+                    if word.lower() + ' ' in ex.lower():
+                        score += 3
+                
+                # Bonus pour les expressions courantes
+                common_phrases = ['ist', 'hat', 'kann', 'möchte', 'muss', 'werden', 'haben']
+                if any(phrase in ex.lower() for phrase in common_phrases):
+                    score += 1
+                
+                valid_examples.append((ex, score))
+            
+            # Choisir la meilleure phrase ou utiliser un fallback
+            if valid_examples:
+                example = max(valid_examples, key=lambda x: x[1])[0]
+            else:
+                # Fallback plus naturel selon le type de mot
+                fallbacks = {
+                    'verbs': f"Ich {word} jeden Tag.",
+                    'nouns': f"Das {word} ist sehr interessant.",
+                    'time_words': f"{word} gehen wir spazieren.",
+                    'prepositions': f"Das Buch liegt {word} dem Tisch.",
+                    'pronouns': f"{word} geht zur Schule.",
+                    'general': f"Das Wort '{word}' ist sehr wichtig."
+                }
+                example = fallbacks.get(word_type, fallbacks['general'])
+            
+            # Traduire l'exemple en français
+            input_ids = tokenizer_de_fr(example, return_tensors="pt").input_ids
+            outputs = model_de_fr.generate(input_ids, max_length=100)
+            translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
             
             return {
-                'de': german_sentence,
-                'fr': french_sentence if french_sentence else "Phrase d'exemple"
+                'de': example,
+                'fr': translation
             }
             
         except Exception as e:
@@ -263,26 +392,26 @@ class VocabularyProcessor:
             'verbs': {
                 'middle': [
                     {
-                        'de': "Die Kinder ____ im Garten.",
-                        'de_solution': "Die Kinder gehen im Garten.",
-                        'fr_solution': "Les enfants marchent dans le jardin."
+                        'de': "Die Kinder ____ durch den Garten.",
+                        'de_solution': "Die Kinder gehen durch den Garten.",
+                        'fr_solution': "Les enfants marchent à travers le jardin."
                     },
                     {
-                        'de': "Wir ____ gerne zusammen.",
-                        'de_solution': "Wir gehen gerne zusammen.",
-                        'fr_solution': "Nous aimons marcher ensemble."
+                        'de': "Wir ____ jeden Tag spazieren.",
+                        'de_solution': "Wir gehen jeden Tag spazieren.",
+                        'fr_solution': "Nous allons nous promener tous les jours."
                     }
                 ],
                 'end': [
                     {
-                        'de': "Die Musik können wir nicht ____.",
-                        'de_solution': "Die Musik können wir nicht gehen.",
-                        'fr_solution': "Nous ne pouvons pas aller à la musique."
+                        'de': "Wir wollen zum Park ____.",
+                        'de_solution': "Wir wollen zum Park gehen.",
+                        'fr_solution': "Nous voulons aller au parc."
                     },
                     {
-                        'de': "Er will nach Hause ____.",
-                        'de_solution': "Er will nach Hause gehen.",
-                        'fr_solution': "Il veut rentrer à la maison."
+                        'de': "Sie muss zur Arbeit ____.",
+                        'de_solution': "Sie muss zur Arbeit gehen.",
+                        'fr_solution': "Elle doit aller au travail."
                     }
                 ]
             },
@@ -478,13 +607,57 @@ class VocabularyProcessor:
     
     def create_definition_match_exercise(self, word: str, definition: Dict[str, str]) -> Dict:
         """Crée un exercice de correspondance définition-mot"""
+        # Nettoyage et validation de la définition
+        def clean_definition(text: str) -> str:
+            # Supprimer les répétitions de phrases
+            sentences = [s.strip() for s in text.split('.') if s.strip()]
+            unique_sentences = list(dict.fromkeys(sentences))  # Supprimer les doublons
+            
+            # Si la définition est trop courte ou vide, utiliser une définition de secours
+            if not unique_sentences:
+                if word.endswith('en'):
+                    return f"Ein Verb, das une wichtige Handlung beschreibt"
+                elif word in ['heute', 'morgen', 'jetzt', 'später']:
+                    return f"Ein Zeitbegriff, der einen bestimmten Moment beschreibt"
+                else:
+                    return f"Ein wichtiges Wort in der deutschen Sprache"
+            
+            # Prendre jusqu'à 2 phrases uniques pour la définition
+            clean_text = '. '.join(unique_sentences[:2])
+            return clean_text.strip()
+
+        # Nettoyer les définitions
+        clean_de = clean_definition(definition['de'])
+        clean_fr = clean_definition(definition['fr'])
+
+        # Formater les questions de manière plus naturelle
+        question_templates = {
+            'de': [
+                "Welches Wort wird hier definiert: \"{}\"?",
+                "Zu welchem Wort gehört diese Definition: \"{}\"?",
+                "Finden Sie das Wort zu dieser Beschreibung: \"{}\""
+            ],
+            'fr': [
+                "Quel mot correspond à cette définition : \"{}\" ?",
+                "Trouvez le mot défini par : \"{}\" ?",
+                "Identifiez le mot décrit par : \"{}\" ?"
+            ]
+        }
+
+        # Choisir aléatoirement un template pour chaque langue
+        de_template = random.choice(question_templates['de'])
+        fr_template = random.choice(question_templates['fr'])
+
         return {
             'type': 'definition_match',
             'question': {
-                'de': f"Welches Wort passt zu dieser Definition: {definition['de']}",
-                'fr': f"Quel mot correspond à cette définition: {definition['fr']}"
+                'de': de_template.format(clean_de),
+                'fr': fr_template.format(clean_fr)
             },
-            'definition': definition,
+            'definition': {
+                'de': clean_de,
+                'fr': clean_fr
+            },
             'answer': word,
             'level': self.determine_word_level(word)
         }
