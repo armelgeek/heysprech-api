@@ -459,7 +459,16 @@ def clean_word(word):
     return word
 
 def generate_exercises(word, models, difficulty='intermediate'):
-    """Génère des exercices simplifiés pour l'apprentissage du mot"""
+    """Génère des exercices d'apprentissage pour un mot allemand
+    
+    Args:
+        word: Le mot pour lequel générer des exercices
+        models: Les modèles de traduction et génération
+        difficulty: Niveau de difficulté ('beginner', 'intermediate', 'advanced')
+        
+    Returns:
+        dict: Dictionnaire contenant les différents types d'exercices
+    """
     tokenizer_gpt, model_gpt = models['gpt']
     tokenizer_de_fr, model_de_fr = models['de_fr']
     exercises = {}
@@ -467,66 +476,126 @@ def generate_exercises(word, models, difficulty='intermediate'):
     clean_word_input = clean_word(word)
     
     try:
-        # Exercice à trous - phrase générée dynamiquement
-        # Génération d'une phrase avec le mot
-        prompt = f"Schreiben Sie einen kurzen Satz mit '{clean_word_input}':"
+        # 1. Exercice à trous - génération de 3 phrases contextuelles
+        prompt = f"""Schreiben Sie 3 natürliche Sätze mit dem Wort '{clean_word_input}':
+1. Ein einfacher Satz für Anfänger
+2. Ein Satz mittlerer Schwierigkeit
+3. Ein komplexer Satz für Fortgeschrittene
+Jeder Satz sollte einen klaren Kontext haben."""
+
         inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
         outputs = model_gpt.generate(
             inputs.input_ids,
-            max_length=20,
-            num_beams=3,
-            temperature=0.5,
+            max_length=200,
+            num_beams=5,
+            temperature=0.7,
             do_sample=True
         )
-        sentence = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
-        if not sentence.endswith('.'):
-            sentence += '.'
-            
-        # Remplacer le mot par ___
-        fill_blank_text = sentence.replace(clean_word_input, '___')
-        
+        sentences_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).split('\n')
+        sentences_de = [s.strip() for s in sentences_de if s.strip() and clean_word_input in s.lower()]
+
+        # Traduire les phrases en français
+        sentences_fr = []
+        for sent in sentences_de:
+            inputs = tokenizer_de_fr(sent, return_tensors="pt", padding=True)
+            outputs = model_de_fr.generate(**inputs)
+            translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+            sentences_fr.append(translation)
+
+        fill_blank_exercises = []
+        for de, fr in zip(sentences_de, sentences_fr):
+            if clean_word_input in de.lower():
+                fill_blank_exercises.append({
+                    'de': de.replace(clean_word_input, '___'),
+                    'fr': fr,
+                    'answer': clean_word_input
+                })
+
         exercises['fill_blank'] = {
-            'de': {
-                'text': fill_blank_text,
-                'answer': clean_word_input,
-                'examples': [clean_word_input]
-            }
+            'de': fill_blank_exercises[:3]  # Limiter à 3 exercices
         }
-        
-        # Choix multiples - options simples
-        exercises['multiple_choice'] = {
-            'de': {
-                'question': f"Was bedeutet '{clean_word_input}'?",
-                'choices': [
-                    f"{clean_word_input} bin",
-                    clean_word_input
-                ],
-                'answer': "0"
-            }
-        }
-        
-        # Association de mots - 3 mots simples et uniques
-        prompt = f"3 einfache verwandte Wörter zu '{clean_word_input}':"
+
+        # 2. Choix multiples - générer des définitions et utilisations
+        prompt = f"""Erstellen Sie einen Multiple-Choice-Test für das Wort '{clean_word_input}':
+Frage: Welche der folgenden Aussagen beschreibt die Bedeutung/Verwendung von '{clean_word_input}' am besten?
+A) [Erste mögliche Antwort]
+B) [Zweite mögliche Antwort]
+C) [Dritte mögliche Antwort]
+D) [Vierte mögliche Antwort]
+Korrekte Antwort: [A,B,C oder D]"""
+
         inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
         outputs = model_gpt.generate(
             inputs.input_ids,
-            max_length=30,
-            num_beams=3,
-            temperature=0.5,
-            do_sample=False
+            max_length=200,
+            num_beams=5,
+            temperature=0.7
         )
+        qcm_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
         
-        words_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
-        words = [w.strip() for w in words_text.split(',') if w.strip()][:3]
-        words = list(dict.fromkeys(words))  # Supprimer les doublons
+        # Traduire le QCM en français
+        inputs = tokenizer_de_fr(qcm_text, return_tensors="pt", padding=True)
+        outputs = model_de_fr.generate(**inputs)
+        qcm_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+
+        # Extraire la question, les choix et la réponse
+        lines = qcm_text.split('\n')
+        question = next((l for l in lines if 'Welche' in l), '')
+        choices = [l[3:].strip() for l in lines if l.startswith(('A)', 'B)', 'C)', 'D)'))]
+        correct_answer = next((l[-1] for l in lines if 'Korrekte Antwort:' in l), 'A')
+
+        exercises['multiple_choice'] = {
+            'de': {
+                'question': question,
+                'choices': choices,
+                'answer': correct_answer
+            },
+            'fr': {
+                'question': qcm_fr.split('\n')[0],
+                'choices': [l[3:].strip() for l in qcm_fr.split('\n') if l.startswith(('A)', 'B)', 'C)', 'D)'))],
+                'answer': correct_answer
+            }
+        }
+
+        # 3. Association de mots - générer des mots reliés sémantiquement
+        prompt = f"""Geben Sie 6 Wörter an, die mit '{clean_word_input}' in Verbindung stehen:
+1. Ein Synonym
+2. Ein verwandtes Verb
+3. Ein verwandtes Adjektiv
+4. Ein Gegenteil (wenn möglich)
+5. Ein übergeordneter Begriff
+6. Ein spezifischerer Begriff"""
+
+        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+        outputs = model_gpt.generate(
+            inputs.input_ids,
+            max_length=100,
+            num_beams=5,
+            temperature=0.6
+        )
+        related_words_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).split('\n')
         
-        if len(words) < 3:  # S'assurer d'avoir 3 mots
-            while len(words) < 3:
-                words.append(words[0] if words else clean_word_input)
-        
+        # Traduction des mots associés
+        related_words_fr = []
+        for word_de in related_words_de:
+            if ':' in word_de:
+                word_de = word_de.split(':')[1].strip()
+            inputs = tokenizer_de_fr(word_de, return_tensors="pt", padding=True)
+            outputs = model_de_fr.generate(**inputs)
+            translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+            related_words_fr.append(translation)
+
         exercises['word_association'] = {
             'de': {
-                'words': words
+                'words': [w.split(':')[1].strip() if ':' in w else w.strip() 
+                         for w in related_words_de if w.strip()],
+                'categories': ['Synonym', 'Verb', 'Adjektiv', 'Antonym', 
+                             'Oberbegriff', 'Unterbegriff']
+            },
+            'fr': {
+                'words': related_words_fr,
+                'categories': ['Synonyme', 'Verbe', 'Adjectif', 'Antonyme', 
+                             'Terme générique', 'Terme spécifique']
             }
         }
         
