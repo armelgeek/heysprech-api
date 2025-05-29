@@ -48,41 +48,53 @@
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Écrivez une phrase avec ___ pour '___': 'Ich bin ein Mensch, ___ bin ein Mensch, ___ bin ein Mensch, ___ bin ein Mensch, ___ bin ein Mensch, ___ bin ein Mensch,",
-            "answer": "ich"
+            "text": "3 kurze Beispielsätze mit '___': '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '___ bin' und '",
+            "answer": "ich",
+            "examples": [
+              "3 kurze Beispielsätze mit 'ich': 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und '",
+              "3 kurze Beispielsätze mit 'ich': 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'Ich bin' und '",
+              "3 kurze Beispielsätze mit 'ich': 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin' und 'ich bin'\n3"
+            ]
           },
           "fr": {
-            "text": "Écrivez une phrase avec __ pour 'je': 'Je suis un homme, je suis un homme, je suis un homme, je suis un homme, je suis un homme, je suis un homme, je suis un homme, je suis un homme,",
-            "answer": "isé"
+            "text": "3 exemples courts avec 'je suis': 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis'",
+            "answer": "isé",
+            "examples": [
+              "3 exemples courts avec 'je suis': 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis'",
+              "3 exemples courts avec 'je suis': 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '\"je suis' et '''''",
+              "3 exemples courts avec 'je suis': 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' et 'je suis' 3"
+            ]
           }
         },
         "multiple_choice": {
           "de": {
-            "question": "Dans quel contexte utilise-t-on 'ich'? A) B) C) D): D) E) F) G) H) I) J) K) L) M) N) O) P",
-            "choices": [],
+            "question": "Was bedeutet 'ich'?",
+            "choices": [
+              "4 Bedeutungen für 'ich', erste ist korrekt: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und 'ich bin' ist falsch: 'ich bin' und"
+            ],
             "answer": "A"
           },
           "fr": {
-            "question": "Dans quel contexte utilise-t-on 'ich'? A) B) C) D): D) E) F) G) H) I) J) K) L) N) O) P",
-            "choices": [],
+            "question": "Que signifie 'ich'?",
+            "choices": [
+              "4 significations pour 'je suis', première est correcte: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux: 'je suis' et 'je suis' est faux."
+            ],
             "answer": "A"
           }
         },
         "word_association": {
           "de": {
             "words": [
-              "Donnez 4 mots du même thème que 'ich': 'Ich bin ein Mann",
-              "der weiß",
-              "was ich will.'\n\"Ich bin ein Mann",
-              "der weiß",
-              "was ich will.\" \"Ich bin ein Mann",
-              ""
+              "3 verwandte Wörter zu 'ich': ein Mann",
+              "eine Frau",
+              "ein Mann"
             ]
           },
           "fr": {
             "words": [
-              "Donnez 4 mots du même thème que 'je': 'Je suis un homme qui sait ce que je veux.' \"Je suis un homme qui sait ce que je veux.\" \"Je suis un homme",
-              ""
+              "3 mots associés à 'je': un homme",
+              "une femme",
+              "un homme"
             ]
           }
         }
