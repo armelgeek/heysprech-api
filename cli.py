@@ -82,16 +82,28 @@ def transcribe_file(audio_path, output_directory):
 def main():
     parser = argparse.ArgumentParser(
         description=f"Transcribe audio file or directory using Whisper (Model: {MODEL}).",
-        usage="%(prog)s <audio_file_or_directory>"
+        usage="%(prog)s <audio_file_or_directory> [options]"
     )
     parser.add_argument(
         "input_path",
         metavar="audio_file_or_directory",
         help="Path to an audio file or directory containing audio files"
     )
+    parser.add_argument(
+        "-o", "--output",
+        help="Output directory for JSON files (default: same as input)",
+        default=None
+    )
 
     args = parser.parse_args()
     input_path = args.input_path
+    
+    # Setup output directory
+    if args.output:
+        output_directory = args.output
+        os.makedirs(output_directory, exist_ok=True)
+    else:
+        output_directory = None  # Will be set based on input type
     
     # Determine if input is a file or directory
     if os.path.isfile(input_path):
@@ -101,7 +113,7 @@ def main():
             print(f"Supported formats: {', '.join(AUDIO_EXTENSIONS)}", file=sys.stderr)
             sys.exit(1)
         audio_files = [input_path]
-        output_directory = os.path.dirname(input_path) or "."
+        output_directory = output_directory or os.path.dirname(input_path) or "."
     else:
         # Directory mode
         if not os.path.isdir(input_path):
