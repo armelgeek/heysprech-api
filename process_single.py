@@ -513,6 +513,16 @@ def format_exercise(exercise_type, exercise_text, word):
     # Format par défaut
     return {'text': exercise_text}
 
+def clean_word(word):
+    """Nettoie un mot en retirant la ponctuation et les caractères spéciaux non-allemands"""
+    # Garde les caractères allemands spéciaux (umlauts et ß)
+    # mais retire la ponctuation et autres caractères spéciaux
+    import re
+    word = word.strip()
+    # Retire la ponctuation à la fin du mot
+    word = re.sub(r'[.,!?]$', '', word)
+    return word
+
 def generate_exercises(word, models, difficulty='intermediate'):
     """Génère différents exercices pour l'apprentissage du mot
     
@@ -525,12 +535,15 @@ def generate_exercises(word, models, difficulty='intermediate'):
     tokenizer_de_fr, model_de_fr = models['de_fr']
     exercises = {}
     
+    # Nettoie le mot avant de générer les exercices
+    clean_word_input = clean_word(word)
+    
     # Génération des différents types d'exercices
     for exercise_type, prompt_dict in EXERCISE_PROMPTS.items():
         try:
             # Génération de l'exercice en allemand avec le bon niveau de difficulté
             prompt = prompt_dict[difficulty]  # Sélectionne le prompt du bon niveau
-            full_prompt = prompt.format(word=word)
+            full_prompt = prompt.format(word=clean_word_input)
             inputs = tokenizer_gpt(full_prompt, return_tensors="pt", padding=True)
             outputs = model_gpt.generate(
                 inputs.input_ids,
@@ -549,14 +562,19 @@ def generate_exercises(word, models, difficulty='intermediate'):
             exercise_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
             
             # Formatage structuré des exercices
-            formatted_de = format_exercise(exercise_type, exercise_de, word)
-            formatted_fr = format_exercise(exercise_type, exercise_fr, 
-                                        get_translations(word, models)['fr'])
+            formatted_de = format_exercise(exercise_type, exercise_de, clean_word_input)
+            
+            # Obtenir la traduction du mot
+            translation = get_translations(clean_word_input, models)
+            word_fr = translation.get('principal', clean_word_input)  # Utilise le mot nettoyé si pas de traduction
+            
+            formatted_fr = format_exercise(exercise_type, exercise_fr, word_fr)
             
             exercises[exercise_type] = {
                 'de': formatted_de,
                 'fr': formatted_fr,
-                'type': exercise_type
+                'type': exercise_type,
+                'difficulty': difficulty
             }
             
         except Exception as e:
