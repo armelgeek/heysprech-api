@@ -315,12 +315,14 @@ def get_translations(word, models):
         'de': {
             'principal': word,
             'variantes': [],
-            'synonymes': []
+            'synonymes': [],
+            'definition': ''
         },
         'fr': {
             'principal': '',
             'variantes': [],
-            'synonymes': []
+            'synonymes': [],
+            'definition': ''
         }
     }
     
@@ -365,11 +367,35 @@ def get_translations(word, models):
                 do_sample=True
             )
             synonyms_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
-            translations['synonymes'] = [s.strip() for s in synonyms_text.split('\n') if s.strip()][:5]
-                
+            translations['fr']['synonymes'] = [s.strip() for s in synonyms_text.split('\n') if s.strip()][:5]
+
+            # Générer une définition en français
+            prompt_def_fr = f"Définissez le mot '{translations['fr']['principal']}' en une phrase claire et concise:"
+            inputs = tokenizer_gpt(prompt_def_fr, return_tensors="pt", padding=True)
+            outputs = model_gpt.generate(
+                inputs.input_ids,
+                max_length=50,
+                num_beams=3,
+                temperature=0.3,
+                do_sample=False
+            )
+            translations['fr']['definition'] = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
+
+            # Générer une définition en allemand
+            prompt_def_de = f"Definieren Sie das Wort '{word}' in einem klaren und präzisen Satz:"
+            inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+            outputs = model_gpt.generate(
+                inputs.input_ids,
+                max_length=50,
+                num_beams=3,
+                temperature=0.3,
+                do_sample=False
+            )
+            translations['de']['definition'] = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True).strip()
+
     except Exception as e:
         print(f"Erreur lors de la traduction: {e}")
-        translations['principal'] = word
+        translations['fr']['principal'] = word
     
     return translations
 
