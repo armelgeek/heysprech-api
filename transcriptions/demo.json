@@ -97,26 +97,18 @@
       },
       "examples": [
         {
-          "de": "Ich gehen gern in die Schule, aber ich habe Angst, dass ich mich.",
-          "fr": "J'aime aller à l'école, mais j'ai peur d'être moi-même."
+          "de": "Ich gehen.",
+          "fr": "Je suis."
         },
         {
-          "de": "Das gehen ist gut, aber es ist nicht so einfach, wie es scheint.",
-          "fr": "Ça marche bien, mais ce n'est pas aussi simple qu'il semble."
-        },
-        {
-          "de": "Wir haben gehen, um zu sehen, was wir tun können, und wir.",
-          "fr": "On va voir ce qu'on peut faire, et nous."
-        },
-        {
-          "de": "Er gehen heute in die Schule, und ich habe keine Ahnung, was ich.",
-          "fr": "Il va à l'école aujourd'hui, et je n'ai aucune idée de ce que j'ai."
+          "de": "Ich gehen.",
+          "fr": "Je suis."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist das für ein Satz? Was ist das.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich bin ein Mann, ich bin eine Frau.",
             "answer": "gehen",
             "examples": [
               "gehen"
@@ -168,26 +160,18 @@
       },
       "examples": [
         {
-          "de": "Ich heute gern ein paar Worte verlieren, denn ich bin ein großer Fan von.",
-          "fr": "J'aime perdre quelques mots aujourd'hui, parce que je suis un grand fan de."
+          "de": "Ich heute.",
+          "fr": "Je suis."
         },
         {
-          "de": "Das heute ist gut gelaufen. Ich bin sehr zufrieden mit dem Ergebnis. Die.",
-          "fr": "Aujourd'hui, ça s'est bien passé, je suis très satisfait du résultat."
-        },
-        {
-          "de": "Wir haben heute den ersten Teil unserer neuen Serie über das Thema „Bauen.",
-          "fr": "Aujourd'hui, nous avons la première partie de notre nouvelle série sur la construction."
-        },
-        {
-          "de": "Er heute heute noch, dass es sich dabei um eine der ältesten und ältesten.",
-          "fr": "Aujourd'hui encore, il s'agit d'une des plus anciennes et les plus anciennes."
+          "de": "Ich heute.",
+          "fr": "Je suis."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Heute ist der Tag, an dem Sie sich.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Heute ist ein Tag, an dem Sie sich.",
             "answer": "heute",
             "examples": [
               "heute"
@@ -239,20 +223,12 @@
       },
       "examples": [
         {
-          "de": "Ich ins gern, aber ich habe keine Lust, mich mit einem Mann zu.",
-          "fr": "J'aimerais bien, mais je n'ai pas envie de sortir avec un homme."
+          "de": "Ich ins.",
+          "fr": "Je suis."
         },
         {
-          "de": "Das ins ist gut so, denn es ist nicht nur eine Frage der Zeit.",
-          "fr": "C'est une bonne chose, car ce n'est pas seulement une question de temps."
-        },
-        {
-          "de": "Wir haben ins Leben gerufen, weil es uns wichtig ist, dass die Menschen.",
-          "fr": "Nous avons créé parce qu'il est important pour nous que les gens."
-        },
-        {
-          "de": "Er ins heute.de-Forum.\nIch habe mich mal wieder mit.",
-          "fr": "Il va au forum aujourd'hui. Je suis de retour avec lui."
+          "de": "Ich ins.",
+          "fr": "Je suis."
         }
       ],
       "exercises": {
@@ -310,26 +286,18 @@
       },
       "examples": [
         {
-          "de": "Ich kino. gern auch mal ein paar Filme, die ich gerne sehen möchte.",
-          "fr": "J'adore les films que j'aimerais voir."
+          "de": "Ich kino..",
+          "fr": "Je suis."
         },
         {
-          "de": "Das kino. ist gut, aber es ist nicht das kino, das ich.",
-          "fr": "Le cinéma. C'est bien, mais ce n'est pas le cinéma que je fais."
-        },
-        {
-          "de": "Wir haben kino.de im Rahmen einer Kooperation mit der Filmakademie Baden-.",
-          "fr": "Nous avons kino.de dans le cadre d'une coopération avec l'Académie de cinéma de Baden-."
-        },
-        {
-          "de": "Er kino. heute, 18:00 Uhr, im Theater am Potsdamer Platz.",
-          "fr": "Il est au cinéma, aujourd'hui, 18 h, au théâtre de la Potsdamer Platz."
+          "de": "Ich kino..",
+          "fr": "Je suis."
         }
       ],
       "exercises": {
         "fill_blank": {
           "de": {
-            "text": "Schreiben Sie einen kurzen Satz mit '___': Was ist Kino? Was ist Kino? Was ist.",
+            "text": "Schreiben Sie einen kurzen Satz mit '___': \"Ich bin ein Mann, ich bin eine Frau.",
             "answer": "kino",
             "examples": [
               "kino"
@@ -381,20 +349,12 @@
       },
       "examples": [
         {
-          "de": "Ich sie gern wieder sehen, wenn ich mal wieder Zeit habe. Ich bin.",
-          "fr": "J'aimerais la revoir quand j'aurai le temps."
+          "de": "Ich sie.",
+          "fr": "Je suis."
         },
         {
-          "de": "Das sie ist gut, aber ich bin mir nicht sicher, ob sie wirklich.",
-          "fr": "Elle est bonne, mais je ne suis pas sûr qu'elle soit réelle."
-        },
-        {
-          "de": "Wir haben sie in den letzten Jahren immer wieder besucht und sind begeistert von den.",
-          "fr": "Nous lui avons rendu visite ces dernières années et nous en sommes ravis."
-        },
-        {
-          "de": "Er sie heute nicht mehr, weil sie sich nicht an die Regeln gehalten hat.",
-          "fr": "Il ne l'a pas fait aujourd'hui parce qu'elle n'a pas respecté les règles."
+          "de": "Ich sie.",
+          "fr": "Je suis."
         }
       ],
       "exercises": {
