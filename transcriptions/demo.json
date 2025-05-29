@@ -81,55 +81,72 @@
         "fr": "aller"
       },
       "definition": {
-        "de": "\"Ich bin mit dem Auto gefahren und habe die Straße überquert. Dann habe ich die Straße überquert. Dann habe ich die Straße überquert. Dann habe ich die Straße überquert. Dann habe ich die Straße überquert",
-        "fr": "\"J'ai conduit en voiture et j'ai traversé la rue, puis j'ai traversé la rue, puis j'ai traversé la rue, puis j'ai traversé la rue, puis j'ai traversé la rue, puis j'ai traversé"
+        "de": "Wenn Sie sich nicht sicher sind, ob Sie den Text richtig verstanden haben, wenden Sie sich bitte an uns. Wir helfen Ihnen gerne weiter.\nBitte beachten Sie, dass die Informationen für Deutsche Bank In Angermünde,",
+        "fr": "Si vous n'êtes pas sûr d'avoir bien compris le texte, veuillez nous contacter. Nous vous tiendrons volontiers à votre disposition."
       },
       "example": {
-        "de": "Wir brauchen gehen.",
-        "fr": "Il faut qu'on parte."
+        "de": "Das ist ein gehen.",
+        "fr": "C'est une bonne idée."
       },
       "exercises": [
         {
-          "type": "definition_match",
-          "question": {
-            "de": "Welches Wort passt zu dieser Definition: \"Ich bin mit dem Auto gefahren und habe die Straße überquert. Dann habe ich die Straße überquert. Dann habe ich die Straße überquert. Dann habe ich die Straße überquert. Dann habe ich die Straße überquert",
-            "fr": "Quel mot correspond à cette définition: \"J'ai conduit en voiture et j'ai traversé la rue, puis j'ai traversé la rue, puis j'ai traversé la rue, puis j'ai traversé la rue, puis j'ai traversé la rue, puis j'ai traversé"
-          },
-          "definition": {
-            "de": "\"Ich bin mit dem Auto gefahren und habe die Straße überquert. Dann habe ich die Straße überquert. Dann habe ich die Straße überquert. Dann habe ich die Straße überquert. Dann habe ich die Straße überquert",
-            "fr": "\"J'ai conduit en voiture et j'ai traversé la rue, puis j'ai traversé la rue, puis j'ai traversé la rue, puis j'ai traversé la rue, puis j'ai traversé la rue, puis j'ai traversé"
-          },
+          "type": "fill_blank",
+          "examples": [
+            {
+              "question": {
+                "de": "Die Kinder ___ im Garten.",
+                "fr": "Complétez la phrase avec le mot 'aller' (Le mot manquant est au milieu)"
+              },
+              "context": "Le mot manquant est au milieu"
+            },
+            {
+              "question": {
+                "de": "Er will nach Hause ___.",
+                "fr": "Complétez la phrase avec le mot 'aller' (Le mot manquant est à la fin)"
+              },
+              "context": "Le mot manquant est à la fin"
+            },
+            {
+              "question": {
+                "de": "Die Kinder ___ im Garten.",
+                "fr": "Complétez la phrase avec le mot 'aller' (Le mot manquant est au milieu)"
+              },
+              "context": "Le mot manquant est au milieu"
+            }
+          ],
           "answer": "gehen",
-          "level": "intermediate"
+          "level": "intermediate",
+          "translation": "aller"
         },
         {
-          "type": "multiple_choice",
+          "type": "gender_article",
           "question": {
-            "de": "Welches Wort bedeutet 'aller'?",
-            "fr": "Quel mot signifie 'aller' ?"
+            "de": "Welcher Artikel gehört zu 'gehen'?",
+            "fr": "Quel article va avec 'gehen' ?"
           },
           "choices": [
-            "auto",
-            "buch",
-            "tisch",
-            "gehen"
+            "der",
+            "die",
+            "das"
           ],
-          "correct_answer": "gehen",
-          "correct_index": 3,
+          "answer": "die",
+          "word": "gehen",
           "level": "intermediate"
         },
         {
-          "type": "fill_blank",
+          "type": "translation",
           "question": {
-            "de": "Das ist mein ____.",
-            "fr": "Complétez avec le mot allemand pour 'aller'"
+            "de": "Übersetzen Sie: gehen",
+            "fr": "Traduisez: gehen"
           },
-          "answer": "gehen",
+          "answer": "aller",
+          "source_word": "gehen",
+          "direction": "de_to_fr",
           "level": "intermediate"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T09:50:14.368298"
+      "processed_at": "2025-05-29T10:09:34.935609"
     },
     {
       "word": "heute",
@@ -139,14 +156,56 @@
         "fr": "Aujourd'hui"
       },
       "definition": {
-        "de": "„Der Mensch ist ein Tier, das sich in der Lage befindet, sich selbst zu ernähren“.\nIn der Natur gibt es viele verschiedene Arten von Tieren, die sich ernähren. Es gibt Tiere, die sich in der Lage befinden, sich",
-        "fr": "L'homme est un animal capable de se nourrir lui-même. Dans la nature, il existe de nombreuses espèces d'animaux qui se nourrissent."
+        "de": "Sie haben die Möglichkeit, sich mit Ihrem Arbeitgeber über Ihre aktuelle Situation zu unterhalten.\nSie haben die Möglichkeit, sich mit Ihrem Arbeitgeber über Ihre aktuelle Situation zu unterhalten.\nSie haben die Möglichkeit, sich mit Ihrem Arbeitgeber über Ihre",
+        "fr": "Vous avez la possibilité de discuter avec votre employeur de votre situation actuelle. Vous avez la possibilité de discuter avec votre employeur de votre situation actuelle. Vous avez la possibilité de discuter avec votre employeur de votre situation actuelle."
       },
       "example": {
         "de": "Wir brauchen heute.",
         "fr": "On a besoin d'aujourd'hui."
       },
       "exercises": [
+        {
+          "type": "fill_blank",
+          "examples": [
+            {
+              "question": {
+                "de": "Wir können ___ sehen.",
+                "fr": "Complétez la phrase avec le mot 'Aujourd'hui' (Le mot manquant est au milieu)"
+              },
+              "context": "Le mot manquant est au milieu"
+            },
+            {
+              "question": {
+                "de": "Hier kommt der ___.",
+                "fr": "Complétez la phrase avec le mot 'Aujourd'hui' (Le mot manquant est à la fin)"
+              },
+              "context": "Le mot manquant est à la fin"
+            },
+            {
+              "question": {
+                "de": "Ich habe ___ vergessen.",
+                "fr": "Complétez la phrase avec le mot 'Aujourd'hui' (Le mot manquant est au milieu)"
+              },
+              "context": "Le mot manquant est au milieu"
+            }
+          ],
+          "answer": "heute",
+          "level": "intermediate",
+          "translation": "Aujourd'hui"
+        },
+        {
+          "type": "definition_match",
+          "question": {
+            "de": "Welches Wort passt zu dieser Definition: Sie haben die Möglichkeit, sich mit Ihrem Arbeitgeber über Ihre aktuelle Situation zu unterhalten.\nSie haben die Möglichkeit, sich mit Ihrem Arbeitgeber über Ihre aktuelle Situation zu unterhalten.\nSie haben die Möglichkeit, sich mit Ihrem Arbeitgeber über Ihre",
+            "fr": "Quel mot correspond à cette définition: Vous avez la possibilité de discuter avec votre employeur de votre situation actuelle. Vous avez la possibilité de discuter avec votre employeur de votre situation actuelle. Vous avez la possibilité de discuter avec votre employeur de votre situation actuelle."
+          },
+          "definition": {
+            "de": "Sie haben die Möglichkeit, sich mit Ihrem Arbeitgeber über Ihre aktuelle Situation zu unterhalten.\nSie haben die Möglichkeit, sich mit Ihrem Arbeitgeber über Ihre aktuelle Situation zu unterhalten.\nSie haben die Möglichkeit, sich mit Ihrem Arbeitgeber über Ihre",
+            "fr": "Vous avez la possibilité de discuter avec votre employeur de votre situation actuelle. Vous avez la possibilité de discuter avec votre employeur de votre situation actuelle. Vous avez la possibilité de discuter avec votre employeur de votre situation actuelle."
+          },
+          "answer": "heute",
+          "level": "intermediate"
+        },
         {
           "type": "translation",
           "question": {
@@ -157,39 +216,10 @@
           "source_word": "Aujourd'hui",
           "direction": "fr_to_de",
           "level": "intermediate"
-        },
-        {
-          "type": "sentence_building",
-          "question": {
-            "de": "Bilden Sie einen Satz mit diesen Wörtern: ist, das, der, ein, sehr, heute, gut, schön",
-            "fr": "Formez une phrase avec ces mots: ist, das, der, ein, sehr, heute, gut, schön"
-          },
-          "word_pool": [
-            "ist",
-            "das",
-            "der",
-            "ein",
-            "sehr",
-            "heute",
-            "gut",
-            "schön"
-          ],
-          "target_sentence": "Das ist ein heute.",
-          "answer": "heute",
-          "level": "intermediate"
-        },
-        {
-          "type": "fill_blank",
-          "question": {
-            "de": "Wo ist mein ____?",
-            "fr": "Complétez avec le mot allemand pour 'Aujourd'hui'"
-          },
-          "answer": "heute",
-          "level": "intermediate"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T09:50:23.059654"
+      "processed_at": "2025-05-29T10:09:43.499438"
     },
     {
       "word": "ins",
@@ -199,31 +229,24 @@
         "fr": "dans la"
       },
       "definition": {
-        "de": "„Die Menschen, die sich für das Leben interessieren, werden in der Lage sein, die Dinge zu tun, die sie wirklich interessieren.“\nDie Frage, die sich mir stellt, ist, ob es sich bei den Menschen, die sich",
-        "fr": "\" Les gens qui s'intéressent à la vie seront en mesure de faire les choses qui les intéressent vraiment. \""
+        "de": "„Er ist das, was ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich",
+        "fr": "Il est ce que je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis,"
       },
       "example": {
-        "de": "Das ist ein ins.",
-        "fr": "Ça, c'est dans l'ordre."
+        "de": "Ich kaufe ins.",
+        "fr": "J'achète."
       },
       "exercises": [
         {
-          "type": "sentence_building",
+          "type": "definition_match",
           "question": {
-            "de": "Bilden Sie einen Satz mit diesen Wörtern: ins, das, schön, ist, ein, sehr, der, gut",
-            "fr": "Formez une phrase avec ces mots: ins, das, schön, ist, ein, sehr, der, gut"
+            "de": "Welches Wort passt zu dieser Definition: „Er ist das, was ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich",
+            "fr": "Quel mot correspond à cette définition: Il est ce que je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis,"
           },
-          "word_pool": [
-            "ins",
-            "das",
-            "schön",
-            "ist",
-            "ein",
-            "sehr",
-            "der",
-            "gut"
-          ],
-          "target_sentence": "Das ist ein ins.",
+          "definition": {
+            "de": "„Er ist das, was ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich bin, der ich",
+            "fr": "Il est ce que je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis, je suis,"
+          },
           "answer": "ins",
           "level": "beginner"
         },
@@ -238,26 +261,29 @@
             "die",
             "das"
           ],
-          "answer": "die",
+          "answer": "das",
           "word": "ins",
           "level": "beginner"
         },
         {
-          "type": "definition_match",
+          "type": "multiple_choice",
           "question": {
-            "de": "Welches Wort passt zu dieser Definition: „Die Menschen, die sich für das Leben interessieren, werden in der Lage sein, die Dinge zu tun, die sie wirklich interessieren.“\nDie Frage, die sich mir stellt, ist, ob es sich bei den Menschen, die sich",
-            "fr": "Quel mot correspond à cette définition: \" Les gens qui s'intéressent à la vie seront en mesure de faire les choses qui les intéressent vraiment. \""
+            "de": "Welches Wort bedeutet 'dans la'?",
+            "fr": "Quel mot signifie 'dans la' ?"
           },
-          "definition": {
-            "de": "„Die Menschen, die sich für das Leben interessieren, werden in der Lage sein, die Dinge zu tun, die sie wirklich interessieren.“\nDie Frage, die sich mir stellt, ist, ob es sich bei den Menschen, die sich",
-            "fr": "\" Les gens qui s'intéressent à la vie seront en mesure de faire les choses qui les intéressent vraiment. \""
-          },
-          "answer": "ins",
+          "choices": [
+            "auto",
+            "milch",
+            "ins",
+            "haus"
+          ],
+          "correct_answer": "ins",
+          "correct_index": 2,
           "level": "beginner"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T09:50:33.123027"
+      "processed_at": "2025-05-29T10:09:53.005190"
     },
     {
       "word": "kino",
@@ -267,54 +293,59 @@
         "fr": "cinéma"
       },
       "definition": {
-        "de": "Ein kino ist ein wichtiges deutsches Wort.",
-        "fr": "Un cinéma est un mot allemand important."
+        "de": "title:title:title:title:title:title:title:next:title:next:next:next:next:next:next:next:next:next",
+        "fr": "title:title:title:title:title:title:next:title:next:next:next:next:next:next:next:next:"
       },
       "example": {
-        "de": "Wir brauchen kino.",
-        "fr": "On a besoin de cinéma."
+        "de": "Ich habe einen kino.",
+        "fr": "J'ai un cinéma."
       },
       "exercises": [
         {
-          "type": "definition_match",
+          "type": "translation",
           "question": {
-            "de": "Welches Wort passt zu dieser Definition: Ein kino ist ein wichtiges deutsches Wort.",
-            "fr": "Quel mot correspond à cette définition: Un cinéma est un mot allemand important."
+            "de": "Übersetzen Sie: kino",
+            "fr": "Traduisez: kino"
           },
-          "definition": {
-            "de": "Ein kino ist ein wichtiges deutsches Wort.",
-            "fr": "Un cinéma est un mot allemand important."
+          "answer": "cinéma",
+          "source_word": "kino",
+          "direction": "de_to_fr",
+          "level": "beginner"
+        },
+        {
+          "type": "multiple_choice",
+          "question": {
+            "de": "Welches Wort bedeutet 'cinéma'?",
+            "fr": "Quel mot signifie 'cinéma' ?"
           },
-          "answer": "kino",
+          "choices": [
+            "tisch",
+            "kino",
+            "buch",
+            "haus"
+          ],
+          "correct_answer": "kino",
+          "correct_index": 1,
           "level": "beginner"
         },
         {
           "type": "fill_blank",
-          "question": {
-            "de": "Der ____ ist sehr wichtig.",
-            "fr": "Complétez avec le mot allemand pour 'cinéma'"
-          },
-          "answer": "kino",
-          "level": "beginner"
-        },
-        {
-          "type": "gender_article",
-          "question": {
-            "de": "Welcher Artikel gehört zu 'kino'?",
-            "fr": "Quel article va avec 'kino' ?"
-          },
-          "choices": [
-            "der",
-            "die",
-            "das"
+          "examples": [
+            {
+              "question": {
+                "de": "Wir gehen ___ den Park.",
+                "fr": "Complétez la phrase avec le mot 'cinéma' (Le mot manquant est au milieu)"
+              },
+              "context": "Le mot manquant est au milieu"
+            }
           ],
-          "answer": "der",
-          "word": "kino",
-          "level": "beginner"
+          "answer": "kino",
+          "level": "beginner",
+          "translation": "cinéma"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T09:50:39.768730"
+      "processed_at": "2025-05-29T10:10:03.165716"
     },
     {
       "word": "sie",
@@ -324,69 +355,82 @@
         "fr": "et"
       },
       "definition": {
-        "de": "1. Geben Sie den Namen des Patienten an, den Sie beschreiben möchten, und klicken Sie dann auf den Button „Patientenbeschreibung“.\n2. Geben Sie den Namen des Patienten an, den Sie beschreiben möchten, und klicken",
-        "fr": "1. Indiquez le nom du patient que vous souhaitez décrire, puis cliquez sur le bouton . Description du patient. 2. Indiquez le nom du patient que vous souhaitez décrire et cliquez sur"
+        "de": "Eine junge Frau, die sich selbst als Frau bezeichnet, die sich selbst als Frau bezeichnet, die sich selbst als Frau bezeichnet, die sich selbst als Frau bezeichnet, die sich selbst als Frau bezeichnet, die sich selbst als Frau bezeichnet,",
+        "fr": "Une jeune femme qui se qualifie elle-même de femme, qui se qualifie de femme, qui se qualifie de femme, qui se qualifie de femme, qui se dit elle-même femme, qui se qualifie de femme,"
       },
       "example": {
-        "de": "Ich kaufe sie.",
-        "fr": "Je l'achète."
+        "de": "Mein sie ist neu.",
+        "fr": "Elle est nouvelle."
       },
       "exercises": [
         {
-          "type": "multiple_choice",
-          "question": {
-            "de": "Welches Wort bedeutet 'et'?",
-            "fr": "Quel mot signifie 'et' ?"
-          },
-          "choices": [
-            "sie",
-            "auto",
-            "wasser",
-            "stuhl"
-          ],
-          "correct_answer": "sie",
-          "correct_index": 0,
-          "level": "beginner"
-        },
-        {
           "type": "translation",
           "question": {
-            "de": "Übersetzen Sie: et",
-            "fr": "Traduisez: et"
+            "de": "Übersetzen Sie: sie",
+            "fr": "Traduisez: sie"
           },
-          "answer": "sie",
-          "source_word": "et",
-          "direction": "fr_to_de",
+          "answer": "et",
+          "source_word": "sie",
+          "direction": "de_to_fr",
           "level": "beginner"
         },
         {
-          "type": "definition_match",
+          "type": "sentence_building",
           "question": {
-            "de": "Welches Wort passt zu dieser Definition: 1. Geben Sie den Namen des Patienten an, den Sie beschreiben möchten, und klicken Sie dann auf den Button „Patientenbeschreibung“.\n2. Geben Sie den Namen des Patienten an, den Sie beschreiben möchten, und klicken",
-            "fr": "Quel mot correspond à cette définition: 1. Indiquez le nom du patient que vous souhaitez décrire, puis cliquez sur le bouton . Description du patient. 2. Indiquez le nom du patient que vous souhaitez décrire et cliquez sur"
+            "de": "Bilden Sie einen Satz mit diesen Wörtern: sehr, schön, ist, das, ein, sie, der, gut",
+            "fr": "Formez une phrase avec ces mots: sehr, schön, ist, das, ein, sie, der, gut"
           },
-          "definition": {
-            "de": "1. Geben Sie den Namen des Patienten an, den Sie beschreiben möchten, und klicken Sie dann auf den Button „Patientenbeschreibung“.\n2. Geben Sie den Namen des Patienten an, den Sie beschreiben möchten, und klicken",
-            "fr": "1. Indiquez le nom du patient que vous souhaitez décrire, puis cliquez sur le bouton . Description du patient. 2. Indiquez le nom du patient que vous souhaitez décrire et cliquez sur"
-          },
+          "word_pool": [
+            "sehr",
+            "schön",
+            "ist",
+            "das",
+            "ein",
+            "sie",
+            "der",
+            "gut"
+          ],
+          "target_sentence": "Das ist ein sie.",
           "answer": "sie",
           "level": "beginner"
+        },
+        {
+          "type": "fill_blank",
+          "examples": [
+            {
+              "question": {
+                "de": "Das Buch liegt ___ dem Tisch.",
+                "fr": "Complétez la phrase avec le mot 'et' (Le mot manquant est au milieu)"
+              },
+              "context": "Le mot manquant est au milieu"
+            },
+            {
+              "question": {
+                "de": "Wir gehen ___ den Park.",
+                "fr": "Complétez la phrase avec le mot 'et' (Le mot manquant est au milieu)"
+              },
+              "context": "Le mot manquant est au milieu"
+            }
+          ],
+          "answer": "sie",
+          "level": "beginner",
+          "translation": "et"
         }
       ],
       "exercise_count": 3,
-      "processed_at": "2025-05-29T09:50:48.077449"
+      "processed_at": "2025-05-29T10:10:13.002560"
     }
   ],
   "vocabulary_stats": {
     "total_words": 5,
     "total_exercises": 15,
     "exercise_types": {
-      "definition_match": 4,
+      "fill_blank": 4,
+      "gender_article": 2,
+      "translation": 4,
+      "definition_match": 2,
       "multiple_choice": 2,
-      "fill_blank": 3,
-      "translation": 2,
-      "sentence_building": 2,
-      "gender_article": 2
+      "sentence_building": 1
     },
     "levels": {
       "beginner": 3,
