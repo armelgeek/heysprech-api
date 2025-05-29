@@ -671,3 +671,101 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def get_pronunciation(word, models):
+    """Obtient la prononciation phonétique d'un mot allemand
+    
+    Args:
+        word: Le mot dont on veut obtenir la prononciation
+        models: Les modèles de traduction et génération
+        
+    Returns:
+        dict: Informations de prononciation incluant IPA et description
+    """
+    tokenizer_gpt, model_gpt = models['gpt']
+    
+    # Prompt pour obtenir la prononciation détaillée
+    prompt = f"""Geben Sie folgende Details zur Aussprache des Wortes '{word}':
+1. IPA-Transkription in eckigen Klammern []
+2. Silbentrennung mit Bindestrichen (-)
+3. Betonung (markiert mit ' vor der betonten Silbe)
+4. Ausspracheregeln und Besonderheiten
+5. Regionale Varianten (wenn vorhanden)"""
+    
+    try:
+        # Génération de l'analyse de prononciation
+        inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+        outputs = model_gpt.generate(
+            inputs.input_ids,
+            max_length=200,
+            num_beams=5,
+            temperature=0.3,  # Température basse pour plus de précision
+            top_p=0.95,
+            do_sample=False  # Pas d'échantillonnage pour la précision
+        )
+        pronunciation_de = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+        
+        # Traduction de l'explication
+        tokenizer_de_fr, model_de_fr = models['de_fr']
+        inputs = tokenizer_de_fr(pronunciation_de, return_tensors="pt", padding=True)
+        outputs = model_de_fr.generate(**inputs)
+        pronunciation_fr = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True)
+        
+        # Extraction des informations
+        pronunciation_info = {
+            'text': word,
+            'ipa': extract_ipa(pronunciation_de),
+            'syllables': extract_syllables(pronunciation_de),
+            'stress': extract_stress_position(pronunciation_de),
+            'description': {
+                'de': pronunciation_de,
+                'fr': pronunciation_fr
+            },
+            'audio': {
+                'url': f"https://api.heysprech.de/audio/pronunciation/{word}.mp3",  # URL fictive
+                'speaker': "native_de",
+                'dialect': "standard"
+            }
+        }
+        
+        return pronunciation_info
+        
+    except Exception as e:
+        print(f"Erreur lors de la génération de la prononciation pour '{word}': {e}")
+        return None
+
+def extract_ipa(text):
+    """Extrait les symboles IPA du texte de prononciation"""
+    import re
+    ipa_match = re.search(r'\[(.*?)\]', text)
+    if ipa_match:
+        return ipa_match.group(1).strip()
+    return None
+
+def extract_syllables(text):
+    """Extrait la séparation en syllabes du texte"""
+    import re
+    # Recherche les mots avec des tirets ou points
+    syllables_match = re.search(r'(?:Silbentrennung|Silben):\s*([\w\-·]+)', text, re.IGNORECASE)
+    if syllables_match:
+        # Divise aux tirets ou points
+        syllables = re.split(r'[-·]', syllables_match.group(1))
+        return [s.strip() for s in syllables if s.strip()]
+    return None
+
+def extract_stress_position(text):
+    """Extrait la position de l'accent tonique"""
+    import re
+    # Cherche des indications de l'accent tonique
+    stress_match = re.search(r'(?:Betonung|betont):\s*(.+?)(?:\.|$)', text, re.IGNORECASE | re.MULTILINE)
+    if stress_match:
+        position = stress_match.group(1).strip()
+        # Convertir en format standardisé
+        if 'erst' in position.lower():
+            return 'first'
+        elif 'zweit' in position.lower():
+            return 'second'
+        elif 'letzt' in position.lower():
+            return 'last'
+        return position
+    return None
