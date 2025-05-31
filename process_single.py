@@ -99,25 +99,31 @@ class PronunciationScraper:
             # Méthode 2: JavaScript embarqué
             scripts = soup.find_all('script')
             for script in scripts:
-                if script.string:
-                    audio_urls = re.findall(
-                        r'["\']([^"\']*\.(?:mp3|wav|ogg|m4a)[^"\']*)["\']', 
-                        script.string, re.IGNORECASE
-                    )
-                    for audio_url in audio_urls:
-                        full_url = urljoin(url, audio_url)
-                        audio_sources.append({
-                            'type': 'js_embedded',
-                            'url': full_url,
-                            'original_src': audio_url
-                        })
+                # Vérifier si le script a du contenu et qu'il s'agit d'un objet Tag
+                if hasattr(script, 'string') and script.string:
+                    try:
+                        audio_urls = re.findall(
+                            r'["\']([^"\']*\.(?:mp3|wav|ogg|m4a)[^"\']*)["\']', 
+                            script.string, re.IGNORECASE
+                        )
+                        for audio_url in audio_urls:
+                            full_url = urljoin(url, audio_url)
+                            audio_sources.append({
+                                'type': 'js_embedded',
+                                'url': full_url,
+                                'original_src': audio_url
+                            })
+                    except Exception as e:
+                        print(f"Erreur lors de l'analyse du script: {e}")
+                        continue
             
             # Méthode 3: Attributs data-*
-            data_elements = soup.find_all(attrs=lambda x: x and any(
-                attr.startswith('data-') and isinstance(val, str) and 
-                any(ext in val.lower() for ext in ['.mp3', '.wav', '.ogg', '.m4a'])
-                for attr, val in x.items()
-            ))
+            try:
+                data_elements = soup.find_all(attrs=lambda x: x and isinstance(x, dict) and any(
+                    attr.startswith('data-') and isinstance(val, str) and 
+                    any(ext in val.lower() for ext in ['.mp3', '.wav', '.ogg', '.m4a'])
+                    for attr, val in x.items()
+                ))
             
             for element in data_elements:
                 for attr, value in element.attrs.items():
