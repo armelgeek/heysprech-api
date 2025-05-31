@@ -171,7 +171,7 @@ def download_audio_file(audio_url, filename=None):
 
 # Utilisation
 if __name__ == "__main__":
-    url = "https://fr.howtopronounce.com/german/drau%C3%9Fen"
+    url = "https://fr.howtopronounce.com/german/mich"
     
     print(f"Scraping de: {url}")
     audio_sources = scrape_audio_tags(url)
@@ -179,9 +179,7 @@ if __name__ == "__main__":
     if audio_sources:
         print(f"\n{len(audio_sources)} sources audio trouvées!")
         
-        # Optionnel: télécharger le premier fichier audio trouvé
-        choice = input("\nVoulez-vous télécharger le premier fichier audio? (y/n): ")
-        if choice.lower() == 'y' and audio_sources:
+        if audio_sources:
             first_audio = audio_sources[0]
             download_audio_file(first_audio['url'], 'mich_pronunciation.mp3')
     else:

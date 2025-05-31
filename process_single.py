@@ -1,24 +1,27 @@
 #!/usr/bin/env python3
 import os
+import re
 import sys
 import subprocess
 import argparse
-import re
+import requests
+from bs4 import BeautifulSoup
+import urllib.parse
+from urllib.parse import urljoin
 import json
 import random
-import requests
+import time
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
-from urllib.parse import urljoin, quote
-from bs4 import BeautifulSoup
 from transformers import (
     MarianMTModel, 
     MarianTokenizer, 
     GPT2LMHeadModel, 
     AutoTokenizer
 )
+
 from tqdm import tqdm
-import time
+
 
 # Configuration globale
 CONFIG = {
@@ -30,9 +33,7 @@ CONFIG = {
     'max_vocabulary_size': 100,  # Limiter le nombre de mots à traiter
     'min_word_length': 2,
     'max_examples_per_word': 3,
-    'max_exercises_per_type': 2,
-    'pronunciation_delay': 3.0,  # Délai entre les requêtes de prononciation
-    'max_pronunciation_attempts': 3  # Nombre maximum de tentatives par mot
+    'max_exercises_per_type': 2
 }
 
 AUDIO_EXTENSIONS = (
@@ -40,38 +41,69 @@ AUDIO_EXTENSIONS = (
     ".flac", ".aac", ".aiff", ".wma"
 )
 
-class PronunciationScraper:
-    """Classe pour scraper les prononciations depuis HowToPronounce.com"""
+def download_audio_file(audio_url, filename=None):
+    """
+    Télécharge un fichier audio
+    """
+    if not filename:
+        filename = audio_url.split('/')[-1]
+        if not any(ext in filename.lower() for ext in ['.mp3', '.wav', '.ogg', '.m4a']):
+            filename += '.mp3'
     
-    def __init__(self, output_dir: str):
-        self.output_dir = Path(output_dir)
-        self.pronunciation_dir = self.output_dir / "pronunciations"
-        self.pronunciation_dir.mkdir(parents=True, exist_ok=True)
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+    }
+    
+    try:
+        response = requests.get(audio_url, headers=headers, stream=True)
+        response.raise_for_status()
         
-        self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        with open(filename, 'wb') as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
+        
+        print(f"Fichier téléchargé: {filename}")
+        return True
+    except Exception as e:
+        print(f"Erreur lors du téléchargement: {e}")
+        return False
+
+class VocabularyProcessor:
+    """Classe pour gérer le traitement du vocabulaire et les analyses lexicales"""
+    
+    def __init__(self, models: Dict):
+        self.models = models
+        self.processed_words = set()
+        self.pronunciation_dir = Path("pronunciations")
+        self.pronunciation_dir.mkdir(exist_ok=True)
+        
+    def scrape_audio_tags(self, word: str) -> List[Dict]:
+        """Scrape les balises audio pour un mot"""
+        url = f"https://howpronounce.com/german/{word}"
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Language': 'fr-FR,fr;q=0.9,en;q=0.8,de;q=0.7',
+            'Accept-Language': 'fr-FR,fr;q=0.9,en;q=0.8',
             'Accept-Encoding': 'gzip, deflate, br',
             'Connection': 'keep-alive',
             'Upgrade-Insecure-Requests': '1',
         }
-    
-    def get_pronunciation_url(self, word: str, language: str = "german") -> str:
-        """Construit l'URL pour HowToPronounce.com"""
-        encoded_word = quote(word, safe='')
-        return f"https://fr.howtopronounce.com/{language}/{encoded_word}"
-    
-    def scrape_audio_sources(self, url: str) -> List[Dict]:
-        """Scrape les sources audio depuis une page HowToPronounce"""
+        
+        print(f"Recherche de prononciation pour : {word}")
+        
         try:
-            response = requests.get(url, headers=self.headers, timeout=10)
+            # Ajout d'un délai aléatoire entre 1 et 3 secondes
+            time.sleep(random.uniform(1, 3))
+            
+            response = requests.get(url, headers=headers, timeout=10)
             response.raise_for_status()
             
+            # Parser le HTML
             soup = BeautifulSoup(response.content, 'html.parser')
+            
             audio_sources = []
             
-            # Méthode 1: Balises audio directes
+            # 1. Rechercher les balises audio directes
             audio_tags = soup.find_all('audio')
             for audio in audio_tags:
                 if audio.get('src'):
@@ -83,9 +115,7 @@ class PronunciationScraper:
                         'original_src': src
                     })
                 
-                # Balises source enfants
-                sources = audio.find_all('source')
-                for source in sources:
+                for source in audio.find_all('source'):
                     if source.get('src'):
                         src = source.get('src')
                         full_url = urljoin(url, src)
@@ -93,166 +123,65 @@ class PronunciationScraper:
                             'type': 'source_tag',
                             'url': full_url,
                             'original_src': src,
-                            'mime_type': source.get('type', 'audio/mpeg')
+                            'mime_type': source.get('type', 'unknown')
                         })
             
-            # Méthode 2: JavaScript embarqué
+            # 2. Rechercher dans le JavaScript
             scripts = soup.find_all('script')
             for script in scripts:
-                # Vérifier si le script a du contenu et qu'il s'agit d'un objet Tag
-                if hasattr(script, 'string') and script.string:
-                    try:
-                        audio_urls = re.findall(
-                            r'["\']([^"\']*\.(?:mp3|wav|ogg|m4a)[^"\']*)["\']', 
-                            script.string, re.IGNORECASE
-                        )
-                        for audio_url in audio_urls:
-                            full_url = urljoin(url, audio_url)
-                            audio_sources.append({
-                                'type': 'js_embedded',
-                                'url': full_url,
-                                'original_src': audio_url
-                            })
-                    except Exception as e:
-                        print(f"Erreur lors de l'analyse du script: {e}")
-                        continue
-            
-            # Méthode 3: Attributs data-*
-            try:
-                data_elements = soup.find_all(attrs=lambda x: x and isinstance(x, dict) and any(
-                    attr.startswith('data-') and isinstance(val, str) and 
-                    any(ext in val.lower() for ext in ['.mp3', '.wav', '.ogg', '.m4a'])
-                    for attr, val in x.items()
-                ))
-            
-            for element in data_elements:
-                for attr, value in element.attrs.items():
-                    if (attr.startswith('data-') and isinstance(value, str) and
-                        any(ext in value.lower() for ext in ['.mp3', '.wav', '.ogg', '.m4a'])):
-                        full_url = urljoin(url, value)
+                if script.string:
+                    # Chercher des URLs audio
+                    audio_urls = re.findall(r'["\']([^"\']*\.(?:mp3|wav|ogg|m4a)[^"\']*)["\']', script.string)
+                    for audio_url in audio_urls:
+                        full_url = urljoin(url, audio_url)
                         audio_sources.append({
-                            'type': f'data_attribute_{attr}',
+                            'type': 'js_embedded',
                             'url': full_url,
-                            'original_src': value
+                            'original_src': audio_url
                         })
             
-            # Supprimer les doublons
-            unique_sources = {}
-            for source in audio_sources:
-                url_key = source['url']
-                if url_key not in unique_sources:
-                    unique_sources[url_key] = source
+            # 3. Rechercher les attributs data-*
+            elements_with_data = soup.find_all(lambda tag: any(attr.startswith('data-') for attr in tag.attrs))
+            for element in elements_with_data:
+                for attr, value in element.attrs.items():
+                    if attr.startswith('data-') and isinstance(value, str):
+                        if any(ext in value.lower() for ext in ['.mp3', '.wav', '.ogg', '.m4a']):
+                            full_url = urljoin(url, value)
+                            audio_sources.append({
+                                'type': f'data_attribute_{attr}',
+                                'url': full_url,
+                                'original_src': value
+                            })
             
-            return list(unique_sources.values())
+            print(f"✓ {len(audio_sources)} sources audio trouvées pour '{word}'")
+            return audio_sources
             
         except Exception as e:
-            print(f"Erreur lors du scraping de {url}: {e}")
+            print(f"✗ Erreur lors du scraping pour '{word}': {e}")
             return []
     
-    def download_audio(self, audio_url: str, filename: str) -> bool:
-        """Télécharge un fichier audio"""
+    def download_audio_file(self, audio_url: str, filename: str) -> bool:
+        """Télécharge un fichier audio de prononciation"""
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
+        
         try:
-            response = requests.get(audio_url, headers=self.headers, stream=True, timeout=15)
+            response = requests.get(audio_url, headers=headers, stream=True)
             response.raise_for_status()
             
-            file_path = self.pronunciation_dir / filename
-            with open(file_path, 'wb') as f:
+            filepath = self.pronunciation_dir / filename
+            with open(filepath, 'wb') as f:
                 for chunk in response.iter_content(chunk_size=8192):
                     f.write(chunk)
             
-            # Vérifier que le fichier n'est pas vide
-            if file_path.stat().st_size > 0:
-                return True
-            else:
-                file_path.unlink()  # Supprimer le fichier vide
-                return False
-                
+            print(f"✓ Prononciation téléchargée : {filename}")
+            return True
+            
         except Exception as e:
-            print(f"Erreur lors du téléchargement de {audio_url}: {e}")
+            print(f"✗ Erreur lors du téléchargement : {e}")
             return False
     
-    def get_pronunciation_audio(self, word: str) -> Optional[Dict]:
-        """Récupère l'audio de prononciation pour un mot"""
-        print(f"  → Recherche prononciation pour: {word}")
-        
-        # Vérifier si le fichier existe déjà
-        potential_files = [
-            f"{word}_pronunciation.mp3",
-            f"{word}_pronunciation.wav",
-            f"{word}_pronunciation.ogg"
-        ]
-        
-        for filename in potential_files:
-            if (self.pronunciation_dir / filename).exists():
-                print(f"  ✓ Prononciation déjà téléchargée: {filename}")
-                return {
-                    'word': word,
-                    'audio_file': str(self.pronunciation_dir / filename),
-                    'status': 'cached'
-                }
-        
-        # Essayer de télécharger
-        url = self.get_pronunciation_url(word)
-        audio_sources = self.scrape_audio_sources(url)
-        
-        if not audio_sources:
-            print(f"  ✗ Aucune source audio trouvée pour: {word}")
-            return None
-        
-        # Essayer de télécharger la première source valide
-        for i, source in enumerate(audio_sources[:CONFIG['max_pronunciation_attempts']]):
-            filename = f"{word}_pronunciation_{i}.mp3"
-            
-            if self.download_audio(source['url'], filename):
-                print(f"  ✓ Prononciation téléchargée: {filename}")
-                return {
-                    'word': word,
-                    'audio_file': str(self.pronunciation_dir / filename),
-                    'source_url': source['url'],
-                    'source_type': source['type'],
-                    'status': 'downloaded'
-                }
-            
-            time.sleep(0.5)  # Petit délai entre les tentatives
-        
-        print(f"  ✗ Échec du téléchargement pour: {word}")
-        return None
-    
-    def batch_download_pronunciations(self, words: List[str]) -> Dict[str, Optional[Dict]]:
-        """Télécharge les prononciations pour une liste de mots"""
-        print(f"\n=== TÉLÉCHARGEMENT DES PRONONCIATIONS ===")
-        print(f"Traitement de {len(words)} mots...")
-        
-        results = {}
-        successful_downloads = 0
-        
-        for i, word in enumerate(tqdm(words, desc="Prononciations")):
-            try:
-                result = self.get_pronunciation_audio(word)
-                results[word] = result
-                
-                if result and result['status'] in ['downloaded', 'cached']:
-                    successful_downloads += 1
-                
-                # Délai entre les requêtes pour éviter d'être bloqué
-                if i < len(words) - 1:  # Pas de délai pour le dernier mot
-                    time.sleep(CONFIG['pronunciation_delay'])
-                    
-            except Exception as e:
-                print(f"  ✗ Erreur pour {word}: {e}")
-                results[word] = None
-        
-        print(f"\n✓ Téléchargements terminés: {successful_downloads}/{len(words)} réussis")
-        return results
-
-class VocabularyProcessor:
-    """Classe pour gérer le traitement du vocabulaire et les analyses lexicales"""
-    
-    def __init__(self, models: Dict, pronunciation_scraper: PronunciationScraper):
-        self.models = models
-        self.processed_words = set()
-        self.pronunciation_scraper = pronunciation_scraper
-        
     def clean_word(self, word: str) -> Optional[str]:
         """Nettoie et valide un mot"""
         if not word:
@@ -312,6 +241,7 @@ class VocabularyProcessor:
     
     def generate_simple_example(self, word: str) -> Dict[str, str]:
         """Génère un exemple simple d'utilisation"""
+        tokenizer_gpt, model_gpt = self.models['gpt']
         tokenizer_de_fr, model_de_fr = self.models['de_fr']
         
         # Templates simples prédéfinis
@@ -350,81 +280,153 @@ class VocabularyProcessor:
     
     def create_simple_exercise(self, word: str, translation: str) -> Dict:
         """Crée deux exercices à choix multiples (QCM) dans les deux sens de traduction"""
+        exercises = []
+        
+        # 1. Exercice DE -> FR
+        de_fr_exercise = self._create_exercise_variant(
+            word=word,
+            translation=translation,
+            prompt_lang="fr",
+            prompts=[
+                "Un mot français aléatoire :",
+                "Voici un autre mot français :",
+                "Encore un mot français :"
+            ],
+            question_de=f"Welches französische Wort bedeutet '{word}'?",
+            question_fr=f"Quelle est la traduction française de '{word}'?",
+            fallback_suffixes=['er', 'eur', 'eux', 'able', 'ible', 'iste']
+        )
+        
+        # 2. Exercice FR -> DE
+        fr_de_exercise = self._create_exercise_variant(
+            word=translation,
+            translation=word,
+            prompt_lang="de",
+            prompts=[
+                "Ein zufälliges deutsches Wort:",
+                "Hier ist ein anderes deutsches Wort:",
+                "Noch ein deutsches Wort:"
+            ],
+            question_de=f"Welches deutsche Wort bedeutet '{translation}'?",
+            question_fr=f"Quel est le mot allemand pour '{translation}'?",
+            fallback_suffixes=['en', 'er', 'e', 'ung', 'heit', 'keit']
+        )
+        
+        return {
+            'type': 'multiple_choice_pair',
+            'de_to_fr': de_fr_exercise,
+            'fr_to_de': fr_de_exercise,
+            'level': self.determine_word_level(word)
+        }
+        
+    def _create_exercise_variant(self, word: str, translation: str, prompt_lang: str,
+                               prompts: List[str], question_de: str, question_fr: str,
+                               fallback_suffixes: List[str]) -> Dict:
+        """Crée un exercice QCM dans un sens de traduction spécifique"""
         tokenizer_gpt, model_gpt = self.models['gpt']
         
         try:
-            # Générer des mots distracteurs
             wrong_options = []
-            prompts = [
-                "Ein deutsches Wort:",
-                "Noch ein Wort:",
-                "Weiteres Wort:"
-            ]
             
+            # Générer des mots aléatoires pour chaque prompt
             for prompt in prompts:
-                try:
-                    inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-                    outputs = model_gpt.generate(
-                        inputs.input_ids,
-                        max_length=15,
-                        num_return_sequences=1,
-                        temperature=1.0,
-                        do_sample=True,
-                        top_k=50
-                    )
-                    
-                    generated_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
-                    words = re.findall(r'\b[a-zäöüß]{3,}\b', generated_text.lower())
-                    
-                    if words:
-                        candidate = words[0]
-                        if candidate != word and candidate not in wrong_options:
-                            wrong_options.append(candidate)
-                    
-                except Exception:
-                    continue
+                # Configuration pour la génération
+                inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+                outputs = model_gpt.generate(
+                    inputs.input_ids,
+                    max_length=20,
+                    num_return_sequences=1,
+                    temperature=1.0,  # Température élevée pour plus de randomisation
+                    do_sample=True,
+                    top_k=50,
+                    top_p=0.95
+                )
+                
+                # Traduire le mot généré vers le français
+                generated_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+                # Chercher un mot valide
+                words = re.findall(r'\b\w+\b', generated_text.lower())
+                
+                if words:
+                    # Prendre le premier mot valide et le traduire
+                    french_word = words[0]
+                    # Vérifier que le mot est différent de la traduction et unique
+                    if french_word != translation and french_word not in wrong_options:
+                        wrong_options.append(french_word)
             
-            # Fallback si pas assez d'options
+            # Si nous n'avons pas assez de mots valides, générer d'autres mots
+            attempts = 0
+            while len(wrong_options) < 3 and attempts < 5:
+                inputs = tokenizer_gpt("Ein weiteres deutsches Wort:", return_tensors="pt", padding=True)
+                outputs = model_gpt.generate(
+                    inputs.input_ids,
+                    max_length=20,
+                    num_return_sequences=1,
+                    temperature=1.0,
+                    do_sample=True
+                )
+                
+                generated_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+                words = re.findall(r'\b[a-zäöüß]{3,}\b', generated_text.lower())
+                
+                if words:
+                    random_word = words[0]
+                    if random_word != word and random_word not in wrong_options:
+                        wrong_options.append(random_word)
+                
+                attempts += 1
+            
+            # Si on n'a toujours pas assez d'options, utiliser des fallbacks
             while len(wrong_options) < 3:
-                fallbacks = ['haus', 'auto', 'buch', 'wort', 'zeit', 'jahr', 'mann', 'frau']
-                for fallback in fallbacks:
-                    if fallback != word and fallback not in wrong_options:
+                # Générer des mots similaires en français
+                suffixes = ['er', 'eur', 'eux', 'able', 'ible', 'iste']
+                for suffix in suffixes:
+                    fallback = translation + suffix
+                    if fallback not in wrong_options:
                         wrong_options.append(fallback)
                         if len(wrong_options) >= 3:
                             break
             
             wrong_options = wrong_options[:3]
             
-            # Exercice DE -> FR
-            de_fr_options = [translation] + [f"{opt}fr" for opt in wrong_options]
-            random.shuffle(de_fr_options)
-            
-            # Exercice FR -> DE
-            fr_de_options = [word] + wrong_options
-            random.shuffle(fr_de_options)
+            options = [translation] + wrong_options
+            random.shuffle(options)
             
             return {
-                'type': 'multiple_choice_pair',
-                'de_to_fr': {
-                    'question': f"Quelle est la traduction française de '{word}'?",
-                    'options': de_fr_options,
-                    'answer': translation
+                'type': 'multiple_choice',
+                'question': {
+                    'de': german_instruction,
+                    'fr': f"Choisissez la traduction en français pour '{word}'"
                 },
-                'fr_to_de': {
-                    'question': f"Quel est le mot allemand pour '{translation}'?",
-                    'options': fr_de_options,
-                    'answer': word
-                },
+                'options': options,
+                'answer': translation,
                 'level': self.determine_word_level(word)
             }
             
         except Exception as e:
-            print(f"Erreur génération exercice pour '{word}': {e}")
+            print(f"Erreur lors de la génération des options pour '{word}': {e}")
+            # Fallback sur des options simples
+            wrong_options = []
+            for suffix in fallback_suffixes:
+                fallback = word + suffix
+                if fallback not in wrong_options and fallback != word:
+                    wrong_options.append(fallback)
+                if len(wrong_options) >= 3:
+                    break
+            
+            # S'assurer qu'on a exactement 3 options incorrectes
+            wrong_options = wrong_options[:3]
+            options = [word] + wrong_options
+            random.shuffle(options)
+            
             return {
-                'type': 'simple',
-                'question': f"Traduisez: {word}",
-                'answer': translation,
-                'level': self.determine_word_level(word)
+                'type': 'multiple_choice',
+                'question': {
+                    'de': question_de,
+                    'fr': question_fr
+                },
+                'options': options,
+                'answer': word
             }
     
     def determine_word_level(self, word: str) -> str:
@@ -437,58 +439,40 @@ class VocabularyProcessor:
             return 'advanced'
     
     def process_word(self, word: str) -> Dict:
-        """Traite un mot complet avec traduction, exemple, exercice et prononciation"""
+        """Traite un mot complet avec traduction, exemple et exercice"""
+        # Traductions et exercices
         translation_info = self.get_basic_translation(word)
         example = self.generate_simple_example(word)
         exercise = self.create_simple_exercise(word, translation_info['fr'])
         level = self.determine_word_level(word)
         
-        # Récupérer la prononciation
-        pronunciation = self.pronunciation_scraper.get_pronunciation_audio(word)
+        # Récupération de la prononciation
+        pronunciation_info = {'available': False, 'file': None}
+        audio_sources = self.scrape_audio_tags(word)
         
-        return {
+        if audio_sources:
+            # Tenter de télécharger le premier fichier audio trouvé
+            first_audio = audio_sources[0]
+            audio_filename = f"{word}_pronunciation.mp3"
+            
+            if self.download_audio_file(first_audio['url'], audio_filename):
+                pronunciation_info = {
+                    'available': True,
+                    'file': str(self.pronunciation_dir / audio_filename)
+                }
+        
+        # Construire le résultat
+        result = {
             'word': word,
             'level': level,
             'translation': translation_info,
             'example': example,
             'exercise': exercise,
-            'pronunciation': pronunciation,
+            'pronunciation': pronunciation_info,
             'processed_at': self.get_timestamp()
         }
-    
-    def process_vocabulary_batch(self, words: List[str]) -> List[Dict]:
-        """Traite une liste de mots avec téléchargement groupé des prononciations"""
-        print("Traitement du vocabulaire avec prononciations...")
         
-        # Télécharger toutes les prononciations en lot
-        pronunciation_results = self.pronunciation_scraper.batch_download_pronunciations(words)
-        
-        # Traiter chaque mot
-        vocabulary_entries = []
-        for word in tqdm(words, desc="Traitement mots"):
-            try:
-                translation_info = self.get_basic_translation(word)
-                example = self.generate_simple_example(word)
-                exercise = self.create_simple_exercise(word, translation_info['fr'])
-                level = self.determine_word_level(word)
-                
-                entry = {
-                    'word': word,
-                    'level': level,
-                    'translation': translation_info,
-                    'example': example,
-                    'exercise': exercise,
-                    'pronunciation': pronunciation_results.get(word),
-                    'processed_at': self.get_timestamp()
-                }
-                
-                vocabulary_entries.append(entry)
-                
-            except Exception as e:
-                print(f"Erreur pour le mot '{word}': {e}")
-                continue
-        
-        return vocabulary_entries
+        return result
     
     def get_timestamp(self) -> str:
         """Retourne un timestamp pour le traitement"""
@@ -584,7 +568,6 @@ class TranscriptionProcessor:
         self.transcriber = AudioTranscriber()
         self.model_manager = ModelManager()
         self.vocabulary_processor = None
-        self.pronunciation_scraper = None
     
     def validate_audio_file(self, audio_path: str) -> bool:
         """Valide le fichier audio"""
@@ -598,7 +581,7 @@ class TranscriptionProcessor:
         
         return True
     
-    def process_transcription_file(self, json_path: str, output_dir: str) -> bool:
+    def process_transcription_file(self, json_path: str) -> bool:
         """Traite le fichier JSON de transcription"""
         try:
             # Charger le fichier JSON
@@ -609,10 +592,9 @@ class TranscriptionProcessor:
                 print("✗ Format JSON invalide - 'segments' manquant")
                 return False
             
-            # Initialiser les processeurs
+            # Initialiser le processeur de vocabulaire
             models = self.model_manager.load_models()
-            self.pronunciation_scraper = PronunciationScraper(output_dir)
-            self.vocabulary_processor = VocabularyProcessor(models, self.pronunciation_scraper)
+            self.vocabulary_processor = VocabularyProcessor(models)
             
             # Traiter chaque segment et ajouter la traduction
             print("Traduction des segments...")
@@ -622,23 +604,22 @@ class TranscriptionProcessor:
                     translation_info = self.vocabulary_processor.get_basic_translation(text)
                     segment['translation'] = translation_info['fr']
             
-            # Extraire le vocabulaire
+            # Extraire et traiter le vocabulaire
             print("Extraction du vocabulaire...")
             vocabulary_words = self.vocabulary_processor.extract_vocabulary(data['segments'])
             
-            # Traiter le vocabulaire avec prononciations
             print(f"Traitement de {len(vocabulary_words)} mots du vocabulaire...")
-            vocabulary_entries = self.vocabulary_processor.process_vocabulary_batch(vocabulary_words)
+            vocabulary_entries = []
             
-            # Statistiques sur les prononciations
-            pronunciation_stats = {
-                'total_words': len(vocabulary_entries),
-                'pronunciations_found': len([v for v in vocabulary_entries if v.get('pronunciation')]),
-                'pronunciations_cached': len([v for v in vocabulary_entries if v.get('pronunciation', {}).get('status') == 'cached']),
-                'pronunciations_downloaded': len([v for v in vocabulary_entries if v.get('pronunciation', {}).get('status') == 'downloaded'])
-            }
+            for word in tqdm(vocabulary_words, desc="Vocabulaire"):
+                try:
+                    entry = self.vocabulary_processor.process_word(word)
+                    vocabulary_entries.append(entry)
+                except Exception as e:
+                    print(f"Erreur pour le mot '{word}': {e}")
+                    continue
             
-            # Ajouter les données au JSON
+            # Ajouter le vocabulaire au JSON
             data['vocabulary'] = vocabulary_entries
             data['vocabulary_stats'] = {
                 'total_words': len(vocabulary_entries),
@@ -646,8 +627,7 @@ class TranscriptionProcessor:
                     'beginner': len([w for w in vocabulary_entries if w['level'] == 'beginner']),
                     'intermediate': len([w for w in vocabulary_entries if w['level'] == 'intermediate']),
                     'advanced': len([w for w in vocabulary_entries if w['level'] == 'advanced'])
-                },
-                'pronunciations': pronunciation_stats
+                }
             }
             
             # Sauvegarder le fichier modifié
@@ -655,7 +635,6 @@ class TranscriptionProcessor:
                 json.dump(data, f, ensure_ascii=False, indent=2)
             
             print("✓ Traitement du vocabulaire terminé")
-            print(f"✓ Prononciations: {pronunciation_stats['pronunciations_found']}/{pronunciation_stats['total_words']} trouvées")
             return True
             
         except Exception as e:
@@ -677,20 +656,19 @@ class TranscriptionProcessor:
         if not json_path:
             return False
         
-        # Étape 2: Traitement du vocabulaire avec prononciations
-        print("\n=== ÉTAPE 2: TRAITEMENT DU VOCABULAIRE + PRONONCIATIONS ===")
-        if not self.process_transcription_file(json_path, output_dir):
+        # Étape 2: Traitement du vocabulaire
+        print("\n=== ÉTAPE 2: TRAITEMENT DU VOCABULAIRE ===")
+        if not self.process_transcription_file(json_path):
             return False
         
         print(f"\n✓ Traitement complet terminé!")
         print(f"Fichier de sortie: {json_path}")
-        print(f"Dossier prononciations: {Path(output_dir) / 'pronunciations'}")
         return True
 
 def main():
     """Fonction principale"""
     parser = argparse.ArgumentParser(
-        description="Transcrit et analyse un fichier audio en allemand avec récupération des prononciations",
+        description="Transcrit et analyse un fichier audio en allemand",
         epilog="Exemple: python script.py audio.mp3 -o ./output"
     )
     
@@ -719,19 +697,11 @@ def main():
         help=f"Modèle Whisper à utiliser (défaut: {CONFIG['whisper_model']})"
     )
     
-    parser.add_argument(
-        "--pronunciation-delay",
-        type=float,
-        default=CONFIG['pronunciation_delay'],
-        help=f"Délai entre les requêtes de prononciation en secondes (défaut: {CONFIG['pronunciation_delay']})"
-    )
-    
     args = parser.parse_args()
     
     # Mettre à jour la configuration
     CONFIG['max_vocabulary_size'] = args.max_vocab
     CONFIG['whisper_model'] = args.model
-    CONFIG['pronunciation_delay'] = args.pronunciation_delay
     
     # Traitement
     processor = TranscriptionProcessor()
