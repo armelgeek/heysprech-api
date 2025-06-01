@@ -945,10 +945,32 @@ class VocabularyProcessor:
         pronunciations = []
         
         for idx, source in enumerate(audio_sources[:CONFIG['max_examples_per_word']]):
-            filename = f"{word}_{idx + 1}{Path(source['url']).suffix}"
+            filename = f"{word}_{idx + 1}.mp3"  # Force MP3 extension
             filepath = lang_dir / f"pron_{filename}"
             
             if self.download_audio_file(source['url'], str(filepath)):
+                # Convertir en MP3 si nécessaire
+                original_ext = Path(source['url']).suffix.lower()
+                if original_ext != '.mp3':
+                    temp_path = filepath.with_suffix(original_ext)
+                    if Path(filepath).exists():
+                        Path(filepath).rename(temp_path)
+                    try:
+                        # Utiliser ffmpeg pour convertir en MP3
+                        subprocess.run([
+                            'ffmpeg', '-y',
+                            '-i', str(temp_path),
+                            '-acodec', 'libmp3lame',
+                            '-ab', '192k',
+                            str(filepath)
+                        ], check=True, capture_output=True)
+                        temp_path.unlink()  # Supprimer le fichier temporaire
+                    except Exception as e:
+                        print(f"✗ Erreur lors de la conversion en MP3: {e}")
+                        if temp_path.exists():
+                            temp_path.unlink()
+                        continue
+
                 pronunciations.append({
                     'file': str(filepath),
                     'type': source['type'],
