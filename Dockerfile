@@ -8,9 +8,12 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
+# Création d'un utilisateur non-root pour éviter les problèmes de permissions
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+
 # Création des répertoires de travail
 WORKDIR /app
-RUN mkdir -p /app/de /app/en /app/fr
+RUN mkdir -p /app/de /app/en /app/fr /app/output
 
 # Installation des dépendances Python de base
 RUN pip install --no-cache-dir torch torchaudio --index-url https://download.pytorch.org/whl/cpu
@@ -22,6 +25,13 @@ COPY cli.py .
 
 # Installation des autres dépendances Python
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Donner les permissions appropriées
+RUN chown -R appuser:appuser /app
+RUN chmod -R 755 /app
+
+# Basculer vers l'utilisateur non-root
+USER appuser
 
 # Point d'entrée
 ENTRYPOINT ["python", "cli.py"]
