@@ -280,36 +280,25 @@ class VocabularyProcessor:
     
     def create_simple_exercise(self, word: str, translation: str) -> Dict:
         """Crée deux exercices à choix multiples (QCM) dans les deux sens de traduction"""
-        exercises = []
         
         # 1. Exercice DE -> FR
         de_fr_exercise = self._create_exercise_variant(
             word=word,
-            translation=translation,
-            prompt_lang="fr",
-            prompts=[
-                "Un mot français aléatoire :",
-                "Voici un autre mot français :",
-                "Encore un mot français :"
-            ],
+            correct_answer=translation,
+            question_type="de_to_fr",
             question_de=f"Welches französische Wort bedeutet '{word}'?",
             question_fr=f"Quelle est la traduction française de '{word}'?",
-            fallback_suffixes=['er', 'eur', 'eux', 'able', 'ible', 'iste']
+            distractor_language="fr"
         )
         
         # 2. Exercice FR -> DE
         fr_de_exercise = self._create_exercise_variant(
             word=translation,
-            translation=word,
-            prompt_lang="de",
-            prompts=[
-                "Ein zufälliges deutsches Wort:",
-                "Hier ist ein anderes deutsches Wort:",
-                "Noch ein deutsches Wort:"
-            ],
+            correct_answer=word,
+            question_type="fr_to_de", 
             question_de=f"Welches deutsche Wort bedeutet '{translation}'?",
             question_fr=f"Quel est le mot allemand pour '{translation}'?",
-            fallback_suffixes=['en', 'er', 'e', 'ung', 'heit', 'keit']
+            distractor_language="de"
         )
         
         return {
@@ -318,117 +307,196 @@ class VocabularyProcessor:
             'fr_to_de': fr_de_exercise,
             'level': self.determine_word_level(word)
         }
-        
-    def _create_exercise_variant(self, word: str, translation: str, prompt_lang: str,
-                               prompts: List[str], question_de: str, question_fr: str,
-                               fallback_suffixes: List[str]) -> Dict:
+
+    def _create_exercise_variant(self, word: str, correct_answer: str, question_type: str,
+                            question_de: str, question_fr: str, distractor_language: str) -> Dict:
         """Crée un exercice QCM dans un sens de traduction spécifique"""
-        tokenizer_gpt, model_gpt = self.models['gpt']
         
         try:
-            wrong_options = []
+            # Générer les distracteurs (mauvaises réponses)
+            wrong_options = self._generate_distractors(
+                word=word, 
+                correct_answer=correct_answer,
+                target_language=distractor_language,
+                count=3
+            )
             
-            # Générer des mots aléatoires pour chaque prompt
-            for prompt in prompts:
-                # Configuration pour la génération
-                inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-                outputs = model_gpt.generate(
-                    inputs.input_ids,
-                    max_length=20,
-                    num_return_sequences=1,
-                    temperature=1.0,  # Température élevée pour plus de randomisation
-                    do_sample=True,
-                    top_k=50,
-                    top_p=0.95
-                )
-                
-                # Traduire le mot généré vers le français
-                generated_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
-                # Chercher un mot valide
-                words = re.findall(r'\b\w+\b', generated_text.lower())
-                
-                if words:
-                    # Prendre le premier mot valide et le traduire
-                    french_word = words[0]
-                    # Vérifier que le mot est différent de la traduction et unique
-                    if french_word != translation and french_word not in wrong_options:
-                        wrong_options.append(french_word)
-            
-            # Si nous n'avons pas assez de mots valides, générer d'autres mots
-            attempts = 0
-            while len(wrong_options) < 3 and attempts < 5:
-                inputs = tokenizer_gpt("Ein weiteres deutsches Wort:", return_tensors="pt", padding=True)
-                outputs = model_gpt.generate(
-                    inputs.input_ids,
-                    max_length=20,
-                    num_return_sequences=1,
-                    temperature=1.0,
-                    do_sample=True
-                )
-                
-                generated_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
-                words = re.findall(r'\b[a-zäöüß]{3,}\b', generated_text.lower())
-                
-                if words:
-                    random_word = words[0]
-                    if random_word != word and random_word not in wrong_options:
-                        wrong_options.append(random_word)
-                
-                attempts += 1
-            
-            # Si on n'a toujours pas assez d'options, utiliser des fallbacks
-            while len(wrong_options) < 3:
-                # Générer des mots similaires en français
-                suffixes = ['er', 'eur', 'eux', 'able', 'ible', 'iste']
-                for suffix in suffixes:
-                    fallback = translation + suffix
-                    if fallback not in wrong_options:
-                        wrong_options.append(fallback)
-                        if len(wrong_options) >= 3:
-                            break
-            
-            wrong_options = wrong_options[:3]
-            
-            options = [translation] + wrong_options
+            # Créer la liste des options avec la bonne réponse
+            options = [correct_answer] + wrong_options
             random.shuffle(options)
             
             return {
                 'type': 'multiple_choice',
-                'question': {
-                    'de': german_instruction,
-                    'fr': f"Choisissez la traduction en français pour '{word}'"
-                },
-                'options': options,
-                'answer': translation,
-                'level': self.determine_word_level(word)
-            }
-            
-        except Exception as e:
-            print(f"Erreur lors de la génération des options pour '{word}': {e}")
-            # Fallback sur des options simples
-            wrong_options = []
-            for suffix in fallback_suffixes:
-                fallback = word + suffix
-                if fallback not in wrong_options and fallback != word:
-                    wrong_options.append(fallback)
-                if len(wrong_options) >= 3:
-                    break
-            
-            # S'assurer qu'on a exactement 3 options incorrectes
-            wrong_options = wrong_options[:3]
-            options = [word] + wrong_options
-            random.shuffle(options)
-            
-            return {
-                'type': 'multiple_choice',
+                'question_type': question_type,
                 'question': {
                     'de': question_de,
                     'fr': question_fr
                 },
+                'word_to_translate': word,
                 'options': options,
-                'answer': word
+                'correct_answer': correct_answer,
+                'level': self.determine_word_level(word if question_type == "de_to_fr" else correct_answer)
             }
-    
+            
+        except Exception as e:
+            print(f"Erreur lors de la génération de l'exercice pour '{word}': {e}")
+            # Fallback avec des options simples
+            return self._create_fallback_exercise(word, correct_answer, question_de, question_fr, question_type)
+
+    def _generate_distractors(self, word: str, correct_answer: str, target_language: str, count: int = 3) -> List[str]:
+        """Génère des distracteurs (mauvaises réponses) pour le QCM"""
+        distractors = []
+        tokenizer_gpt, model_gpt = self.models['gpt']
+        tokenizer_de_fr, model_de_fr = self.models['de_fr']
+        
+        # Stratégie 1: Générer des mots aléatoires et les traduire
+        if target_language == "fr":
+            # Pour les distracteurs français, générer des mots allemands et les traduire
+            german_prompts = [
+                "Ein deutsches Wort: Haus",
+                "Noch ein deutsches Wort: Auto", 
+                "Ein anderes deutsches Wort: Buch"
+            ]
+            
+            for prompt in german_prompts:
+                try:
+                    # Générer un mot allemand
+                    inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+                    outputs = model_gpt.generate(
+                        inputs.input_ids,
+                        max_length=inputs.input_ids.shape[1] + 5,
+                        num_return_sequences=1,
+                        temperature=0.8,
+                        do_sample=True,
+                        pad_token_id=tokenizer_gpt.eos_token_id
+                    )
+                    
+                    generated_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+                    # Extraire le nouveau mot généré (après le prompt)
+                    new_words = generated_text.replace(prompt, "").strip().split()
+                    
+                    if new_words:
+                        german_word = new_words[0].lower()
+                        # Nettoyer le mot
+                        german_word = re.sub(r'[^a-zäöüß]', '', german_word)
+                        
+                        if german_word and german_word != word.lower():
+                            # Traduire en français
+                            translation_input = tokenizer_de_fr(german_word, return_tensors="pt", padding=True)
+                            translation_output = model_de_fr.generate(
+                                translation_input.input_ids,
+                                max_length=20,
+                                num_beams=2,
+                                temperature=0.3,
+                                pad_token_id=tokenizer_de_fr.eos_token_id
+                            )
+                            french_word = tokenizer_de_fr.decode(translation_output[0], skip_special_tokens=True).strip()
+                            
+                            if french_word and french_word != correct_answer and french_word not in distractors:
+                                distractors.append(french_word)
+                                
+                except Exception as e:
+                    print(f"Erreur génération distracteur français: {e}")
+                    continue
+                    
+        else:  # target_language == "de"
+            # Pour les distracteurs allemands, utiliser le modèle GPT directement
+            german_prompts = [
+                "Hier sind deutsche Wörter: Katze, Hund,",
+                "Deutsche Substantive: Tisch, Stuhl,",
+                "Mehr deutsche Wörter: Fenster, Tür,"
+            ]
+            
+            for prompt in german_prompts:
+                try:
+                    inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
+                    outputs = model_gpt.generate(
+                        inputs.input_ids,
+                        max_length=inputs.input_ids.shape[1] + 5,
+                        num_return_sequences=1,
+                        temperature=0.8,
+                        do_sample=True,
+                        pad_token_id=tokenizer_gpt.eos_token_id
+                    )
+                    
+                    generated_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+                    # Extraire les nouveaux mots
+                    new_part = generated_text.replace(prompt, "").strip()
+                    words = re.findall(r'\b[a-zäöüßA-ZÄÖÜ]{3,}\b', new_part)
+                    
+                    for german_word in words:
+                        german_word = german_word.lower()
+                        if (german_word != correct_answer.lower() and 
+                            german_word not in distractors and
+                            len(distractors) < count):
+                            distractors.append(german_word.capitalize() if correct_answer[0].isupper() else german_word)
+                            
+                except Exception as e:
+                    print(f"Erreur génération distracteur allemand: {e}")
+                    continue
+        
+        # Stratégie 2: Compléter avec des fallbacks si pas assez de distracteurs
+        while len(distractors) < count:
+            if target_language == "fr":
+                # Fallbacks français basés sur des modifications du mot correct
+                fallback_options = [
+                    correct_answer + "er",
+                    correct_answer + "tion", 
+                    "un " + correct_answer,
+                    correct_answer[:-1] + "e" if len(correct_answer) > 3 else correct_answer + "e"
+                ]
+            else:
+                # Fallbacks allemands
+                fallback_options = [
+                    correct_answer + "en",
+                    correct_answer + "er", 
+                    "der " + correct_answer if not correct_answer.startswith("der") else correct_answer + "heit",
+                    correct_answer[:-1] + "e" if len(correct_answer) > 3 else correct_answer + "ung"
+                ]
+            
+            for fallback in fallback_options:
+                if fallback not in distractors and fallback != correct_answer:
+                    distractors.append(fallback)
+                    if len(distractors) >= count:
+                        break
+        
+        return distractors[:count]
+
+    def _create_fallback_exercise(self, word: str, correct_answer: str, question_de: str, 
+                                question_fr: str, question_type: str) -> Dict:
+        """Crée un exercice de fallback avec des options prédéfinies"""
+        
+        if question_type == "de_to_fr":
+            # Distracteurs français simples
+            wrong_options = [
+                correct_answer + "er",
+                "un " + correct_answer, 
+                correct_answer + "tion"
+            ]
+        else:
+            # Distracteurs allemands simples  
+            wrong_options = [
+                correct_answer + "en",
+                "der " + correct_answer,
+                correct_answer + "ung"
+            ]
+        
+        options = [correct_answer] + wrong_options
+        random.shuffle(options)
+        
+        return {
+            'type': 'multiple_choice',
+            'question_type': question_type,
+            'question': {
+                'de': question_de,
+                'fr': question_fr
+            },
+            'word_to_translate': word,
+            'options': options,
+            'correct_answer': correct_answer,
+            'level': self.determine_word_level(word if question_type == "de_to_fr" else correct_answer),
+            'fallback': True
+        }
     def determine_word_level(self, word: str) -> str:
         """Détermine le niveau de difficulté du mot"""
         if len(word) <= 4:
