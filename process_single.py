@@ -345,112 +345,200 @@ class VocabularyProcessor:
             return self._create_fallback_exercise(word, correct_answer, question_de, question_fr, question_type)
 
     def _generate_distractors(self, word: str, correct_answer: str, target_language: str, count: int = 3) -> List[str]:
-        """Génère des distracteurs (mauvaises réponses) pour le QCM"""
+        """Génère des distracteurs (mauvaises réponses) pour le QCM avec une longueur similaire à la réponse correcte"""
         distractors = []
         tokenizer_gpt_de, model_gpt_de = self.models['gpt_de']
         tokenizer_gpt_fr, model_gpt_fr = self.models['gpt_fr']
         tokenizer_de_fr, model_de_fr = self.models['de_fr']
         
-        # Stratégie 1: Générer des mots directement avec le modèle GPT approprié
+        # Calculer la longueur cible (± 2 caractères)
+        target_length = len(correct_answer)
+        min_length = max(2, target_length - 2)
+        max_length = target_length + 2
+        
+        def is_valid_distractor(candidate: str) -> bool:
+            """Vérifie si un candidat est un bon distracteur"""
+            candidate_clean = candidate.strip().lower()
+            correct_clean = correct_answer.strip().lower()
+            
+            return (
+                min_length <= len(candidate_clean) <= max_length and
+                candidate_clean != correct_clean and
+                candidate_clean not in [d.lower() for d in distractors] and
+                len(candidate_clean) >= 2
+            )
+        
+        # Stratégie 1: Générer des mots avec les modèles GPT appropriés
         if target_language == "fr":
-            # Pour les distracteurs français, utiliser le modèle GPT français
+            # Pour les distracteurs français
             french_prompts = [
-                "Voici des mots français: maison, voiture,",
-                "Mots français: livre, table,",
-                "Autres mots: fenêtre, porte,"
+                f"Voici des mots français de {target_length} lettres environ: chat, pain,",
+                f"Mots français courts: eau, air,",
+                f"Autres mots: bon, car,"
             ]
             
             for prompt in french_prompts:
+                if len(distractors) >= count:
+                    break
+                    
                 try:
                     inputs = tokenizer_gpt_fr(prompt, return_tensors="pt", padding=True)
                     outputs = model_gpt_fr.generate(
                         inputs.input_ids,
-                        max_length=inputs.input_ids.shape[1] + 5,
-                        num_return_sequences=1,
-                        temperature=0.8,
+                        max_length=inputs.input_ids.shape[1] + 8,
+                        num_return_sequences=2,
+                        temperature=0.9,
                         do_sample=True,
                         pad_token_id=tokenizer_gpt_fr.eos_token_id
                     )
                     
-                    generated_text = tokenizer_gpt_fr.decode(outputs[0], skip_special_tokens=True)
-                    # Extraire les nouveaux mots
-                    new_part = generated_text.replace(prompt, "").strip()
-                    words = re.findall(r'\b[a-zA-ZàâäéèêëïîôùûüÿçÀÂÄÉÈÊËÏÎÔÙÛÜŸÇ]{3,}\b', new_part)
-                    
-                    for french_word in words:
-                        french_word = french_word.lower()
-                        if (french_word != correct_answer.lower() and 
-                            french_word not in distractors and
-                            len(distractors) < count):
-                            distractors.append(french_word)
-                            
+                    for output in outputs:
+                        generated_text = tokenizer_gpt_fr.decode(output, skip_special_tokens=True)
+                        new_part = generated_text.replace(prompt, "").strip()
+                        
+                        # Extraire les mots avec regex plus précise
+                        words = re.findall(r'\b[a-zA-ZàâäéèêëïîôùûüÿçÀÂÄÉÈÊËÏÎÔÙÛÜŸÇ]+\b', new_part)
+                        
+                        for french_word in words:
+                            if is_valid_distractor(french_word) and len(distractors) < count:
+                                distractors.append(french_word.lower())
+                                
                 except Exception as e:
                     print(f"Erreur génération distracteur français: {e}")
                     continue
                     
         else:  # target_language == "de"
-            # Pour les distracteurs allemands, utiliser le modèle GPT allemand
+            # Pour les distracteurs allemands
             german_prompts = [
-                "Hier sind deutsche Wörter: Katze, Hund,",
-                "Deutsche Substantive: Tisch, Stuhl,",
-                "Mehr deutsche Wörter: Fenster, Tür,"
+                f"Hier sind deutsche Wörter mit {target_length} Buchstaben: Haus, Buch,",
+                f"Deutsche Wörter: Tag, Nacht,",
+                f"Mehr Wörter: gut, neu,"
             ]
             
             for prompt in german_prompts:
+                if len(distractors) >= count:
+                    break
+                    
                 try:
                     inputs = tokenizer_gpt_de(prompt, return_tensors="pt", padding=True)
                     outputs = model_gpt_de.generate(
                         inputs.input_ids,
-                        max_length=inputs.input_ids.shape[1] + 5,
-                        num_return_sequences=1,
-                        temperature=0.8,
+                        max_length=inputs.input_ids.shape[1] + 8,
+                        num_return_sequences=2,
+                        temperature=0.9,
                         do_sample=True,
                         pad_token_id=tokenizer_gpt_de.eos_token_id
                     )
                     
-                    generated_text = tokenizer_gpt_de.decode(outputs[0], skip_special_tokens=True)
-                    # Extraire les nouveaux mots
-                    new_part = generated_text.replace(prompt, "").strip()
-                    words = re.findall(r'\b[a-zäöüßA-ZÄÖÜ]{3,}\b', new_part)
-                    
-                    for german_word in words:
-                        german_word = german_word.lower()
-                        if (german_word != correct_answer.lower() and 
-                            german_word not in distractors and
-                            len(distractors) < count):
-                            distractors.append(german_word.capitalize() if correct_answer[0].isupper() else german_word)
-                            
+                    for output in outputs:
+                        generated_text = tokenizer_gpt_de.decode(output, skip_special_tokens=True)
+                        new_part = generated_text.replace(prompt, "").strip()
+                        
+                        # Extraire les mots allemands
+                        words = re.findall(r'\b[a-zäöüßA-ZÄÖÜ]+\b', new_part)
+                        
+                        for german_word in words:
+                            if is_valid_distractor(german_word) and len(distractors) < count:
+                                # Préserver la casse appropriée
+                                formatted_word = german_word.capitalize() if correct_answer[0].isupper() else german_word.lower()
+                                distractors.append(formatted_word)
+                                
                 except Exception as e:
                     print(f"Erreur génération distracteur allemand: {e}")
                     continue
         
-        # Stratégie 2: Compléter avec des fallbacks si pas assez de distracteurs
+        # Stratégie 2: Compléter avec des fallbacks intelligents basés sur la longueur
         while len(distractors) < count:
             if target_language == "fr":
-                # Fallbacks français basés sur des modifications du mot correct
-                fallback_options = [
-                    correct_answer + "er",
-                    correct_answer + "tion", 
-                    "un " + correct_answer,
-                    correct_answer[:-1] + "e" if len(correct_answer) > 3 else correct_answer + "e"
-                ]
+                # Fallbacks français de longueur similaire
+                base_word = correct_answer.lower()
+                fallback_options = []
+                
+                if target_length <= 4:
+                    fallback_options = ["chat", "pain", "eau", "air", "bon", "car", "vue", "sol"]
+                elif target_length <= 6:
+                    fallback_options = ["maison", "livre", "table", "chaise", "porte", "route"]
+                elif target_length <= 8:
+                    fallback_options = ["fenêtre", "voiture", "journal", "cuisine", "chambre"]
+                else:
+                    fallback_options = ["université", "restaurant", "ordinateur", "téléphone"]
+                
+                # Ajouter des variations morphologiques si approprié
+                if len(base_word) > 3:
+                    if not base_word.endswith('er'):
+                        fallback_options.append(base_word + "er")
+                    if not base_word.endswith('é'):
+                        fallback_options.append(base_word + "é")
+                    
             else:
-                # Fallbacks allemands
-                fallback_options = [
-                    correct_answer + "en",
-                    correct_answer + "er", 
-                    "der " + correct_answer if not correct_answer.startswith("der") else correct_answer + "heit",
-                    correct_answer[:-1] + "e" if len(correct_answer) > 3 else correct_answer + "ung"
-                ]
+                # Fallbacks allemands de longueur similaire
+                base_word = correct_answer.lower()
+                fallback_options = []
+                
+                if target_length <= 4:
+                    fallback_options = ["Haus", "Buch", "Tag", "Jahr", "Hand", "Kopf", "Wort"]
+                elif target_length <= 6:
+                    fallback_options = ["Tisch", "Stuhl", "Fenster", "Zimmer", "Schule"]
+                elif target_length <= 8:
+                    fallback_options = ["Computer", "Telefon", "Maschine", "Interesse"]
+                else:
+                    fallback_options = ["Universität", "Restaurant", "Krankenhaus"]
+                
+                # Ajouter des variations morphologiques allemandes
+                if len(base_word) > 3:
+                    if not base_word.endswith('en'):
+                        fallback_options.append(base_word + "en")
+                    if not base_word.endswith('er'):
+                        fallback_options.append(base_word + "er")
             
+            # Filtrer et ajouter les fallbacks valides
             for fallback in fallback_options:
-                if fallback not in distractors and fallback != correct_answer:
+                if is_valid_distractor(fallback) and len(distractors) < count:
                     distractors.append(fallback)
-                    if len(distractors) >= count:
+                    break
+            
+            # Si on n'arrive toujours pas à générer assez de distracteurs, 
+            # créer des variations plus créatives
+            if len(distractors) < count:
+                base = correct_answer.lower()
+                creative_options = []
+                
+                if target_language == "fr":
+                    # Variations créatives françaises
+                    if len(base) > 2:
+                        creative_options.extend([
+                            base[:-1] + "e",
+                            base[:-1] + "s", 
+                            base + "s" if not base.endswith('s') else base[:-1],
+                            "le" + base if len(base) <= 5 else base[:5]
+                        ])
+                else:
+                    # Variations créatives allemandes  
+                    if len(base) > 2:
+                        creative_options.extend([
+                            base[:-1] + "e",
+                            base[:-1] + "s",
+                            base + "s" if not base.endswith('s') else base[:-1],
+                            "das" + base if len(base) <= 4 else base[:6]
+                        ])
+                
+                for creative in creative_options:
+                    if is_valid_distractor(creative) and len(distractors) < count:
+                        distractors.append(creative)
                         break
+                
+                # Dernière option: utiliser des mots génériques de longueur appropriée
+                if len(distractors) < count:
+                    if target_language == "fr":
+                        generic = ["mot", "chose", "objet", "élément"][:count-len(distractors)]
+                    else:
+                        generic = ["Wort", "Sache", "Ding", "Teil"][:count-len(distractors)]
+                    
+                    for generic_word in generic:
+                        if is_valid_distractor(generic_word):
+                            distractors.append(generic_word)
         
         return distractors[:count]
-
     def _create_fallback_exercise(self, word: str, correct_answer: str, question_de: str, 
                                 question_fr: str, question_type: str) -> Dict:
         """Crée un exercice de fallback avec des options prédéfinies"""
