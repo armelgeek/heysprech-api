@@ -149,38 +149,44 @@
         "fr": "une"
       },
       "example": {
-        "de": "Wir brauchen eine.",
-        "fr": "Il nous en faut une."
+        "de": "Ich habe einen eine.",
+        "fr": "J'en ai un."
       },
       "exercise": {
         "type": "multiple_choice_pair",
         "de_to_fr": {
           "type": "multiple_choice",
+          "question_type": "de_to_fr",
           "question": {
             "de": "Welches französische Wort bedeutet 'eine'?",
             "fr": "Quelle est la traduction française de 'eine'?"
           },
+          "word_to_translate": "eine",
           "options": [
-            "eineer",
-            "eine",
-            "eineeux",
-            "eineeur"
+            "uneer",
+            "un une",
+            "unetion",
+            "une"
           ],
-          "answer": "eine"
+          "correct_answer": "une",
+          "level": "beginner"
         },
         "fr_to_de": {
           "type": "multiple_choice",
+          "question_type": "fr_to_de",
           "question": {
             "de": "Welches deutsche Wort bedeutet 'une'?",
             "fr": "Quel est le mot allemand pour 'une'?"
           },
+          "word_to_translate": "une",
           "options": [
-            "uneer",
-            "uneen",
-            "unee",
-            "une"
+            "das",
+            "katze",
+            "eine",
+            "und"
           ],
-          "answer": "une"
+          "correct_answer": "eine",
+          "level": "beginner"
         },
         "level": "beginner"
       },
@@ -188,7 +194,7 @@
         "available": true,
         "file": "pronunciations/eine_pronunciation.mp3"
       },
-      "processed_at": "2025-05-31T11:33:42.311790"
+      "processed_at": "2025-06-01T01:08:49.961874"
     },
     {
       "word": "etwas",
@@ -205,31 +211,37 @@
         "type": "multiple_choice_pair",
         "de_to_fr": {
           "type": "multiple_choice",
+          "question_type": "de_to_fr",
           "question": {
             "de": "Welches französische Wort bedeutet 'etwas'?",
             "fr": "Quelle est la traduction française de 'etwas'?"
           },
+          "word_to_translate": "etwas",
           "options": [
-            "etwaseux",
-            "etwaseur",
-            "etwas",
-            "etwaser"
+            "Loueur",
+            "quelque choseer",
+            "quelque chose",
+            "Prix"
           ],
-          "answer": "etwas"
+          "correct_answer": "quelque chose",
+          "level": "intermediate"
         },
         "fr_to_de": {
           "type": "multiple_choice",
+          "question_type": "fr_to_de",
           "question": {
             "de": "Welches deutsche Wort bedeutet 'quelque chose'?",
             "fr": "Quel est le mot allemand pour 'quelque chose'?"
           },
+          "word_to_translate": "quelque chose",
           "options": [
-            "quelque chosee",
-            "quelque choseen",
-            "quelque chose",
-            "quelque choseer"
+            "und",
+            "katze",
+            "stuhlgang",
+            "etwas"
           ],
-          "answer": "quelque chose"
+          "correct_answer": "etwas",
+          "level": "intermediate"
         },
         "level": "intermediate"
       },
@@ -237,7 +249,7 @@
         "available": true,
         "file": "pronunciations/etwas_pronunciation.mp3"
       },
-      "processed_at": "2025-05-31T11:33:48.697339"
+      "processed_at": "2025-06-01T01:08:54.011999"
     },
     {
       "word": "euch",
@@ -254,31 +266,37 @@
         "type": "multiple_choice_pair",
         "de_to_fr": {
           "type": "multiple_choice",
+          "question_type": "de_to_fr",
           "question": {
             "de": "Welches französische Wort bedeutet 'euch'?",
             "fr": "Quelle est la traduction française de 'euch'?"
           },
+          "word_to_translate": "euch",
           "options": [
-            "eucheur",
-            "eucher",
-            "euch",
-            "eucheux"
+            "à vouser",
+            "à vous",
+            "à voustion",
+            "un à vous"
           ],
-          "answer": "euch"
+          "correct_answer": "à vous",
+          "level": "beginner"
         },
         "fr_to_de": {
           "type": "multiple_choice",
+          "question_type": "fr_to_de",
           "question": {
             "de": "Welches deutsche Wort bedeutet 'à vous'?",
             "fr": "Quel est le mot allemand pour 'à vous'?"
           },
+          "word_to_translate": "à vous",
           "options": [
-            "à vous",
-            "à vouser",
-            "à vouse",
-            "à vousen"
+            "euch",
+            "katze",
+            "tisch",
+            "brett"
           ],
-          "answer": "à vous"
+          "correct_answer": "euch",
+          "level": "beginner"
         },
         "level": "beginner"
       },
@@ -286,7 +304,7 @@
         "available": true,
         "file": "pronunciations/euch_pronunciation.mp3"
       },
-      "processed_at": "2025-05-31T11:33:55.834193"
+      "processed_at": "2025-06-01T01:08:58.996565"
     },
     {
       "word": "gehen",
@@ -296,38 +314,44 @@
         "fr": "aller"
       },
       "example": {
-        "de": "Ich habe einen gehen.",
-        "fr": "J'en ai un."
+        "de": "Der gehen ist schön.",
+        "fr": "C'est beau de partir."
       },
       "exercise": {
         "type": "multiple_choice_pair",
         "de_to_fr": {
           "type": "multiple_choice",
+          "question_type": "de_to_fr",
           "question": {
             "de": "Welches französische Wort bedeutet 'gehen'?",
             "fr": "Quelle est la traduction française de 'gehen'?"
           },
+          "word_to_translate": "gehen",
           "options": [
-            "gehener",
-            "gehen",
-            "geheneux",
-            "geheneur"
+            "allerer",
+            "allertion",
+            "aller",
+            "bateau"
           ],
-          "answer": "gehen"
+          "correct_answer": "aller",
+          "level": "intermediate"
         },
         "fr_to_de": {
           "type": "multiple_choice",
+          "question_type": "fr_to_de",
           "question": {
             "de": "Welches deutsche Wort bedeutet 'aller'?",
             "fr": "Quel est le mot allemand pour 'aller'?"
           },
+          "word_to_translate": "aller",
           "options": [
-            "aller",
-            "allerer",
-            "allere",
-            "alleren"
+            "tisch",
+            "gehen",
+            "tier",
+            "katze"
           ],
-          "answer": "aller"
+          "correct_answer": "gehen",
+          "level": "intermediate"
         },
         "level": "intermediate"
       },
@@ -335,7 +359,7 @@
         "available": true,
         "file": "pronunciations/gehen_pronunciation.mp3"
       },
-      "processed_at": "2025-05-31T11:34:03.098537"
+      "processed_at": "2025-06-01T01:09:04.195532"
     },
     {
       "word": "ich",
@@ -352,31 +376,37 @@
         "type": "multiple_choice_pair",
         "de_to_fr": {
           "type": "multiple_choice",
+          "question_type": "de_to_fr",
           "question": {
             "de": "Welches französische Wort bedeutet 'ich'?",
             "fr": "Quelle est la traduction française de 'ich'?"
           },
+          "word_to_translate": "ich",
           "options": [
-            "icheur",
-            "ich",
-            "icher",
-            "icheux"
+            "isé",
+            "un isé",
+            "isétion",
+            "iséer"
           ],
-          "answer": "ich"
+          "correct_answer": "isé",
+          "level": "beginner"
         },
         "fr_to_de": {
           "type": "multiple_choice",
+          "question_type": "fr_to_de",
           "question": {
             "de": "Welches deutsche Wort bedeutet 'isé'?",
             "fr": "Quel est le mot allemand pour 'isé'?"
           },
+          "word_to_translate": "isé",
           "options": [
-            "isée",
-            "iséer",
-            "isé",
-            "iséen"
+            "hund",
+            "stuhl",
+            "katze",
+            "ich"
           ],
-          "answer": "isé"
+          "correct_answer": "ich",
+          "level": "beginner"
         },
         "level": "beginner"
       },
@@ -384,7 +414,7 @@
         "available": true,
         "file": "pronunciations/ich_pronunciation.mp3"
       },
-      "processed_at": "2025-05-31T11:34:10.627149"
+      "processed_at": "2025-06-01T01:09:09.175993"
     },
     {
       "word": "kann",
@@ -394,38 +424,44 @@
         "fr": "peut"
       },
       "example": {
-        "de": "Das ist ein kann.",
-        "fr": "C'est possible."
+        "de": "Wir brauchen kann.",
+        "fr": "On peut en avoir besoin."
       },
       "exercise": {
         "type": "multiple_choice_pair",
         "de_to_fr": {
           "type": "multiple_choice",
+          "question_type": "de_to_fr",
           "question": {
             "de": "Welches französische Wort bedeutet 'kann'?",
             "fr": "Quelle est la traduction française de 'kann'?"
           },
+          "word_to_translate": "kann",
           "options": [
-            "kanner",
-            "kanneur",
-            "kann",
-            "kanneux"
+            "impression",
+            "peuttion",
+            "peut",
+            "peuter"
           ],
-          "answer": "kann"
+          "correct_answer": "peut",
+          "level": "beginner"
         },
         "fr_to_de": {
           "type": "multiple_choice",
+          "question_type": "fr_to_de",
           "question": {
             "de": "Welches deutsche Wort bedeutet 'peut'?",
             "fr": "Quel est le mot allemand pour 'peut'?"
           },
+          "word_to_translate": "peut",
           "options": [
-            "peute",
-            "peut",
-            "peuten",
-            "peuter"
+            "kann",
+            "für",
+            "katzen",
+            "katze"
           ],
-          "answer": "peut"
+          "correct_answer": "kann",
+          "level": "beginner"
         },
         "level": "beginner"
       },
@@ -433,7 +469,7 @@
         "available": true,
         "file": "pronunciations/kann_pronunciation.mp3"
       },
-      "processed_at": "2025-05-31T11:34:17.763077"
+      "processed_at": "2025-06-01T01:09:13.159353"
     },
     {
       "word": "kleinigkeit",
@@ -443,38 +479,44 @@
         "fr": "Petiteur"
       },
       "example": {
-        "de": "Ich habe einen kleinigkeit.",
-        "fr": "J'ai un petit truc."
+        "de": "Der kleinigkeit ist schön.",
+        "fr": "La petite chose est belle."
       },
       "exercise": {
         "type": "multiple_choice_pair",
         "de_to_fr": {
           "type": "multiple_choice",
+          "question_type": "de_to_fr",
           "question": {
             "de": "Welches französische Wort bedeutet 'kleinigkeit'?",
             "fr": "Quelle est la traduction française de 'kleinigkeit'?"
           },
+          "word_to_translate": "kleinigkeit",
           "options": [
-            "kleinigkeiter",
-            "kleinigkeiteux",
-            "kleinigkeiteur",
-            "kleinigkeit"
+            "Petiteurer",
+            "achat",
+            "moton",
+            "Petiteur"
           ],
-          "answer": "kleinigkeit"
+          "correct_answer": "Petiteur",
+          "level": "advanced"
         },
         "fr_to_de": {
           "type": "multiple_choice",
+          "question_type": "fr_to_de",
           "question": {
             "de": "Welches deutsche Wort bedeutet 'Petiteur'?",
             "fr": "Quel est le mot allemand pour 'Petiteur'?"
           },
+          "word_to_translate": "Petiteur",
           "options": [
-            "Petiteur",
-            "Petiteure",
-            "Petiteurer",
-            "Petiteuren"
+            "kleinigkeit",
+            "stühle",
+            "säugetiere",
+            "vögel"
           ],
-          "answer": "Petiteur"
+          "correct_answer": "kleinigkeit",
+          "level": "advanced"
         },
         "level": "advanced"
       },
@@ -482,7 +524,7 @@
         "available": true,
         "file": "pronunciations/kleinigkeit_pronunciation.mp3"
       },
-      "processed_at": "2025-05-31T11:34:32.029772"
+      "processed_at": "2025-06-01T01:09:18.966672"
     },
     {
       "word": "mich",
@@ -492,38 +534,44 @@
         "fr": "moi"
       },
       "example": {
-        "de": "Das ist ein mich.",
-        "fr": "C'est moi."
+        "de": "Wir brauchen mich.",
+        "fr": "On a besoin de moi."
       },
       "exercise": {
         "type": "multiple_choice_pair",
         "de_to_fr": {
           "type": "multiple_choice",
+          "question_type": "de_to_fr",
           "question": {
             "de": "Welches französische Wort bedeutet 'mich'?",
             "fr": "Quelle est la traduction française de 'mich'?"
           },
+          "word_to_translate": "mich",
           "options": [
-            "mich",
-            "micher",
-            "micheur",
-            "micheux"
+            "moition",
+            "moi",
+            "moier",
+            "un moi"
           ],
-          "answer": "mich"
+          "correct_answer": "moi",
+          "level": "beginner"
         },
         "fr_to_de": {
           "type": "multiple_choice",
+          "question_type": "fr_to_de",
           "question": {
             "de": "Welches deutsche Wort bedeutet 'moi'?",
             "fr": "Quel est le mot allemand pour 'moi'?"
           },
+          "word_to_translate": "moi",
           "options": [
-            "moie",
-            "moi",
-            "moier",
-            "moien"
+            "katze",
+            "sind",
+            "mich",
+            "ausgesprochen"
           ],
-          "answer": "moi"
+          "correct_answer": "mich",
+          "level": "beginner"
         },
         "level": "beginner"
       },
@@ -531,7 +579,7 @@
         "available": true,
         "file": "pronunciations/mich_pronunciation.mp3"
       },
-      "processed_at": "2025-05-31T11:34:37.855512"
+      "processed_at": "2025-06-01T01:09:24.483032"
     },
     {
       "word": "unterscheidet",
@@ -541,38 +589,44 @@
         "fr": "différent"
       },
       "example": {
-        "de": "Wir brauchen unterscheidet.",
-        "fr": "Il faut qu'on fasse la différence."
+        "de": "Der unterscheidet ist schön.",
+        "fr": "C'est beau, celui-là."
       },
       "exercise": {
         "type": "multiple_choice_pair",
         "de_to_fr": {
           "type": "multiple_choice",
+          "question_type": "de_to_fr",
           "question": {
             "de": "Welches französische Wort bedeutet 'unterscheidet'?",
             "fr": "Quelle est la traduction française de 'unterscheidet'?"
           },
+          "word_to_translate": "unterscheidet",
           "options": [
-            "unterscheidet",
-            "unterscheideteur",
-            "unterscheideter",
-            "unterscheideteux"
+            "musique",
+            "partage",
+            "différent",
+            "différenter"
           ],
-          "answer": "unterscheidet"
+          "correct_answer": "différent",
+          "level": "advanced"
         },
         "fr_to_de": {
           "type": "multiple_choice",
+          "question_type": "fr_to_de",
           "question": {
             "de": "Welches deutsche Wort bedeutet 'différent'?",
             "fr": "Quel est le mot allemand pour 'différent'?"
           },
+          "word_to_translate": "différent",
           "options": [
-            "différente",
-            "différenter",
-            "différent",
-            "différenten"
+            "unterscheidet",
+            "tisch",
+            "hund",
+            "katze"
           ],
-          "answer": "différent"
+          "correct_answer": "unterscheidet",
+          "level": "advanced"
         },
         "level": "advanced"
       },
@@ -580,7 +634,7 @@
         "available": true,
         "file": "pronunciations/unterscheidet_pronunciation.mp3"
       },
-      "processed_at": "2025-05-31T11:34:51.355919"
+      "processed_at": "2025-06-01T01:09:30.186500"
     },
     {
       "word": "von",
@@ -590,38 +644,44 @@
         "fr": "de"
       },
       "example": {
-        "de": "Wir brauchen von.",
-        "fr": "Nous avons besoin de."
+        "de": "Der von ist schön.",
+        "fr": "C'est joli."
       },
       "exercise": {
         "type": "multiple_choice_pair",
         "de_to_fr": {
           "type": "multiple_choice",
+          "question_type": "de_to_fr",
           "question": {
             "de": "Welches französische Wort bedeutet 'von'?",
             "fr": "Quelle est la traduction française de 'von'?"
           },
+          "word_to_translate": "von",
           "options": [
-            "voner",
-            "voneur",
-            "voneux",
-            "von"
+            "Vertical",
+            "interdiction",
+            "deer",
+            "de"
           ],
-          "answer": "von"
+          "correct_answer": "de",
+          "level": "beginner"
         },
         "fr_to_de": {
           "type": "multiple_choice",
+          "question_type": "fr_to_de",
           "question": {
             "de": "Welches deutsche Wort bedeutet 'de'?",
             "fr": "Quel est le mot allemand pour 'de'?"
           },
+          "word_to_translate": "de",
           "options": [
-            "de",
-            "dee",
-            "deen",
-            "deer"
+            "von",
+            "katze",
+            "tisch",
+            "stuhl"
           ],
-          "answer": "de"
+          "correct_answer": "von",
+          "level": "beginner"
         },
         "level": "beginner"
       },
@@ -629,7 +689,7 @@
         "available": true,
         "file": "pronunciations/von_pronunciation.mp3"
       },
-      "processed_at": "2025-05-31T11:34:58.633211"
+      "processed_at": "2025-06-01T01:09:36.220286"
     }
   ],
   "vocabulary_stats": {
