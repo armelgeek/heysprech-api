@@ -29,8 +29,7 @@ from tqdm import tqdm
 def get_output_folder(audio_path: str) -> Path:
     """Crée et retourne le dossier de sortie pour un fichier audio"""
     audio_name = Path(audio_path).stem
-    output_base = Path.home() / "sprech-audio"
-    output_dir = output_base / audio_name
+    output_dir = Path("/app/output") / audio_name
     output_dir.mkdir(parents=True, exist_ok=True)
     return output_dir
 
