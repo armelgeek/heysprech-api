@@ -345,287 +345,298 @@ class VocabularyProcessor:
             return self._create_fallback_exercise(word, correct_answer, question_de, question_fr, question_type)
 
     def _generate_distractors(self, word: str, correct_answer: str, target_language: str, count: int = 3) -> List[str]:
-        """Génère des distracteurs de la même famille sémantique/contextuelle"""
+        """Génère des distracteurs sémantiquement proches de manière dynamique"""
         distractors = []
         tokenizer_gpt_de, model_gpt_de = self.models['gpt_de']
         tokenizer_gpt_fr, model_gpt_fr = self.models['gpt_fr']
+        tokenizer_de_fr, model_de_fr = self.models['de_fr']
         
-        def is_valid_distractor(candidate: str) -> bool:
+        # Calculer la longueur cible
+        target_length = len(correct_answer)
+        min_length = max(2, target_length - 2)
+        max_length = target_length + 3
+
+        sdef is_valid_distractor(candidate: str) -> bool:
             """Vérifie si un candidat est un bon distracteur"""
             candidate_clean = candidate.strip().lower()
             correct_clean = correct_answer.strip().lower()
             
             return (
-                len(candidate_clean) >= 2 and
-                len(candidate_clean) <= 25 and  # Plus flexible pour les expressions
+                min_length <= len(candidate_clean) <= max_length and
                 candidate_clean != correct_clean and
                 candidate_clean != word.lower() and
                 candidate_clean not in [d.lower() for d in distractors] and
-                not candidate_clean.startswith(correct_clean[:3]) if len(correct_clean) > 3 else True
+                len(candidate_clean) >= 2 and
+                re.match(r'^[a-zA-ZàâäéèêëïîôùûüÿçÀÂÄÉÈÊËÏÎÔÙÛÜŸÇäöüßÄÖÜ]+$', candidate_clean)
             )
         
-        # Stratégie 1: Génération contextuelle - expressions de la même famille
+        # Stratégie 1: Génération contextuelle avec GPT
         if target_language == "fr":
+            # Générer des mots allemands similaires au mot source, puis les traduire
             context_prompts = [
-                f"Expressions françaises dans le même contexte que '{correct_answer}': {correct_answer}, ",
-                f"Phrases similaires à '{correct_answer}': {correct_answer}, ",
-                f"Expressions de politesse comme '{correct_answer}': {correct_answer}, ",
-                f"Dans la même situation on dit '{correct_answer}' ou ",
-                f"Alternatives à '{correct_answer}': {correct_answer}, ",
-                f"Expressions équivalentes: {correct_answer}, "
-            ]
-            tokenizer_gpt = tokenizer_gpt_fr
-            model_gpt = model_gpt_fr
-            # Patterns pour extraire les expressions françaises
-            extraction_pattern = r'(?:[a-zA-ZàâäéèêëïîôùûüÿçÀÂÄÉÈÊËÏÎÔÙÛÜŸÇ]+(?:\s+[a-zA-ZàâäéèêëïîôùûüÿçÀÂÄÉÈÊËÏÎÔÙÛÜŸÇ]+)*)'
-        else:
-            context_prompts = [
-                f"Deutsche Ausdrücke im gleichen Kontext wie '{correct_answer}': {correct_answer}, ",
-                f"Ähnliche Phrasen wie '{correct_answer}': {correct_answer}, ",
-                f"Höflichkeitsformen wie '{correct_answer}': {correct_answer}, ",
-                f"In derselben Situation sagt man '{correct_answer}' oder ",
-                f"Alternativen zu '{correct_answer}': {correct_answer}, ",
-                f"Gleichwertige Ausdrücke: {correct_answer}, "
+                f"Deutsche Wörter vom gleichen Typ wie '{word}': {word}, ",
+                f"Deutsche Synonyme von '{word}': {word}, ",
+                f"Ähnliche deutsche Wörter: {word}, ",
+                f"Deutscher Wortschatz ähnlich wie '{word}': "
             ]
             tokenizer_gpt = tokenizer_gpt_de
             model_gpt = model_gpt_de
-            # Patterns pour extraire les expressions allemandes
-            extraction_pattern = r'(?:[a-zäöüßA-ZÄÖÜ]+(?:\s+[a-zäöüßA-ZÄÖÜ]+)*)'
-        
-        for prompt in context_prompts:
-            if len(distractors) >= count:
-                break
             
-            try:
-                inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True, truncation=True, max_length=60)
-                outputs = model_gpt.generate(
-                    inputs.input_ids,
-                    max_length=inputs.input_ids.shape[1] + 20,
-                    num_return_sequences=3,
-                    temperature=0.9,  # Plus créatif pour les expressions
-                    do_sample=True,
-                    pad_token_id=tokenizer_gpt.eos_token_id,
-                    top_p=0.95,
-                    repetition_penalty=1.3
-                )
+            # Générer des mots allemands
+            german_candidates = []
+            for prompt in context_prompts:
+                if len(german_candidates) >= count * 2:  # Générer plus de candidats pour avoir plus de choix
+                    break
                 
-                for output in outputs:
-                    generated_text = tokenizer_gpt.decode(output, skip_special_tokens=True)
-                    new_part = generated_text.replace(prompt, "").strip()
-                    
-                    # Extraire les expressions (pas juste les mots isolés)
-                    # Diviser par des séparateurs communs
-                    potential_expressions = re.split(r'[,;.!?\n]', new_part)
-                    
-                    for expr in potential_expressions[:4]:  # Limiter à 4 expressions par génération
-                        expr = expr.strip()
-                        if expr and is_valid_distractor(expr):
-                            # Nettoyer l'expression
-                            expr = re.sub(r'^[^\w]*|[^\w]*$', '', expr)  # Enlever ponctuation début/fin
-                            expr = re.sub(r'\s+', ' ', expr)  # Normaliser espaces
-                            
-                            if expr and len(distractors) < count:
-                                distractors.append(expr)
-                                
-            except Exception as e:
-                print(f"Erreur génération contextuelle: {e}")
-                continue
-        
-        # Stratégie 2: Génération par analogie contextuelle
-        if len(distractors) < count:
-            try:
-                # Analyser le type d'expression pour générer des analogies
-                expression_type = self._analyze_expression_type(correct_answer, target_language)
-                
-                if target_language == "fr":
-                    analogy_prompts = self._get_french_analogy_prompts(expression_type, correct_answer)
-                else:
-                    analogy_prompts = self._get_german_analogy_prompts(expression_type, correct_answer)
-                
-                for prompt in analogy_prompts:
-                    if len(distractors) >= count:
-                        break
-                    
-                    inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True, truncation=True)
+                try:
+                    inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True, truncation=True, max_length=50)
                     outputs = model_gpt.generate(
                         inputs.input_ids,
                         max_length=inputs.input_ids.shape[1] + 15,
                         num_return_sequences=2,
                         temperature=0.8,
                         do_sample=True,
-                        pad_token_id=tokenizer_gpt.eos_token_id
+                        pad_token_id=tokenizer_gpt.eos_token_id,
+                        top_p=0.9,
+                        repetition_penalty=1.2
                     )
                     
                     for output in outputs:
                         generated_text = tokenizer_gpt.decode(output, skip_special_tokens=True)
                         new_part = generated_text.replace(prompt, "").strip()
                         
-                        # Extraire la première expression générée
-                        first_expr = re.split(r'[,;.!?\n]', new_part)[0].strip()
-                        if first_expr and is_valid_distractor(first_expr):
-                            first_expr = re.sub(r'^[^\w]*|[^\w]*$', '', first_expr)
-                            if first_expr and len(distractors) < count:
-                                distractors.append(first_expr)
+                        # Extraire les mots allemands
+                        words = re.findall(r'\b[a-zäöüßA-ZÄÖÜ]+\b', new_part)
+                        
+                        for extracted_word in words[:3]:
+                            clean_word = extracted_word.strip().lower()
+                            if (clean_word != word.lower() and 
+                                len(clean_word) >= 2 and 
+                                clean_word not in german_candidates):
+                                german_candidates.append(clean_word)
                                 
-            except Exception as e:
-                print(f"Erreur génération par analogie: {e}")
+                except Exception as e:
+                    print(f"Erreur génération GPT allemand: {e}")
+                    continue
+            
+            # Traduire les candidats allemands en français
+            for german_word in german_candidates:
+                if len(distractors) >= count:
+                    break
+                    
+                try:
+                    inputs = tokenizer_de_fr(german_word, return_tensors="pt", padding=True)
+                    outputs = model_de_fr.generate(
+                        inputs.input_ids,
+                        max_length=20,
+                        num_beams=3,
+                        temperature=0.3,
+                        do_sample=False
+                    )
+                    french_translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+                    
+                    if is_valid_distractor(french_translation):
+                        # Adapter la casse au mot correct
+                        if correct_answer[0].isupper():
+                            french_translation = french_translation.capitalize()
+                        else:
+                            french_translation = french_translation.lower()
+                        distractors.append(french_translation)
+                        
+                except Exception as e:
+                    print(f"Erreur traduction de '{german_word}': {e}")
+                    continue
+                    
+        else:
+            # Pour les distracteurs allemands, génération directe
+            context_prompts = [
+                f"Deutsche Wörter vom gleichen Typ wie '{correct_answer}': {correct_answer}, ",
+                f"Deutsche Synonyme von '{correct_answer}': {correct_answer}, ",
+                f"Ähnliche deutsche Wörter: {correct_answer}, ",
+                f"Deutscher Wortschatz ähnlich wie '{correct_answer}': "
+            ]
+            tokenizer_gpt = tokenizer_gpt_de
+            model_gpt = model_gpt_de
+            
+            for prompt in context_prompts:
+                if len(distractors) >= count:
+                    break
+                
+                try:
+                    inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True, truncation=True, max_length=50)
+                    outputs = model_gpt.generate(
+                        inputs.input_ids,
+                        max_length=inputs.input_ids.shape[1] + 15,
+                        num_return_sequences=2,
+                        temperature=0.8,
+                        do_sample=True,
+                        pad_token_id=tokenizer_gpt.eos_token_id,
+                        top_p=0.9,
+                        repetition_penalty=1.2
+                    )
+                    
+                    for output in outputs:
+                        generated_text = tokenizer_gpt.decode(output, skip_special_tokens=True)
+                        new_part = generated_text.replace(prompt, "").strip()
+                        
+                        # Extraire les mots allemands
+                        words = re.findall(r'\b[a-zäöüßA-ZÄÖÜ]+\b', new_part)
+                        
+                        for extracted_word in words[:3]:
+                            clean_word = extracted_word.strip()
+                            if is_valid_distractor(clean_word) and len(distractors) < count:
+                                # Adapter la casse au mot correct
+                                if correct_answer[0].isupper():
+                                    clean_word = clean_word.capitalize()
+                                else:
+                                    clean_word = clean_word.lower()
+                                distractors.append(clean_word)
+                                
+                except Exception as e:
+                    print(f"Erreur génération GPT: {e}")
+                    continue
         
-        # Stratégie 3: Templates basés sur le type d'expression
+        # Stratégie 2: Variations morphologiques si pas assez de distracteurs
         if len(distractors) < count:
-            template_distractors = self._generate_template_distractors(
-                correct_answer, target_language, count - len(distractors)
-            )
-            for template_dist in template_distractors:
-                if is_valid_distractor(template_dist) and len(distractors) < count:
-                    distractors.append(template_dist)
+            if target_language == "fr":
+                # Générer des variations morphologiques allemandes et les traduire
+                base_word = word.lower()
+                german_morphological_patterns = [
+                    (lambda x: x + "en", "pluriel/infinitif"),
+                    (lambda x: x + "er", "agent/comparatif"),
+                    (lambda x: x + "ung", "nominalisation"),
+                    (lambda x: x + "heit" if len(x) <= 5 else x, "qualité"),
+                    (lambda x: "ge" + x if len(x) <= 6 else x, "participe"),
+                    (lambda x: x + "lich" if len(x) <= 4 else x, "adjectif"),
+                    (lambda x: x + "schaft" if len(x) <= 4 else x, "collectif"),
+                    (lambda x: x + "bar" if len(x) <= 5 else x, "possibilité"),
+                    (lambda x: x + "los" if len(x) <= 5 else x, "privation"),
+                    (lambda x: "un" + x if len(x) <= 6 else x, "négation")
+                ]
+                
+                for pattern_func, pattern_type in german_morphological_patterns:
+                    if len(distractors) >= count:
+                        break
+                    
+                    try:
+                        german_variant = pattern_func(base_word)
+                        if german_variant != word.lower() and len(german_variant) >= 2:
+                            # Traduire la variante allemande
+                            inputs = tokenizer_de_fr(german_variant, return_tensors="pt", padding=True)
+                            outputs = model_de_fr.generate(
+                                inputs.input_ids,
+                                max_length=20,
+                                num_beams=3,
+                                temperature=0.3
+                            )
+                            french_variant = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+                            
+                            if is_valid_distractor(french_variant):
+                                if correct_answer[0].isupper():
+                                    french_variant = french_variant.capitalize()
+                                distractors.append(french_variant)
+                                
+                    except Exception:
+                        continue
+            else:
+                # Variations morphologiques allemandes directes
+                base = correct_answer.lower()
+                morphological_patterns = [
+                    (lambda x: x + "en", "pluriel/infinitif"),
+                    (lambda x: x + "er", "agent/comparatif"),
+                    (lambda x: x + "ung", "nominalisation"),
+                    (lambda x: x + "heit" if len(x) <= 5 else x, "qualité"),
+                    (lambda x: "ge" + x if len(x) <= 6 else x, "participe"),
+                    (lambda x: x + "lich" if len(x) <= 4 else x, "adjectif"),
+                    (lambda x: x + "schaft" if len(x) <= 4 else x, "collectif"),
+                    (lambda x: x + "bar" if len(x) <= 5 else x, "possibilité"),
+                    (lambda x: x + "los" if len(x) <= 5 else x, "privation"),
+                    (lambda x: "un" + x if len(x) <= 6 else x, "négation")
+                ]
+                
+                for pattern_func, pattern_type in morphological_patterns:
+                    if len(distractors) >= count:
+                        break
+                    
+                    try:
+                        variant = pattern_func(base)
+                        if is_valid_distractor(variant):
+                            if correct_answer[0].isupper():
+                                variant = variant.capitalize()
+                            distractors.append(variant)
+                    except Exception:
+                        continue
+        
+        # Stratégie 3: Génération par rhyme/assonance si encore insuffisant
+        if len(distractors) < count:
+            if target_language == "fr":
+                # Générer des variantes phonétiques allemandes et les traduire
+                base_word = word.lower()
+                if len(base_word) >= 3:
+                    phonetic_variants = []
+                    
+                    # Changer la première lettre
+                    for letter in 'abcdefghijklmnopqrstuvwxyzäöüß':
+                        if letter != base_word[0]:
+                            variant = letter + base_word[1:]
+                            phonetic_variants.append(variant)
+                    
+                    # Changer la dernière lettre
+                    for letter in 'abcdefghijklmnopqrstuvwxyzäöüß':
+                        if letter != base_word[-1]:
+                            variant = base_word[:-1] + letter
+                            phonetic_variants.append(variant)
+                    
+                    # Tester quelques variantes phonétiques et les traduire
+                    for variant in phonetic_variants[:10]:  # Limiter le nombre de tentatives
+                        if len(distractors) >= count:
+                            break
+                        
+                        try:
+                            inputs = tokenizer_de_fr(variant, return_tensors="pt", padding=True)
+                            outputs = model_de_fr.generate(
+                                inputs.input_ids,
+                                max_length=20,
+                                num_beams=2,
+                                temperature=0.3
+                            )
+                            french_variant = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+                            
+                            if is_valid_distractor(french_variant):
+                                if correct_answer[0].isupper():
+                                    french_variant = french_variant.capitalize()
+                                distractors.append(french_variant)
+                                
+                        except Exception:
+                            continue
+            else:
+                # Variations phonétiques allemandes directes
+                base = correct_answer.lower()
+                if len(base) >= 3:
+                    phonetic_variants = []
+                    
+                    # Changer la première lettre
+                    for letter in 'abcdefghijklmnopqrstuvwxyzäöüß':
+                        if letter != base[0]:
+                            variant = letter + base[1:]
+                            phonetic_variants.append(variant)
+                    
+                    # Changer la dernière lettre
+                    for letter in 'abcdefghijklmnopqrstuvwxyzäöüß':
+                        if letter != base[-1]:
+                            variant = base[:-1] + letter
+                            phonetic_variants.append(variant)
+                    
+                    # Tester les variantes phonétiques
+                    for variant in phonetic_variants:
+                        if len(distractors) >= count:
+                            break
+                        if is_valid_distractor(variant):
+                            if correct_answer[0].isupper():
+                                variant = variant.capitalize()
+                            distractors.append(variant)
         
         return distractors[:count]
-
-    def _analyze_expression_type(self, expression: str, language: str) -> str:
-        """Analyse le type d'expression pour générer des analogies appropriées"""
-        expr_lower = expression.lower().strip()
-        
-        if language == "fr":
-            if any(word in expr_lower for word in ["à vous", "votre", "vous"]):
-                return "interpellation_politesse"
-            elif any(word in expr_lower for word in ["merci", "s'il vous plaît", "excusez"]):
-                return "politesse_formelle"
-            elif any(word in expr_lower for word in ["bonjour", "bonsoir", "salut"]):
-                return "salutation"
-            elif any(word in expr_lower for word in ["oui", "non", "peut-être"]):
-                return "reponse_simple"
-            elif any(word in expr_lower for word in ["comment", "où", "quand", "pourquoi"]):
-                return "interrogation"
-            elif any(word in expr_lower for word in ["il faut", "il est", "c'est"]):
-                return "expression_impersonnelle"
-        else:  # allemand
-            if any(word in expr_lower for word in ["sie", "ihr", "euch"]):
-                return "interpellation_politesse"
-            elif any(word in expr_lower for word in ["danke", "bitte", "entschuldigung"]):
-                return "politesse_formelle"
-            elif any(word in expr_lower for word in ["hallo", "guten", "tschüss"]):
-                return "salutation"
-            elif any(word in expr_lower for word in ["ja", "nein", "vielleicht"]):
-                return "reponse_simple"
-            elif any(word in expr_lower for word in ["wie", "wo", "wann", "warum"]):
-                return "interrogation"
-            elif any(word in expr_lower for word in ["es ist", "das ist", "man"]):
-                return "expression_impersonnelle"
-        
-        return "general"
-
-    def _get_french_analogy_prompts(self, expression_type: str, original: str) -> List[str]:
-        """Génère des prompts d'analogie pour le français selon le type d'expression"""
-        prompts_by_type = {
-            "interpellation_politesse": [
-                "Façons polies de s'adresser à quelqu'un: ",
-                "Expressions pour interpeller poliment: ",
-                "Formules de courtoisie: "
-            ],
-            "politesse_formelle": [
-                "Expressions de politesse française: ",
-                "Formules de courtoisie: ",
-                "Phrases polies courantes: "
-            ],
-            "salutation": [
-                "Façons de saluer en français: ",
-                "Formules de salutation: ",
-                "Expressions pour dire bonjour: "
-            ],
-            "reponse_simple": [
-                "Réponses courtes en français: ",
-                "Façons de répondre: ",
-                "Expressions de confirmation: "
-            ],
-            "interrogation": [
-                "Questions courantes en français: ",
-                "Façons de demander: ",
-                "Expressions interrogatives: "
-            ],
-            "expression_impersonnelle": [
-                "Expressions impersonnelles françaises: ",
-                "Tournures avec il faut, il est: ",
-                "Constructions impersonnelles: "
-            ],
-            "general": [
-                f"Expressions similaires à '{original}': ",
-                f"Alternatives à '{original}': ",
-                "Expressions courantes: "
-            ]
-        }
-        return prompts_by_type.get(expression_type, prompts_by_type["general"])
-
-    def _get_german_analogy_prompts(self, expression_type: str, original: str) -> List[str]:
-        """Génère des prompts d'analogie pour l'allemand selon le type d'expression"""
-        prompts_by_type = {
-            "interpellation_politesse": [
-                "Höfliche Anreden auf Deutsch: ",
-                "Ausdrücke für höfliche Ansprache: ",
-                "Höflichkeitsformen: "
-            ],
-            "politesse_formelle": [
-                "Deutsche Höflichkeitsausdrücke: ",
-                "Höflichkeitsformeln: ",
-                "Höfliche Redewendungen: "
-            ],
-            "salutation": [
-                "Deutsche Begrüßungen: ",
-                "Begrüßungsformeln: ",
-                "Ausdrücke zum Grüßen: "
-            ],
-            "reponse_simple": [
-                "Kurze Antworten auf Deutsch: ",
-                "Antwortmöglichkeiten: ",
-                "Bestätigungsausdrücke: "
-            ],
-            "interrogation": [
-                "Häufige deutsche Fragen: ",
-                "Frageausdrücke: ",
-                "Interrogativformen: "
-            ],
-            "expression_impersonnelle": [
-                "Unpersönliche deutsche Ausdrücke: ",
-                "Konstruktionen mit es ist, man: ",
-                "Unpersönliche Wendungen: "
-            ],
-            "general": [
-                f"Ähnliche Ausdrücke wie '{original}': ",
-                f"Alternativen zu '{original}': ",
-                "Gängige Ausdrücke: "
-            ]
-        }
-        return prompts_by_type.get(expression_type, prompts_by_type["general"])
-
-    def _generate_template_distractors(self, original: str, language: str, needed_count: int) -> List[str]:
-        """Génère des distracteurs basés sur des templates selon le type d'expression"""
-        templates = []
-        
-        if language == "fr":
-            # Templates français par contexte
-            if "vous" in original.lower():
-                templates = ["à moi", "à lui", "à elle", "à nous", "à toi", "chez vous", "avec vous", "pour vous"]
-            elif "merci" in original.lower():
-                templates = ["de rien", "je vous en prie", "avec plaisir", "tout le plaisir", "volontiers"]
-            elif "bonjour" in original.lower():
-                templates = ["bonsoir", "salut", "bonne journée", "au revoir", "à bientôt"]
-            elif "oui" in original.lower():
-                templates = ["non", "peut-être", "certainement", "bien sûr", "d'accord"]
-            else:
-                templates = ["très bien", "parfait", "exactement", "tout à fait", "absolument", "en effet"]
-        else:
-            # Templates allemands par contexte
-            if "sie" in original.lower() or "ihr" in original.lower():
-                templates = ["zu mir", "zu ihm", "zu ihr", "zu uns", "bei Ihnen", "mit Ihnen", "für Sie"]
-            elif "danke" in original.lower():
-                templates = ["bitte", "gern geschehen", "keine Ursache", "mit Vergnügen"]
-            elif "hallo" in original.lower() or "guten" in original.lower():
-                templates = ["tschüss", "auf Wiedersehen", "bis bald", "schönen Tag"]
-            elif "ja" in original.lower():
-                templates = ["nein", "vielleicht", "bestimmt", "natürlich", "einverstanden"]
-            else:
-                templates = ["sehr gut", "perfekt", "genau", "völlig richtig", "absolut", "in der Tat"]
-        
-        return templates[:needed_count]
     def _create_fallback_exercise(self, word: str, correct_answer: str, question_de: str, 
                                 question_fr: str, question_type: str) -> Dict:
         """Crée un exercice de fallback avec des options prédéfinies"""
