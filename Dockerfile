@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 
 # Création des répertoires de travail
 WORKDIR /app
-RUN mkdir -p /app/output
+RUN mkdir -p /app/de /app/en /app/fr
 
 # Installation des dépendances Python de base
 RUN pip install --no-cache-dir torch torchaudio --index-url https://download.pytorch.org/whl/cpu

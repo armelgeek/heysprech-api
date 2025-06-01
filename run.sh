@@ -6,10 +6,11 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-# Création des dossiers s'ils n'existent pas
+# Création des dossiers par langue
 mkdir -p "$(pwd)/audios"
-mkdir -p "$(pwd)/pronunciations"
-mkdir -p "$(pwd)/transcriptions"
+mkdir -p "$(pwd)/de"
+mkdir -p "$(pwd)/fr"
+mkdir -p "$(pwd)/en"
 
 # Si un fichier est fourni, le copier dans le dossier audios s'il n'y est pas déjà
 if [ ! -f "$(pwd)/audios/$(basename "$1")" ]; then
@@ -22,6 +23,7 @@ docker build -t heysprech-api .
 # Exécution du conteneur avec les volumes montés
 docker run -it \
     --volume "$(pwd)/audios":/app/audios:ro \
-    --volume "$(pwd)/pronunciations":/app/pronunciations:rw \
-    --volume "$(pwd)/transcriptions":/app/transcriptions:rw \
+    --volume "$(pwd)/de":/app/de:rw \
+    --volume "$(pwd)/fr":/app/fr:rw \
+    --volume "$(pwd)/en":/app/en:rw \
     heysprech-api "/app/audios/$(basename "$1")"
