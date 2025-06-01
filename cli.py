@@ -493,36 +493,29 @@ class VocabularyProcessor:
     
     
     def get_basic_translation(self, word: str) -> Dict[str, str]:
-            """Version avec reformulation automatique"""
-            tokenizer_de_fr, model_de_fr = self.models['de_fr']
+        """Obtient la traduction de base d'un mot"""
+        tokenizer_de_fr, model_de_fr = self.models['de_fr']
+        
+        try:
+            inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
+            outputs = model_de_fr.generate(
+                inputs.input_ids,
+                max_length=20,
+                num_beams=3,
+                temperature=0.3,
+                do_sample=False, 
+                forced_bos_token_id=tokenizer_de_fr.get_lang_id("fr"), 
+                pad_token_id=tokenizer_de_fr.pad_token_id
+            )
+            translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
             
-            try:
-                # Étape 1: Traduction brute
-                inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
-                outputs = model_de_fr.generate(
-                    inputs.input_ids,
-                    max_length=20,
-                    num_beams=3,
-                    temperature=0.3,
-                    do_sample=False
-                )
-                raw_translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
-                
-                # Étape 2: Reformulation avec le raffineur
-                if not hasattr(self, 'refiner'):
-                    self.refiner = TranslationRefiner()
-                    # Donner accès aux modèles GPT
-                    self.refiner.gpt_fr_model = self.models.get('gpt_fr')
-                
-                # Reformulation complète
-                refined_result = self.refiner.ensemble_refinement(word, raw_translation)
-                
-                return refined_result
-                
-            except Exception as e:
-                print(f"Erreur de traduction raffinée pour '{word}': {e}")
-                return {'de': word, 'fr': word}
-
+            return {
+                'de': word,
+                'fr': translation if translation else word
+            }
+        except Exception as e:
+            print(f"Erreur de traduction pour '{word}': {e}")
+            return {'de': word, 'fr': word}
     
     def generate_simple_example(self, word: str) -> Dict[str, str]:
         """Génère un exemple simple d'utilisation"""
