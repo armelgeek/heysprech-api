@@ -14,7 +14,7 @@ import time
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 from transformers import MarianMTModel, MarianTokenizer, GPT2LMHeadModel, AutoTokenizer
-
+import torch
 from tqdm import tqdm
 
 
@@ -223,34 +223,56 @@ class VocabularyProcessor:
     def extract_vocabulary(self, segments: List[Dict]) -> List[str]:
         """Extrait et nettoie le vocabulaire des segments transcrits"""
         vocabulary = set()
+        
+        print(f"Extraction du vocabulaire depuis {len(segments)} segments...")
 
         for segment in segments:
             text = segment.get("text", "").strip()
-            words = text.split()
-
+            if not text:
+                continue
+                
+            # Séparer les mots et nettoyer
+            words = re.findall(r'\b[a-zA-ZäöüßÄÖÜ]+\b', text.lower())
+            
             for word in words:
                 clean_word = self.clean_word(word)
                 if clean_word and len(vocabulary) < CONFIG["max_vocabulary_size"]:
                     vocabulary.add(clean_word)
+                    print(f"Mot ajouté: {clean_word}")
 
+        print(f"Vocabulaire extrait: {len(vocabulary)} mots uniques")
         return sorted(list(vocabulary))
 
     def get_basic_translation(self, word: str) -> Dict[str, str]:
         """Obtient la traduction de base d'un mot"""
+        if "de_fr" not in self.models:
+            print("Modèle de traduction non disponible")
+            return {"de": word, "fr": word}
+            
         tokenizer_de_fr, model_de_fr = self.models["de_fr"]
 
         try:
-            inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
-            outputs = model_de_fr.generate(
-                inputs.input_ids,
-                max_length=20,
-                num_beams=3,
-                temperature=0.3,
-                do_sample=False,
-            )
+            # Préfixer le mot pour indiquer qu'il s'agit d'allemand
+            input_text = f">>fr<< {word}"
+            inputs = tokenizer_de_fr(input_text, return_tensors="pt", padding=True)
+            
+            with torch.no_grad():
+                outputs = model_de_fr.generate(
+                    inputs.input_ids,
+                    max_length=20,
+                    num_beams=3,
+                    temperature=0.3,
+                    do_sample=False,
+                    pad_token_id=tokenizer_de_fr.pad_token_id
+                )
+            
             translation = tokenizer_de_fr.decode(
                 outputs[0], skip_special_tokens=True
             ).strip()
+
+            # Nettoyer la traduction
+            if translation.startswith(">>fr<<"):
+                translation = translation[6:].strip()
 
             return {"de": word, "fr": translation if translation else word}
         except Exception as e:
@@ -259,33 +281,27 @@ class VocabularyProcessor:
 
     def generate_simple_example(self, word: str) -> Dict[str, str]:
         """Génère un exemple simple d'utilisation"""
-        tokenizer_gpt, model_gpt = self.models["gpt"]
-        tokenizer_de_fr, model_de_fr = self.models["de_fr"]
-
-        # Templates simples prédéfinis
+        # Templates simples prédéfinis - plus fiables que la génération automatique
         simple_templates = [
             f"Das ist ein {word}.",
             f"Ich habe einen {word}.",
-            f"Der {word} ist schön.",
+            f"Der {word} ist schön.", 
             f"Wir brauchen {word}.",
+            f"Es gibt einen {word}.",
+            f"Hier ist der {word}."
         ]
 
         try:
             # Choisir un template au hasard
             german_sentence = random.choice(simple_templates)
 
-            # Traduire en français
-            inputs = tokenizer_de_fr(german_sentence, return_tensors="pt", padding=True)
-            outputs = model_de_fr.generate(
-                inputs.input_ids, max_length=30, num_beams=3, temperature=0.3
-            )
-            french_sentence = tokenizer_de_fr.decode(
-                outputs[0], skip_special_tokens=True
-            ).strip()
+            # Traduire en français avec le modèle
+            translation_result = self.get_basic_translation(german_sentence)
+            french_sentence = translation_result.get("fr", f"Exemple avec {word}")
 
             return {
                 "de": german_sentence,
-                "fr": french_sentence if french_sentence else "Phrase d'exemple",
+                "fr": french_sentence,
             }
 
         except Exception as e:
@@ -335,11 +351,8 @@ class VocabularyProcessor:
 
         try:
             # Générer les distracteurs (mauvaises réponses)
-            wrong_options = self._generate_distractors(
-                word=word,
-                correct_answer=correct_answer,
-                target_language=distractor_language,
-                count=3,
+            wrong_options = self._generate_simple_distractors(
+                correct_answer, distractor_language, count=3
             )
 
             # Créer la liste des options avec la bonne réponse
@@ -360,279 +373,60 @@ class VocabularyProcessor:
 
         except Exception as e:
             print(f"Erreur lors de la génération de l'exercice pour '{word}': {e}")
-            # Fallback avec des options simples
             return self._create_fallback_exercise(
                 word, correct_answer, question_de, question_fr, question_type
             )
 
-    def _generate_distractors(
-        self, word: str, correct_answer: str, target_language: str, count: int = 3
-    ) -> List[str]:
-        """Génère des distracteurs (mauvaises réponses) pour le QCM"""
+    def _generate_simple_distractors(self, correct_answer: str, language: str, count: int = 3) -> List[str]:
+        """Génère des distracteurs simples basés sur des variations morphologiques"""
         distractors = []
+        word_lower = correct_answer.lower()
         
-        if target_language == "fr":
-            # Utiliser le modèle GPT français pour générer des mots français
-            distractors = self._generate_french_words(correct_answer, count)
+        if language == "fr":
+            # Variations françaises simples
+            variations = [
+                f"{word_lower}er",      # ajouter -er
+                f"{word_lower}tion",    # ajouter -tion
+                f"le {word_lower}",     # ajouter article
+                f"{word_lower}s",       # pluriel
+                f"{word_lower}e",       # forme féminine
+                f"un {word_lower}",     # article indéfini
+                f"{word_lower}ment",    # adverbe
+            ]
         else:
-            # Utiliser le modèle GPT allemand pour générer des mots allemands
-            distractors = self._generate_german_words(correct_answer, count)
-
+            # Variations allemandes simples
+            variations = [
+                f"{word_lower}en",      # ajouter -en
+                f"{word_lower}er",      # ajouter -er
+                f"der {word_lower}",    # ajouter article
+                f"{word_lower}ung",     # substantif
+                f"{word_lower}lich",    # adjectif
+                f"{word_lower}heit",    # nom abstrait
+                f"{word_lower}s",       # génitif
+            ]
+        
+        # Sélectionner des variations qui ne sont pas identiques au mot original
+        for variation in variations:
+            if variation != correct_answer and variation.replace(" ", "") != correct_answer:
+                distractors.append(variation)
+                if len(distractors) >= count:
+                    break
+        
+        # Compléter avec des mots simples si nécessaire
+        if len(distractors) < count:
+            if language == "fr":
+                simple_words = ["chat", "chien", "maison", "voiture", "livre", "eau"]
+            else:
+                simple_words = ["Haus", "Auto", "Buch", "Wasser", "Baum", "Tisch"]
+            
+            for word in simple_words:
+                if word != correct_answer and word not in distractors:
+                    distractors.append(word)
+                    if len(distractors) >= count:
+                        break
+        
         return distractors[:count]
-    def _generate_french_words(self, correct_answer: str, count: int) -> List[str]:
-        """Génère des mots français avec le modèle GPT français"""
-        tokenizer_gpt_fr, model_gpt_fr = self.models["gpt_fr"]
-        distractors = []
-        
-        # Déterminer la catégorie du mot pour créer des prompts appropriés
-        category = self._guess_word_category(correct_answer)
-        
-        # Créer des prompts contextuels pour générer des mots de la même catégorie
-        prompts = self._create_french_prompts(correct_answer, category)
-        
-        for prompt in prompts:
-            if len(distractors) >= count:
-                break
-                
-            try:
-                # Tokeniser le prompt
-                inputs = tokenizer_gpt_fr(prompt, return_tensors="pt", padding=True)
-                
-                # Générer du texte
-                with torch.no_grad():
-                    outputs = model_gpt_fr.generate(
-                        inputs.input_ids,
-                        max_length=inputs.input_ids.shape[1] + 10,
-                        num_return_sequences=2,  # Générer plusieurs variantes
-                        temperature=0.8,
-                        do_sample=True,
-                        pad_token_id=tokenizer_gpt_fr.eos_token_id,
-                        repetition_penalty=1.2,
-                        no_repeat_ngram_size=2
-                    )
-                
-                # Extraire les mots générés
-                for output in outputs:
-                    generated_text = tokenizer_gpt_fr.decode(output, skip_special_tokens=True)
-                    new_words = self._extract_words_from_generation(generated_text, prompt, "fr")
-                    
-                    for new_word in new_words:
-                        if (new_word != correct_answer.lower() and 
-                            new_word not in [d.lower() for d in distractors] and
-                            len(distractors) < count and
-                            self._is_valid_french_word(new_word)):
-                            
-                            # Maintenir la casse appropriée
-                            formatted_word = self._format_word_case(new_word, correct_answer)
-                            distractors.append(formatted_word)
-                            
-            except Exception as e:
-                print(f"Erreur génération mot français: {e}")
-                continue
-        
-        # Si pas assez de mots générés, utiliser des variations morphologiques
-        while len(distractors) < count:
-            variations = self._create_morphological_variations(correct_answer, "fr")
-            for var in variations:
-                if (var not in distractors and 
-                    var != correct_answer and 
-                    len(distractors) < count):
-                    distractors.append(var)
-        
-        return distractors
 
-    def _generate_german_words(self, correct_answer: str, count: int) -> List[str]:
-        """Génère des mots allemands avec le modèle GPT allemand"""
-        tokenizer_gpt_de, model_gpt_de = self.models["gpt_de"]
-        distractors = []
-        
-        # Créer des prompts pour générer des mots allemands
-        prompts = self._create_german_prompts(correct_answer)
-        
-        for prompt in prompts:
-            if len(distractors) >= count:
-                break
-                
-            try:
-                inputs = tokenizer_gpt_de(prompt, return_tensors="pt", padding=True)
-                
-                with torch.no_grad():
-                    outputs = model_gpt_de.generate(
-                        inputs.input_ids,
-                        max_length=inputs.input_ids.shape[1] + 10,
-                        num_return_sequences=2,
-                        temperature=0.8,
-                        do_sample=True,
-                        pad_token_id=tokenizer_gpt_de.eos_token_id,
-                        repetition_penalty=1.2,
-                        no_repeat_ngram_size=2
-                    )
-                
-                for output in outputs:
-                    generated_text = tokenizer_gpt_de.decode(output, skip_special_tokens=True)
-                    new_words = self._extract_words_from_generation(generated_text, prompt, "de")
-                    
-                    for new_word in new_words:
-                        if (new_word != correct_answer.lower() and 
-                            new_word not in [d.lower() for d in distractors] and
-                            len(distractors) < count and
-                            self._is_valid_german_word(new_word)):
-                            
-                            formatted_word = self._format_word_case(new_word, correct_answer)
-                            distractors.append(formatted_word)
-                            
-            except Exception as e:
-                print(f"Erreur génération mot allemand: {e}")
-                continue
-        
-        # Compléter avec des variations si nécessaire
-        while len(distractors) < count:
-            variations = self._create_morphological_variations(correct_answer, "de")
-            for var in variations:
-                if (var not in distractors and 
-                    var != correct_answer and 
-                    len(distractors) < count):
-                    distractors.append(var)
-        
-        return distractors
-
-    def _create_french_prompts(self, word: str, category: str) -> List[str]:
-        """Crée des prompts contextuels pour générer des mots français"""
-        word_lower = word.lower()
-        
-        if category == "noun":
-            return [
-                f"Voici des noms français: maison, voiture, {word_lower},",
-                f"Liste de substantifs: livre, table, {word_lower},",
-                f"Des objets: fenêtre, porte, {word_lower},",
-                f"Mots français: chat, chien, {word_lower},"
-            ]
-        elif category == "verb":
-            return [
-                f"Verbes français: faire, avoir, {word_lower},",
-                f"Actions: aller, venir, {word_lower},",
-                f"Des verbes: manger, boire, {word_lower},",
-                f"Infinitifs: voir, savoir, {word_lower},"
-            ]
-        elif category == "adjective":
-            return [
-                f"Adjectifs français: grand, petit, {word_lower},",
-                f"Qualités: beau, joli, {word_lower},",
-                f"Descriptions: bon, mauvais, {word_lower},",
-                f"Caractéristiques: nouveau, vieux, {word_lower},"
-            ]
-        else:
-            return [
-                f"Mots français courants: temps, jour, {word_lower},",
-                f"Vocabulaire français: monde, vie, {word_lower},",
-                f"Lexique: famille, ami, {word_lower},",
-                f"Termes français: travail, école, {word_lower},"
-            ]
-
-    def _create_german_prompts(self, word: str) -> List[str]:
-        """Crée des prompts pour générer des mots allemands"""
-        word_lower = word.lower()
-        
-        return [
-            f"Deutsche Wörter: Haus, Auto, {word_lower},",
-            f"Substantive: Buch, Tisch, {word_lower},",
-            f"Begriffe: Wasser, Brot, {word_lower},",
-            f"Vokabular: Zeit, Leben, {word_lower},",
-            f"Deutsche Begriffe: Mann, Frau, {word_lower},"
-        ]
-
-    def _extract_words_from_generation(self, generated_text: str, prompt: str, language: str) -> List[str]:
-        """Extrait des mots valides du texte généré"""
-        # Enlever le prompt du texte généré
-        new_text = generated_text.replace(prompt, "").strip()
-        
-        # Extraire les mots
-        if language == "fr":
-            # Pour le français, extraire les mots avec accents
-            words = re.findall(r'\b[a-zA-ZàâäçéèêëïîôöùûüÿÀÂÄÇÉÈÊËÏÎÔÖÙÛÜŸ]+\b', new_text)
-        else:
-            # Pour l'allemand, inclure les Umlauts
-            words = re.findall(r'\b[a-zA-ZäöüßÄÖÜ]+\b', new_text)
-        
-        # Nettoyer et filtrer les mots
-        valid_words = []
-        for word in words:
-            word = word.strip().lower()
-            if (len(word) >= 3 and 
-                len(word) <= 15 and 
-                not word.isdigit() and
-                word not in ['und', 'der', 'die', 'das', 'ein', 'eine', 'le', 'la', 'les', 'un', 'une', 'des']):
-                valid_words.append(word)
-        
-        return valid_words[:5]  # Limiter à 5 mots par génération
-
-    def _guess_word_category(self, word: str) -> str:
-        """Devine la catégorie grammaticale d'un mot français"""
-        word_lower = word.lower()
-        
-        # Terminaisons typiques des noms
-        if any(word_lower.endswith(ending) for ending in 
-               ['tion', 'sion', 'ment', 'ence', 'ance', 'eur', 'euse', 'teur', 'trice', 'age', 'ise']):
-            return "noun"
-        
-        # Terminaisons typiques des verbes
-        if any(word_lower.endswith(ending) for ending in ['er', 'ir', 're']):
-            return "verb"
-        
-        # Terminaisons typiques des adjectifs
-        if any(word_lower.endswith(ending) for ending in 
-               ['able', 'ible', 'eux', 'euse', 'ant', 'ent', 'if', 'ive']):
-            return "adjective"
-        
-        return "noun"  # Par défaut
-
-    def _is_valid_french_word(self, word: str) -> bool:
-        """Vérifie si un mot français est valide"""
-        return (len(word) >= 3 and 
-                len(word) <= 15 and 
-                re.match(r'^[a-zA-ZàâäçéèêëïîôöùûüÿÀÂÄÇÉÈÊËÏÎÔÖÙÛÜŸ]+$', word) and
-                word.lower() not in ['les', 'des', 'une', 'est', 'sont', 'ont', 'aux'])
-
-    def _is_valid_german_word(self, word: str) -> bool:
-        """Vérifie si un mot allemand est valide"""
-        return (len(word) >= 3 and 
-                len(word) <= 15 and 
-                re.match(r'^[a-zA-ZäöüßÄÖÜ]+$', word) and
-                word.lower() not in ['der', 'die', 'das', 'und', 'mit', 'von', 'für', 'auf'])
-
-    def _format_word_case(self, word: str, reference_word: str) -> str:
-        """Formate la casse d'un mot en se basant sur un mot de référence"""
-        if reference_word[0].isupper():
-            return word.capitalize()
-        return word.lower()
-
-    def _create_morphological_variations(self, word: str, language: str) -> List[str]:
-        """Crée des variations morphologiques d'un mot"""
-        variations = []
-        word_lower = word.lower()
-        
-        if language == "fr":
-            # Variations françaises
-            suffixes = ['ment', 'tion', 'eur', 'euse', 'able', 'ique', 'isme']
-            prefixes = ['pré', 'sur', 'sous', 'anti', 're']
-        else:
-            # Variations allemandes
-            suffixes = ['ung', 'heit', 'keit', 'lich', 'isch', 'bar', 'los']
-            prefixes = ['un', 'vor', 'nach', 'über', 'unter']
-        
-        # Ajouter des suffixes
-        for suffix in suffixes[:3]:  # Limiter à 3 suffixes
-            if not word_lower.endswith(suffix):
-                if word_lower.endswith('e') and language == "fr":
-                    variations.append(f"{word_lower[:-1]}{suffix}")
-                else:
-                    variations.append(f"{word_lower}{suffix}")
-        
-        # Ajouter des préfixes
-        for prefix in prefixes[:2]:  # Limiter à 2 préfixes
-            variations.append(f"{prefix}{word_lower}")
-        
-        return variations
     def _create_fallback_exercise(
         self,
         word: str,
@@ -645,18 +439,13 @@ class VocabularyProcessor:
 
         if question_type == "de_to_fr":
             # Distracteurs français simples
-            wrong_options = [
-                correct_answer + "er",
-                "un " + correct_answer,
-                correct_answer + "tion",
-            ]
+            wrong_options = ["maison", "chat", "livre"]
         else:
             # Distracteurs allemands simples
-            wrong_options = [
-                correct_answer + "en",
-                "der " + correct_answer,
-                correct_answer + "ung",
-            ]
+            wrong_options = ["Haus", "Katze", "Buch"]
+
+        # S'assurer que la bonne réponse n'est pas dans les distracteurs
+        wrong_options = [opt for opt in wrong_options if opt != correct_answer][:3]
 
         options = [correct_answer] + wrong_options
         random.shuffle(options)
@@ -685,44 +474,61 @@ class VocabularyProcessor:
 
     def process_word(self, word: str) -> Dict:
         """Traite un mot complet avec traduction, exemple et exercice"""
-        # Traductions et exercices
-        translation_info = self.get_basic_translation(word)
-        example = self.generate_simple_example(word)
-        exercise = self.create_simple_exercise(word, translation_info["fr"])
-        level = self.determine_word_level(word)
+        print(f"Traitement du mot: {word}")
+        
+        try:
+            # Traductions et exercices
+            translation_info = self.get_basic_translation(word)
+            example = self.generate_simple_example(word)
+            exercise = self.create_simple_exercise(word, translation_info["fr"])
+            level = self.determine_word_level(word)
 
-        # Récupération de la prononciation
-        pronunciation_info = {"available": False, "file": None}
-        audio_sources = self.scrape_audio_tags(word)
+            # Récupération de la prononciation (optionnelle)
+            pronunciation_info = {"available": False, "file": None}
+            try:
+                audio_sources = self.scrape_audio_tags(word)
+                if audio_sources:
+                    first_audio = audio_sources[0]
+                    audio_filename = f"{word}_pronunciation.mp3"
+                    if self.download_audio_file(first_audio["url"], audio_filename):
+                        pronunciation_info = {
+                            "available": True,
+                            "file": str(self.pronunciation_dir / audio_filename),
+                        }
+            except Exception as e:
+                print(f"Avertissement: Erreur prononciation pour '{word}': {e}")
 
-        if audio_sources:
-            # Tenter de télécharger le premier fichier audio trouvé
-            first_audio = audio_sources[0]
-            audio_filename = f"{word}_pronunciation.mp3"
+            # Construire le résultat
+            result = {
+                "word": word,
+                "level": level,
+                "translation": translation_info,
+                "example": example,
+                "exercise": exercise,
+                "pronunciation": pronunciation_info,
+                "processed_at": self.get_timestamp(),
+            }
 
-            if self.download_audio_file(first_audio["url"], audio_filename):
-                pronunciation_info = {
-                    "available": True,
-                    "file": str(self.pronunciation_dir / audio_filename),
-                }
+            print(f"✓ Mot traité: {word} -> {translation_info['fr']}")
+            return result
 
-        # Construire le résultat
-        result = {
-            "word": word,
-            "level": level,
-            "translation": translation_info,
-            "example": example,
-            "exercise": exercise,
-            "pronunciation": pronunciation_info,
-            "processed_at": self.get_timestamp(),
-        }
-
-        return result
+        except Exception as e:
+            print(f"✗ Erreur lors du traitement du mot '{word}': {e}")
+            # Retourner un résultat minimal en cas d'erreur
+            return {
+                "word": word,
+                "level": "beginner",
+                "translation": {"de": word, "fr": word},
+                "example": {"de": f"Das ist {word}.", "fr": f"C'est {word}."},
+                "exercise": {"type": "error", "message": str(e)},
+                "pronunciation": {"available": False, "file": None},
+                "processed_at": self.get_timestamp(),
+                "error": True
+            }
 
     def get_timestamp(self) -> str:
         """Retourne un timestamp pour le traitement"""
         from datetime import datetime
-
         return datetime.now().isoformat()
 
 
