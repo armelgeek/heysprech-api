@@ -504,15 +504,19 @@ class VocabularyProcessor:
         tokenizer_de_fr, model_de_fr = self.models['de_fr']
         
         try:
+            # Encode with padding and return tensors
             inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
+            
+            # Generate translation with basic settings
             outputs = model_de_fr.generate(
                 inputs.input_ids,
                 max_length=20,
                 num_beams=3,
                 temperature=0.3,
-                do_sample=False,
-                pad_token_id=tokenizer_de_fr.pad_token_id
+                do_sample=False
             )
+            
+            # Decode the translation
             translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
             
             return {
