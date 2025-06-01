@@ -18,7 +18,7 @@ if [ ! -f "$(pwd)/audios/$(basename "$1")" ]; then
 fi
 
 # Construction de l'image si elle n'existe pas
-docker build -t heysprech-api .
+
 
 # Exécution du conteneur avec les volumes montés
 docker run -it \
@@ -26,4 +26,4 @@ docker run -it \
     --volume "$(pwd)/de":/app/de:rw \
     --volume "$(pwd)/fr":/app/fr:rw \
     --volume "$(pwd)/en":/app/en:rw \
-    heysprech-api "/app/audios/$(basename "$1")"
+    heysprech-api "/app/audios/$(basename "$1")" --source-lang de --target-lang fr
