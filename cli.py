@@ -37,15 +37,33 @@ def get_output_folder(audio_path: str) -> Path:
 # Configuration globale
 CONFIG = {
     'whisper_model': "base",
-    'language': "de", 
+    'language': "de",  # langue source par défaut
     'output_format': "json",
-    'translation_model_path': "./opus-mt-de-fr",
-    'german_gpt_model': "benjamin/gpt2-wechsel-german",
-    'french_gpt_model': "dbddv01/gpt2-french-small",
-    'max_vocabulary_size': 100,  # Limiter le nombre de mots à traiter
+    'language_pairs': {
+        'de-fr': {
+            'translation_model_path': "./opus-mt-de-fr",
+            'source_gpt_model': "benjamin/gpt2-wechsel-german",
+            'target_gpt_model': "dbddv01/gpt2-french-small",
+        },
+        'en-fr': {
+            'translation_model_path': "Helsinki-NLP/opus-mt-en-fr",
+            'source_gpt_model': "gpt2",
+            'target_gpt_model': "dbddv01/gpt2-french-small",
+        },
+        # Ajoutez d'autres paires de langues ici
+    },
+    'max_vocabulary_size': 100,
     'min_word_length': 2,
     'max_examples_per_word': 3,
     'max_exercises_per_type': 2
+}
+
+# Mapping des codes de langue vers les noms complets
+LANGUAGE_NAMES = {
+    'de': 'German',
+    'fr': 'French',
+    'en': 'English',
+    # Ajoutez d'autres langues selon vos besoins
 }
 
 AUDIO_EXTENSIONS = (
@@ -354,14 +372,37 @@ def download_audio_file(audio_url, filename=None):
 class VocabularyProcessor:
     """Classe pour gérer le traitement du vocabulaire et les analyses lexicales"""
     
-    def __init__(self, models: Dict, output_dir: str):
+    def __init__(self, models: Dict, output_dir: str, source_lang: str = "de", target_lang: str = "fr"):
         self.models = models
         self.processed_words = set()
         self.output_dir = Path(output_dir)
+        self.source_lang = source_lang
+        self.target_lang = target_lang
+        self.lang_pair = f"{source_lang}-{target_lang}"
         
+        # Vérifier si la paire de langues est supportée
+        if self.lang_pair not in CONFIG['language_pairs']:
+            raise ValueError(f"Paire de langues non supportée: {self.lang_pair}")
+        
+        # Obtenir la configuration spécifique à la paire de langues
+        self.lang_config = CONFIG['language_pairs'][self.lang_pair]
+
     def scrape_audio_tags(self, word: str) -> List[Dict]:
-        """Scrape les balises audio pour un mot"""
-        url = f"https://howpronounce.com/german/{word}"
+        """Scrape les balises audio pour un mot dans la langue source"""
+        # Mapping des langues pour les URLs des sites de prononciation
+        pronunciation_urls = {
+            'de': f"https://howpronounce.com/german/{word}",
+            'en': f"https://howpronounce.com/english/{word}",
+            'fr': f"https://howpronounce.com/french/{word}",
+            # Ajouter d'autres langues selon les besoins
+        }
+
+        # Vérifier si la langue source est supportée
+        if self.source_lang not in pronunciation_urls:
+            print(f"✗ Langue non supportée pour la prononciation: {self.source_lang}")
+            return []
+
+        url = pronunciation_urls[self.source_lang]
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
@@ -371,7 +412,7 @@ class VocabularyProcessor:
             'Upgrade-Insecure-Requests': '1',
         }
         
-        print(f"Recherche de prononciation pour : {word}")
+        print(f"Recherche de prononciation ({self.source_lang}) pour : {word}")
         
         try:
             # Ajout d'un délai aléatoire entre 1 et 3 secondes
@@ -394,7 +435,8 @@ class VocabularyProcessor:
                     audio_sources.append({
                         'type': 'direct_src',
                         'url': full_url,
-                        'original_src': src
+                        'original_src': src,
+                        'language': self.source_lang
                     })
                 
                 for source in audio.find_all('source'):
@@ -405,7 +447,8 @@ class VocabularyProcessor:
                             'type': 'source_tag',
                             'url': full_url,
                             'original_src': src,
-                            'mime_type': source.get('type', 'unknown')
+                            'mime_type': source.get('type', 'unknown'),
+                            'language': self.source_lang
                         })
             
             # 2. Rechercher dans le JavaScript
@@ -419,7 +462,8 @@ class VocabularyProcessor:
                         audio_sources.append({
                             'type': 'js_embedded',
                             'url': full_url,
-                            'original_src': audio_url
+                            'original_src': audio_url,
+                            'language': self.source_lang
                         })
             
             # 3. Rechercher les attributs data-*
@@ -432,14 +476,15 @@ class VocabularyProcessor:
                             audio_sources.append({
                                 'type': f'data_attribute_{attr}',
                                 'url': full_url,
-                                'original_src': value
+                                'original_src': value,
+                                'language': self.source_lang
                             })
             
-            print(f"✓ {len(audio_sources)} sources audio trouvées pour '{word}'")
+            print(f"✓ {len(audio_sources)} sources audio trouvées pour '{word}' ({self.source_lang})")
             return audio_sources
             
         except Exception as e:
-            print(f"✗ Erreur lors du scraping pour '{word}': {e}")
+            print(f"✗ Erreur lors du scraping pour '{word}' ({self.source_lang}): {e}")
             return []
     
     def download_audio_file(self, audio_url: str, filename: str) -> bool:
@@ -501,14 +546,14 @@ class VocabularyProcessor:
     
     def get_basic_translation(self, word: str) -> Dict[str, str]:
         """Obtient la traduction de base d'un mot"""
-        tokenizer_de_fr, model_de_fr = self.models['de_fr']
+        tokenizer, model = self.models[self.lang_pair]
         
         try:
             # Encode with padding and return tensors
-            inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
+            inputs = tokenizer(word, return_tensors="pt", padding=True)
             
             # Generate translation with basic settings
-            outputs = model_de_fr.generate(
+            outputs = model.generate(
                 inputs.input_ids,
                 max_length=20,
                 num_beams=3,
@@ -517,54 +562,69 @@ class VocabularyProcessor:
             )
             
             # Decode the translation
-            translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+            translation = tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
             
             return {
-                'de': word,
-                'fr': translation if translation else word
+                self.source_lang: word,
+                self.target_lang: translation if translation else word
             }
         except Exception as e:
             print(f"Erreur de traduction pour '{word}': {e}")
-            return {'de': word, 'fr': word}
-    
+            return {self.source_lang: word, self.target_lang: word}
+
     def generate_simple_example(self, word: str) -> Dict[str, str]:
         """Génère un exemple simple d'utilisation"""
-        tokenizer_gpt_de, model_gpt_de = self.models['gpt_de']
-        tokenizer_de_fr, model_de_fr = self.models['de_fr']
+        source_tokenizer, source_model = self.models[f'gpt_{self.source_lang}']
+        translator_tokenizer, translator_model = self.models[self.lang_pair]
         
-        # Templates simples prédéfinis
-        simple_templates = [
-            f"Das ist ein {word}.",
-            f"Ich habe einen {word}.",
-            f"Der {word} ist schön.",
-            f"Wir brauchen {word}."
-        ]
+        # Templates adaptés à la langue source
+        templates = self._get_language_templates(word)
         
         try:
             # Choisir un template au hasard
-            german_sentence = random.choice(simple_templates)
+            source_sentence = random.choice(templates)
             
-            # Traduire en français
-            inputs = tokenizer_de_fr(german_sentence, return_tensors="pt", padding=True)
-            outputs = model_de_fr.generate(
+            # Traduire vers la langue cible
+            inputs = translator_tokenizer(source_sentence, return_tensors="pt", padding=True)
+            outputs = translator_model.generate(
                 inputs.input_ids,
                 max_length=30,
                 num_beams=3,
                 temperature=0.3
             )
-            french_sentence = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+            target_sentence = translator_tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
             
             return {
-                'de': german_sentence,
-                'fr': french_sentence if french_sentence else "Phrase d'exemple"
+                self.source_lang: source_sentence,
+                self.target_lang: target_sentence if target_sentence else f"Example with {word}"
             }
             
         except Exception as e:
             print(f"Erreur génération exemple pour '{word}': {e}")
             return {
-                'de': f"Das ist {word}.",
-                'fr': f"C'est {word}."
+                self.source_lang: f"This is {word}.",
+                self.target_lang: f"C'est {word}."
             }
+
+    def _get_language_templates(self, word: str) -> List[str]:
+        """Retourne des templates adaptés à la langue source"""
+        templates = {
+            'de': [
+                f"Das ist ein {word}.",
+                f"Ich habe einen {word}.",
+                f"Der {word} ist schön.",
+                f"Wir brauchen {word}."
+            ],
+            'en': [
+                f"This is a {word}.",
+                f"I have a {word}.",
+                f"The {word} is nice.",
+                f"We need {word}."
+            ],
+            # Ajoutez d'autres langues selon vos besoins
+        }
+        
+        return templates.get(self.source_lang, [f"Example with {word}."])
     
     def create_simple_exercise(self, word: str, translation: str) -> Dict:
         """Crée deux exercices à choix multiples (QCM) dans les deux sens de traduction"""
@@ -634,9 +694,10 @@ class VocabularyProcessor:
     def _generate_distractors(self, word: str, correct_answer: str, target_language: str, count: int = 5) -> List[str]:
         """Génère des distracteurs sémantiquement proches de manière dynamique"""
         distractors = []
-        tokenizer_gpt_de, model_gpt_de = self.models['gpt_de']
-        tokenizer_gpt_fr, model_gpt_fr = self.models['gpt_fr']
-        tokenizer_de_fr, model_de_fr = self.models['de_fr']
+        # Récupérer les modèles GPT pour les langues source et cible
+        source_tokenizer, source_model = self.models[f'gpt_{self.source_lang}']
+        target_tokenizer, target_model = self.models[f'gpt_{self.target_lang}']
+        translator_tokenizer, translator_model = self.models[self.lang_pair]
         
         # Calculer la longueur cible
         target_length = len(correct_answer)
@@ -657,290 +718,186 @@ class VocabularyProcessor:
                 re.match(r'^[a-zA-ZàâäéèêëïîôùûüÿçÀÂÄÉÈÊËÏÎÔÙÛÜŸÇäöüßÄÖÜ]+$', candidate_clean)
             )
         
-        # Stratégie 1: Génération contextuelle avec GPT
-        if target_language == "fr":
-            # Générer des mots allemands similaires au mot source, puis les traduire
-            context_prompts = [
-                f"Deutsche Wörter vom gleichen Typ wie '{word}': {word}, ",
-                f"Deutsche Synonyme von '{word}': {word}, ",
-                f"Ähnliche deutsche Wörter: {word}, ",
-                f"Deutscher Wortschatz ähnlich wie '{word}': "
+        # Prompts adaptés à la langue source
+        prompt_templates = {
+            'de': [
+                f"Wörter vom gleichen Typ wie '{word}': {word}, ",
+                f"Synonyme von '{word}': {word}, ",
+                f"Ähnliche Wörter: {word}, ",
+                f"Wortschatz ähnlich wie '{word}': "
+            ],
+            'en': [
+                f"Words similar to '{word}': {word}, ",
+                f"Synonyms of '{word}': {word}, ",
+                f"Related words to '{word}': {word}, ",
+                f"Words in the same category as '{word}': "
+            ],
+            'fr': [
+                f"Mots similaires à '{word}' : {word}, ",
+                f"Synonymes de '{word}' : {word}, ",
+                f"Mots apparentés à '{word}' : {word}, ",
+                f"Vocabulaire proche de '{word}' : "
             ]
-            tokenizer_gpt = tokenizer_gpt_de
-            model_gpt = model_gpt_de
-            
-            # Générer des mots allemands
-            german_candidates = []
+        }
+        
+        # Patterns morphologiques adaptés à la langue source
+        morphological_patterns = {
+            'de': [
+                (lambda x: x + "en", "pluriel/infinitif"),
+                (lambda x: x + "er", "agent/comparatif"),
+                (lambda x: x + "ung", "nominalisation"),
+                (lambda x: x + "heit" if len(x) <= 5 else x, "qualité"),
+                (lambda x: "ge" + x if len(x) <= 6 else x, "participe")
+            ],
+            'en': [
+                (lambda x: x + "s", "pluriel"),
+                (lambda x: x + "ed", "participe passé"),
+                (lambda x: x + "ing", "participe présent"),
+                (lambda x: x + "er", "comparatif"),
+                (lambda x: "un" + x if len(x) <= 6 else x, "négation")
+            ],
+            'fr': [
+                (lambda x: x + "s", "pluriel"),
+                (lambda x: x + "e", "féminin"),
+                (lambda x: x + "ment", "adverbe"),
+                (lambda x: x + "eur", "agent"),
+                (lambda x: x + "ation", "nominalisation")
+            ]
+        }
+
+        # Stratégie 1: Génération contextuelle avec GPT
+        context_prompts = prompt_templates.get(self.source_lang, [f"Words similar to '{word}': "])
+        
+        if target_language == self.target_lang:
+            # Générer des mots dans la langue source puis les traduire
+            source_candidates = []
             for prompt in context_prompts:
-                if len(german_candidates) >= count * 2:  # Générer plus de candidats pour avoir plus de choix
+                if len(source_candidates) >= count * 2:
                     break
                 
                 try:
-                    inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True, truncation=True, max_length=50)
-                    outputs = model_gpt.generate(
+                    inputs = source_tokenizer(prompt, return_tensors="pt", padding=True, truncation=True, max_length=50)
+                    outputs = source_model.generate(
                         inputs.input_ids,
                         max_length=inputs.input_ids.shape[1] + 15,
                         num_return_sequences=2,
                         temperature=0.8,
                         do_sample=True,
-                        pad_token_id=tokenizer_gpt.eos_token_id,
+                        pad_token_id=source_tokenizer.eos_token_id,
                         top_p=0.9,
                         repetition_penalty=1.2
                     )
                     
                     for output in outputs:
-                        generated_text = tokenizer_gpt.decode(output, skip_special_tokens=True)
+                        generated_text = source_tokenizer.decode(output, skip_special_tokens=True)
                         new_part = generated_text.replace(prompt, "").strip()
                         
-                        # Extraire les mots allemands
-                        words = re.findall(r'\b[a-zäöüßA-ZÄÖÜ]+\b', new_part)
+                        # Extraire les mots
+                        words = re.findall(r'\b\w+\b', new_part)
                         
                         for extracted_word in words[:3]:
                             clean_word = extracted_word.strip().lower()
                             if (clean_word != word.lower() and 
                                 len(clean_word) >= 2 and 
-                                clean_word not in german_candidates):
-                                german_candidates.append(clean_word)
+                                clean_word not in source_candidates):
+                                source_candidates.append(clean_word)
                                 
                 except Exception as e:
-                    print(f"Erreur génération GPT allemand: {e}")
+                    print(f"Erreur génération GPT: {e}")
                     continue
             
-            # Traduire les candidats allemands en français
-            for german_word in german_candidates:
+            # Traduire les candidats vers la langue cible
+            for source_word in source_candidates:
                 if len(distractors) >= count:
                     break
                     
                 try:
-                    inputs = tokenizer_de_fr(german_word, return_tensors="pt", padding=True)
-                    outputs = model_de_fr.generate(
+                    inputs = translator_tokenizer(source_word, return_tensors="pt", padding=True)
+                    outputs = translator_model.generate(
                         inputs.input_ids,
                         max_length=20,
                         num_beams=3,
                         temperature=0.3,
                         do_sample=False
                     )
-                    french_translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+                    translation = translator_tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
                     
-                    if is_valid_distractor(french_translation):
+                    if is_valid_distractor(translation):
                         # Adapter la casse au mot correct
                         if correct_answer[0].isupper():
-                            french_translation = french_translation.capitalize()
+                            translation = translation.capitalize()
                         else:
-                            french_translation = french_translation.lower()
-                        distractors.append(french_translation)
+                            translation = translation.lower()
+                        distractors.append(translation)
                         
                 except Exception as e:
-                    print(f"Erreur traduction de '{german_word}': {e}")
-                    continue
-                    
-        else:
-            # Pour les distracteurs allemands, génération directe
-            context_prompts = [
-                f"Deutsche Wörter vom gleichen Typ wie '{correct_answer}': {correct_answer}, ",
-                f"Deutsche Synonyme von '{correct_answer}': {correct_answer}, ",
-                f"Ähnliche deutsche Wörter: {correct_answer}, ",
-                f"Deutscher Wortschatz ähnlich wie '{correct_answer}': "
-            ]
-            tokenizer_gpt = tokenizer_gpt_de
-            model_gpt = model_gpt_de
-            
-            for prompt in context_prompts:
-                if len(distractors) >= count:
-                    break
-                
-                try:
-                    inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True, truncation=True, max_length=50)
-                    outputs = model_gpt.generate(
-                        inputs.input_ids,
-                        max_length=inputs.input_ids.shape[1] + 15,
-                        num_return_sequences=2,
-                        temperature=0.8,
-                        do_sample=True,
-                        pad_token_id=tokenizer_gpt.eos_token_id,
-                        top_p=0.9,
-                        repetition_penalty=1.2
-                    )
-                    
-                    for output in outputs:
-                        generated_text = tokenizer_gpt.decode(output, skip_special_tokens=True)
-                        new_part = generated_text.replace(prompt, "").strip()
-                        
-                        # Extraire les mots allemands
-                        words = re.findall(r'\b[a-zäöüßA-ZÄÖÜ]+\b', new_part)
-                        
-                        for extracted_word in words[:3]:
-                            clean_word = extracted_word.strip()
-                            if is_valid_distractor(clean_word) and len(distractors) < count:
-                                # Adapter la casse au mot correct
-                                if correct_answer[0].isupper():
-                                    clean_word = clean_word.capitalize()
-                                else:
-                                    clean_word = clean_word.lower()
-                                distractors.append(clean_word)
-                                
-                except Exception as e:
-                    print(f"Erreur génération GPT: {e}")
+                    print(f"Erreur traduction: {e}")
                     continue
         
         # Stratégie 2: Variations morphologiques si pas assez de distracteurs
         if len(distractors) < count:
-            if target_language == "fr":
-                # Générer des variations morphologiques allemandes et les traduire
-                base_word = word.lower()
-                german_morphological_patterns = [
-                    (lambda x: x + "en", "pluriel/infinitif"),
-                    (lambda x: x + "er", "agent/comparatif"),
-                    (lambda x: x + "ung", "nominalisation"),
-                    (lambda x: x + "heit" if len(x) <= 5 else x, "qualité"),
-                    (lambda x: "ge" + x if len(x) <= 6 else x, "participe"),
-                    (lambda x: x + "lich" if len(x) <= 4 else x, "adjectif"),
-                    (lambda x: x + "schaft" if len(x) <= 4 else x, "collectif"),
-                    (lambda x: x + "bar" if len(x) <= 5 else x, "possibilité"),
-                    (lambda x: x + "los" if len(x) <= 5 else x, "privation"),
-                    (lambda x: "un" + x if len(x) <= 6 else x, "négation")
-                ]
+            patterns = morphological_patterns.get(target_language, [])
+            base = correct_answer.lower()
+            
+            for pattern_func, pattern_type in patterns:
+                if len(distractors) >= count:
+                    break
                 
-                for pattern_func, pattern_type in german_morphological_patterns:
-                    if len(distractors) >= count:
-                        break
-                    
-                    try:
-                        german_variant = pattern_func(base_word)
-                        if german_variant != word.lower() and len(german_variant) >= 2:
-                            # Traduire la variante allemande
-                            inputs = tokenizer_de_fr(german_variant, return_tensors="pt", padding=True)
-                            outputs = model_de_fr.generate(
-                                inputs.input_ids,
-                                max_length=20,
-                                num_beams=3,
-                                temperature=0.3
-                            )
-                            french_variant = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
-                            
-                            if is_valid_distractor(french_variant):
-                                if correct_answer[0].isupper():
-                                    french_variant = french_variant.capitalize()
-                                distractors.append(french_variant)
-                                
-                    except Exception:
-                        continue
-            else:
-                # Variations morphologiques allemandes directes
-                base = correct_answer.lower()
-                morphological_patterns = [
-                    (lambda x: x + "en", "pluriel/infinitif"),
-                    (lambda x: x + "er", "agent/comparatif"),
-                    (lambda x: x + "ung", "nominalisation"),
-                    (lambda x: x + "heit" if len(x) <= 5 else x, "qualité"),
-                    (lambda x: "ge" + x if len(x) <= 6 else x, "participe"),
-                    (lambda x: x + "lich" if len(x) <= 4 else x, "adjectif"),
-                    (lambda x: x + "schaft" if len(x) <= 4 else x, "collectif"),
-                    (lambda x: x + "bar" if len(x) <= 5 else x, "possibilité"),
-                    (lambda x: x + "los" if len(x) <= 5 else x, "privation"),
-                    (lambda x: "un" + x if len(x) <= 6 else x, "négation")
-                ]
-                
-                for pattern_func, pattern_type in morphological_patterns:
-                    if len(distractors) >= count:
-                        break
-                    
-                    try:
-                        variant = pattern_func(base)
-                        if is_valid_distractor(variant):
-                            if correct_answer[0].isupper():
-                                variant = variant.capitalize()
-                            distractors.append(variant)
-                    except Exception:
-                        continue
+                try:
+                    variant = pattern_func(base)
+                    if is_valid_distractor(variant):
+                        if correct_answer[0].isupper():
+                            variant = variant.capitalize()
+                        distractors.append(variant)
+                except Exception:
+                    continue
         
         # Stratégie 3: Génération par rhyme/assonance si encore insuffisant
         if len(distractors) < count:
-            if target_language == "fr":
-                # Générer des variantes phonétiques allemandes et les traduire
-                base_word = word.lower()
-                if len(base_word) >= 3:
-                    phonetic_variants = []
-                    
-                    # Changer la première lettre
-                    for letter in 'abcdefghijklmnopqrstuvwxyzäöüß':
-                        if letter != base_word[0]:
-                            variant = letter + base_word[1:]
-                            phonetic_variants.append(variant)
-                    
-                    # Changer la dernière lettre
-                    for letter in 'abcdefghijklmnopqrstuvwxyzäöüß':
-                        if letter != base_word[-1]:
-                            variant = base_word[:-1] + letter
-                            phonetic_variants.append(variant)
-                    
-                    # Tester quelques variantes phonétiques et les traduire
-                    for variant in phonetic_variants[:10]:  # Limiter le nombre de tentatives
-                        if len(distractors) >= count:
-                            break
+            base = correct_answer.lower()
+            if len(base) >= 3:
+                letters = 'abcdefghijklmnopqrstuvwxyz'
+                if target_language == 'de':
+                    letters += 'äöüß'
+                elif target_language == 'fr':
+                    letters += 'éèêëàâäôùûüÿç'
+                
+                # Changer la première ou dernière lettre
+                for letter in letters:
+                    if len(distractors) >= count:
+                        break
                         
-                        try:
-                            inputs = tokenizer_de_fr(variant, return_tensors="pt", padding=True)
-                            outputs = model_de_fr.generate(
-                                inputs.input_ids,
-                                max_length=20,
-                                num_beams=2,
-                                temperature=0.3
-                            )
-                            french_variant = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
-                            
-                            if is_valid_distractor(french_variant):
-                                if correct_answer[0].isupper():
-                                    french_variant = french_variant.capitalize()
-                                distractors.append(french_variant)
-                                
-                        except Exception:
-                            continue
-            else:
-                # Variations phonétiques allemandes directes
-                base = correct_answer.lower()
-                if len(base) >= 3:
-                    phonetic_variants = []
+                    variants = [
+                        letter + base[1:],  # Première lettre
+                        base[:-1] + letter  # Dernière lettre
+                    ]
                     
-                    # Changer la première lettre
-                    for letter in 'abcdefghijklmnopqrstuvwxyzäöüß':
-                        if letter != base[0]:
-                            variant = letter + base[1:]
-                            phonetic_variants.append(variant)
-                    
-                    # Changer la dernière lettre
-                    for letter in 'abcdefghijklmnopqrstuvwxyzäöüß':
-                        if letter != base[-1]:
-                            variant = base[:-1] + letter
-                            phonetic_variants.append(variant)
-                    
-                    # Tester les variantes phonétiques
-                    for variant in phonetic_variants:
-                        if len(distractors) >= count:
-                            break
+                    for variant in variants:
                         if is_valid_distractor(variant):
                             if correct_answer[0].isupper():
                                 variant = variant.capitalize()
                             distractors.append(variant)
+                            if len(distractors) >= count:
+                                break
         
         return distractors[:count]
     def _create_fallback_exercise(self, word: str, correct_answer: str, question_de: str, 
                                 question_fr: str, question_type: str) -> Dict:
         """Crée un exercice de fallback avec des options prédéfinies"""
         
-        if question_type == "de_to_fr":
-            # Distracteurs français simples
+        if question_type == f"{self.source_lang}_to_{self.target_lang}":
+            # Distracteurs pour la langue cible (ex: français)
             wrong_options = [
                 correct_answer + "er",
-                "un " + correct_answer, 
+                "le " + correct_answer, 
                 correct_answer + "tion"
             ]
         else:
-            # Distracteurs allemands simples  
+            # Distracteurs pour la langue source
             wrong_options = [
                 correct_answer + "en",
-                "der " + correct_answer,
-                correct_answer + "ung"
+                correct_answer + "er",
+                "un" + correct_answer
             ]
         
         options = [correct_answer] + wrong_options
@@ -950,15 +907,16 @@ class VocabularyProcessor:
             'type': 'multiple_choice',
             'question_type': question_type,
             'question': {
-                'de': question_de,
-                'fr': question_fr
+                self.source_lang: f"Mot dans {LANGUAGE_NAMES[self.target_lang]} pour '{word}'?",
+                self.target_lang: f"Mot en {LANGUAGE_NAMES[self.source_lang]} pour '{word}'?"
             },
             'word_to_translate': word,
             'options': options,
             'correct_answer': correct_answer,
-            'level': self.determine_word_level(word if question_type == "de_to_fr" else correct_answer),
+            'level': self.determine_word_level(word if question_type == f"{self.source_lang}_to_{self.target_lang}" else correct_answer),
             'fallback': True
         }
+
     def determine_word_level(self, word: str) -> str:
         """Détermine le niveau de difficulté du mot"""
         if len(word) <= 4:
@@ -973,22 +931,26 @@ class VocabularyProcessor:
         # Traductions et exercices
         translation_info = self.get_basic_translation(word)
         example = self.generate_simple_example(word)
-        exercise = self.create_simple_exercise(word, translation_info['fr'])
+        exercise = self.create_simple_exercise(
+            word, 
+            translation_info[self.target_lang]
+        )
         level = self.determine_word_level(word)
         
         # Récupération de la prononciation
         pronunciation_info = {'available': False, 'file': None}
-        audio_sources = self.scrape_audio_tags(word)
         
+        # Tenter de récupérer la prononciation si la langue est supportée
+        audio_sources = self.scrape_audio_tags(word)
         if audio_sources:
-            # Tenter de télécharger le premier fichier audio trouvé
             first_audio = audio_sources[0]
-            audio_filename = f"{word}_pronunciation.mp3"
+            audio_filename = f"{word}_{self.source_lang}_pronunciation.mp3"
             
             if self.download_audio_file(first_audio['url'], audio_filename):
                 pronunciation_info = {
                     'available': True,
-                    'file': str(self.output_dir / audio_filename)
+                    'file': str(self.output_dir / audio_filename),
+                    'language': self.source_lang
                 }
         
         # Construire le résultat
@@ -999,7 +961,9 @@ class VocabularyProcessor:
             'example': example,
             'exercise': exercise,
             'pronunciation': pronunciation_info,
-            'processed_at': self.get_timestamp()
+            'processed_at': self.get_timestamp(),
+            'source_language': self.source_lang,
+            'target_language': self.target_lang
         }
         
         return result
@@ -1011,9 +975,9 @@ class VocabularyProcessor:
 class AudioTranscriber:
     """Classe pour gérer la transcription audio"""
     
-    def __init__(self):
+    def __init__(self, source_lang: str = "de"):
         self.model = CONFIG['whisper_model']
-        self.language = CONFIG['language']
+        self.language = source_lang
         self.output_format = CONFIG['output_format']
     
     def transcribe_file(self, audio_path: str, output_directory: str) -> Optional[str]:
@@ -1059,39 +1023,36 @@ class ModelManager:
     def __init__(self):
         self.models = {}
     
-    def load_models(self) -> Dict:
-        """Charge tous les modèles nécessaires"""
-        print("Chargement des modèles...")
+    def load_models(self, lang_pair: str = "de-fr") -> Dict:
+        """Charge les modèles pour une paire de langues donnée"""
+        if lang_pair not in CONFIG['language_pairs']:
+            raise ValueError(f"Paire de langues non supportée: {lang_pair}")
+            
+        lang_config = CONFIG['language_pairs'][lang_pair]
+        source_lang, target_lang = lang_pair.split('-')
         
         try:
-            # Modèle de traduction DE -> FR
-            print("→ Chargement du modèle DE->FR...")
-            tokenizer_de_fr = MarianTokenizer.from_pretrained(CONFIG['translation_model_path'])
-            model_de_fr = MarianMTModel.from_pretrained(CONFIG['translation_model_path'])
+            # Modèle de traduction
+            tokenizer = MarianTokenizer.from_pretrained(lang_config['translation_model_path'])
+            model = MarianMTModel.from_pretrained(lang_config['translation_model_path'])
             
-            # Modèle GPT allemand
-            print("→ Chargement du modèle GPT allemand...")
-            tokenizer_gpt_de = AutoTokenizer.from_pretrained(CONFIG['german_gpt_model'])
-            model_gpt_de = GPT2LMHeadModel.from_pretrained(CONFIG['german_gpt_model'])
+            # Modèles GPT source et cible
+            tokenizer_gpt_source = AutoTokenizer.from_pretrained(lang_config['source_gpt_model'])
+            model_gpt_source = GPT2LMHeadModel.from_pretrained(lang_config['source_gpt_model'])
+            tokenizer_gpt_target = AutoTokenizer.from_pretrained(lang_config['target_gpt_model'])
+            model_gpt_target = GPT2LMHeadModel.from_pretrained(lang_config['target_gpt_model'])
             
-            # Modèle GPT français
-            print("→ Chargement du modèle GPT français...")
-            tokenizer_gpt_fr = AutoTokenizer.from_pretrained(CONFIG['french_gpt_model'])
-            model_gpt_fr = GPT2LMHeadModel.from_pretrained(CONFIG['french_gpt_model'])
-            
-            # Configuration des tokenizers GPT
-            if tokenizer_gpt_de.pad_token is None:
-                tokenizer_gpt_de.pad_token = tokenizer_gpt_de.eos_token
-            if tokenizer_gpt_fr.pad_token is None:
-                tokenizer_gpt_fr.pad_token = tokenizer_gpt_fr.eos_token
+            # Configuration des pad tokens
+            if tokenizer_gpt_source.pad_token is None:
+                tokenizer_gpt_source.pad_token = tokenizer_gpt_source.eos_token
+            if tokenizer_gpt_target.pad_token is None:
+                tokenizer_gpt_target.pad_token = tokenizer_gpt_target.eos_token
             
             self.models = {
-                'de_fr': (tokenizer_de_fr, model_de_fr),
-                'gpt_de': (tokenizer_gpt_de, model_gpt_de),
-                'gpt_fr': (tokenizer_gpt_fr, model_gpt_fr)
+                lang_pair: (tokenizer, model),
+                f'gpt_{source_lang}': (tokenizer_gpt_source, model_gpt_source),
+                f'gpt_{target_lang}': (tokenizer_gpt_target, model_gpt_target)
             }
-            
-            print("✓ Tous les modèles chargés avec succès")
             return self.models
             
         except Exception as e:
@@ -1206,13 +1167,25 @@ class TranscriptionProcessor:
 def main():
     """Fonction principale"""
     parser = argparse.ArgumentParser(
-        description="Transcrit et analyse un fichier audio en allemand",
-        epilog="Exemple: python script.py audio.mp3 - Les fichiers seront créés dans ~/sprech-audio/nom-audio/"
+        description="Transcrit et analyse un fichier audio dans la langue source",
+        epilog="Exemple: python script.py audio.mp3 --source-lang de --target-lang fr"
     )
     
     parser.add_argument(
         "audio_file",
-        help="Fichier audio à traiter. Les fichiers de sortie seront créés dans ~/sprech-audio/nom-audio/"
+        help="Fichier audio à traiter"
+    )
+    
+    parser.add_argument(
+        "--source-lang",
+        default="de",
+        help=f"Langue source (défaut: de). Langues supportées: {', '.join(LANGUAGE_NAMES.keys())}"
+    )
+    
+    parser.add_argument(
+        "--target-lang",
+        default="fr",
+        help=f"Langue cible (défaut: fr). Langues supportées: {', '.join(LANGUAGE_NAMES.keys())}"
     )
     
     parser.add_argument(
@@ -1231,12 +1204,21 @@ def main():
     
     args = parser.parse_args()
     
+    # Vérifier si la paire de langues est supportée
+    lang_pair = f"{args.source_lang}-{args.target_lang}"
+    if lang_pair not in CONFIG['language_pairs']:
+        print(f"✗ Paire de langues non supportée: {lang_pair}")
+        print(f"Paires supportées: {', '.join(CONFIG['language_pairs'].keys())}")
+        sys.exit(1)
+    
     # Mettre à jour la configuration
     CONFIG['max_vocabulary_size'] = args.max_vocab
     CONFIG['whisper_model'] = args.model
+    CONFIG['language'] = args.source_lang
     
     # Traitement 
     processor = TranscriptionProcessor()
+    processor.transcriber = AudioTranscriber(source_lang=args.source_lang)
     success = processor.process_audio_file(args.audio_file)
     
     sys.exit(0 if success else 1)
