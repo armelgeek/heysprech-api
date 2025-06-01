@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Création et définition du répertoire de travail
+# Création des répertoires de travail
 WORKDIR /app
 
 # Copie des fichiers nécessaires
@@ -16,9 +16,6 @@ COPY opus-mt-de-fr/ ./opus-mt-de-fr/
 
 # Installation des dépendances Python
 RUN pip install -r requirements.txt
-
-# Création du dossier pour les fichiers audio dans home
-RUN mkdir -p /root/sprech-audio
 
 # Point d'entrée
 ENTRYPOINT ["python", "cli.py"]
