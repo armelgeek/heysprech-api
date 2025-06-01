@@ -26,6 +26,15 @@ from transformers import (
 from tqdm import tqdm
 
 
+def get_output_folder(audio_path: str) -> Path:
+    """Crée et retourne le dossier de sortie pour un fichier audio"""
+    audio_name = Path(audio_path).stem
+    output_base = Path.home() / "sprech-audio"
+    output_dir = output_base / audio_name
+    output_dir.mkdir(parents=True, exist_ok=True)
+    return output_dir
+
+
 # Configuration globale
 CONFIG = {
     'whisper_model': "base",
@@ -1167,18 +1176,19 @@ class TranscriptionProcessor:
             print(f"✗ Erreur lors du traitement: {e}")
             return False
     
-    def process_audio_file(self, audio_path: str, output_dir: str) -> bool:
+    def process_audio_file(self, audio_path: str, output_dir: str = None) -> bool:
         """Traite un fichier audio complet"""
         # Validation
         if not self.validate_audio_file(audio_path):
             return False
         
-        # Utiliser le dossier de l'audio comme dossier de sortie
-        input_audio_dir = str(Path(audio_path).parent)
+        # Créer le dossier de sortie dans ~/sprech-audio/nom_audio/
+        output_dir = str(get_output_folder(audio_path))
+        print(f"Dossier de sortie: {output_dir}")
         
         # Étape 1: Transcription
         print("\n=== ÉTAPE 1: TRANSCRIPTION ===")
-        json_path = self.transcriber.transcribe_file(audio_path, input_audio_dir)
+        json_path = self.transcriber.transcribe_file(audio_path, output_dir)
         if not json_path:
             return False
         
@@ -1195,12 +1205,12 @@ def main():
     """Fonction principale"""
     parser = argparse.ArgumentParser(
         description="Transcrit et analyse un fichier audio en allemand",
-        epilog="Exemple: python script.py audio.mp3"
+        epilog="Exemple: python script.py audio.mp3 - Les fichiers seront créés dans ~/sprech-audio/nom-audio/"
     )
     
     parser.add_argument(
         "audio_file",
-        help="Fichier audio à traiter. Les fichiers de sortie seront créés dans le même dossier."
+        help="Fichier audio à traiter. Les fichiers de sortie seront créés dans ~/sprech-audio/nom-audio/"
     )
     
     parser.add_argument(
@@ -1225,9 +1235,7 @@ def main():
     
     # Traitement 
     processor = TranscriptionProcessor()
-    # Utiliser le dossier du fichier audio comme sortie
-    audio_dir = str(Path(args.audio_file).parent)
-    success = processor.process_audio_file(args.audio_file, audio_dir)
+    success = processor.process_audio_file(args.audio_file)
     
     sys.exit(0 if success else 1)
 
