@@ -16,13 +16,13 @@ RUN mkdir -p /workdir/de /workdir/en /workdir/fr
 RUN pip install --no-cache-dir torch torchaudio --index-url https://download.pytorch.org/whl/cpu
 RUN pip install --no-cache-dir git+https://github.com/m-bain/whisperx.git
 
-# Copie des fichiers nécessaires
-COPY requirements.txt .
-COPY cli.py .
-COPY opus-mt-de-fr/ ./opus-mt-de-fr/
+# Copie des fichiers nécessaires dans /app (pas dans /workdir)
+COPY requirements.txt /app/
+COPY cli.py /app/
+COPY opus-mt-de-fr/ /app/opus-mt-de-fr/
 
 # Installation des autres dépendances Python
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Point d'entrée
-ENTRYPOINT ["python", "cli.py"]
+ENTRYPOINT ["python", "/app/cli.py"]
