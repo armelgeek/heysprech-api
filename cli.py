@@ -29,7 +29,7 @@ from tqdm import tqdm
 def get_output_folder(audio_path: str) -> Path:
     """Crée et retourne le dossier de sortie pour un fichier audio"""
     audio_name = Path(audio_path).stem
-    output_dir = Path("/app/output") / audio_name
+    output_dir = Path("/app") / CONFIG['language'] / audio_name
     output_dir.mkdir(parents=True, exist_ok=True)
     return output_dir
 
@@ -928,6 +928,9 @@ class VocabularyProcessor:
     
     def process_word(self, word: str) -> Dict:
         """Traite un mot complet avec traduction, exemple et exercice"""
+        # Structure de dossiers simplifiée
+        lang_dir = self.output_dir
+        
         # Traductions et exercices
         translation_info = self.get_basic_translation(word)
         example = self.generate_simple_example(word)
@@ -937,37 +940,44 @@ class VocabularyProcessor:
         )
         level = self.determine_word_level(word)
         
-        # Récupération de la prononciation
-        pronunciation_info = {'available': False, 'file': None}
-        
-        # Tenter de récupérer la prononciation si la langue est supportée
+        # Chercher et télécharger les prononciations
         audio_sources = self.scrape_audio_tags(word)
-        if audio_sources:
-            first_audio = audio_sources[0]
-            audio_filename = f"{word}_{self.source_lang}_pronunciation.mp3"
-            
-            if self.download_audio_file(first_audio['url'], audio_filename):
-                pronunciation_info = {
-                    'available': True,
-                    'file': str(self.output_dir / audio_filename),
-                    'language': self.source_lang
-                }
+        pronunciations = []
         
-        # Construire le résultat
+        for idx, source in enumerate(audio_sources[:CONFIG['max_examples_per_word']]):
+            filename = f"{word}_{idx + 1}{Path(source['url']).suffix}"
+            filepath = lang_dir / f"pron_{filename}"
+            
+            if self.download_audio_file(source['url'], str(filepath)):
+                pronunciations.append({
+                    'file': str(filepath),
+                    'type': source['type'],
+                    'language': source['language']
+                })
+        
+        # Créer le résultat JSON avec métadonnées de langue
         result = {
             'word': word,
+            'timestamp': self.get_timestamp(),
+            'translations': translation_info,
+            'examples': example,
+            'exercises': exercise,
             'level': level,
-            'translation': translation_info,
-            'example': example,
-            'exercise': exercise,
-            'pronunciation': pronunciation_info,
-            'processed_at': self.get_timestamp(),
-            'source_language': self.source_lang,
-            'target_language': self.target_lang
+            'pronunciations': pronunciations,
+            'metadata': {
+                'source_language': self.source_lang,
+                'target_language': self.target_lang,
+                'source_lang_name': LANGUAGE_NAMES.get(self.source_lang, self.source_lang),
+                'target_lang_name': LANGUAGE_NAMES.get(self.target_lang, self.target_lang)
+            }
         }
         
+        # Sauvegarder dans un seul fichier JSON
+        word_file = lang_dir / f"{word}.json"
+        with open(word_file, 'w', encoding='utf-8') as f:
+            json.dump(result, f, ensure_ascii=False, indent=2)
+            
         return result
-    
     def get_timestamp(self) -> str:
         """Retourne un timestamp pour le traitement"""
         from datetime import datetime
