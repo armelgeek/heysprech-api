@@ -30,6 +30,7 @@ CONFIG = {
     'output_format': "json",
     'translation_model_path': "./opus-mt-de-fr",
     'german_gpt_model': "benjamin/gpt2-wechsel-german",
+    'french_gpt_model': "dbddv01/gpt2-french-small",
     'max_vocabulary_size': 100,  # Limiter le nombre de mots à traiter
     'min_word_length': 2,
     'max_examples_per_word': 3,
@@ -241,7 +242,7 @@ class VocabularyProcessor:
     
     def generate_simple_example(self, word: str) -> Dict[str, str]:
         """Génère un exemple simple d'utilisation"""
-        tokenizer_gpt, model_gpt = self.models['gpt']
+        tokenizer_gpt_de, model_gpt_de = self.models['gpt_de']
         tokenizer_de_fr, model_de_fr = self.models['de_fr']
         
         # Templates simples prédéfinis
@@ -346,61 +347,49 @@ class VocabularyProcessor:
     def _generate_distractors(self, word: str, correct_answer: str, target_language: str, count: int = 3) -> List[str]:
         """Génère des distracteurs (mauvaises réponses) pour le QCM"""
         distractors = []
-        tokenizer_gpt, model_gpt = self.models['gpt']
+        tokenizer_gpt_de, model_gpt_de = self.models['gpt_de']
+        tokenizer_gpt_fr, model_gpt_fr = self.models['gpt_fr']
         tokenizer_de_fr, model_de_fr = self.models['de_fr']
         
-        # Stratégie 1: Générer des mots aléatoires et les traduire
+        # Stratégie 1: Générer des mots directement avec le modèle GPT approprié
         if target_language == "fr":
-            # Pour les distracteurs français, générer des mots allemands et les traduire
-            german_prompts = [
-                "Ein deutsches Wort: Haus",
-                "Noch ein deutsches Wort: Auto", 
-                "Ein anderes deutsches Wort: Buch"
+            # Pour les distracteurs français, utiliser le modèle GPT français
+            french_prompts = [
+                "Voici des mots français: maison, voiture,",
+                "Mots français: livre, table,",
+                "Autres mots: fenêtre, porte,"
             ]
             
-            for prompt in german_prompts:
+            for prompt in french_prompts:
                 try:
-                    # Générer un mot allemand
-                    inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-                    outputs = model_gpt.generate(
+                    inputs = tokenizer_gpt_fr(prompt, return_tensors="pt", padding=True)
+                    outputs = model_gpt_fr.generate(
                         inputs.input_ids,
                         max_length=inputs.input_ids.shape[1] + 5,
                         num_return_sequences=1,
                         temperature=0.8,
                         do_sample=True,
-                        pad_token_id=tokenizer_gpt.eos_token_id
+                        pad_token_id=tokenizer_gpt_fr.eos_token_id
                     )
                     
-                    generated_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
-                    # Extraire le nouveau mot généré (après le prompt)
-                    new_words = generated_text.replace(prompt, "").strip().split()
+                    generated_text = tokenizer_gpt_fr.decode(outputs[0], skip_special_tokens=True)
+                    # Extraire les nouveaux mots
+                    new_part = generated_text.replace(prompt, "").strip()
+                    words = re.findall(r'\b[a-zA-ZàâäéèêëïîôùûüÿçÀÂÄÉÈÊËÏÎÔÙÛÜŸÇ]{3,}\b', new_part)
                     
-                    if new_words:
-                        german_word = new_words[0].lower()
-                        # Nettoyer le mot
-                        german_word = re.sub(r'[^a-zäöüß]', '', german_word)
-                        
-                        if german_word and german_word != word.lower():
-                            # Traduire en français
-                            translation_input = tokenizer_de_fr(german_word, return_tensors="pt", padding=True)
-                            translation_output = model_de_fr.generate(
-                                translation_input.input_ids,
-                                max_length=20,
-                                num_beams=2,
-                                temperature=0.3,
-                                pad_token_id=tokenizer_de_fr.eos_token_id
-                            )
-                            french_word = tokenizer_de_fr.decode(translation_output[0], skip_special_tokens=True).strip()
+                    for french_word in words:
+                        french_word = french_word.lower()
+                        if (french_word != correct_answer.lower() and 
+                            french_word not in distractors and
+                            len(distractors) < count):
+                            distractors.append(french_word)
                             
-                            if french_word and french_word != correct_answer and french_word not in distractors:
-                                distractors.append(french_word)
-                                
                 except Exception as e:
                     print(f"Erreur génération distracteur français: {e}")
                     continue
                     
         else:  # target_language == "de"
-            # Pour les distracteurs allemands, utiliser le modèle GPT directement
+            # Pour les distracteurs allemands, utiliser le modèle GPT allemand
             german_prompts = [
                 "Hier sind deutsche Wörter: Katze, Hund,",
                 "Deutsche Substantive: Tisch, Stuhl,",
@@ -409,17 +398,17 @@ class VocabularyProcessor:
             
             for prompt in german_prompts:
                 try:
-                    inputs = tokenizer_gpt(prompt, return_tensors="pt", padding=True)
-                    outputs = model_gpt.generate(
+                    inputs = tokenizer_gpt_de(prompt, return_tensors="pt", padding=True)
+                    outputs = model_gpt_de.generate(
                         inputs.input_ids,
                         max_length=inputs.input_ids.shape[1] + 5,
                         num_return_sequences=1,
                         temperature=0.8,
                         do_sample=True,
-                        pad_token_id=tokenizer_gpt.eos_token_id
+                        pad_token_id=tokenizer_gpt_de.eos_token_id
                     )
                     
-                    generated_text = tokenizer_gpt.decode(outputs[0], skip_special_tokens=True)
+                    generated_text = tokenizer_gpt_de.decode(outputs[0], skip_special_tokens=True)
                     # Extraire les nouveaux mots
                     new_part = generated_text.replace(prompt, "").strip()
                     words = re.findall(r'\b[a-zäöüßA-ZÄÖÜ]{3,}\b', new_part)
@@ -546,7 +535,6 @@ class VocabularyProcessor:
         """Retourne un timestamp pour le traitement"""
         from datetime import datetime
         return datetime.now().isoformat()
-
 class AudioTranscriber:
     """Classe pour gérer la transcription audio"""
     
@@ -610,16 +598,24 @@ class ModelManager:
             
             # Modèle GPT allemand
             print("→ Chargement du modèle GPT allemand...")
-            tokenizer_gpt = AutoTokenizer.from_pretrained(CONFIG['german_gpt_model'])
-            model_gpt = GPT2LMHeadModel.from_pretrained(CONFIG['german_gpt_model'])
+            tokenizer_gpt_de = AutoTokenizer.from_pretrained(CONFIG['german_gpt_model'])
+            model_gpt_de = GPT2LMHeadModel.from_pretrained(CONFIG['german_gpt_model'])
             
-            # Configuration du tokenizer GPT
-            if tokenizer_gpt.pad_token is None:
-                tokenizer_gpt.pad_token = tokenizer_gpt.eos_token
+            # Modèle GPT français
+            print("→ Chargement du modèle GPT français...")
+            tokenizer_gpt_fr = AutoTokenizer.from_pretrained(CONFIG['french_gpt_model'])
+            model_gpt_fr = GPT2LMHeadModel.from_pretrained(CONFIG['french_gpt_model'])
+            
+            # Configuration des tokenizers GPT
+            if tokenizer_gpt_de.pad_token is None:
+                tokenizer_gpt_de.pad_token = tokenizer_gpt_de.eos_token
+            if tokenizer_gpt_fr.pad_token is None:
+                tokenizer_gpt_fr.pad_token = tokenizer_gpt_fr.eos_token
             
             self.models = {
                 'de_fr': (tokenizer_de_fr, model_de_fr),
-                'gpt': (tokenizer_gpt, model_gpt)
+                'gpt_de': (tokenizer_gpt_de, model_gpt_de),
+                'gpt_fr': (tokenizer_gpt_fr, model_gpt_fr)
             }
             
             print("✓ Tous les modèles chargés avec succès")
@@ -628,7 +624,6 @@ class ModelManager:
         except Exception as e:
             print(f"✗ Erreur lors du chargement des modèles: {e}")
             raise
-
 class TranscriptionProcessor:
     """Classe principale pour traiter la transcription complète"""
     
