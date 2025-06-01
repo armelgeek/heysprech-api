@@ -48,7 +48,7 @@
           "score": 0.854
         }
       ],
-      "translation": "Quelque chose me distingue de vous."
+      "translation": "document"
     },
     {
       "start": 7.938,
@@ -74,7 +74,7 @@
           "score": 0.864
         }
       ],
-      "translation": "Je peux y aller."
+      "translation": "The"
     }
   ],
   "word_segments": [
@@ -146,11 +146,18 @@
       "level": "beginner",
       "translation": {
         "de": "eine",
-        "fr": "une"
+        "fr": "une",
+        "raw_translation": "une",
+        "candidates": {
+          "rule_based": "une",
+          "contextual": "The",
+          "t5": "reformulate: une"
+        },
+        "method_used": "rule_based"
       },
       "example": {
-        "de": "Der eine ist schön.",
-        "fr": "L'un est beau."
+        "de": "Wir brauchen eine.",
+        "fr": "Il nous en faut une."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -164,9 +171,9 @@
           "word_to_translate": "eine",
           "options": [
             "une",
-            "deux",
-            "non",
-            "mais"
+            "local",
+            "iekim",
+            "et"
           ],
           "correct_answer": "une",
           "level": "beginner"
@@ -180,9 +187,9 @@
           },
           "word_to_translate": "une",
           "options": [
-            "ein",
-            "einer",
             "örtlich",
+            "oder",
+            "mit",
             "eine"
           ],
           "correct_answer": "eine",
@@ -194,18 +201,25 @@
         "available": true,
         "file": "pronunciations/eine_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:28:44.701899"
+      "processed_at": "2025-06-01T05:25:19.897567"
     },
     {
       "word": "etwas",
       "level": "intermediate",
       "translation": {
         "de": "etwas",
-        "fr": "quelque chose"
+        "fr": "quelque",
+        "raw_translation": "quelque chose",
+        "candidates": {
+          "rule_based": "quelque",
+          "contextual": "The",
+          "t5": "reformulate: quelque chose"
+        },
+        "method_used": "rule_based"
       },
       "example": {
-        "de": "Das ist ein etwas.",
-        "fr": "C'est quelque chose."
+        "de": "Der etwas ist schön.",
+        "fr": "C'est beau."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -218,26 +232,27 @@
           },
           "word_to_translate": "etwas",
           "options": [
-            "quelque chose",
-            "particulièrement",
-            "chronologie"
+            "quelque",
+            "différents",
+            "local",
+            "ecchymoses"
           ],
-          "correct_answer": "quelque chose",
+          "correct_answer": "quelque",
           "level": "intermediate"
         },
         "fr_to_de": {
           "type": "multiple_choice",
           "question_type": "fr_to_de",
           "question": {
-            "de": "Welches deutsche Wort bedeutet 'quelque chose'?",
-            "fr": "Quel est le mot allemand pour 'quelque chose'?"
+            "de": "Welches deutsche Wort bedeutet 'quelque'?",
+            "fr": "Quel est le mot allemand pour 'quelque'?"
           },
-          "word_to_translate": "quelque chose",
+          "word_to_translate": "quelque",
           "options": [
-            "als",
-            "anders",
             "etwas",
-            "örtlich"
+            "örtlich",
+            "auch",
+            "ugs"
           ],
           "correct_answer": "etwas",
           "level": "intermediate"
@@ -248,18 +263,25 @@
         "available": true,
         "file": "pronunciations/etwas_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:28:58.927738"
+      "processed_at": "2025-06-01T05:25:28.436155"
     },
     {
       "word": "euch",
       "level": "beginner",
       "translation": {
         "de": "euch",
-        "fr": "à vous"
+        "fr": "The",
+        "raw_translation": "à vous",
+        "candidates": {
+          "rule_based": "à vous",
+          "contextual": "The",
+          "t5": "reformulate: à vous"
+        },
+        "method_used": "contextual"
       },
       "example": {
-        "de": "Der euch ist schön.",
-        "fr": "Vous êtes belles."
+        "de": "Ich habe einen euch.",
+        "fr": "J'en ai un pour vous."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -272,27 +294,27 @@
           },
           "word_to_translate": "euch",
           "options": [
-            "à vous",
+            "Avec",
+            "The",
             "Votre",
-            "dans",
-            "leur"
+            "Verbe"
           ],
-          "correct_answer": "à vous",
+          "correct_answer": "The",
           "level": "beginner"
         },
         "fr_to_de": {
           "type": "multiple_choice",
           "question_type": "fr_to_de",
           "question": {
-            "de": "Welches deutsche Wort bedeutet 'à vous'?",
-            "fr": "Quel est le mot allemand pour 'à vous'?"
+            "de": "Welches deutsche Wort bedeutet 'The'?",
+            "fr": "Quel est le mot allemand pour 'The'?"
           },
-          "word_to_translate": "à vous",
+          "word_to_translate": "The",
           "options": [
-            "und",
-            "engen",
-            "euern",
-            "euch"
+            "wort",
+            "euch",
+            "uch",
+            "das"
           ],
           "correct_answer": "euch",
           "level": "beginner"
@@ -303,18 +325,25 @@
         "available": true,
         "file": "pronunciations/euch_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:29:08.399614"
+      "processed_at": "2025-06-01T05:25:37.179231"
     },
     {
       "word": "gehen",
       "level": "intermediate",
       "translation": {
         "de": "gehen",
-        "fr": "aller"
+        "fr": "reformul",
+        "raw_translation": "aller",
+        "candidates": {
+          "rule_based": "aller",
+          "contextual": "The",
+          "t5": "reformul"
+        },
+        "method_used": "t5"
       },
       "example": {
-        "de": "Ich habe einen gehen.",
-        "fr": "J'en ai un."
+        "de": "Der gehen ist schön.",
+        "fr": "C'est beau de partir."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -327,26 +356,26 @@
           },
           "word_to_translate": "gehen",
           "options": [
-            "ammoniac",
-            "anglais",
-            "dans",
-            "aller"
+            "reformul",
+            "accessible",
+            "rapides",
+            "henrius"
           ],
-          "correct_answer": "aller",
+          "correct_answer": "reformul",
           "level": "intermediate"
         },
         "fr_to_de": {
           "type": "multiple_choice",
           "question_type": "fr_to_de",
           "question": {
-            "de": "Welches deutsche Wort bedeutet 'aller'?",
-            "fr": "Quel est le mot allemand pour 'aller'?"
+            "de": "Welches deutsche Wort bedeutet 'reformul'?",
+            "fr": "Quel est le mot allemand pour 'reformul'?"
           },
-          "word_to_translate": "aller",
+          "word_to_translate": "reformul",
           "options": [
+            "worte",
+            "gehe",
             "eilen",
-            "man",
-            "muss",
             "gehen"
           ],
           "correct_answer": "gehen",
@@ -358,18 +387,25 @@
         "available": true,
         "file": "pronunciations/gehen_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:29:14.130359"
+      "processed_at": "2025-06-01T05:25:50.131866"
     },
     {
       "word": "ich",
       "level": "beginner",
       "translation": {
         "de": "ich",
-        "fr": "isé"
+        "fr": "isé",
+        "raw_translation": "isé",
+        "candidates": {
+          "rule_based": "isé",
+          "contextual": "The",
+          "t5": "reformulate: isé"
+        },
+        "method_used": "rule_based"
       },
       "example": {
-        "de": "Der ich ist schön.",
-        "fr": "Celui que je suis belle."
+        "de": "Wir brauchen ich.",
+        "fr": "On a besoin de moi."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -382,10 +418,10 @@
           },
           "word_to_translate": "ich",
           "options": [
-            "mots",
-            "isé",
-            "non",
-            "ou"
+            "unich",
+            "ou",
+            "le",
+            "isé"
           ],
           "correct_answer": "isé",
           "level": "beginner"
@@ -400,9 +436,9 @@
           "word_to_translate": "isé",
           "options": [
             "ich",
-            "tight",
-            "und",
-            "als"
+            "denke",
+            "in",
+            "über"
           ],
           "correct_answer": "ich",
           "level": "beginner"
@@ -413,18 +449,25 @@
         "available": true,
         "file": "pronunciations/ich_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:29:22.177702"
+      "processed_at": "2025-06-01T05:26:03.846702"
     },
     {
       "word": "kann",
       "level": "beginner",
       "translation": {
         "de": "kann",
-        "fr": "peut"
+        "fr": "peut",
+        "raw_translation": "peut",
+        "candidates": {
+          "rule_based": "peut",
+          "contextual": "The",
+          "t5": "reformulate:"
+        },
+        "method_used": "rule_based"
       },
       "example": {
-        "de": "Wir brauchen kann.",
-        "fr": "On peut en avoir besoin."
+        "de": "Das ist ein kann.",
+        "fr": "C'est possible."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -437,10 +480,10 @@
           },
           "word_to_translate": "kann",
           "options": [
-            "rien",
             "peut",
-            "tétra",
-            "local"
+            "iex",
+            "taux",
+            "avec"
           ],
           "correct_answer": "peut",
           "level": "beginner"
@@ -454,10 +497,10 @@
           },
           "word_to_translate": "peut",
           "options": [
-            "kann",
+            "mit",
             "ändere",
-            "nicht",
-            "darf"
+            "einem",
+            "kann"
           ],
           "correct_answer": "kann",
           "level": "beginner"
@@ -468,18 +511,25 @@
         "available": true,
         "file": "pronunciations/kann_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:29:29.913234"
+      "processed_at": "2025-06-01T05:26:11.897519"
     },
     {
       "word": "kleinigkeit",
       "level": "advanced",
       "translation": {
         "de": "kleinigkeit",
-        "fr": "Petiteur"
+        "fr": "The",
+        "raw_translation": "Petiteur",
+        "candidates": {
+          "rule_based": "Petiteur",
+          "contextual": "The",
+          "t5": "reformulate: Petiteur"
+        },
+        "method_used": "contextual"
       },
       "example": {
-        "de": "Wir brauchen kleinigkeit.",
-        "fr": "On a besoin de petites choses."
+        "de": "Das ist ein kleinigkeit.",
+        "fr": "C'est une petite chose."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -492,27 +542,27 @@
           },
           "word_to_translate": "kleinigkeit",
           "options": [
-            "Petiteur",
-            "Compétence",
-            "Règlement",
-            "Corbeille"
+            "Ordre",
+            "Dans",
+            "The",
+            "Et"
           ],
-          "correct_answer": "Petiteur",
+          "correct_answer": "The",
           "level": "advanced"
         },
         "fr_to_de": {
           "type": "multiple_choice",
           "question_type": "fr_to_de",
           "question": {
-            "de": "Welches deutsche Wort bedeutet 'Petiteur'?",
-            "fr": "Quel est le mot allemand pour 'Petiteur'?"
+            "de": "Welches deutsche Wort bedeutet 'The'?",
+            "fr": "Quel est le mot allemand pour 'The'?"
           },
-          "word_to_translate": "Petiteur",
+          "word_to_translate": "The",
           "options": [
-            "schlagwörter",
-            "kleinigkeit",
+            "vereinigung",
             "änderungen",
-            "einstellungen"
+            "kleinigkeit",
+            "kleinheit"
           ],
           "correct_answer": "kleinigkeit",
           "level": "advanced"
@@ -523,18 +573,25 @@
         "available": true,
         "file": "pronunciations/kleinigkeit_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:29:40.705517"
+      "processed_at": "2025-06-01T05:26:23.777687"
     },
     {
       "word": "mich",
       "level": "beginner",
       "translation": {
         "de": "mich",
-        "fr": "moi"
+        "fr": "moi",
+        "raw_translation": "moi",
+        "candidates": {
+          "rule_based": "moi",
+          "contextual": "The",
+          "t5": ": moi"
+        },
+        "method_used": "rule_based"
       },
       "example": {
-        "de": "Der mich ist schön.",
-        "fr": "Celui-là est beau."
+        "de": "Das ist ein mich.",
+        "fr": "C'est moi."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -547,10 +604,10 @@
           },
           "word_to_translate": "mich",
           "options": [
-            "et",
+            "sts",
             "moi",
-            "isé",
-            "ic"
+            "mon",
+            "le"
           ],
           "correct_answer": "moi",
           "level": "beginner"
@@ -564,10 +621,10 @@
           },
           "word_to_translate": "moi",
           "options": [
-            "mensch",
-            "mit",
-            "ein",
-            "mich"
+            "das",
+            "mich",
+            "wort",
+            "aus"
           ],
           "correct_answer": "mich",
           "level": "beginner"
@@ -578,18 +635,25 @@
         "available": true,
         "file": "pronunciations/mich_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:29:47.070025"
+      "processed_at": "2025-06-01T05:26:32.439611"
     },
     {
       "word": "unterscheidet",
       "level": "advanced",
       "translation": {
         "de": "unterscheidet",
-        "fr": "différent"
+        "fr": "différent",
+        "raw_translation": "différent",
+        "candidates": {
+          "rule_based": "différent",
+          "contextual": "The",
+          "t5": "reformulate: différent"
+        },
+        "method_used": "rule_based"
       },
       "example": {
-        "de": "Das ist ein unterscheidet.",
-        "fr": "C'est une différence."
+        "de": "Ich habe einen unterscheidet.",
+        "fr": "J'en ai fait une différence."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -602,10 +666,10 @@
           },
           "word_to_translate": "unterscheidet",
           "options": [
-            "modifier",
+            "arbitrage",
             "différent",
-            "compensation",
-            "téthilisés"
+            "Annulation",
+            "superposés"
           ],
           "correct_answer": "différent",
           "level": "advanced"
@@ -619,10 +683,10 @@
           },
           "word_to_translate": "différent",
           "options": [
-            "agnostizieren",
+            "unterscheidet",
+            "unterscheideter",
             "unterscheiden",
-            "rehabilitieren",
-            "unterscheidet"
+            "unterscheideten"
           ],
           "correct_answer": "unterscheidet",
           "level": "advanced"
@@ -633,14 +697,21 @@
         "available": true,
         "file": "pronunciations/unterscheidet_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:29:55.095224"
+      "processed_at": "2025-06-01T05:26:44.675842"
     },
     {
       "word": "von",
       "level": "beginner",
       "translation": {
         "de": "von",
-        "fr": "de"
+        "fr": "reformul",
+        "raw_translation": "de",
+        "candidates": {
+          "rule_based": "de",
+          "contextual": "The",
+          "t5": "reformul"
+        },
+        "method_used": "t5"
       },
       "example": {
         "de": "Wir brauchen von.",
@@ -657,27 +728,27 @@
           },
           "word_to_translate": "von",
           "options": [
-            "le",
-            "est",
-            "et",
-            "de"
+            "reformul",
+            "céleste",
+            "Autres",
+            "Soleil"
           ],
-          "correct_answer": "de",
+          "correct_answer": "reformul",
           "level": "beginner"
         },
         "fr_to_de": {
           "type": "multiple_choice",
           "question_type": "fr_to_de",
           "question": {
-            "de": "Welches deutsche Wort bedeutet 'de'?",
-            "fr": "Quel est le mot allemand pour 'de'?"
+            "de": "Welches deutsche Wort bedeutet 'reformul'?",
+            "fr": "Quel est le mot allemand pour 'reformul'?"
           },
-          "word_to_translate": "de",
+          "word_to_translate": "reformul",
           "options": [
+            "für",
+            "jp",
             "von",
-            "anp",
-            "oder",
-            "ominal"
+            "das"
           ],
           "correct_answer": "von",
           "level": "beginner"
@@ -688,7 +759,7 @@
         "available": true,
         "file": "pronunciations/von_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:30:02.853288"
+      "processed_at": "2025-06-01T05:26:58.621282"
     }
   ],
   "vocabulary_stats": {
