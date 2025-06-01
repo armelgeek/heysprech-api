@@ -17,7 +17,10 @@ from transformers import (
     MarianMTModel, 
     MarianTokenizer, 
     GPT2LMHeadModel, 
-    AutoTokenizer
+    AutoTokenizer,
+    T5ForConditionalGeneration, 
+    T5Tokenizer,
+    pipeline
 )
 
 from tqdm import tqdm
@@ -41,6 +44,277 @@ AUDIO_EXTENSIONS = (
     ".opus", ".mp3", ".wav", ".m4a", ".ogg",
     ".flac", ".aac", ".aiff", ".wma"
 )
+class TranslationRefiner:
+    """Classe pour raffiner et reformuler les traductions"""
+    
+    def __init__(self):
+        self.refiner_model = None
+        self.refiner_tokenizer = None
+        self.correction_pipeline = None
+        self.load_refinement_models()
+    
+    def load_refinement_models(self):
+        """Charge les modèles de reformulation"""
+        try:
+            # Option 1: Modèle T5 français pour reformulation
+            print("→ Chargement du modèle de reformulation T5...")
+            self.refiner_tokenizer = T5Tokenizer.from_pretrained("t5-small")
+            self.refiner_model = T5ForConditionalGeneration.from_pretrained("t5-small")
+            
+            # Option 2: Pipeline de correction grammaticale
+            print("→ Chargement du pipeline de correction...")
+            self.correction_pipeline = pipeline(
+                "text2text-generation",
+                model="pszemraj/flan-t5-base-grammar-synthesis",
+                tokenizer="pszemraj/flan-t5-base-grammar-synthesis"
+            )
+            
+        except Exception as e:
+            print(f"Erreur chargement modèles de reformulation: {e}")
+    
+    def refine_translation_with_t5(self, raw_translation: str, source_word: str) -> str:
+        """Utilise T5 pour reformuler la traduction"""
+        if not self.refiner_model:
+            return raw_translation
+        
+        try:
+            # Créer un prompt de reformulation
+            prompt = f"reformulate: {raw_translation}"
+            
+            inputs = self.refiner_tokenizer(
+                prompt, 
+                return_tensors="pt", 
+                max_length=64,
+                truncation=True
+            )
+            
+            outputs = self.refiner_model.generate(
+                inputs.input_ids,
+                max_length=32,
+                num_beams=3,
+                temperature=0.3,
+                do_sample=False,
+                early_stopping=True
+            )
+            
+            refined = self.refiner_tokenizer.decode(outputs[0], skip_special_tokens=True)
+            
+            # Vérifier que c'est cohérent
+            if refined and len(refined.split()) <= 3 and refined != source_word:
+                return refined.strip()
+            
+        except Exception as e:
+            print(f"Erreur reformulation T5: {e}")
+        
+        return raw_translation
+    
+    def refine_with_grammar_correction(self, raw_translation: str) -> str:
+        """Utilise un modèle de correction grammaticale"""
+        if not self.correction_pipeline:
+            return raw_translation
+        
+        try:
+            # Créer un prompt de correction
+            prompt = f"correct: {raw_translation}"
+            
+            result = self.correction_pipeline(
+                prompt,
+                max_length=50,
+                num_beams=3,
+                temperature=0.2
+            )
+            
+            corrected = result[0]['generated_text'].strip()
+            
+            # Vérifier la cohérence
+            if corrected and len(corrected.split()) <= 3:
+                return corrected
+                
+        except Exception as e:
+            print(f"Erreur correction grammaticale: {e}")
+        
+        return raw_translation
+    
+    def contextual_refinement(self, word: str, raw_translation: str, context: str = None) -> str:
+        """Reformulation contextuelle avec prompts intelligents"""
+        refinement_prompts = [
+            f"Translate '{word}' to French:",
+            f"What is '{word}' in French?",
+            f"French word for '{word}':",
+            f"'{word}' means in French:"
+        ]
+        
+        # Utiliser le modèle GPT français pour reformuler
+        if hasattr(self, 'gpt_fr_model'):
+            tokenizer_gpt_fr, model_gpt_fr = self.gpt_fr_model
+            
+            for prompt in refinement_prompts:
+                try:
+                    inputs = tokenizer_gpt_fr(prompt, return_tensors="pt", padding=True)
+                    outputs = model_gpt_fr.generate(
+                        inputs.input_ids,
+                        max_length=inputs.input_ids.shape[1] + 8,
+                        num_beams=3,
+                        temperature=0.2,
+                        do_sample=False,
+                        pad_token_id=tokenizer_gpt_fr.eos_token_id
+                    )
+                    
+                    generated = tokenizer_gpt_fr.decode(outputs[0], skip_special_tokens=True)
+                    # Extraire seulement la partie après le prompt
+                    if prompt in generated:
+                        refined = generated.replace(prompt, "").strip()
+                        refined = refined.split()[0] if refined.split() else ""
+                        
+                        if (refined and refined.lower() != word.lower() 
+                            and len(refined) >= 2 and len(refined) <= 15):
+                            return refined
+                            
+                except Exception:
+                    continue
+        
+        return raw_translation
+    
+    def rule_based_refinement(self, word: str, raw_translation: str) -> str:
+        """Reformulation basée sur des règles linguistiques"""
+        
+        # Nettoyer la traduction brute
+        translation = raw_translation.strip()
+        
+        # Règle 1: Supprimer le mot source s'il apparaît
+        if translation.lower().startswith(word.lower()):
+            translation = translation[len(word):].strip()
+        
+        # Règle 2: Supprimer les délimiteurs courants
+        delimiters = [" - ", " : ", " → ", " = ", ", ", "  "]
+        for delimiter in delimiters:
+            if delimiter in translation:
+                parts = translation.split(delimiter)
+                # Prendre la partie qui n'est pas le mot original
+                for part in parts:
+                    clean_part = part.strip()
+                    if clean_part.lower() != word.lower() and len(clean_part) >= 2:
+                        translation = clean_part
+                        break
+        
+        # Règle 3: Gérer les articles français
+        if translation.startswith(("le ", "la ", "les ", "un ", "une ", "des ")):
+            # Garder l'article si c'est un nom
+            if self._is_likely_noun(word):
+                pass  # Garder l'article
+            else:
+                # Supprimer l'article pour les autres types de mots
+                translation = " ".join(translation.split()[1:])
+        
+        # Règle 4: Prendre le premier mot si multiple et cohérent
+        words = translation.split()
+        if len(words) > 1:
+            first_word = words[0].strip('.,;:!?()[]{}')
+            if (first_word.lower() != word.lower() 
+                and len(first_word) >= 2 
+                and not first_word.lower() in ['le', 'la', 'les', 'un', 'une', 'des']):
+                translation = first_word
+        
+        # Règle 5: Validation finale
+        translation = translation.strip('.,;:!?()[]{}"\'-')
+        
+        return translation if translation and translation.lower() != word.lower() else word
+    
+    def _is_likely_noun(self, word: str) -> bool:
+        """Détermine si un mot allemand est probablement un nom"""
+        # En allemand, les noms commencent par une majuscule
+        return word[0].isupper() if word else False
+    
+    def ensemble_refinement(self, word: str, raw_translation: str) -> Dict[str, str]:
+        """Combine plusieurs méthodes de reformulation pour le meilleur résultat"""
+        
+        candidates = []
+        
+        # Méthode 1: Règles linguistiques (rapide et fiable)
+        rule_based = self.rule_based_refinement(word, raw_translation)
+        candidates.append(("rule_based", rule_based))
+        
+        # Méthode 2: Reformulation contextuelle
+        contextual = self.contextual_refinement(word, raw_translation)
+        candidates.append(("contextual", contextual))
+        
+        # Méthode 3: T5 reformulation (si disponible)
+        if self.refiner_model:
+            t5_refined = self.refine_translation_with_t5(raw_translation, word)
+            candidates.append(("t5", t5_refined))
+        
+        # Méthode 4: Correction grammaticale (si disponible)
+        if self.correction_pipeline:
+            grammar_corrected = self.refine_with_grammar_correction(raw_translation)
+            candidates.append(("grammar", grammar_corrected))
+        
+        # Sélectionner le meilleur candidat
+        best_translation = self._select_best_candidate(word, candidates)
+        
+        return {
+            'de': word,
+            'fr': best_translation,
+            'raw_translation': raw_translation,
+            'candidates': {name: trans for name, trans in candidates},
+            'method_used': self._get_winning_method(word, candidates, best_translation)
+        }
+    
+    def _select_best_candidate(self, word: str, candidates: List[tuple]) -> str:
+        """Sélectionne le meilleur candidat parmi les reformulations"""
+        
+        scored_candidates = []
+        
+        for method_name, translation in candidates:
+            score = self._score_translation(word, translation)
+            scored_candidates.append((score, translation, method_name))
+        
+        # Trier par score décroissant
+        scored_candidates.sort(reverse=True)
+        
+        # Retourner la meilleure traduction
+        return scored_candidates[0][1] if scored_candidates else word
+    
+    def _score_translation(self, word: str, translation: str) -> float:
+        """Score une traduction selon plusieurs critères"""
+        if not translation or translation.lower() == word.lower():
+            return 0.0
+        
+        score = 1.0
+        
+        # Critère 1: Longueur appropriée (favoriser 3-12 caractères)
+        length = len(translation)
+        if 3 <= length <= 12:
+            score += 1.0
+        elif length < 3 or length > 20:
+            score -= 0.5
+        
+        # Critère 2: Pas de chiffres ou caractères spéciaux étranges
+        if re.match(r'^[a-zA-ZàâäéèêëïîôùûüÿçÀÂÄÉÈÊËÏÎÔÙÛÜŸÇ\s\-]+$', translation):
+            score += 0.5
+        else:
+            score -= 1.0
+        
+        # Critère 3: Pas de répétition du mot original
+        if word.lower() not in translation.lower():
+            score += 0.5
+        
+        # Critère 4: Un seul mot est généralement préférable
+        word_count = len(translation.split())
+        if word_count == 1:
+            score += 0.3
+        elif word_count == 2:
+            score += 0.1
+        elif word_count > 3:
+            score -= 0.3
+        
+        return score
+    
+    def _get_winning_method(self, word: str, candidates: List[tuple], best_translation: str) -> str:
+        """Identifie quelle méthode a produit la meilleure traduction"""
+        for method_name, translation in candidates:
+            if translation == best_translation:
+                return method_name
+        return "unknown"
 
 def download_audio_file(audio_url, filename=None):
     """
@@ -217,28 +491,38 @@ class VocabularyProcessor:
         
         return sorted(list(vocabulary))
     
+    
     def get_basic_translation(self, word: str) -> Dict[str, str]:
-        """Obtient la traduction de base d'un mot"""
-        tokenizer_de_fr, model_de_fr = self.models['de_fr']
-        
-        try:
-            inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
-            outputs = model_de_fr.generate(
-                inputs.input_ids,
-                max_length=20,
-                num_beams=3,
-                temperature=0.3,
-                do_sample=False
-            )
-            translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+            """Version avec reformulation automatique"""
+            tokenizer_de_fr, model_de_fr = self.models['de_fr']
             
-            return {
-                'de': word,
-                'fr': translation if translation else word
-            }
-        except Exception as e:
-            print(f"Erreur de traduction pour '{word}': {e}")
-            return {'de': word, 'fr': word}
+            try:
+                # Étape 1: Traduction brute
+                inputs = tokenizer_de_fr(word, return_tensors="pt", padding=True)
+                outputs = model_de_fr.generate(
+                    inputs.input_ids,
+                    max_length=20,
+                    num_beams=3,
+                    temperature=0.3,
+                    do_sample=False
+                )
+                raw_translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
+                
+                # Étape 2: Reformulation avec le raffineur
+                if not hasattr(self, 'refiner'):
+                    self.refiner = TranslationRefiner()
+                    # Donner accès aux modèles GPT
+                    self.refiner.gpt_fr_model = self.models.get('gpt_fr')
+                
+                # Reformulation complète
+                refined_result = self.refiner.ensemble_refinement(word, raw_translation)
+                
+                return refined_result
+                
+            except Exception as e:
+                print(f"Erreur de traduction raffinée pour '{word}': {e}")
+                return {'de': word, 'fr': word}
+
     
     def generate_simple_example(self, word: str) -> Dict[str, str]:
         """Génère un exemple simple d'utilisation"""
