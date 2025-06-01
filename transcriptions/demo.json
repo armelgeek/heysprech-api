@@ -761,13 +761,5 @@
       },
       "processed_at": "2025-06-01T05:26:58.621282"
     }
-  ],
-  "vocabulary_stats": {
-    "total_words": 10,
-    "levels": {
-      "beginner": 6,
-      "intermediate": 2,
-      "advanced": 2
-    }
-  }
+  ]
 }

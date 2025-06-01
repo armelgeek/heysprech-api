@@ -346,11 +346,10 @@ def download_audio_file(audio_url, filename=None):
 class VocabularyProcessor:
     """Classe pour gérer le traitement du vocabulaire et les analyses lexicales"""
     
-    def __init__(self, models: Dict):
+    def __init__(self, models: Dict, output_dir: str):
         self.models = models
         self.processed_words = set()
-        self.pronunciation_dir = Path("pronunciations")
-        self.pronunciation_dir.mkdir(exist_ok=True)
+        self.output_dir = Path(output_dir)
         
     def scrape_audio_tags(self, word: str) -> List[Dict]:
         """Scrape les balises audio pour un mot"""
@@ -445,7 +444,7 @@ class VocabularyProcessor:
             response = requests.get(audio_url, headers=headers, stream=True)
             response.raise_for_status()
             
-            filepath = self.pronunciation_dir / filename
+            filepath = self.output_dir / filename
             with open(filepath, 'wb') as f:
                 for chunk in response.iter_content(chunk_size=8192):
                     f.write(chunk)
@@ -978,7 +977,7 @@ class VocabularyProcessor:
             if self.download_audio_file(first_audio['url'], audio_filename):
                 pronunciation_info = {
                     'available': True,
-                    'file': str(self.pronunciation_dir / audio_filename)
+                    'file': str(self.output_dir / audio_filename)
                 }
         
         # Construire le résultat
@@ -1120,7 +1119,8 @@ class TranscriptionProcessor:
             
             # Initialiser le processeur de vocabulaire
             models = self.model_manager.load_models()
-            self.vocabulary_processor = VocabularyProcessor(models)
+            output_dir = str(Path(json_path).parent)
+            self.vocabulary_processor = VocabularyProcessor(models, output_dir)
             
             # Traiter chaque segment et ajouter la traduction
             print("Traduction des segments...")
@@ -1173,12 +1173,12 @@ class TranscriptionProcessor:
         if not self.validate_audio_file(audio_path):
             return False
         
-        # Créer le répertoire de sortie
-        Path(output_dir).mkdir(parents=True, exist_ok=True)
+        # Utiliser le dossier de l'audio comme dossier de sortie
+        input_audio_dir = str(Path(audio_path).parent)
         
         # Étape 1: Transcription
         print("\n=== ÉTAPE 1: TRANSCRIPTION ===")
-        json_path = self.transcriber.transcribe_file(audio_path, output_dir)
+        json_path = self.transcriber.transcribe_file(audio_path, input_audio_dir)
         if not json_path:
             return False
         
@@ -1195,18 +1195,12 @@ def main():
     """Fonction principale"""
     parser = argparse.ArgumentParser(
         description="Transcrit et analyse un fichier audio en allemand",
-        epilog="Exemple: python script.py audio.mp3 -o ./output"
+        epilog="Exemple: python script.py audio.mp3"
     )
     
     parser.add_argument(
         "audio_file",
-        help="Fichier audio à traiter"
-    )
-    
-    parser.add_argument(
-        "-o", "--output",
-        help="Répertoire de sortie (obligatoire)",
-        required=True
+        help="Fichier audio à traiter. Les fichiers de sortie seront créés dans le même dossier."
     )
     
     parser.add_argument(
@@ -1229,9 +1223,11 @@ def main():
     CONFIG['max_vocabulary_size'] = args.max_vocab
     CONFIG['whisper_model'] = args.model
     
-    # Traitement
+    # Traitement 
     processor = TranscriptionProcessor()
-    success = processor.process_audio_file(args.audio_file, args.output)
+    # Utiliser le dossier du fichier audio comme sortie
+    audio_dir = str(Path(args.audio_file).parent)
+    success = processor.process_audio_file(args.audio_file, audio_dir)
     
     sys.exit(0 if success else 1)
 
