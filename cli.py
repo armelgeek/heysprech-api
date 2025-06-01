@@ -510,8 +510,7 @@ class VocabularyProcessor:
                 max_length=20,
                 num_beams=3,
                 temperature=0.3,
-                do_sample=False, 
-                forced_bos_token_id=tokenizer_de_fr.get_lang_id("fr"), 
+                do_sample=False,
                 pad_token_id=tokenizer_de_fr.pad_token_id
             )
             translation = tokenizer_de_fr.decode(outputs[0], skip_special_tokens=True).strip()
