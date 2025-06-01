@@ -149,8 +149,8 @@
         "fr": "une"
       },
       "example": {
-        "de": "Wir brauchen eine.",
-        "fr": "Il nous en faut une."
+        "de": "Der eine ist schön.",
+        "fr": "L'un est beau."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -163,10 +163,10 @@
           },
           "word_to_translate": "eine",
           "options": [
-            "Le nombre de villages a aussi dépassé",
-            "ie la plus grande et la plus belle des terres du monde",
             "une",
-            "n’est-elle pas"
+            "deux",
+            "non",
+            "mais"
           ],
           "correct_answer": "une",
           "level": "beginner"
@@ -180,10 +180,10 @@
           },
           "word_to_translate": "une",
           "options": [
-            "ändere dich nicht dauernd",
-            "in der",
-            "eine",
-            "aha"
+            "ein",
+            "einer",
+            "örtlich",
+            "eine"
           ],
           "correct_answer": "eine",
           "level": "beginner"
@@ -194,7 +194,7 @@
         "available": true,
         "file": "pronunciations/eine_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:16:28.566586"
+      "processed_at": "2025-06-01T03:28:44.701899"
     },
     {
       "word": "etwas",
@@ -204,8 +204,8 @@
         "fr": "quelque chose"
       },
       "example": {
-        "de": "Wir brauchen etwas.",
-        "fr": "On a besoin de quelque chose."
+        "de": "Das ist ein etwas.",
+        "fr": "C'est quelque chose."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -218,10 +218,9 @@
           },
           "word_to_translate": "etwas",
           "options": [
-            "une chose",
-            "ich",
             "quelque chose",
-            "mell"
+            "particulièrement",
+            "chronologie"
           ],
           "correct_answer": "quelque chose",
           "level": "intermediate"
@@ -235,10 +234,10 @@
           },
           "word_to_translate": "quelque chose",
           "options": [
-            "örtlich oder regional",
+            "als",
+            "anders",
             "etwas",
-            "örtlich oder welt- bzw",
-            "Das Wort (z"
+            "örtlich"
           ],
           "correct_answer": "etwas",
           "level": "intermediate"
@@ -249,7 +248,7 @@
         "available": true,
         "file": "pronunciations/etwas_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:16:36.582145"
+      "processed_at": "2025-06-01T03:28:58.927738"
     },
     {
       "word": "euch",
@@ -273,10 +272,10 @@
           },
           "word_to_translate": "euch",
           "options": [
-            "zun ou gan",
-            "ubi",
             "à vous",
-            "Il"
+            "Votre",
+            "dans",
+            "leur"
           ],
           "correct_answer": "à vous",
           "level": "beginner"
@@ -290,10 +289,10 @@
           },
           "word_to_translate": "à vous",
           "options": [
-            "ʿĀd und fa-mā s",
-            "euch",
-            "aḥadīni",
-            "Ja"
+            "und",
+            "engen",
+            "euern",
+            "euch"
           ],
           "correct_answer": "euch",
           "level": "beginner"
@@ -304,7 +303,7 @@
         "available": true,
         "file": "pronunciations/euch_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:16:43.046260"
+      "processed_at": "2025-06-01T03:29:08.399614"
     },
     {
       "word": "gehen",
@@ -328,10 +327,10 @@
           },
           "word_to_translate": "gehen",
           "options": [
-            "aller",
-            "ou « se rendre",
-            "um nus",
-            "le tele"
+            "ammoniac",
+            "anglais",
+            "dans",
+            "aller"
           ],
           "correct_answer": "aller",
           "level": "intermediate"
@@ -345,10 +344,10 @@
           },
           "word_to_translate": "aller",
           "options": [
-            "ollen Boden verlieren",
             "eilen",
-            "gehen",
-            "und alles ist gut"
+            "man",
+            "muss",
+            "gehen"
           ],
           "correct_answer": "gehen",
           "level": "intermediate"
@@ -359,7 +358,7 @@
         "available": true,
         "file": "pronunciations/gehen_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:16:52.392902"
+      "processed_at": "2025-06-01T03:29:14.130359"
     },
     {
       "word": "ich",
@@ -369,8 +368,8 @@
         "fr": "isé"
       },
       "example": {
-        "de": "Ich habe einen ich.",
-        "fr": "J'en ai un."
+        "de": "Der ich ist schön.",
+        "fr": "Celui que je suis belle."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -383,10 +382,10 @@
           },
           "word_to_translate": "ich",
           "options": [
-            "wonglang",
-            "tui",
+            "mots",
             "isé",
-            "ie"
+            "non",
+            "ou"
           ],
           "correct_answer": "isé",
           "level": "beginner"
@@ -400,10 +399,10 @@
           },
           "word_to_translate": "isé",
           "options": [
-            "ʈmâlît",
             "ich",
-            "die Bedeutung des Menschen",
-            "Im Internet ist das Phänomen häufig"
+            "tight",
+            "und",
+            "als"
           ],
           "correct_answer": "ich",
           "level": "beginner"
@@ -414,7 +413,7 @@
         "available": true,
         "file": "pronunciations/ich_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:16:59.946481"
+      "processed_at": "2025-06-01T03:29:22.177702"
     },
     {
       "word": "kann",
@@ -424,8 +423,8 @@
         "fr": "peut"
       },
       "example": {
-        "de": "Der kann ist schön.",
-        "fr": "C'est beau."
+        "de": "Wir brauchen kann.",
+        "fr": "On peut en avoir besoin."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -438,10 +437,10 @@
           },
           "word_to_translate": "kann",
           "options": [
-            "En effet",
+            "rien",
             "peut",
-            "ich sois",
-            "il est"
+            "tétra",
+            "local"
           ],
           "correct_answer": "peut",
           "level": "beginner"
@@ -455,10 +454,10 @@
           },
           "word_to_translate": "peut",
           "options": [
-            "ie",
-            "Die Welt ist",
             "kann",
-            "Ich"
+            "ändere",
+            "nicht",
+            "darf"
           ],
           "correct_answer": "kann",
           "level": "beginner"
@@ -469,7 +468,7 @@
         "available": true,
         "file": "pronunciations/kann_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:17:09.921884"
+      "processed_at": "2025-06-01T03:29:29.913234"
     },
     {
       "word": "kleinigkeit",
@@ -479,8 +478,8 @@
         "fr": "Petiteur"
       },
       "example": {
-        "de": "Ich habe einen kleinigkeit.",
-        "fr": "J'ai un petit truc."
+        "de": "Wir brauchen kleinigkeit.",
+        "fr": "On a besoin de petites choses."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -493,10 +492,10 @@
           },
           "word_to_translate": "kleinigkeit",
           "options": [
-            "lont-moi",
-            "Le 16 août 2017",
             "Petiteur",
-            "ist"
+            "Compétence",
+            "Règlement",
+            "Corbeille"
           ],
           "correct_answer": "Petiteur",
           "level": "advanced"
@@ -510,10 +509,10 @@
           },
           "word_to_translate": "Petiteur",
           "options": [
-            "Wortart",
-            "änderungen und tapsungen",
+            "schlagwörter",
             "kleinigkeit",
-            "de - www"
+            "änderungen",
+            "einstellungen"
           ],
           "correct_answer": "kleinigkeit",
           "level": "advanced"
@@ -524,7 +523,7 @@
         "available": true,
         "file": "pronunciations/kleinigkeit_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:17:21.494383"
+      "processed_at": "2025-06-01T03:29:40.705517"
     },
     {
       "word": "mich",
@@ -534,8 +533,8 @@
         "fr": "moi"
       },
       "example": {
-        "de": "Ich habe einen mich.",
-        "fr": "J'en ai un."
+        "de": "Der mich ist schön.",
+        "fr": "Celui-là est beau."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -548,10 +547,10 @@
           },
           "word_to_translate": "mich",
           "options": [
+            "et",
             "moi",
-            "right : ma vie",
-            "um two sky wong bye / Tu po sy got mak",
-            "La ville n’est pas moins tournée vers la production de films d"
+            "isé",
+            "ic"
           ],
           "correct_answer": "moi",
           "level": "beginner"
@@ -565,10 +564,10 @@
           },
           "word_to_translate": "moi",
           "options": [
-            "mich",
-            "eigetragen",
-            "Ich bin",
-            "tieren"
+            "mensch",
+            "mit",
+            "ein",
+            "mich"
           ],
           "correct_answer": "mich",
           "level": "beginner"
@@ -579,7 +578,7 @@
         "available": true,
         "file": "pronunciations/mich_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:17:30.156787"
+      "processed_at": "2025-06-01T03:29:47.070025"
     },
     {
       "word": "unterscheidet",
@@ -603,10 +602,10 @@
           },
           "word_to_translate": "unterscheidet",
           "options": [
-            "M",
+            "modifier",
             "différent",
-            "comte de Provence",
-            "Le « Grotte » (The Witch"
+            "compensation",
+            "téthilisés"
           ],
           "correct_answer": "différent",
           "level": "advanced"
@@ -620,10 +619,10 @@
           },
           "word_to_translate": "différent",
           "options": [
-            "örtlich differenziert",
-            "arkennt oder verkleinert",
-            "unterscheidet",
-            "änderet und verknüpft"
+            "agnostizieren",
+            "unterscheiden",
+            "rehabilitieren",
+            "unterscheidet"
           ],
           "correct_answer": "unterscheidet",
           "level": "advanced"
@@ -634,7 +633,7 @@
         "available": true,
         "file": "pronunciations/unterscheidet_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:17:38.726679"
+      "processed_at": "2025-06-01T03:29:55.095224"
     },
     {
       "word": "von",
@@ -644,8 +643,8 @@
         "fr": "de"
       },
       "example": {
-        "de": "Ich habe einen von.",
-        "fr": "J'en ai un."
+        "de": "Wir brauchen von.",
+        "fr": "Nous avons besoin de."
       },
       "exercise": {
         "type": "multiple_choice_pair",
@@ -658,10 +657,10 @@
           },
           "word_to_translate": "von",
           "options": [
-            "ith et thon à la manière suivante : on passe au milieu du jardin (ou science) des",
-            "de",
-            "ie : u/ – et [o] – ou s’–[u",
-            "Le choix"
+            "le",
+            "est",
+            "et",
+            "de"
           ],
           "correct_answer": "de",
           "level": "beginner"
@@ -675,10 +674,10 @@
           },
           "word_to_translate": "de",
           "options": [
-            "あいら-Verb (siehe auch \"Übersetzung",
-            "っり、单歳・物",
             "von",
-            "Ich spreche ja gar nicht"
+            "anp",
+            "oder",
+            "ominal"
           ],
           "correct_answer": "von",
           "level": "beginner"
@@ -689,7 +688,7 @@
         "available": true,
         "file": "pronunciations/von_pronunciation.mp3"
       },
-      "processed_at": "2025-06-01T03:17:45.800712"
+      "processed_at": "2025-06-01T03:30:02.853288"
     }
   ],
   "vocabulary_stats": {
