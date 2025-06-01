@@ -356,7 +356,7 @@ class VocabularyProcessor:
         min_length = max(2, target_length - 2)
         max_length = target_length + 3
 
-        sdef is_valid_distractor(candidate: str) -> bool:
+        def is_valid_distractor(candidate: str) -> bool:
             """Vérifie si un candidat est un bon distracteur"""
             candidate_clean = candidate.strip().lower()
             correct_clean = correct_answer.strip().lower()
