@@ -3,3 +3,7 @@ tqdm==4.65.0
 beautifulsoup4==4.12.2
 requests==2.31.0
 soundfile==0.12.1
+sentencepiece
+protobuf
+sacremoses
+accelerate
