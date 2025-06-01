@@ -344,7 +344,7 @@ class VocabularyProcessor:
             # Fallback avec des options simples
             return self._create_fallback_exercise(word, correct_answer, question_de, question_fr, question_type)
 
-    def _generate_distractors(self, word: str, correct_answer: str, target_language: str, count: int = 3) -> List[str]:
+    def _generate_distractors(self, word: str, correct_answer: str, target_language: str, count: int = 5) -> List[str]:
         """Génère des distracteurs sémantiquement proches de manière dynamique"""
         distractors = []
         tokenizer_gpt_de, model_gpt_de = self.models['gpt_de']
