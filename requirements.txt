@@ -1,8 +1,5 @@
 transformers==4.30.2
-torch==2.0.1
 tqdm==4.65.0
 beautifulsoup4==4.12.2
 requests==2.31.0
-whisperx
 soundfile==0.12.1
-git+https://github.com/m-bain/whisperx.git
