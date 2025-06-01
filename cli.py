@@ -41,7 +41,7 @@ CONFIG = {
     'output_format': "json",
     'language_pairs': {
         'de-fr': {
-            'translation_model_path': "./opus-mt-de-fr",
+            'translation_model_path': "./app/opus-mt-de-fr",
             'source_gpt_model': "benjamin/gpt2-wechsel-german",
             'target_gpt_model': "dbddv01/gpt2-french-small",
         },
