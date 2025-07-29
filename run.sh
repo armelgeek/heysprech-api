@@ -6,15 +6,17 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-# Création des dossiers par langue
-mkdir -p "$(pwd)/audios"
-mkdir -p "$(pwd)/de"
-mkdir -p "$(pwd)/fr"
-mkdir -p "$(pwd)/en"
+
+# Utilise le chemin du dossier du script pour tous les dossiers
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+mkdir -p "$SCRIPT_DIR/audios"
+mkdir -p "$SCRIPT_DIR/de"
+mkdir -p "$SCRIPT_DIR/fr"
+mkdir -p "$SCRIPT_DIR/en"
 
 # Si un fichier est fourni, le copier dans le dossier audios s'il n'y est pas déjà
-if [ ! -f "$(pwd)/audios/$(basename "$1")" ]; then
-    cp "$1" "$(pwd)/audios/"
+if [ ! -f "$SCRIPT_DIR/audios/$(basename "$1")" ]; then
+    cp "$1" "$SCRIPT_DIR/audios/"
 fi
 
 # Construction de l'image si elle n'existe pas
