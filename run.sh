@@ -20,10 +20,11 @@ fi
 # Construction de l'image si elle n'existe pas
 
 
-# Exécution du conteneur avec les volumes montés
+# Utilise le chemin du dossier du script pour éviter les problèmes de droits
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 docker run -it \
-    --volume "$(pwd)/audios":/app/audios:ro \
-    --volume "$(pwd)/de":/app/de:rw \
-    --volume "$(pwd)/fr":/app/fr:rw \
-    --volume "$(pwd)/en":/app/en:rw \
+    --volume "$SCRIPT_DIR/audios":/app/audios:ro \
+    --volume "$SCRIPT_DIR/de":/app/de:rw \
+    --volume "$SCRIPT_DIR/fr":/app/fr:rw \
+    --volume "$SCRIPT_DIR/en":/app/en:rw \
     heysprech-api "/app/audios/$(basename "$1")" --source-lang de --target-lang fr
